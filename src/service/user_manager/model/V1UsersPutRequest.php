@@ -1,0 +1,377 @@
+<?php
+
+/**
+ * 测试环境项目
+ *
+ * api测试专用
+ *
+ * The version of the OpenAPI document: v1.0.2
+ */
+namespace wemeet\openapi\service\user_manager\model;
+
+use wemeet\openapi\core\xhttp\ModelInterface;
+
+
+class V1UsersPutRequest implements ModelInterface, \JsonSerializable
+{
+
+    /**
+     */
+    protected $avatarUrl = null;
+
+    /**
+     * 员工部门，暂只支持为用户分配1个部门。
+     */
+    protected $departmentList = null;
+
+    /**
+     */
+    protected $email = null;
+
+    /**
+     */
+    protected $entryTime = null;
+
+    /**
+     */
+    protected $jobTitle = null;
+
+    /**
+     */
+    protected $phone = null;
+
+    /**
+     */
+    protected $staffId = null;
+
+    /**
+     */
+    protected $username = null;
+
+    public function __construct(
+    ) {
+    }
+
+    public function avatarUrl(string $avatarUrl): V1UsersPutRequest {
+        $this->avatarUrl = $avatarUrl;
+        return $this;
+    }
+
+    public function getAvatarUrl() {
+        return $this->avatarUrl;
+    }
+
+    public function setAvatarUrl(string $avatarUrl) {
+        $this->avatarUrl = $avatarUrl;
+    }
+    public function departmentList(array $departmentList): V1UsersPutRequest {
+        $this->departmentList = $departmentList;
+        return $this;
+    }
+
+    public function getDepartmentList() {
+        return $this->departmentList;
+    }
+
+    public function setDepartmentList(array $departmentList) {
+        $this->departmentList = $departmentList;
+    }
+    public function email(string $email): V1UsersPutRequest {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail(string $email) {
+        $this->email = $email;
+    }
+    public function entryTime(int $entryTime): V1UsersPutRequest {
+        $this->entryTime = $entryTime;
+        return $this;
+    }
+
+    public function getEntryTime() {
+        return $this->entryTime;
+    }
+
+    public function setEntryTime(int $entryTime) {
+        $this->entryTime = $entryTime;
+    }
+    public function jobTitle(string $jobTitle): V1UsersPutRequest {
+        $this->jobTitle = $jobTitle;
+        return $this;
+    }
+
+    public function getJobTitle() {
+        return $this->jobTitle;
+    }
+
+    public function setJobTitle(string $jobTitle) {
+        $this->jobTitle = $jobTitle;
+    }
+    public function phone(string $phone): V1UsersPutRequest {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    public function getPhone() {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone) {
+        $this->phone = $phone;
+    }
+    public function staffId(string $staffId): V1UsersPutRequest {
+        $this->staffId = $staffId;
+        return $this;
+    }
+
+    public function getStaffId() {
+        return $this->staffId;
+    }
+
+    public function setStaffId(string $staffId) {
+        $this->staffId = $staffId;
+    }
+    public function username(string $username): V1UsersPutRequest {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function setUsername(string $username) {
+        $this->username = $username;
+    }
+
+    /**
+      * Array of property to type mappings. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPITypes = [
+        'avatar_url' => 'string',
+        'department_list' => 'string[]',
+        'email' => 'string',
+        'entry_time' => 'int',
+        'job_title' => 'string',
+        'phone' => 'string',
+        'staff_id' => 'string',
+        'username' => 'string'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      *
+      * @var string[]
+      * @phpstan-var array<string, string|null>
+      * @psalm-var array<string, string|null>
+      */
+    protected static $openAPIFormats = [
+        'avatar_url' => null,
+        'department_list' => null,
+        'email' => null,
+        'entry_time' => 'int64',
+        'job_title' => null,
+        'phone' => null,
+        'staff_id' => null,
+        'username' => null
+    ];
+
+    /**
+      * Array of nullable properties. Used for (de)serialization
+      *
+      * @var boolean[]
+      */
+    protected static array $openAPINullables = [
+        'avatar_url' => false,
+        'department_list' => false,
+        'email' => false,
+        'entry_time' => false,
+        'job_title' => false,
+        'phone' => false,
+        'staff_id' => false,
+        'username' => false
+    ];
+
+    /**
+      * If a nullable field gets set to null, insert it here
+      *
+      * @var boolean[]
+      */
+    protected array $openAPINullablesSetToNull = [];
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPITypes()
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIFormats()
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Array of nullable properties
+     *
+     * @return array
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null
+     *
+     * @return boolean[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null
+     *
+     * @param boolean[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Checks if a property is nullable
+     *
+     * @param string $property
+     * @return bool
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     *
+     * @param string $property
+     * @return bool
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    protected static $attributeMap = [
+        'avatar_url' => 'avatar_url',
+        'department_list' => 'department_list',
+        'email' => 'email',
+        'entry_time' => 'entry_time',
+        'job_title' => 'job_title',
+        'phone' => 'phone',
+        'staff_id' => 'staff_id',
+        'username' => 'username'
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    protected static $setters = [
+        'avatar_url' => 'setAvatarUrl',
+        'department_list' => 'setDepartmentList',
+        'email' => 'setEmail',
+        'entry_time' => 'setEntryTime',
+        'job_title' => 'setJobTitle',
+        'phone' => 'setPhone',
+        'staff_id' => 'setStaffId',
+        'username' => 'setUsername'
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    protected static $getters = [
+        'avatar_url' => 'getAvatarUrl',
+        'department_list' => 'getDepartmentList',
+        'email' => 'getEmail',
+        'entry_time' => 'getEntryTime',
+        'job_title' => 'getJobTitle',
+        'phone' => 'getPhone',
+        'staff_id' => 'getStaffId',
+        'username' => 'getUsername'
+    ];
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @return array
+     */
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @return array
+     */
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @return array
+     */
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
+    public function jsonSerialize(): mixed {
+        $data = [
+            'avatar_url' => $this->avatarUrl,
+            'department_list' => $this->departmentList,
+            'email' => $this->email,
+            'entry_time' => $this->entryTime,
+            'job_title' => $this->jobTitle,
+            'phone' => $this->phone,
+            'staff_id' => $this->staffId,
+            'username' => $this->username,
+        ];
+        return array_filter($data, function($value) {
+            return !is_null($value) && $value !== '';
+        });
+    }
+}
+
