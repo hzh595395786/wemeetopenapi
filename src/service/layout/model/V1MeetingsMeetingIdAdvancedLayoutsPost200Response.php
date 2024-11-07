@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -17,11 +17,16 @@ class V1MeetingsMeetingIdAdvancedLayoutsPost200Response implements ModelInterfac
 
     /**
      * 布局对象列表
+    * 类型：\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdAdvancedLayoutsPost200ResponseLayoutListInner[]
      */
     protected $layoutList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['layout_list'])) {
+            $this->layoutList = $jsonArray['layout_list'];
+        }
     }
 
     public function layoutList(array $layoutList): V1MeetingsMeetingIdAdvancedLayoutsPost200Response {

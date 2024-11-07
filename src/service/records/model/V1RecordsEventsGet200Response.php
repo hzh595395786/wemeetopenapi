@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,31 +17,52 @@ class V1RecordsEventsGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 分页查询返回当前页码。
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 分页查询返回单页数据条数。
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 事件明细集合。
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsEventsGet200ResponseEventsInner[]
      */
     protected $events = null;
 
     /**
      * 分页查询返回数据总数。
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 分页查询返回分页总数。
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['events'])) {
+            $this->events = $jsonArray['events'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currentPage(int $currentPage): V1RecordsEventsGet200Response {

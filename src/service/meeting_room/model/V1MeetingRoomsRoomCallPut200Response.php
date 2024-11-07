@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,11 +17,16 @@ class V1MeetingRoomsRoomCallPut200Response implements ModelInterface, \JsonSeria
 
     /**
      * 呼叫ID
+    * 类型：string
      */
     protected $inviteId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['invite_id'])) {
+            $this->inviteId = $jsonArray['invite_id'];
+        }
     }
 
     public function inviteId(string $inviteId): V1MeetingRoomsRoomCallPut200Response {

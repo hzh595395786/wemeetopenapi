@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -16,36 +16,57 @@ class V1FilesRecordsUploadFinishPostRequest implements ModelInterface, \JsonSeri
 {
     /**
      * 操作者ID
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID类型
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 上传文件中的发言人数：传具体数值代表几人发言，最多支持12人，其中0代表多人发言
-     * @deprecated
+    * 类型：
+     */
     protected $speakNumber;
     /**
      * 上传事务ID，由upload-prepare接口返回
-     * @deprecated
+    * 类型：
+     */
     protected $uploadId;
 
     /**
      * 自动生成智能转写和智能纪要：true：自动生成（默认）  false：不生成
+    * 类型：bool
      */
     protected $aiRecord = null;
 
     public function __construct(
-        $operatorId,
-        $operatorIdType,
-        $speakNumber,
-        $uploadId,
+        $jsonArray = []
     ) {
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->speakNumber = $speakNumber;
-        $this->uploadId = $uploadId;
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['speak_number'])) {
+            $this->speakNumber = $jsonArray['speak_number'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter speak_number');
+        }
+        if (isset($jsonArray['upload_id'])) {
+            $this->uploadId = $jsonArray['upload_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter upload_id');
+        }
+        if (isset($jsonArray['ai_record'])) {
+            $this->aiRecord = $jsonArray['ai_record'];
+        }
     }
 
     public function aiRecord(bool $aiRecord): V1FilesRecordsUploadFinishPostRequest {

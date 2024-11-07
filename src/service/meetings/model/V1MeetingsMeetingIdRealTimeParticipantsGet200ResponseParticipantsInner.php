@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,70 +17,123 @@ class V1MeetingsMeetingIdRealTimeParticipantsGet200ResponseParticipantsInner imp
 
     /**
      * 用户的客户端版本。当用户在会中时才能返回。
+    * 类型：string
      */
     protected $appVersion = null;
 
     /**
      * 麦克风状态： true：开启 false：关闭
+    * 类型：bool
      */
     protected $audioState = null;
 
     /**
+    * 类型：string
      */
     protected $customerData = null;
 
     /**
      * 用户的终端设备类型： 0:pstn或mra 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序
+    * 类型：int
      */
     protected $instanceid = null;
 
     /**
      * 参会者加入会议时间戳（单位秒）。
+    * 类型：string
      */
     protected $joinTime = null;
 
     /**
      * 入会方式： 0：PSTN 普通用户，标准的手机或固话类型 1：普通 VOIP 用户 2：附属投屏 VOIP 3：linux sdk for VOIP 4：附属语音 PSTN 5：附属视频 PSTN 6：linux sdk for PSTN
+    * 类型：int
      */
     protected $joinType = null;
 
     /**
      * 当场会议的用户临时 ID，可用于会控操作，适用于所有用户。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * OAuth2.0 鉴权用户请使用 open_id
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 屏幕共享状态： true：开启 false：关闭
+    * 类型：bool
      */
     protected $screenSharedState = null;
 
     /**
      * 入会用户名（base64）。
+    * 类型：string
      */
     protected $userName = null;
 
     /**
      * 用户角色： 0：普通成员角色 1：创建者角色 2：主持人 3：创建者+主持人 4：游客 5：游客+主持人 6：联席主持人 7：创建者+联席主持人
+    * 类型：int
      */
     protected $userRole = null;
 
     /**
      * 同企业内部请使用企业唯一用户标识； 其他企业，个人，小程序没有
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 摄像头状态： true：开启 false：关闭
+    * 类型：bool
      */
     protected $videoState = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['app_version'])) {
+            $this->appVersion = $jsonArray['app_version'];
+        }
+        if (isset($jsonArray['audio_state'])) {
+            $this->audioState = $jsonArray['audio_state'];
+        }
+        if (isset($jsonArray['customer_data'])) {
+            $this->customerData = $jsonArray['customer_data'];
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['join_time'])) {
+            $this->joinTime = $jsonArray['join_time'];
+        }
+        if (isset($jsonArray['join_type'])) {
+            $this->joinType = $jsonArray['join_type'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['screen_shared_state'])) {
+            $this->screenSharedState = $jsonArray['screen_shared_state'];
+        }
+        if (isset($jsonArray['user_name'])) {
+            $this->userName = $jsonArray['user_name'];
+        }
+        if (isset($jsonArray['user_role'])) {
+            $this->userRole = $jsonArray['user_role'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['video_state'])) {
+            $this->videoState = $jsonArray['video_state'];
+        }
     }
 
     public function appVersion(string $appVersion): V1MeetingsMeetingIdRealTimeParticipantsGet200ResponseParticipantsInner {

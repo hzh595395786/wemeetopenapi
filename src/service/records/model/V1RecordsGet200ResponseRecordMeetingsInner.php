@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,56 +17,97 @@ class V1RecordsGet200ResponseRecordMeetingsInner implements ModelInterface, \Jso
 
     /**
      * 主持人用户 ID。(查询会议录制文件列表接口返回。)
+    * 类型：string
      */
     protected $hostUserId = null;
 
     /**
      * 会议类型，0-全部 1-外部会议 2-内部会议
+    * 类型：int
      */
     protected $mediaSetType = null;
 
     /**
      * 会议开始时间，UNIX 时间戳（单位毫秒）。
+    * 类型：int
      */
     protected $mediaStartTime = null;
 
     /**
      * 会议 code。
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议唯一 ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 会议录制 ID。
+    * 类型：string
      */
     protected $meetingRecordId = null;
 
     /**
      * 录制文件列表。
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsGet200ResponseRecordMeetingsInnerRecordFilesInner[]
      */
     protected $recordFiles = null;
 
     /**
      * 返回的录制文件类型，0：云录制、2：上传录制
+    * 类型：int
      */
     protected $recordType = null;
 
     /**
      * 录制状态。1：录制中，2：转码中，3：转码完成，当状态为转码完成才会返回录制文件列表。
+    * 类型：int
      */
     protected $state = null;
 
     /**
      * 会议主题。
+    * 类型：string
      */
     protected $subject = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['host_user_id'])) {
+            $this->hostUserId = $jsonArray['host_user_id'];
+        }
+        if (isset($jsonArray['media_set_type'])) {
+            $this->mediaSetType = $jsonArray['media_set_type'];
+        }
+        if (isset($jsonArray['media_start_time'])) {
+            $this->mediaStartTime = $jsonArray['media_start_time'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['meeting_record_id'])) {
+            $this->meetingRecordId = $jsonArray['meeting_record_id'];
+        }
+        if (isset($jsonArray['record_files'])) {
+            $this->recordFiles = $jsonArray['record_files'];
+        }
+        if (isset($jsonArray['record_type'])) {
+            $this->recordType = $jsonArray['record_type'];
+        }
+        if (isset($jsonArray['state'])) {
+            $this->state = $jsonArray['state'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
     }
 
     public function hostUserId(string $hostUserId): V1RecordsGet200ResponseRecordMeetingsInner {

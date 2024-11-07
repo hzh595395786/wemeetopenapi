@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,36 +16,57 @@ class V1UsersAccountAiAccountPostRequest implements ModelInterface, \JsonSeriali
 {
     /**
      * 操作者ID，拥有用户管理权限
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * ID类型，1:userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 被操作者ID，仅支持企业版/教育版高级账号被设置，其他类型账号会报错
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorId;
     /**
      * ID类型  1:userid
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorIdType;
 
     /**
      * 1:购买版 2:赠送版AI账号类型  1：购买版  2：赠送版  如果未传入该字段，默认分配赠送版AI账号
+    * 类型：int
      */
     protected $aiAccountType = null;
 
     public function __construct(
-        $operatorId,
-        $operatorIdType,
-        $toOperatorId,
-        $toOperatorIdType,
+        $jsonArray = []
     ) {
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->toOperatorId = $toOperatorId;
-        $this->toOperatorIdType = $toOperatorIdType;
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id');
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id_type');
+        }
+        if (isset($jsonArray['ai_account_type'])) {
+            $this->aiAccountType = $jsonArray['ai_account_type'];
+        }
     }
 
     public function aiAccountType(int $aiAccountType): V1UsersAccountAiAccountPostRequest {

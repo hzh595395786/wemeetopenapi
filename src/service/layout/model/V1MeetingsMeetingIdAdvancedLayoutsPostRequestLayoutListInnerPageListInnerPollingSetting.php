@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,31 +16,48 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerP
 {
     /**
      * 轮询开启后设置参数， 设置是否忽略未入会成员
-     * @deprecated
+    * 类型：
+     */
     protected $ignoreUserAbsence;
     /**
      * 轮询开启后设置参数，设置是否忽略没开启视频成员
-     * @deprecated
+    * 类型：
+     */
     protected $ignoreUserNovideo;
     /**
      * 轮询开启后设置参数 轮询间隔时长， 允许取值范围1～999999
-     * @deprecated
+    * 类型：
+     */
     protected $pollingInterval;
     /**
      * 轮询开启后设置参数。 轮询间隔时间类型： 1-秒 2-分钟
-     * @deprecated
+    * 类型：
+     */
     protected $pollingIntervalUnit;
 
     public function __construct(
-        $ignoreUserAbsence,
-        $ignoreUserNovideo,
-        $pollingInterval,
-        $pollingIntervalUnit,
+        $jsonArray = []
     ) {
-        $this->ignoreUserAbsence = $ignoreUserAbsence;
-        $this->ignoreUserNovideo = $ignoreUserNovideo;
-        $this->pollingInterval = $pollingInterval;
-        $this->pollingIntervalUnit = $pollingIntervalUnit;
+        if (isset($jsonArray['ignore_user_absence'])) {
+            $this->ignoreUserAbsence = $jsonArray['ignore_user_absence'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter ignore_user_absence');
+        }
+        if (isset($jsonArray['ignore_user_novideo'])) {
+            $this->ignoreUserNovideo = $jsonArray['ignore_user_novideo'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter ignore_user_novideo');
+        }
+        if (isset($jsonArray['polling_interval'])) {
+            $this->pollingInterval = $jsonArray['polling_interval'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter polling_interval');
+        }
+        if (isset($jsonArray['polling_interval_unit'])) {
+            $this->pollingIntervalUnit = $jsonArray['polling_interval_unit'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter polling_interval_unit');
+        }
     }
 
     public function ignoreUserAbsence(bool $ignoreUserAbsence): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting {

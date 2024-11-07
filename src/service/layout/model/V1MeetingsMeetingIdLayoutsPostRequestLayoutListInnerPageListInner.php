@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,18 +16,27 @@ class V1MeetingsMeetingIdLayoutsPostRequestLayoutListInnerPageListInner implemen
 {
     /**
      * 布局模板ID
-     * @deprecated
+    * 类型：
+     */
     protected $layoutTemplateId;
 
     /**
      * 用户座次对象列表
+    * 类型：\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdLayoutsPostRequestLayoutListInnerPageListInnerUserSeatListInner[]
      */
     protected $userSeatList = null;
 
     public function __construct(
-        $layoutTemplateId,
+        $jsonArray = []
     ) {
-        $this->layoutTemplateId = $layoutTemplateId;
+        if (isset($jsonArray['layout_template_id'])) {
+            $this->layoutTemplateId = $jsonArray['layout_template_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter layout_template_id');
+        }
+        if (isset($jsonArray['user_seat_list'])) {
+            $this->userSeatList = $jsonArray['user_seat_list'];
+        }
     }
 
     public function layoutTemplateId(string $layoutTemplateId): V1MeetingsMeetingIdLayoutsPostRequestLayoutListInnerPageListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\application_group\model;
 
@@ -16,40 +16,65 @@ class V1AppToolkitPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 用户的终端设备类型： 1 - PC 2 - Mac 3 - Android 4 - iOS 5 - Web 6 - iPad 7 - Android Pad 8 - 小程序
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 会议id
-     * @deprecated
+    * 类型：
+     */
     protected $meetingId;
     /**
      * 调用方用于标示用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0鉴权用户请使用openId） 企业唯一用户标识说明： 1、 企业对接SSO时使用的员工唯一标识ID 2、 企业调用创建用户接口时传递的userid参数
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     /**
      * 自动打开应用的id
+    * 类型：string
      */
     protected $autoOpenSdkid = null;
 
     /**
      * 工具箱应用列表
+    * 类型：\wemeet\openapi\service\application_group\model\V1AppToolkitPostRequestToolListInner[]
      */
     protected $toolList = null;
 
     /**
      * 外显在会中工具栏的应用id（需要保证在tool_list列表中，且列表中的可见范围对此设置也生效）
+    * 类型：string
      */
     protected $toolbarSdkid = null;
 
     public function __construct(
-        $instanceid,
-        $meetingId,
-        $userid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->meetingId = $meetingId;
-        $this->userid = $userid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_id');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['auto_open_sdkid'])) {
+            $this->autoOpenSdkid = $jsonArray['auto_open_sdkid'];
+        }
+        if (isset($jsonArray['tool_list'])) {
+            $this->toolList = $jsonArray['tool_list'];
+        }
+        if (isset($jsonArray['toolbar_sdkid'])) {
+            $this->toolbarSdkid = $jsonArray['toolbar_sdkid'];
+        }
     }
 
     public function autoOpenSdkid(string $autoOpenSdkid): V1AppToolkitPostRequest {

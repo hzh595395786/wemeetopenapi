@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,16 +17,25 @@ class V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings implements Model
 
     /**
      * 是否允许下载云录制。 true：开启 false：关闭
+    * 类型：bool
      */
     protected $downloadRecord = null;
 
     /**
      * 分享云录制。 0：关闭分享 1：全部成员可查看 2：仅登录成员可查看 3：仅同企业成员可查看 4：仅参会成员可查看
+    * 类型：int
      */
     protected $shareRecord = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['download_record'])) {
+            $this->downloadRecord = $jsonArray['download_record'];
+        }
+        if (isset($jsonArray['share_record'])) {
+            $this->shareRecord = $jsonArray['share_record'];
+        }
     }
 
     public function downloadRecord(bool $downloadRecord): V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,35 +17,60 @@ class V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings implements Mode
 
     /**
      * 自动接听。 1：开启 2：关闭
+    * 类型：int
      */
     protected $autoResponse = null;
 
     /**
      * 字幕。 true：开启 false：关闭
+    * 类型：bool
      */
     protected $caption = null;
 
     /**
      * Rooms 屏幕是否展示消息通知。 true：开启 false：不开启
+    * 类型：bool
      */
     protected $roomNotification = null;
 
     /**
      * 专属 ID。 true：开启 false：关闭
+    * 类型：bool
      */
     protected $roomPmi = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings
      */
     protected $roomPmiSettings = null;
 
     /**
      * 水印。 0：关闭 1：单排水印 2：多排水印
+    * 类型：int
      */
     protected $waterMark = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['auto_response'])) {
+            $this->autoResponse = $jsonArray['auto_response'];
+        }
+        if (isset($jsonArray['caption'])) {
+            $this->caption = $jsonArray['caption'];
+        }
+        if (isset($jsonArray['room_notification'])) {
+            $this->roomNotification = $jsonArray['room_notification'];
+        }
+        if (isset($jsonArray['room_pmi'])) {
+            $this->roomPmi = $jsonArray['room_pmi'];
+        }
+        if (isset($jsonArray['room_pmi_settings'])) {
+            $this->roomPmiSettings = new V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings($jsonArray['room_pmi_settings']);
+        }
+        if (isset($jsonArray['water_mark'])) {
+            $this->waterMark = $jsonArray['water_mark'];
+        }
     }
 
     public function autoResponse(int $autoResponse): V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings {
@@ -96,7 +121,7 @@ class V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings implements Mode
     public function setRoomPmi(bool $roomPmi) {
         $this->roomPmi = $roomPmi;
     }
-    public function roomPmiSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings $roomPmiSettings): V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings {
+    public function roomPmiSettings(V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings $roomPmiSettings): V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings {
         $this->roomPmiSettings = $roomPmiSettings;
         return $this;
     }
@@ -105,7 +130,7 @@ class V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings implements Mode
         return $this->roomPmiSettings;
     }
 
-    public function setRoomPmiSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings $roomPmiSettings) {
+    public function setRoomPmiSettings(V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings $roomPmiSettings) {
         $this->roomPmiSettings = $roomPmiSettings;
     }
     public function waterMark(int $waterMark): V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings {

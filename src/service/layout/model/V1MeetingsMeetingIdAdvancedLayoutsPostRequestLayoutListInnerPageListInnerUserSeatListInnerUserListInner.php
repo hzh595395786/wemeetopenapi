@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -17,21 +17,34 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerU
 
     /**
      * 用户当前会议临时身份 ID，单场会议唯一
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 用户 ID
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 用户昵称，base64编码
+    * 类型：string
      */
     protected $username = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
     }
 
     public function msOpenId(string $msOpenId): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerUserSeatListInnerUserListInner {

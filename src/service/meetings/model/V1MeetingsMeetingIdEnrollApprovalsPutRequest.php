@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,40 +16,65 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
 {
     /**
      * 审批动作：1 取消批准，2 拒绝，3.批准，取消批准后状态将变成待审批
-     * @deprecated
+    * 类型：
+     */
     protected $action;
     /**
      * 报名id列表效
-     * @deprecated
+    * 类型：
+     */
     protected $enrollIdList;
     /**
      * 操作者 ID 的类型：  1: userid 2: open_id  如果operator_id和userid具有值，则以operator_id为准；
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 设备类型
+    * 类型：int
      */
     protected $instanceid = null;
 
     /**
      * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。  operator_id_type=2，operator_id必须和公共参数的openid一致。  operator_id和userid至少填写一个，两个参数如果都传了以operator_id为准。  使用OAuth公参鉴权后不能使用userid为入参。
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 用户id
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
-        $action,
-        $enrollIdList,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->action = $action;
-        $this->enrollIdList = $enrollIdList;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['action'])) {
+            $this->action = $jsonArray['action'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter action');
+        }
+        if (isset($jsonArray['enroll_id_list'])) {
+            $this->enrollIdList = $jsonArray['enroll_id_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter enroll_id_list');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function action(int $action): V1MeetingsMeetingIdEnrollApprovalsPutRequest {

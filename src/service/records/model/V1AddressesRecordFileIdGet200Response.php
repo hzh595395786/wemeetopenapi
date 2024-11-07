@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,61 +17,106 @@ class V1AddressesRecordFileIdGet200Response implements ModelInterface, \JsonSeri
 
     /**
      * 录制转写文件（智能优化版）列表。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：\wemeet\openapi\service\records\model\V1AddressesRecordFileIdGet200ResponseAiMeetingTranscriptsInner[]
      */
     protected $aiMeetingTranscripts = null;
 
     /**
      * 智能纪要列表。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：\wemeet\openapi\service\records\model\V1AddressesRecordFileIdGet200ResponseAiMeetingTranscriptsInner[]
      */
     protected $aiMinutes = null;
 
     /**
      * 音频下载地址。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：string
      */
     protected $audioAddress = null;
 
     /**
      * 下载音频文件格式，例如：m4a。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：string
      */
     protected $audioAddressFileType = null;
 
     /**
      * 下载地址，过期时间6小时。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：string
      */
     protected $downloadAddress = null;
 
     /**
      * 下载视频文件格式，例如：mp4。
+    * 类型：string
      */
     protected $downloadAddressFileType = null;
 
     /**
      * 会议 code。
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议唯一 ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 会议转写文件列表。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：\wemeet\openapi\service\records\model\V1AddressesGet200ResponseRecordFilesInnerMeetingSummaryInner[]
      */
     protected $meetingSummary = null;
 
     /**
      * 录制文件 ID。
+    * 类型：string
      */
     protected $recordFileId = null;
 
     /**
      * 播放地址。
+    * 类型：string
      */
     protected $viewAddress = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ai_meeting_transcripts'])) {
+            $this->aiMeetingTranscripts = $jsonArray['ai_meeting_transcripts'];
+        }
+        if (isset($jsonArray['ai_minutes'])) {
+            $this->aiMinutes = $jsonArray['ai_minutes'];
+        }
+        if (isset($jsonArray['audio_address'])) {
+            $this->audioAddress = $jsonArray['audio_address'];
+        }
+        if (isset($jsonArray['audio_address_file_type'])) {
+            $this->audioAddressFileType = $jsonArray['audio_address_file_type'];
+        }
+        if (isset($jsonArray['download_address'])) {
+            $this->downloadAddress = $jsonArray['download_address'];
+        }
+        if (isset($jsonArray['download_address_file_type'])) {
+            $this->downloadAddressFileType = $jsonArray['download_address_file_type'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['meeting_summary'])) {
+            $this->meetingSummary = $jsonArray['meeting_summary'];
+        }
+        if (isset($jsonArray['record_file_id'])) {
+            $this->recordFileId = $jsonArray['record_file_id'];
+        }
+        if (isset($jsonArray['view_address'])) {
+            $this->viewAddress = $jsonArray['view_address'];
+        }
     }
 
     public function aiMeetingTranscripts(array $aiMeetingTranscripts): V1AddressesRecordFileIdGet200Response {

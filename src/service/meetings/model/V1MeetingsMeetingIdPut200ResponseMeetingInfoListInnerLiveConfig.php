@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,11 +17,16 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig implements
 
     /**
      * 直播观看地址
+    * 类型：string
      */
     protected $liveAddr = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['live_addr'])) {
+            $this->liveAddr = $jsonArray['live_addr'];
+        }
     }
 
     public function liveAddr(string $liveAddr): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig {

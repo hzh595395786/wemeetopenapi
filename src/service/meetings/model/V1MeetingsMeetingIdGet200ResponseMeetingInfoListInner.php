@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,135 +16,264 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
 {
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerCurrentCoHostsInner[]
      */
     protected $currentCoHosts = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerCurrentCoHostsInner[]
      */
     protected $currentHosts = null;
 
     /**
+    * 类型：string
      */
     protected $currentSubMeetingId = null;
 
     /**
+    * 类型：bool
      */
     protected $enableDocUploadPermission = null;
 
     /**
+    * 类型：bool
      */
     protected $enableEnroll = null;
 
     /**
+    * 类型：bool
      */
     protected $enableHostKey = null;
 
     /**
+    * 类型：bool
      */
     protected $enableLive = null;
 
     /**
+    * 类型：string
      */
     protected $endTime = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerGuestsInner[]
      */
     protected $guests = null;
 
     /**
+    * 类型：int
      */
     protected $hasMoreSubMeeting = null;
 
     /**
+    * 类型：bool
      */
     protected $hasVote = null;
 
     /**
+    * 类型：string
      */
     protected $hostKey = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerCurrentCoHostsInner[]
      */
     protected $hosts = null;
 
     /**
+    * 类型：string
      */
     protected $joinUrl = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerLiveConfig
      */
     protected $liveConfig = null;
 
     /**
+    * 类型：string
      */
     protected $location = null;
 
     /**
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
+    * 类型：int
      */
     protected $meetingType = null;
 
     /**
+    * 类型：bool
      */
     protected $needPassword = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerCurrentCoHostsInner[]
      */
     protected $participants = null;
 
     /**
+    * 类型：string
      */
     protected $password = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule
      */
     protected $recurringRule = null;
 
     /**
+    * 类型：int
      */
     protected $remainSubMeetings = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerSettings
      */
     protected $settings = null;
 
     /**
+    * 类型：string
      */
     protected $startTime = null;
 
     /**
+    * 类型：string
      */
     protected $status = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSubMeetingsInner[]
      */
     protected $subMeetings = null;
 
     /**
+    * 类型：string
      */
     protected $subject = null;
 
     /**
+    * 类型：bool
      */
     protected $syncToWework = null;
 
     /**
+    * 类型：string
      */
     protected $timeZone = null;
 
     /**
+    * 类型：int
      */
     protected $type = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_co_hosts'])) {
+            $this->currentCoHosts = $jsonArray['current_co_hosts'];
+        }
+        if (isset($jsonArray['current_hosts'])) {
+            $this->currentHosts = $jsonArray['current_hosts'];
+        }
+        if (isset($jsonArray['current_sub_meeting_id'])) {
+            $this->currentSubMeetingId = $jsonArray['current_sub_meeting_id'];
+        }
+        if (isset($jsonArray['enable_doc_upload_permission'])) {
+            $this->enableDocUploadPermission = $jsonArray['enable_doc_upload_permission'];
+        }
+        if (isset($jsonArray['enable_enroll'])) {
+            $this->enableEnroll = $jsonArray['enable_enroll'];
+        }
+        if (isset($jsonArray['enable_host_key'])) {
+            $this->enableHostKey = $jsonArray['enable_host_key'];
+        }
+        if (isset($jsonArray['enable_live'])) {
+            $this->enableLive = $jsonArray['enable_live'];
+        }
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['guests'])) {
+            $this->guests = $jsonArray['guests'];
+        }
+        if (isset($jsonArray['has_more_sub_meeting'])) {
+            $this->hasMoreSubMeeting = $jsonArray['has_more_sub_meeting'];
+        }
+        if (isset($jsonArray['has_vote'])) {
+            $this->hasVote = $jsonArray['has_vote'];
+        }
+        if (isset($jsonArray['host_key'])) {
+            $this->hostKey = $jsonArray['host_key'];
+        }
+        if (isset($jsonArray['hosts'])) {
+            $this->hosts = $jsonArray['hosts'];
+        }
+        if (isset($jsonArray['join_url'])) {
+            $this->joinUrl = $jsonArray['join_url'];
+        }
+        if (isset($jsonArray['live_config'])) {
+            $this->liveConfig = new V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerLiveConfig($jsonArray['live_config']);
+        }
+        if (isset($jsonArray['location'])) {
+            $this->location = $jsonArray['location'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['meeting_type'])) {
+            $this->meetingType = $jsonArray['meeting_type'];
+        }
+        if (isset($jsonArray['need_password'])) {
+            $this->needPassword = $jsonArray['need_password'];
+        }
+        if (isset($jsonArray['participants'])) {
+            $this->participants = $jsonArray['participants'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
+        if (isset($jsonArray['recurring_rule'])) {
+            $this->recurringRule = new V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule($jsonArray['recurring_rule']);
+        }
+        if (isset($jsonArray['remain_sub_meetings'])) {
+            $this->remainSubMeetings = $jsonArray['remain_sub_meetings'];
+        }
+        if (isset($jsonArray['settings'])) {
+            $this->settings = new V1MeetingsGet200ResponseMeetingInfoListInnerSettings($jsonArray['settings']);
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['sub_meetings'])) {
+            $this->subMeetings = $jsonArray['sub_meetings'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
+        if (isset($jsonArray['sync_to_wework'])) {
+            $this->syncToWework = $jsonArray['sync_to_wework'];
+        }
+        if (isset($jsonArray['time_zone'])) {
+            $this->timeZone = $jsonArray['time_zone'];
+        }
+        if (isset($jsonArray['type'])) {
+            $this->type = $jsonArray['type'];
+        }
     }
 
     public function currentCoHosts(array $currentCoHosts): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
@@ -315,7 +444,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
     public function setJoinUrl(string $joinUrl) {
         $this->joinUrl = $joinUrl;
     }
-    public function liveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerLiveConfig $liveConfig): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
+    public function liveConfig(V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerLiveConfig $liveConfig): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
         $this->liveConfig = $liveConfig;
         return $this;
     }
@@ -324,7 +453,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
         return $this->liveConfig;
     }
 
-    public function setLiveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerLiveConfig $liveConfig) {
+    public function setLiveConfig(V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerLiveConfig $liveConfig) {
         $this->liveConfig = $liveConfig;
     }
     public function location(string $location): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
@@ -411,7 +540,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
     public function setPassword(string $password) {
         $this->password = $password;
     }
-    public function recurringRule(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule $recurringRule): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
+    public function recurringRule(V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule $recurringRule): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
         $this->recurringRule = $recurringRule;
         return $this;
     }
@@ -420,7 +549,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
         return $this->recurringRule;
     }
 
-    public function setRecurringRule(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule $recurringRule) {
+    public function setRecurringRule(V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule $recurringRule) {
         $this->recurringRule = $recurringRule;
     }
     public function remainSubMeetings(int $remainSubMeetings): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
@@ -435,7 +564,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
     public function setRemainSubMeetings(int $remainSubMeetings) {
         $this->remainSubMeetings = $remainSubMeetings;
     }
-    public function settings(\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
+    public function settings(V1MeetingsGet200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
         $this->settings = $settings;
         return $this;
     }
@@ -444,7 +573,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
         return $this->settings;
     }
 
-    public function setSettings(\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerSettings $settings) {
+    public function setSettings(V1MeetingsGet200ResponseMeetingInfoListInnerSettings $settings) {
         $this->settings = $settings;
     }
     public function startTime(string $startTime): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {

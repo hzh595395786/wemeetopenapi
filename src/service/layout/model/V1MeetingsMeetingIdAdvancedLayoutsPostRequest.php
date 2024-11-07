@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,31 +16,48 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequest implements ModelInterface, \
 {
     /**
      * 设备类型 ID 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 布局对象列表
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInner
+     */
     protected $layoutList;
     /**
      * 操作人ID
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作人id类型，1：userid，4 :ms_open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     public function __construct(
-        $instanceid,
-        $layoutList,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->layoutList = $layoutList;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['layout_list'])) {
+            $this->layoutList = $jsonArray['layout_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter layout_list');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdAdvancedLayoutsPostRequest {

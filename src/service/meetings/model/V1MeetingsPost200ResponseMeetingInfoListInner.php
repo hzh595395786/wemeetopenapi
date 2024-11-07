@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,74 +17,131 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
 
     /**
      * 联席主持人
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerCurrentCoHostsInner[]
      */
     protected $currentCoHosts = null;
 
     /**
      * 是否开启直播（会议创建人才有权限查询）
+    * 类型：bool
      */
     protected $enableLive = null;
 
     /**
      * 会议结束时间戳（秒）
+    * 类型：string
      */
     protected $endTime = null;
 
     /**
      * 主持人密钥，仅支持6位数字。
+    * 类型：string
      */
     protected $hostKey = null;
 
     /**
      * 指定主持人列表，仅商业版和企业版可指定主持人
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerHostsInner[]
      */
     protected $hosts = null;
 
     /**
      * 加入会议 URL
+    * 类型：string
      */
     protected $joinUrl = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerLiveConfig
      */
     protected $liveConfig = null;
 
     /**
      * 会议 App 的呼入号码
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议唯一id
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 邀请的参会人
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerParticipantsInner[]
      */
     protected $participants = null;
 
     /**
      * 会议密码
+    * 类型：string
      */
     protected $password = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerSettings
      */
     protected $settings = null;
 
     /**
      * 会议开始时间戳（秒）
+    * 类型：string
      */
     protected $startTime = null;
 
     /**
      * 会议主题
+    * 类型：string
      */
     protected $subject = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_co_hosts'])) {
+            $this->currentCoHosts = $jsonArray['current_co_hosts'];
+        }
+        if (isset($jsonArray['enable_live'])) {
+            $this->enableLive = $jsonArray['enable_live'];
+        }
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['host_key'])) {
+            $this->hostKey = $jsonArray['host_key'];
+        }
+        if (isset($jsonArray['hosts'])) {
+            $this->hosts = $jsonArray['hosts'];
+        }
+        if (isset($jsonArray['join_url'])) {
+            $this->joinUrl = $jsonArray['join_url'];
+        }
+        if (isset($jsonArray['live_config'])) {
+            $this->liveConfig = new V1MeetingsPost200ResponseMeetingInfoListInnerLiveConfig($jsonArray['live_config']);
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['participants'])) {
+            $this->participants = $jsonArray['participants'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
+        if (isset($jsonArray['settings'])) {
+            $this->settings = new V1MeetingsPost200ResponseMeetingInfoListInnerSettings($jsonArray['settings']);
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
     }
 
     public function currentCoHosts(array $currentCoHosts): V1MeetingsPost200ResponseMeetingInfoListInner {
@@ -159,7 +216,7 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
     public function setJoinUrl(string $joinUrl) {
         $this->joinUrl = $joinUrl;
     }
-    public function liveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerLiveConfig $liveConfig): V1MeetingsPost200ResponseMeetingInfoListInner {
+    public function liveConfig(V1MeetingsPost200ResponseMeetingInfoListInnerLiveConfig $liveConfig): V1MeetingsPost200ResponseMeetingInfoListInner {
         $this->liveConfig = $liveConfig;
         return $this;
     }
@@ -168,7 +225,7 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         return $this->liveConfig;
     }
 
-    public function setLiveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerLiveConfig $liveConfig) {
+    public function setLiveConfig(V1MeetingsPost200ResponseMeetingInfoListInnerLiveConfig $liveConfig) {
         $this->liveConfig = $liveConfig;
     }
     public function meetingCode(string $meetingCode): V1MeetingsPost200ResponseMeetingInfoListInner {
@@ -219,7 +276,7 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
     public function setPassword(string $password) {
         $this->password = $password;
     }
-    public function settings(\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsPost200ResponseMeetingInfoListInner {
+    public function settings(V1MeetingsPost200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsPost200ResponseMeetingInfoListInner {
         $this->settings = $settings;
         return $this;
     }
@@ -228,7 +285,7 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         return $this->settings;
     }
 
-    public function setSettings(\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerSettings $settings) {
+    public function setSettings(V1MeetingsPost200ResponseMeetingInfoListInnerSettings $settings) {
         $this->settings = $settings;
     }
     public function startTime(string $startTime): V1MeetingsPost200ResponseMeetingInfoListInner {

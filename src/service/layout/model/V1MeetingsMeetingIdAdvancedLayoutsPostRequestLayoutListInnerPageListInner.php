@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,28 +16,45 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner 
 {
     /**
      * 布局模板 ID
-     * @deprecated
+    * 类型：
+     */
     protected $layoutTemplateId;
     /**
      * 用户座次对象列表
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerUserSeatListInner
+     */
     protected $userSeatList;
 
     /**
      * 开启/关闭轮询
+    * 类型：bool
      */
     protected $enablePolling = null;
 
     /**
+    * 类型：\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting
      */
     protected $pollingSetting = null;
 
     public function __construct(
-        $layoutTemplateId,
-        $userSeatList,
+        $jsonArray = []
     ) {
-        $this->layoutTemplateId = $layoutTemplateId;
-        $this->userSeatList = $userSeatList;
+        if (isset($jsonArray['layout_template_id'])) {
+            $this->layoutTemplateId = $jsonArray['layout_template_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter layout_template_id');
+        }
+        if (isset($jsonArray['user_seat_list'])) {
+            $this->userSeatList = $jsonArray['user_seat_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter user_seat_list');
+        }
+        if (isset($jsonArray['enable_polling'])) {
+            $this->enablePolling = $jsonArray['enable_polling'];
+        }
+        if (isset($jsonArray['polling_setting'])) {
+            $this->pollingSetting = new V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting($jsonArray['polling_setting']);
+        }
     }
 
     public function enablePolling(bool $enablePolling): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner {
@@ -64,7 +81,7 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner 
     public function setLayoutTemplateId(string $layoutTemplateId) {
         $this->layoutTemplateId = $layoutTemplateId;
     }
-    public function pollingSetting(\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting $pollingSetting): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner {
+    public function pollingSetting(V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting $pollingSetting): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner {
         $this->pollingSetting = $pollingSetting;
         return $this;
     }
@@ -73,7 +90,7 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner 
         return $this->pollingSetting;
     }
 
-    public function setPollingSetting(\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting $pollingSetting) {
+    public function setPollingSetting(V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerPollingSetting $pollingSetting) {
         $this->pollingSetting = $pollingSetting;
     }
     public function userSeatList(array $userSeatList): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner {

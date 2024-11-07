@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdEnrollConfigPut200Response implements ModelInterface, \
 
     /**
      * 会议的唯一标识
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 报名问题数量，不收集问题时该字段返回0
+    * 类型：int
      */
     protected $questionCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['question_count'])) {
+            $this->questionCount = $jsonArray['question_count'];
+        }
     }
 
     public function meetingId(string $meetingId): V1MeetingsMeetingIdEnrollConfigPut200Response {

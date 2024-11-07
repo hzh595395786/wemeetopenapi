@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,78 +16,135 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
 {
     /**
      * 设备类型
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
 
     /**
      * 审批类型：1 自动审批，2 手动审批，默认自动审批
+    * 类型：int
      */
     protected $approveType = null;
 
     /**
      * 报名封面图的URL，上传封面为异步形式，通过异步任务结果webhook获取上传结果，列表内容为空字符串时为默认图片，不传或传空列表则不做修改，最多支持5张，支持格式为jpg，jpeg，png。每张不超过5M，按照传入顺序展示。
+    * 类型：string[]
      */
     protected $coverImage = null;
 
     /**
      * 显示已报名/预约人数。0：不展示 1：展示，默认开启
+    * 类型：int
      */
     protected $displayNumberOfParticipants = null;
 
     /**
      * 报名截止时间（秒级时间戳）
+    * 类型：string
      */
     protected $enrollDeadline = null;
 
     /**
      * 报名页详情介绍，最多5000字符
+    * 类型：string
      */
     protected $enrollDescription = null;
 
     /**
      * 报名人数上限
+    * 类型：int
      */
     protected $enrollNumber = null;
 
     /**
      * 报名审批自动通知方式，1-短信通知；2-邮件中文；3-邮件英文；4-邮件中英文；5-公众号
+    * 类型：int[]
      */
     protected $enrollPushType = null;
 
     /**
      * 是否收集问题：1 不收集，2 收集，默认不收集问题
+    * 类型：int
      */
     protected $isCollectQuestion = null;
 
     /**
      * 本企业用户无需报名。 true: 本企业用户无需报名。 false：默认配置，所有用户需要报名。
+    * 类型：bool
      */
     protected $noRegistrationNeededForStaff = null;
 
     /**
      * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。  operator_id_type=2，operator_id必须和公共参数的openid一致。  operator_id和userid至少填写一个，两个参数如果都传了以operator_id为准。  使用OAuth公参鉴权后不能使用userid为入参。
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者 ID 的类型：  1: userid 2: open_id  如果operator_id和userid具有值，则以operator_id为准；
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
      * 报名问题列表，非特殊问题按传入的顺序排序，特殊问题会优先放在最前面，仅开启收集问题时有效
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInner[]
      */
     protected $questionList = null;
 
     /**
      * 用户id
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
-        $instanceid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['approve_type'])) {
+            $this->approveType = $jsonArray['approve_type'];
+        }
+        if (isset($jsonArray['cover_image'])) {
+            $this->coverImage = $jsonArray['cover_image'];
+        }
+        if (isset($jsonArray['display_number_of_participants'])) {
+            $this->displayNumberOfParticipants = $jsonArray['display_number_of_participants'];
+        }
+        if (isset($jsonArray['enroll_deadline'])) {
+            $this->enrollDeadline = $jsonArray['enroll_deadline'];
+        }
+        if (isset($jsonArray['enroll_description'])) {
+            $this->enrollDescription = $jsonArray['enroll_description'];
+        }
+        if (isset($jsonArray['enroll_number'])) {
+            $this->enrollNumber = $jsonArray['enroll_number'];
+        }
+        if (isset($jsonArray['enroll_push_type'])) {
+            $this->enrollPushType = $jsonArray['enroll_push_type'];
+        }
+        if (isset($jsonArray['is_collect_question'])) {
+            $this->isCollectQuestion = $jsonArray['is_collect_question'];
+        }
+        if (isset($jsonArray['no_registration_needed_for_staff'])) {
+            $this->noRegistrationNeededForStaff = $jsonArray['no_registration_needed_for_staff'];
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['question_list'])) {
+            $this->questionList = $jsonArray['question_list'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function approveType(int $approveType): V1MeetingsMeetingIdEnrollConfigPutRequest {

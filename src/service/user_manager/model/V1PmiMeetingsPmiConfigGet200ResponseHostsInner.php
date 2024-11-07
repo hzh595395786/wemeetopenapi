@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,11 +16,16 @@ class V1PmiMeetingsPmiConfigGet200ResponseHostsInner implements ModelInterface, 
 {
 
     /**
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function userid(string $userid): V1PmiMeetingsPmiConfigGet200ResponseHostsInner {

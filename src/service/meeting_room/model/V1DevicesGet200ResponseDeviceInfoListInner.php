@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,44 +17,77 @@ class V1DevicesGet200ResponseDeviceInfoListInner implements ModelInterface, \Jso
 
     /**
      * 应用程序版本
+    * 类型：string
      */
     protected $appVersion = null;
 
     /**
      * 设备型号
+    * 类型：string
      */
     protected $deviceModel = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo
      */
     protected $deviceMonitorInfo = null;
 
     /**
      * 会议室ID
+    * 类型：string
      */
     protected $meetingRoomId = null;
 
     /**
      * 会议室地址
+    * 类型：string
      */
     protected $meetingRoomLocation = null;
 
     /**
      * 会议室名称
+    * 类型：string
      */
     protected $meetingRoomName = null;
 
     /**
      * 会议室状态：0：未激活1：未绑定2：空闲3：使用中4：离线，5:未登录
+    * 类型：int
      */
     protected $meetingRoomStatus = null;
 
     /**
+    * 类型：string
      */
     protected $roomsId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['app_version'])) {
+            $this->appVersion = $jsonArray['app_version'];
+        }
+        if (isset($jsonArray['device_model'])) {
+            $this->deviceModel = $jsonArray['device_model'];
+        }
+        if (isset($jsonArray['device_monitor_info'])) {
+            $this->deviceMonitorInfo = new V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo($jsonArray['device_monitor_info']);
+        }
+        if (isset($jsonArray['meeting_room_id'])) {
+            $this->meetingRoomId = $jsonArray['meeting_room_id'];
+        }
+        if (isset($jsonArray['meeting_room_location'])) {
+            $this->meetingRoomLocation = $jsonArray['meeting_room_location'];
+        }
+        if (isset($jsonArray['meeting_room_name'])) {
+            $this->meetingRoomName = $jsonArray['meeting_room_name'];
+        }
+        if (isset($jsonArray['meeting_room_status'])) {
+            $this->meetingRoomStatus = $jsonArray['meeting_room_status'];
+        }
+        if (isset($jsonArray['rooms_id'])) {
+            $this->roomsId = $jsonArray['rooms_id'];
+        }
     }
 
     public function appVersion(string $appVersion): V1DevicesGet200ResponseDeviceInfoListInner {
@@ -81,7 +114,7 @@ class V1DevicesGet200ResponseDeviceInfoListInner implements ModelInterface, \Jso
     public function setDeviceModel(string $deviceModel) {
         $this->deviceModel = $deviceModel;
     }
-    public function deviceMonitorInfo(\wemeet\openapi\service\meeting_room\model\V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo $deviceMonitorInfo): V1DevicesGet200ResponseDeviceInfoListInner {
+    public function deviceMonitorInfo(V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo $deviceMonitorInfo): V1DevicesGet200ResponseDeviceInfoListInner {
         $this->deviceMonitorInfo = $deviceMonitorInfo;
         return $this;
     }
@@ -90,7 +123,7 @@ class V1DevicesGet200ResponseDeviceInfoListInner implements ModelInterface, \Jso
         return $this->deviceMonitorInfo;
     }
 
-    public function setDeviceMonitorInfo(\wemeet\openapi\service\meeting_room\model\V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo $deviceMonitorInfo) {
+    public function setDeviceMonitorInfo(V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo $deviceMonitorInfo) {
         $this->deviceMonitorInfo = $deviceMonitorInfo;
     }
     public function meetingRoomId(string $meetingRoomId): V1DevicesGet200ResponseDeviceInfoListInner {

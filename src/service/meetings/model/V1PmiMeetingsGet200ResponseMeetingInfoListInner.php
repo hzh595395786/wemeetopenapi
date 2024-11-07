@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,36 +17,61 @@ class V1PmiMeetingsGet200ResponseMeetingInfoListInner implements ModelInterface,
 
     /**
      * 会议预订结束时间（UTC 秒）（UTC 秒）
+    * 类型：int
      */
     protected $endTime = null;
 
     /**
      * 有效会议Code
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议 ID
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 会议预订开始时间（UTC 秒）（UTC 秒）
+    * 类型：int
      */
     protected $startTime = null;
 
     /**
      * 会议状态
+    * 类型：int
      */
     protected $status = null;
 
     /**
      * 会议主题
+    * 类型：string
      */
     protected $subject = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
     }
 
     public function endTime(int $endTime): V1PmiMeetingsGet200ResponseMeetingInfoListInner {

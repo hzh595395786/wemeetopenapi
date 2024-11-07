@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,13 +16,18 @@ class V1UsersOpenIdToUseridPostRequest implements ModelInterface, \JsonSerializa
 {
     /**
      * 第三方应用的sdkid。需要转换的open_id应为腾讯会议为该三方应用提供的open_id。
-     * @deprecated
+    * 类型：
+     */
     protected $sdkid;
 
     public function __construct(
-        $sdkid,
+        $jsonArray = []
     ) {
-        $this->sdkid = $sdkid;
+        if (isset($jsonArray['sdkid'])) {
+            $this->sdkid = $jsonArray['sdkid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter sdkid');
+        }
     }
 
     public function sdkid(string $sdkid): V1UsersOpenIdToUseridPostRequest {

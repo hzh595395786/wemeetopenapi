@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,29 +17,50 @@ class V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner implements
 
     /**
      * 录制文件中的段落结束时间（毫秒）。
+    * 类型：int
      */
     protected $endTime = null;
 
     /**
      * 段落id
+    * 类型：string
      */
     protected $pid = null;
 
     /**
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSentencesInner[]
      */
     protected $sentences = null;
 
     /**
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo
      */
     protected $speakerInfo = null;
 
     /**
      * 录制文件中的段落开始时间（毫秒）。
+    * 类型：int
      */
     protected $startTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['pid'])) {
+            $this->pid = $jsonArray['pid'];
+        }
+        if (isset($jsonArray['sentences'])) {
+            $this->sentences = $jsonArray['sentences'];
+        }
+        if (isset($jsonArray['speaker_info'])) {
+            $this->speakerInfo = new V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo($jsonArray['speaker_info']);
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
     }
 
     public function endTime(int $endTime): V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner {
@@ -78,7 +99,7 @@ class V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner implements
     public function setSentences(array $sentences) {
         $this->sentences = $sentences;
     }
-    public function speakerInfo(\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo $speakerInfo): V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner {
+    public function speakerInfo(V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo $speakerInfo): V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner {
         $this->speakerInfo = $speakerInfo;
         return $this;
     }
@@ -87,7 +108,7 @@ class V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner implements
         return $this->speakerInfo;
     }
 
-    public function setSpeakerInfo(\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo $speakerInfo) {
+    public function setSpeakerInfo(V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo $speakerInfo) {
         $this->speakerInfo = $speakerInfo;
     }
     public function startTime(int $startTime): V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner {

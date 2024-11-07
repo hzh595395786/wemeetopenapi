@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\record_intelligence\model;
 
@@ -17,11 +17,16 @@ class V1SmartChaptersGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * ChapterList对象数组
+    * 类型：\wemeet\openapi\service\record_intelligence\model\V1SmartChaptersGet200ResponseChapterListInner[]
      */
     protected $chapterList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['chapter_list'])) {
+            $this->chapterList = $jsonArray['chapter_list'];
+        }
     }
 
     public function chapterList(array $chapterList): V1SmartChaptersGet200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,21 +17,34 @@ class V1RecordsTranscriptsParagraphsGet200ResponsePidsInner implements ModelInte
 
     /**
      * 录制文件中的段落结束时间（毫秒）。
+    * 类型：int
      */
     protected $endTime = null;
 
     /**
      * 段落 ID。
+    * 类型：string
      */
     protected $pid = null;
 
     /**
      * 录制文件中的段落开始时间（毫秒）。
+    * 类型：int
      */
     protected $startTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['pid'])) {
+            $this->pid = $jsonArray['pid'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
     }
 
     public function endTime(int $endTime): V1RecordsTranscriptsParagraphsGet200ResponsePidsInner {

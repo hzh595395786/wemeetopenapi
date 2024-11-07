@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,51 +17,88 @@ class V1MeetingMeetingIdWaitingRoomGet200ResponseParticipantsInner implements Mo
 
     /**
      * 应用版本
+    * 类型：string
      */
     protected $appVersion = null;
 
     /**
      * 专属链接进入等候室的昵称
+    * 类型：string
      */
     protected $customerData = null;
 
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
+    * 类型：string
      */
     protected $instanceid = null;
 
     /**
      * 加入时间（单位：毫秒）
+    * 类型：int
      */
     protected $joinTime = null;
 
     /**
      * 离开时间（单位：毫秒）
+    * 类型：int
      */
     protected $leftTime = null;
 
     /**
      * 当场会议的用户临时 ID，可用于会控操作，适用于所有用户。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * OAuth2.0 鉴权用户的ID。
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 入会用户名（base64）
+    * 类型：string
      */
     protected $userName = null;
 
     /**
      * 成员用户 ID
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['app_version'])) {
+            $this->appVersion = $jsonArray['app_version'];
+        }
+        if (isset($jsonArray['customer_data'])) {
+            $this->customerData = $jsonArray['customer_data'];
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['join_time'])) {
+            $this->joinTime = $jsonArray['join_time'];
+        }
+        if (isset($jsonArray['left_time'])) {
+            $this->leftTime = $jsonArray['left_time'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['user_name'])) {
+            $this->userName = $jsonArray['user_name'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function appVersion(string $appVersion): V1MeetingMeetingIdWaitingRoomGet200ResponseParticipantsInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingSetWaitingRoomWelcomeMessagePost200Response implements ModelInter
 
     /**
      * 是否开启等候室欢迎语能力。
+    * 类型：bool
      */
     protected $enableWelcome = null;
 
     /**
      * 欢迎语，文本类型，最大长度1000字符。欢迎语中如果传入占位符%NICKNAME%（大小写敏感），则该占位符会被替换为被私聊用户的会中昵称。一条消息中支持多个占位符。
+    * 类型：string
      */
     protected $welcomeText = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['enable_welcome'])) {
+            $this->enableWelcome = $jsonArray['enable_welcome'];
+        }
+        if (isset($jsonArray['welcome_text'])) {
+            $this->welcomeText = $jsonArray['welcome_text'];
+        }
     }
 
     public function enableWelcome(bool $enableWelcome): V1MeetingSetWaitingRoomWelcomeMessagePost200Response {

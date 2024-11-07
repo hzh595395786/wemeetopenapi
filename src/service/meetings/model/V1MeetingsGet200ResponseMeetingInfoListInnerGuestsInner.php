@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,19 +16,32 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerGuestsInner implements ModelIn
 {
 
     /**
+    * 类型：string
      */
     protected $area = null;
 
     /**
+    * 类型：string
      */
     protected $guestName = null;
 
     /**
+    * 类型：string
      */
     protected $phoneNumber = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        }
+        if (isset($jsonArray['guest_name'])) {
+            $this->guestName = $jsonArray['guest_name'];
+        }
+        if (isset($jsonArray['phone_number'])) {
+            $this->phoneNumber = $jsonArray['phone_number'];
+        }
     }
 
     public function area(string $area): V1MeetingsGet200ResponseMeetingInfoListInnerGuestsInner {

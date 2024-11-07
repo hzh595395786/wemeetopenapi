@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -16,37 +16,58 @@ class V1FilesRecordsUploadPreparePostRequest implements ModelInterface, \JsonSer
 {
     /**
      * 文件名base64编码
-     * @deprecated
+    * 类型：
+     */
     protected $fileName;
     /**
      * 文件大小（以字节为单位）
-     * @deprecated
+    * 类型：
+     */
     protected $fileSize;
     /**
      * 文件类型。voice：音频；video：视频
-     * @deprecated
+    * 类型：
+     */
     protected $fileType;
     /**
      * 操作者ID
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID类型
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     public function __construct(
-        $fileName,
-        $fileSize,
-        $fileType,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->fileName = $fileName;
-        $this->fileSize = $fileSize;
-        $this->fileType = $fileType;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['file_name'])) {
+            $this->fileName = $jsonArray['file_name'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter file_name');
+        }
+        if (isset($jsonArray['file_size'])) {
+            $this->fileSize = $jsonArray['file_size'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter file_size');
+        }
+        if (isset($jsonArray['file_type'])) {
+            $this->fileType = $jsonArray['file_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter file_type');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
     }
 
     public function fileName(string $fileName): V1FilesRecordsUploadPreparePostRequest {

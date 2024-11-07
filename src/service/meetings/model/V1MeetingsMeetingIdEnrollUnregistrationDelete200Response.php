@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,11 +17,16 @@ class V1MeetingsMeetingIdEnrollUnregistrationDelete200Response implements ModelI
 
     /**
      * 成功删除的报名信息数量
+    * 类型：int
      */
     protected $totalCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
     }
 
     public function totalCount(int $totalCount): V1MeetingsMeetingIdEnrollUnregistrationDelete200Response {

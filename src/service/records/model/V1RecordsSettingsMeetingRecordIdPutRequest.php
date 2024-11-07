@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,30 +17,51 @@ class V1RecordsSettingsMeetingRecordIdPutRequest implements ModelInterface, \Jso
 
     /**
      * 会议id
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 操作者ID
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者ID的类型。3. rooms_id 说明：当前仅支持 rooms_id。如操作者为企业内 userid 或 openId，请使用 userid 字段。
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig
      */
     protected $sharingConfig = null;
 
     /**
      * 用户id。仅会议创建者、企业超级管理员或有企业录制管理权限的用户可调用。调用方用于标示用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明： 1. 企业对接 SSO 时使用的员工唯一标识 ID。 2. 企业调用创建用户接口时传递的 userid 参数。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['sharing_config'])) {
+            $this->sharingConfig = new V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig($jsonArray['sharing_config']);
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function meetingId(string $meetingId): V1RecordsSettingsMeetingRecordIdPutRequest {
@@ -79,7 +100,7 @@ class V1RecordsSettingsMeetingRecordIdPutRequest implements ModelInterface, \Jso
     public function setOperatorIdType(int $operatorIdType) {
         $this->operatorIdType = $operatorIdType;
     }
-    public function sharingConfig(\wemeet\openapi\service\records\model\V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig $sharingConfig): V1RecordsSettingsMeetingRecordIdPutRequest {
+    public function sharingConfig(V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig $sharingConfig): V1RecordsSettingsMeetingRecordIdPutRequest {
         $this->sharingConfig = $sharingConfig;
         return $this;
     }
@@ -88,7 +109,7 @@ class V1RecordsSettingsMeetingRecordIdPutRequest implements ModelInterface, \Jso
         return $this->sharingConfig;
     }
 
-    public function setSharingConfig(\wemeet\openapi\service\records\model\V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig $sharingConfig) {
+    public function setSharingConfig(V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig $sharingConfig) {
         $this->sharingConfig = $sharingConfig;
     }
     public function userid(string $userid): V1RecordsSettingsMeetingRecordIdPutRequest {

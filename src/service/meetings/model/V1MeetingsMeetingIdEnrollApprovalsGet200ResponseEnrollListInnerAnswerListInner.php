@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,36 +17,61 @@ class V1MeetingsMeetingIdEnrollApprovalsGet200ResponseEnrollListInnerAnswerListI
 
     /**
      * 回答内容：单选/简答只有一个元素，多选会有多个
+    * 类型：string[]
      */
     protected $answerContent = null;
 
     /**
      * 是否必填：1 否，2 是
+    * 类型：int
      */
     protected $isRequired = null;
 
     /**
      * 问题编号，1,2,3...等形式
+    * 类型：int
      */
     protected $questionNum = null;
 
     /**
      * 问题标题
+    * 类型：string
      */
     protected $questionTitle = null;
 
     /**
      * 问题类型：1 单选，2 多选，3 简答
+    * 类型：int
      */
     protected $questionType = null;
 
     /**
      * 特殊问题类型：1 无，2 手机号，3 邮箱，4 姓名，5 公司名称（目前4种特殊问题均为简答题）
+    * 类型：int
      */
     protected $specialType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['answer_content'])) {
+            $this->answerContent = $jsonArray['answer_content'];
+        }
+        if (isset($jsonArray['is_required'])) {
+            $this->isRequired = $jsonArray['is_required'];
+        }
+        if (isset($jsonArray['question_num'])) {
+            $this->questionNum = $jsonArray['question_num'];
+        }
+        if (isset($jsonArray['question_title'])) {
+            $this->questionTitle = $jsonArray['question_title'];
+        }
+        if (isset($jsonArray['question_type'])) {
+            $this->questionType = $jsonArray['question_type'];
+        }
+        if (isset($jsonArray['special_type'])) {
+            $this->specialType = $jsonArray['special_type'];
+        }
     }
 
     public function answerContent(array $answerContent): V1MeetingsMeetingIdEnrollApprovalsGet200ResponseEnrollListInnerAnswerListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,24 +16,41 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerSubMeetingsInner implements Mo
 {
 
     /**
+    * 类型：string
      */
     protected $endTime = null;
 
     /**
+    * 类型：string
      */
     protected $startTime = null;
 
     /**
      * 子会议状态： 0：默认（存在）  1：已删除
+    * 类型：int
      */
     protected $status = null;
 
     /**
+    * 类型：string
      */
     protected $subMeetingId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['sub_meeting_id'])) {
+            $this->subMeetingId = $jsonArray['sub_meeting_id'];
+        }
     }
 
     public function endTime(string $endTime): V1MeetingsGet200ResponseMeetingInfoListInnerSubMeetingsInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,19 +16,28 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
 {
     /**
      * 用户的终端设备类型：  9：voip、sip 设备（H.323/SIP设备） 说明：请与被操作者的设备类型保持一致，否则不生效。
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 被操作者用户当前会议中的临时身份 ID，单场会议唯一。
-     * @deprecated
+    * 类型：
+     */
     protected $msOpenId;
 
     public function __construct(
-        $instanceid,
-        $msOpenId,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->msOpenId = $msOpenId;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter ms_open_id');
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner {

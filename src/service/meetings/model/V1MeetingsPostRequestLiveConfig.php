@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,40 +17,69 @@ class V1MeetingsPostRequestLiveConfig implements ModelInterface, \JsonSerializab
 
     /**
      * 允许观众讨论，默认值为 false。 true：开启 false：不开启
+    * 类型：bool
      */
     protected $enableLiveIm = null;
 
     /**
      * 是否开启直播密码，默认值false. true：开启, false：不开启
+    * 类型：bool
      */
     protected $enableLivePassword = null;
 
     /**
      * 开启直播回看，默认值为 false true：开启 false：不开启
+    * 类型：bool
      */
     protected $enableLiveReplay = null;
 
     /**
      * 直播密码。当设置开启直播密码时，该参数必填。
+    * 类型：string
      */
     protected $livePassword = null;
 
     /**
      * 直播主题
+    * 类型：string
      */
     protected $liveSubject = null;
 
     /**
      * 直播简介
+    * 类型：string
      */
     protected $liveSummary = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPostRequestLiveConfigLiveWatermark
      */
     protected $liveWatermark = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['enable_live_im'])) {
+            $this->enableLiveIm = $jsonArray['enable_live_im'];
+        }
+        if (isset($jsonArray['enable_live_password'])) {
+            $this->enableLivePassword = $jsonArray['enable_live_password'];
+        }
+        if (isset($jsonArray['enable_live_replay'])) {
+            $this->enableLiveReplay = $jsonArray['enable_live_replay'];
+        }
+        if (isset($jsonArray['live_password'])) {
+            $this->livePassword = $jsonArray['live_password'];
+        }
+        if (isset($jsonArray['live_subject'])) {
+            $this->liveSubject = $jsonArray['live_subject'];
+        }
+        if (isset($jsonArray['live_summary'])) {
+            $this->liveSummary = $jsonArray['live_summary'];
+        }
+        if (isset($jsonArray['live_watermark'])) {
+            $this->liveWatermark = new V1MeetingsPostRequestLiveConfigLiveWatermark($jsonArray['live_watermark']);
+        }
     }
 
     public function enableLiveIm(bool $enableLiveIm): V1MeetingsPostRequestLiveConfig {
@@ -125,7 +154,7 @@ class V1MeetingsPostRequestLiveConfig implements ModelInterface, \JsonSerializab
     public function setLiveSummary(string $liveSummary) {
         $this->liveSummary = $liveSummary;
     }
-    public function liveWatermark(\wemeet\openapi\service\meetings\model\V1MeetingsPostRequestLiveConfigLiveWatermark $liveWatermark): V1MeetingsPostRequestLiveConfig {
+    public function liveWatermark(V1MeetingsPostRequestLiveConfigLiveWatermark $liveWatermark): V1MeetingsPostRequestLiveConfig {
         $this->liveWatermark = $liveWatermark;
         return $this;
     }
@@ -134,7 +163,7 @@ class V1MeetingsPostRequestLiveConfig implements ModelInterface, \JsonSerializab
         return $this->liveWatermark;
     }
 
-    public function setLiveWatermark(\wemeet\openapi\service\meetings\model\V1MeetingsPostRequestLiveConfigLiveWatermark $liveWatermark) {
+    public function setLiveWatermark(V1MeetingsPostRequestLiveConfigLiveWatermark $liveWatermark) {
         $this->liveWatermark = $liveWatermark;
     }
 

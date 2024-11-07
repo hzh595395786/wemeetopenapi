@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,21 +17,34 @@ class V1UsersAccountStatisticsGet200ResponseUserAccountDetailsInner implements M
 
     /**
      * 账号数
+    * 类型：int
      */
     protected $userAccountCount = null;
 
     /**
      * 账号类型，1：高级账号 （企业版，教育版）  2：免费账号  （企业版，教育版，商业版）  3：免费账号100方 （商业版）  4：高级账号300方（商业版）  5：高级账号500方（商业版）  6：高级账号1000方（商业版）  7：高级账号2000方（商业版）
+    * 类型：int
      */
     protected $userAccountType = null;
 
     /**
      * 已分配账号数
+    * 类型：int
      */
     protected $userAccountUsedCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['user_account_count'])) {
+            $this->userAccountCount = $jsonArray['user_account_count'];
+        }
+        if (isset($jsonArray['user_account_type'])) {
+            $this->userAccountType = $jsonArray['user_account_type'];
+        }
+        if (isset($jsonArray['user_account_used_count'])) {
+            $this->userAccountUsedCount = $jsonArray['user_account_used_count'];
+        }
     }
 
     public function userAccountCount(int $userAccountCount): V1UsersAccountStatisticsGet200ResponseUserAccountDetailsInner {

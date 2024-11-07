@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,31 +16,52 @@ class V1MeetingsGet200Response implements ModelInterface, \JsonSerializable
 {
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInner[]
      */
     protected $meetingInfoList = null;
 
     /**
      * 会议数量。
+    * 类型：int
      */
     protected $meetingNumber = null;
 
     /**
      * 分页获取用户会议列表，查询的会议的最后一次修改时间值，UNIX 毫秒级时间戳，分页游标。 因目前一次查询返回会议数量最多为20，当用户会议较多时，如果会议总数量超过20，则需要再次查询。此参数为非必选参数，默认值为0，表示第一次查询利用会议开始时间北京时间当日零点进行查询。 查询返回输出参数“remaining”不为0时，表示还有会议需要继续查询。返回参数“next_cursory”的值即为下一次查询的 cursory 的值。 多次调用该查询接口直到输出参数“remaining”值为0。 当只使用 pos 作为分页条件时,可能会出现查询不到第二页,数据排序出现重复数据等情况与 pos 配合使用。
+    * 类型：int
      */
     protected $nextCursory = null;
 
     /**
      * 下次查询时请求里需要携带的 pos 参数。
+    * 类型：int
      */
     protected $nextPos = null;
 
     /**
      * 是否还剩下会议；因目前一次查询返回会议数量最多为20，如果会议总数量超过20则此字段被置为非0，表示需要再次查询，且下次查询的“pos”参数需从本次响应的“next_pos”字段取值
+    * 类型：int
      */
     protected $remaining = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_info_list'])) {
+            $this->meetingInfoList = $jsonArray['meeting_info_list'];
+        }
+        if (isset($jsonArray['meeting_number'])) {
+            $this->meetingNumber = $jsonArray['meeting_number'];
+        }
+        if (isset($jsonArray['next_cursory'])) {
+            $this->nextCursory = $jsonArray['next_cursory'];
+        }
+        if (isset($jsonArray['next_pos'])) {
+            $this->nextPos = $jsonArray['next_pos'];
+        }
+        if (isset($jsonArray['remaining'])) {
+            $this->remaining = $jsonArray['remaining'];
+        }
     }
 
     public function meetingInfoList(array $meetingInfoList): V1MeetingsGet200Response {

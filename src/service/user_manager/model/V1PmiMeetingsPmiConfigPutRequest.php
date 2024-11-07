@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,85 +16,146 @@ class V1PmiMeetingsPmiConfigPutRequest implements ModelInterface, \JsonSerializa
 {
     /**
      * 设备id
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 根据type类型传相应内容
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID类型，1 - userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 是否允许成员在主持人进会前加入会议
+    * 类型：bool
      */
     protected $allowInBeforeHost = null;
 
     /**
      * 是否允许成员多端入会
+    * 类型：bool
      */
     protected $allowMultiDevice = null;
 
     /**
      * 是否开启等候室
+    * 类型：bool
      */
     protected $autoInWaitingRoom = null;
 
     /**
      * 禁止笔记截屏，true-禁止，false-不禁止。当水印参数开启时生效
+    * 类型：bool
      */
     protected $disableNoteCapture = null;
 
     /**
      * 是否需要密码
+    * 类型：bool
      */
     protected $enablePassword = null;
 
     /**
      * 指定主持人列表
+    * 类型：\wemeet\openapi\service\user_manager\model\V1PmiMeetingsPmiConfigPutRequestHostsInner[]
      */
     protected $hosts = null;
 
     /**
      * 成员入会静音选项，0-关闭，1-开启，2-超过6人开启
+    * 类型：int
      */
     protected $muteEnableTypeJoin = null;
 
     /**
      * 是否仅企业内部成员可入会
+    * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
 
     /**
      * 个人会议室名称，最大支持18个汉字或36个英文字母。
+    * 类型：string
      */
     protected $pmiName = null;
 
     /**
      * 入会密码
+    * 类型：string
      */
     protected $pmiPassword = null;
 
     /**
      * 水印样式。当水印参数为开启时，此参数才生效。 0：单排 1：多排
+    * 类型：int
      */
     protected $waterMarkType = null;
 
     /**
      * 是否开启会议水印
+    * 类型：bool
      */
     protected $watermark = null;
 
     public function __construct(
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['allow_in_before_host'])) {
+            $this->allowInBeforeHost = $jsonArray['allow_in_before_host'];
+        }
+        if (isset($jsonArray['allow_multi_device'])) {
+            $this->allowMultiDevice = $jsonArray['allow_multi_device'];
+        }
+        if (isset($jsonArray['auto_in_waiting_room'])) {
+            $this->autoInWaitingRoom = $jsonArray['auto_in_waiting_room'];
+        }
+        if (isset($jsonArray['disable_note_capture'])) {
+            $this->disableNoteCapture = $jsonArray['disable_note_capture'];
+        }
+        if (isset($jsonArray['enable_password'])) {
+            $this->enablePassword = $jsonArray['enable_password'];
+        }
+        if (isset($jsonArray['hosts'])) {
+            $this->hosts = $jsonArray['hosts'];
+        }
+        if (isset($jsonArray['mute_enable_type_join'])) {
+            $this->muteEnableTypeJoin = $jsonArray['mute_enable_type_join'];
+        }
+        if (isset($jsonArray['only_enterprise_user_allowed'])) {
+            $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['pmi_name'])) {
+            $this->pmiName = $jsonArray['pmi_name'];
+        }
+        if (isset($jsonArray['pmi_password'])) {
+            $this->pmiPassword = $jsonArray['pmi_password'];
+        }
+        if (isset($jsonArray['water_mark_type'])) {
+            $this->waterMarkType = $jsonArray['water_mark_type'];
+        }
+        if (isset($jsonArray['watermark'])) {
+            $this->watermark = $jsonArray['watermark'];
+        }
     }
 
     public function allowInBeforeHost(bool $allowInBeforeHost): V1PmiMeetingsPmiConfigPutRequest {

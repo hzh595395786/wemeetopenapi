@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\record_intelligence\model;
 
@@ -17,36 +17,61 @@ class V1SmartSpeakersGet200ResponseSpeakerListInner implements ModelInterface, \
 
     /**
      * 会议中为每个参会成员授予的临时 ID，以会议为维度，表示同一场会议内用户的唯一标识，不同会议间 ms_open_id 隔离。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 发言人ID。speaker_id 必须与 speaker_id_type 配合使用。根据 speaker_id_type 的值，speaker_id 代表不同类型。
+    * 类型：string
      */
     protected $speakerId = null;
 
     /**
      * 发言人ID类型： 1：userid 2：openid 6：temp_id（临时 ID，上传的文件无法映射到 userid，故仅在当前录制发言人中代表唯一标识）
+    * 类型：int
      */
     protected $speakerIdType = null;
 
     /**
      * 发言人名称，base64编码
+    * 类型：string
      */
     protected $speakerName = null;
 
     /**
      * 本录制文件某个具体发言人的发言时间段，以对象数组形式返回
+    * 类型：\wemeet\openapi\service\record_intelligence\model\V1SmartSpeakersGet200ResponseSpeakerListInnerSpeakerTimeInner[]
      */
     protected $speakerTime = null;
 
     /**
      * 发言总时长
+    * 类型：int
      */
     protected $totalTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['speaker_id'])) {
+            $this->speakerId = $jsonArray['speaker_id'];
+        }
+        if (isset($jsonArray['speaker_id_type'])) {
+            $this->speakerIdType = $jsonArray['speaker_id_type'];
+        }
+        if (isset($jsonArray['speaker_name'])) {
+            $this->speakerName = $jsonArray['speaker_name'];
+        }
+        if (isset($jsonArray['speaker_time'])) {
+            $this->speakerTime = $jsonArray['speaker_time'];
+        }
+        if (isset($jsonArray['total_time'])) {
+            $this->totalTime = $jsonArray['total_time'];
+        }
     }
 
     public function msOpenId(string $msOpenId): V1SmartSpeakersGet200ResponseSpeakerListInner {

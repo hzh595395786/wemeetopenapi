@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,51 +16,96 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerSettings implements ModelInter
 {
 
     /**
+    * 类型：bool
      */
     protected $allowInBeforeHost = null;
 
     /**
+    * 类型：bool
      */
     protected $allowScreenSharedWatermark = null;
 
     /**
+    * 类型：bool
      */
     protected $allowUnmuteSelf = null;
 
     /**
+    * 类型：bool
      */
     protected $autoInWaitingRoom = null;
 
     /**
+    * 类型：string
      */
     protected $autoRecordType = null;
 
     /**
+    * 类型：bool
      */
     protected $enableHostPauseAutoRecord = null;
 
     /**
+    * 类型：bool
      */
     protected $muteEnableJoin = null;
 
     /**
+    * 类型：int
      */
     protected $muteEnableTypeJoin = null;
 
     /**
+    * 类型：bool
      */
     protected $onlyAllowEnterpriseUserJoin = null;
 
     /**
+    * 类型：bool
      */
     protected $participantJoinAutoRecord = null;
 
     /**
+    * 类型：int
      */
     protected $waterMarkType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_in_before_host'])) {
+            $this->allowInBeforeHost = $jsonArray['allow_in_before_host'];
+        }
+        if (isset($jsonArray['allow_screen_shared_watermark'])) {
+            $this->allowScreenSharedWatermark = $jsonArray['allow_screen_shared_watermark'];
+        }
+        if (isset($jsonArray['allow_unmute_self'])) {
+            $this->allowUnmuteSelf = $jsonArray['allow_unmute_self'];
+        }
+        if (isset($jsonArray['auto_in_waiting_room'])) {
+            $this->autoInWaitingRoom = $jsonArray['auto_in_waiting_room'];
+        }
+        if (isset($jsonArray['auto_record_type'])) {
+            $this->autoRecordType = $jsonArray['auto_record_type'];
+        }
+        if (isset($jsonArray['enable_host_pause_auto_record'])) {
+            $this->enableHostPauseAutoRecord = $jsonArray['enable_host_pause_auto_record'];
+        }
+        if (isset($jsonArray['mute_enable_join'])) {
+            $this->muteEnableJoin = $jsonArray['mute_enable_join'];
+        }
+        if (isset($jsonArray['mute_enable_type_join'])) {
+            $this->muteEnableTypeJoin = $jsonArray['mute_enable_type_join'];
+        }
+        if (isset($jsonArray['only_allow_enterprise_user_join'])) {
+            $this->onlyAllowEnterpriseUserJoin = $jsonArray['only_allow_enterprise_user_join'];
+        }
+        if (isset($jsonArray['participant_join_auto_record'])) {
+            $this->participantJoinAutoRecord = $jsonArray['participant_join_auto_record'];
+        }
+        if (isset($jsonArray['water_mark_type'])) {
+            $this->waterMarkType = $jsonArray['water_mark_type'];
+        }
     }
 
     public function allowInBeforeHost(bool $allowInBeforeHost): V1MeetingsGet200ResponseMeetingInfoListInnerSettings {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_guest\model;
 
@@ -17,21 +17,34 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
 
     /**
      * 国家/地区代码（例如：中国传86，不是+86，也不是0086）。
+    * 类型：string
      */
     protected $area = null;
 
     /**
      * 嘉宾名称。
+    * 类型：string
      */
     protected $guestName = null;
 
     /**
      * 手机号。
+    * 类型：string
      */
     protected $phoneNumber = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        }
+        if (isset($jsonArray['guest_name'])) {
+            $this->guestName = $jsonArray['guest_name'];
+        }
+        if (isset($jsonArray['phone_number'])) {
+            $this->phoneNumber = $jsonArray['phone_number'];
+        }
     }
 
     public function area(string $area): V1GuestsGet200ResponseGuestsInner {

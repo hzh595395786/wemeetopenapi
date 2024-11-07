@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,11 +17,16 @@ class V1RecordsAccessMeetingRecordIdPost200Response implements ModelInterface, \
 
     /**
      * 未添加成功的成员列表
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsAccessMeetingRecordIdPost200ResponseFailAccessMembersInner[]
      */
     protected $failAccessMembers = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['fail_access_members'])) {
+            $this->failAccessMembers = $jsonArray['fail_access_members'];
+        }
     }
 
     public function failAccessMembers(array $failAccessMembers): V1RecordsAccessMeetingRecordIdPost200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,31 +16,48 @@ class V1MeetingsMeetingIdEnrollImportPostRequest implements ModelInterface, \Jso
 {
     /**
      * 导入的报名对象列表，单次导入最大1000条。累计导入最大4000
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdEnrollImportPostRequestEnrollListInner
+     */
     protected $enrollList;
     /**
      * 操作者的终端设备类型
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。operator_id_type=2，operator_id必须和公共参数的openid一致。  使用OAuth公参鉴权后不能使用userid为入参。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1. 企业用户 userid 2 open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     public function __construct(
-        $enrollList,
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->enrollList = $enrollList;
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['enroll_list'])) {
+            $this->enrollList = $jsonArray['enroll_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter enroll_list');
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
     }
 
     public function enrollList(array $enrollList): V1MeetingsMeetingIdEnrollImportPostRequest {

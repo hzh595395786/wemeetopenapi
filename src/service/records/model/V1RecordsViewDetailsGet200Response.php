@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -16,28 +16,49 @@ class V1RecordsViewDetailsGet200Response implements ModelInterface, \JsonSeriali
 {
 
     /**
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
+    * 类型：int
      */
     protected $totalPage = null;
 
     /**
      * 事件明细集合。
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsViewDetailsGet200ResponseViewDetailsInner[]
      */
     protected $viewDetails = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
+        if (isset($jsonArray['view_details'])) {
+            $this->viewDetails = $jsonArray['view_details'];
+        }
     }
 
     public function currentPage(int $currentPage): V1RecordsViewDetailsGet200Response {

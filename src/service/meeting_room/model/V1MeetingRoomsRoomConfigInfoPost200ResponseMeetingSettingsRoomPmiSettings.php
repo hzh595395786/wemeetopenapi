@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,36 +17,61 @@ class V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings 
 
     /**
      * 是否允许成员在主持人进会前入会。
+    * 类型：bool
      */
     protected $allowInBeforeHost = null;
 
     /**
      * 会议指定主持人 ID。
+    * 类型：string[]
      */
     protected $hosts = null;
 
     /**
      * 成员入会静音设置。 0：关闭 1：开启 2：超过6人自动开启
+    * 类型：int
      */
     protected $muteEnableTypeJoin = null;
 
     /**
      * 入会成员设置。 true：仅企业内部用户可入会 false：所有人可入会
+    * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
 
     /**
      * 专属会议室密码，4-6位数字。
+    * 类型：string
      */
     protected $roomPmiPsw = null;
 
     /**
      * 是否开启等候室。
+    * 类型：bool
      */
     protected $waitingRoom = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_in_before_host'])) {
+            $this->allowInBeforeHost = $jsonArray['allow_in_before_host'];
+        }
+        if (isset($jsonArray['hosts'])) {
+            $this->hosts = $jsonArray['hosts'];
+        }
+        if (isset($jsonArray['mute_enable_type_join'])) {
+            $this->muteEnableTypeJoin = $jsonArray['mute_enable_type_join'];
+        }
+        if (isset($jsonArray['only_enterprise_user_allowed'])) {
+            $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['room_pmi_psw'])) {
+            $this->roomPmiPsw = $jsonArray['room_pmi_psw'];
+        }
+        if (isset($jsonArray['waiting_room'])) {
+            $this->waitingRoom = $jsonArray['waiting_room'];
+        }
     }
 
     public function allowInBeforeHost(bool $allowInBeforeHost): V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettingsRoomPmiSettings {

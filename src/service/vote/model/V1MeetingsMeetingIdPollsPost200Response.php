@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\vote\model;
 
@@ -17,36 +17,61 @@ class V1MeetingsMeetingIdPollsPost200Response implements ModelInterface, \JsonSe
 
     /**
      * 是否匿名 0: 实名，默认值 1: 匿名
+    * 类型：int
      */
     protected $isAnony = null;
 
     /**
      * 会议ID
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 投票主题描述 最多100个字符
+    * 类型：string
      */
     protected $pollDesc = null;
 
     /**
      * 投票问题，每个投票支持添加10个问题
+    * 类型：\wemeet\openapi\service\vote\model\V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner[]
      */
     protected $pollQuestions = null;
 
     /**
      * 投票模板ID
+    * 类型：string
      */
     protected $pollThemeId = null;
 
     /**
      * 投票主题 最多50个字符
+    * 类型：string
      */
     protected $pollTopic = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['is_anony'])) {
+            $this->isAnony = $jsonArray['is_anony'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['poll_desc'])) {
+            $this->pollDesc = $jsonArray['poll_desc'];
+        }
+        if (isset($jsonArray['poll_questions'])) {
+            $this->pollQuestions = $jsonArray['poll_questions'];
+        }
+        if (isset($jsonArray['poll_theme_id'])) {
+            $this->pollThemeId = $jsonArray['poll_theme_id'];
+        }
+        if (isset($jsonArray['poll_topic'])) {
+            $this->pollTopic = $jsonArray['poll_topic'];
+        }
     }
 
     public function isAnony(int $isAnony): V1MeetingsMeetingIdPollsPost200Response {

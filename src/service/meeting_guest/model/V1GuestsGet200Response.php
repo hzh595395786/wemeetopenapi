@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_guest\model;
 
@@ -17,26 +17,43 @@ class V1GuestsGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 会议嘉宾列表数组。
+    * 类型：\wemeet\openapi\service\meeting_guest\model\V1GuestsGet200ResponseGuestsInner[]
      */
     protected $guests = null;
 
     /**
      * 会议 Code。
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议 ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 会议主题
+    * 类型：string
      */
     protected $subject = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['guests'])) {
+            $this->guests = $jsonArray['guests'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
     }
 
     public function guests(array $guests): V1GuestsGet200Response {

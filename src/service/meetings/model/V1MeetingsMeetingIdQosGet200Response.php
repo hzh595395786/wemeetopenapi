@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,31 +17,52 @@ class V1MeetingsMeetingIdQosGet200Response implements ModelInterface, \JsonSeria
 
     /**
      * 当前页码
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 当前页大小
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 成员列表
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInner[]
      */
     protected $participants = null;
 
     /**
      * 数据总条数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 总页数
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['participants'])) {
+            $this->participants = $jsonArray['participants'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currentPage(int $currentPage): V1MeetingsMeetingIdQosGet200Response {

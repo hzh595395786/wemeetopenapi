@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,96 +16,181 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
 {
 
     /**
+    * 类型：int
      */
     protected $accountType = null;
 
     /**
      * 账号版本
+    * 类型：int
      */
     protected $accountVersion = null;
 
     /**
      * ai账号类型 1:购买版 2:赠送版
+    * 类型：int
      */
     protected $aiAccountType = null;
 
     /**
+    * 类型：string
      */
     protected $area = null;
 
     /**
+    * 类型：string
      */
     protected $avatarUrl = null;
 
     /**
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersUseridGet200ResponseDepartmentListInner[]
      */
     protected $departmentList = null;
 
     /**
+    * 类型：string
      */
     protected $email = null;
 
     /**
      * 是否有ai账号能力，true：有，false：无
+    * 类型：bool
      */
     protected $enableAiAccount = null;
 
     /**
+    * 类型：string
      */
     protected $entryTime = null;
 
     /**
+    * 类型：string
      */
     protected $jobTitle = null;
 
     /**
+    * 类型：string
      */
     protected $phone = null;
 
     /**
      * 手机号验证状态。 0：未知 1：已验证 2：未验证
+    * 类型：int
      */
     protected $phoneStatus = null;
 
     /**
+    * 类型：string
      */
     protected $roleCode = null;
 
     /**
+    * 类型：string
      */
     protected $roleName = null;
 
     /**
+    * 类型：string
      */
     protected $staffId = null;
 
     /**
+    * 类型：string
      */
     protected $status = null;
 
     /**
+    * 类型：string
      */
     protected $updateTime = null;
 
     /**
      * 1：高级账号  2：免费账号  3：免费账号100方 4:高级账号300方，5:高级账号500方，6：高级账号1000方，7:高级账号2000方
+    * 类型：int
      */
     protected $userAccountType = null;
 
     /**
+    * 类型：string
      */
     protected $userid = null;
 
     /**
+    * 类型：string
      */
     protected $username = null;
 
     /**
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['account_type'])) {
+            $this->accountType = $jsonArray['account_type'];
+        }
+        if (isset($jsonArray['account_version'])) {
+            $this->accountVersion = $jsonArray['account_version'];
+        }
+        if (isset($jsonArray['ai_account_type'])) {
+            $this->aiAccountType = $jsonArray['ai_account_type'];
+        }
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        }
+        if (isset($jsonArray['avatar_url'])) {
+            $this->avatarUrl = $jsonArray['avatar_url'];
+        }
+        if (isset($jsonArray['department_list'])) {
+            $this->departmentList = $jsonArray['department_list'];
+        }
+        if (isset($jsonArray['email'])) {
+            $this->email = $jsonArray['email'];
+        }
+        if (isset($jsonArray['enable_ai_account'])) {
+            $this->enableAiAccount = $jsonArray['enable_ai_account'];
+        }
+        if (isset($jsonArray['entry_time'])) {
+            $this->entryTime = $jsonArray['entry_time'];
+        }
+        if (isset($jsonArray['job_title'])) {
+            $this->jobTitle = $jsonArray['job_title'];
+        }
+        if (isset($jsonArray['phone'])) {
+            $this->phone = $jsonArray['phone'];
+        }
+        if (isset($jsonArray['phone_status'])) {
+            $this->phoneStatus = $jsonArray['phone_status'];
+        }
+        if (isset($jsonArray['role_code'])) {
+            $this->roleCode = $jsonArray['role_code'];
+        }
+        if (isset($jsonArray['role_name'])) {
+            $this->roleName = $jsonArray['role_name'];
+        }
+        if (isset($jsonArray['staff_id'])) {
+            $this->staffId = $jsonArray['staff_id'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['update_time'])) {
+            $this->updateTime = $jsonArray['update_time'];
+        }
+        if (isset($jsonArray['user_account_type'])) {
+            $this->userAccountType = $jsonArray['user_account_type'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function accountType(int $accountType): V1UsersUseridGet200Response {

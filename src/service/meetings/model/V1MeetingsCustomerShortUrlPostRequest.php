@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,19 +16,28 @@ class V1MeetingsCustomerShortUrlPostRequest implements ModelInterface, \JsonSeri
 {
     /**
      * 自定义参数，长度不超过256 字节。
-     * @deprecated
+    * 类型：
+     */
     protected $customerData;
     /**
      * 会议ID
-     * @deprecated
+    * 类型：
+     */
     protected $meetingId;
 
     public function __construct(
-        $customerData,
-        $meetingId,
+        $jsonArray = []
     ) {
-        $this->customerData = $customerData;
-        $this->meetingId = $meetingId;
+        if (isset($jsonArray['customer_data'])) {
+            $this->customerData = $jsonArray['customer_data'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter customer_data');
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_id');
+        }
     }
 
     public function customerData(string $customerData): V1MeetingsCustomerShortUrlPostRequest {

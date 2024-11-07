@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,20 +17,33 @@ class V1RecordsSettingsMeetingRecordIdGet200Response implements ModelInterface, 
 
     /**
      * 会议ID
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 录制名称
+    * 类型：string
      */
     protected $meetingRecordName = null;
 
     /**
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsSettingsMeetingRecordIdGet200ResponseSharingConfig
      */
     protected $sharingConfig = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['meeting_record_name'])) {
+            $this->meetingRecordName = $jsonArray['meeting_record_name'];
+        }
+        if (isset($jsonArray['sharing_config'])) {
+            $this->sharingConfig = new V1RecordsSettingsMeetingRecordIdGet200ResponseSharingConfig($jsonArray['sharing_config']);
+        }
     }
 
     public function meetingId(string $meetingId): V1RecordsSettingsMeetingRecordIdGet200Response {
@@ -57,7 +70,7 @@ class V1RecordsSettingsMeetingRecordIdGet200Response implements ModelInterface, 
     public function setMeetingRecordName(string $meetingRecordName) {
         $this->meetingRecordName = $meetingRecordName;
     }
-    public function sharingConfig(\wemeet\openapi\service\records\model\V1RecordsSettingsMeetingRecordIdGet200ResponseSharingConfig $sharingConfig): V1RecordsSettingsMeetingRecordIdGet200Response {
+    public function sharingConfig(V1RecordsSettingsMeetingRecordIdGet200ResponseSharingConfig $sharingConfig): V1RecordsSettingsMeetingRecordIdGet200Response {
         $this->sharingConfig = $sharingConfig;
         return $this;
     }
@@ -66,7 +79,7 @@ class V1RecordsSettingsMeetingRecordIdGet200Response implements ModelInterface, 
         return $this->sharingConfig;
     }
 
-    public function setSharingConfig(\wemeet\openapi\service\records\model\V1RecordsSettingsMeetingRecordIdGet200ResponseSharingConfig $sharingConfig) {
+    public function setSharingConfig(V1RecordsSettingsMeetingRecordIdGet200ResponseSharingConfig $sharingConfig) {
         $this->sharingConfig = $sharingConfig;
     }
 

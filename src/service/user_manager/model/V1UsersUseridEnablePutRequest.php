@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,13 +16,18 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 是否启用用户： true：启用 false：禁用
-     * @deprecated
+    * 类型：
+     */
     protected $enable;
 
     public function __construct(
-        $enable,
+        $jsonArray = []
     ) {
-        $this->enable = $enable;
+        if (isset($jsonArray['enable'])) {
+            $this->enable = $jsonArray['enable'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter enable');
+        }
     }
 
     public function enable(bool $enable): V1UsersUseridEnablePutRequest {

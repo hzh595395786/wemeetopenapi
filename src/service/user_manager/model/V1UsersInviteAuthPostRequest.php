@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,25 +16,38 @@ class V1UsersInviteAuthPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1：userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 未验证 userid 列表，最多一次支持传100个
-     * @deprecated
+    * 类型：
+     */
     protected $useridList;
 
     public function __construct(
-        $operatorId,
-        $operatorIdType,
-        $useridList,
+        $jsonArray = []
     ) {
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->useridList = $useridList;
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['userid_list'])) {
+            $this->useridList = $jsonArray['userid_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid_list');
+        }
     }
 
     public function operatorId(string $operatorId): V1UsersInviteAuthPostRequest {

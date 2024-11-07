@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,35 +16,56 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequest implements ModelInterface, \Js
 {
     /**
      * 设备类型 ID 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作人ID
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作人id类型，1 :userid，4 :ms_open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 选择应用的布局 ID （若送空\"\"，表示恢复成当前会议的默认布局）  备注：应用布局的优先级从高到低为： ● 个性布局 ● 自定义布局 ● 默认布局（MRA不支持同框模式， 如果会议设置为同框模式， MRA应用默认布局））
+    * 类型：string
      */
     protected $layoutId = null;
 
     /**
      * 用户列表对象数组。如果该字段为空， 为会议设置高级自定义布局；如果该字段携带用户， 则只为指定用户设置个性布局。 单次最多支持20个用户。
+    * 类型：\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner[]
      */
     protected $userList = null;
 
     public function __construct(
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['layout_id'])) {
+            $this->layoutId = $jsonArray['layout_id'];
+        }
+        if (isset($jsonArray['user_list'])) {
+            $this->userList = $jsonArray['user_list'];
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdApplyingLayoutPutRequest {

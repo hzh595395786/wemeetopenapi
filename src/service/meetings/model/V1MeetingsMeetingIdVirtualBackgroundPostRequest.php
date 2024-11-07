@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,36 +16,57 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
 {
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：Linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作者ID
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID类型。1-userid，2-opened
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 背景生效类型。0-全部用户，1-部分用户
-     * @deprecated
+    * 类型：
+     */
     protected $type;
 
     /**
      * 背景图片 url，尺寸大小为1920*1080，小于10M，jpg/png/jpeg 格式如果不传入则使用会议室默认虚拟背景。
+    * 类型：string
      */
     protected $image = null;
 
     public function __construct(
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
-        $type,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->type = $type;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['type'])) {
+            $this->type = $jsonArray['type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter type');
+        }
+        if (isset($jsonArray['image'])) {
+            $this->image = $jsonArray['image'];
+        }
     }
 
     public function image(string $image): V1MeetingsMeetingIdVirtualBackgroundPostRequest {

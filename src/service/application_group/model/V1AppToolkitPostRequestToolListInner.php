@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\application_group\model;
 
@@ -16,49 +16,82 @@ class V1AppToolkitPostRequestToolListInner implements ModelInterface, \JsonSeria
 {
     /**
      * 工具箱应用所属企业appid
-     * @deprecated
+    * 类型：
+     */
     protected $toolAppid;
     /**
      * 工具箱应用id
-     * @deprecated
+    * 类型：
+     */
     protected $toolSdkid;
 
     /**
      * 应用是否可以拉取机器人，0:否，1:是，默认为0
+    * 类型：int
      */
     protected $enableAddRobot = null;
 
     /**
      * 应用是否可以查询customerData，0:否，1:是，默认为0
+    * 类型：int
      */
     protected $enableCustomerData = null;
 
     /**
      * 可见用户是否屏蔽会议创建者，visible_type=2时该字段才有效。true：屏蔽会议创建者，除非在可见用户列表中显式设置会议创建者；false：默认配置，会议创建者可见
+    * 类型：bool
      */
     protected $isShieldCreator = null;
 
     /**
      * 调用方业务相关字段，最大128个字符
+    * 类型：string
      */
     protected $uniqueCode = null;
 
     /**
      * 可见用户列表（默认会议创建者可见），visible_type=2时该字段才有效
+    * 类型：\wemeet\openapi\service\application_group\model\V1AppToolkitPostRequestToolListInnerVisibleListInner[]
      */
     protected $visibleList = null;
 
     /**
      * 工具箱应用可见类型。 0:所有人可见, 1:本企业可见, 2:指定用户可见，默认为0
+    * 类型：int
      */
     protected $visibleType = null;
 
     public function __construct(
-        $toolAppid,
-        $toolSdkid,
+        $jsonArray = []
     ) {
-        $this->toolAppid = $toolAppid;
-        $this->toolSdkid = $toolSdkid;
+        if (isset($jsonArray['tool_appid'])) {
+            $this->toolAppid = $jsonArray['tool_appid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter tool_appid');
+        }
+        if (isset($jsonArray['tool_sdkid'])) {
+            $this->toolSdkid = $jsonArray['tool_sdkid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter tool_sdkid');
+        }
+        if (isset($jsonArray['enable_add_robot'])) {
+            $this->enableAddRobot = $jsonArray['enable_add_robot'];
+        }
+        if (isset($jsonArray['enable_customer_data'])) {
+            $this->enableCustomerData = $jsonArray['enable_customer_data'];
+        }
+        if (isset($jsonArray['is_shield_creator'])) {
+            $this->isShieldCreator = $jsonArray['is_shield_creator'];
+        }
+        if (isset($jsonArray['unique_code'])) {
+            $this->uniqueCode = $jsonArray['unique_code'];
+        }
+        if (isset($jsonArray['visible_list'])) {
+            $this->visibleList = $jsonArray['visible_list'];
+        }
+        if (isset($jsonArray['visible_type'])) {
+            $this->visibleType = $jsonArray['visible_type'];
+        }
     }
 
     public function enableAddRobot(int $enableAddRobot): V1AppToolkitPostRequestToolListInner {

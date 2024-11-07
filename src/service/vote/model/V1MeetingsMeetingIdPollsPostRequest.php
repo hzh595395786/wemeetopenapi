@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\vote\model;
 
@@ -16,47 +16,76 @@ class V1MeetingsMeetingIdPollsPostRequest implements ModelInterface, \JsonSerial
 {
     /**
      * 必须 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作者ID。 会议的创建者、主持人、联席主持人，才可以创建投票
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1：企业内用户 userid。 2: open_id 4: ms_open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 投票问题，每个投票支持添加10个问题
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner
+     */
     protected $pollQuestions;
     /**
      * 投票主题 最多50个字符
-     * @deprecated
+    * 类型：
+     */
     protected $pollTopic;
 
     /**
      * 是否匿名 0: 实名，默认值 1: 匿名
+    * 类型：int
      */
     protected $isAnony = null;
 
     /**
      * 投票主题描述 最多100个字符
+    * 类型：string
      */
     protected $pollDesc = null;
 
     public function __construct(
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
-        $pollQuestions,
-        $pollTopic,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->pollQuestions = $pollQuestions;
-        $this->pollTopic = $pollTopic;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['poll_questions'])) {
+            $this->pollQuestions = $jsonArray['poll_questions'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter poll_questions');
+        }
+        if (isset($jsonArray['poll_topic'])) {
+            $this->pollTopic = $jsonArray['poll_topic'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter poll_topic');
+        }
+        if (isset($jsonArray['is_anony'])) {
+            $this->isAnony = $jsonArray['is_anony'];
+        }
+        if (isset($jsonArray['poll_desc'])) {
+            $this->pollDesc = $jsonArray['poll_desc'];
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdPollsPostRequest {

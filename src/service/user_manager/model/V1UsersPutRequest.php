@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,40 +16,73 @@ class V1UsersPutRequest implements ModelInterface, \JsonSerializable
 {
 
     /**
+    * 类型：string
      */
     protected $avatarUrl = null;
 
     /**
      * 员工部门，暂只支持为用户分配1个部门。
+    * 类型：string[]
      */
     protected $departmentList = null;
 
     /**
+    * 类型：string
      */
     protected $email = null;
 
     /**
+    * 类型：int
      */
     protected $entryTime = null;
 
     /**
+    * 类型：string
      */
     protected $jobTitle = null;
 
     /**
+    * 类型：string
      */
     protected $phone = null;
 
     /**
+    * 类型：string
      */
     protected $staffId = null;
 
     /**
+    * 类型：string
      */
     protected $username = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['avatar_url'])) {
+            $this->avatarUrl = $jsonArray['avatar_url'];
+        }
+        if (isset($jsonArray['department_list'])) {
+            $this->departmentList = $jsonArray['department_list'];
+        }
+        if (isset($jsonArray['email'])) {
+            $this->email = $jsonArray['email'];
+        }
+        if (isset($jsonArray['entry_time'])) {
+            $this->entryTime = $jsonArray['entry_time'];
+        }
+        if (isset($jsonArray['job_title'])) {
+            $this->jobTitle = $jsonArray['job_title'];
+        }
+        if (isset($jsonArray['phone'])) {
+            $this->phone = $jsonArray['phone'];
+        }
+        if (isset($jsonArray['staff_id'])) {
+            $this->staffId = $jsonArray['staff_id'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
     }
 
     public function avatarUrl(string $avatarUrl): V1UsersPutRequest {

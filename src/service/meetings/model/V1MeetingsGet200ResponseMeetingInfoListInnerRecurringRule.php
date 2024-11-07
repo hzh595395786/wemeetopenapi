@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,39 +16,68 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerRecurringRule implements Model
 {
 
     /**
+    * 类型：int
      */
     protected $customizedRecurringDays = null;
 
     /**
+    * 类型：int
      */
     protected $customizedRecurringStep = null;
 
     /**
+    * 类型：int
      */
     protected $customizedRecurringType = null;
 
     /**
      * 周期性会议频率，默认值为0。 0：每天 1：每周一至周五 2：每周 3：每两周 4：每月
+    * 类型：int
      */
     protected $recurringType = null;
 
     /**
      * integer  限定会议次数（1-50次）默认值为7次。
+    * 类型：int
      */
     protected $untilCount = null;
 
     /**
      * 结束日期时间戳，默认值为当前日期 + 7天。
+    * 类型：int
      */
     protected $untilDate = null;
 
     /**
      * 结束重复类型，默认值为0。 0：按日期结束重复 1：按次数结束重复
+    * 类型：int
      */
     protected $untilType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['customized_recurring_days'])) {
+            $this->customizedRecurringDays = $jsonArray['customized_recurring_days'];
+        }
+        if (isset($jsonArray['customized_recurring_step'])) {
+            $this->customizedRecurringStep = $jsonArray['customized_recurring_step'];
+        }
+        if (isset($jsonArray['customized_recurring_type'])) {
+            $this->customizedRecurringType = $jsonArray['customized_recurring_type'];
+        }
+        if (isset($jsonArray['recurring_type'])) {
+            $this->recurringType = $jsonArray['recurring_type'];
+        }
+        if (isset($jsonArray['until_count'])) {
+            $this->untilCount = $jsonArray['until_count'];
+        }
+        if (isset($jsonArray['until_date'])) {
+            $this->untilDate = $jsonArray['until_date'];
+        }
+        if (isset($jsonArray['until_type'])) {
+            $this->untilType = $jsonArray['until_type'];
+        }
     }
 
     public function customizedRecurringDays(int $customizedRecurringDays): V1MeetingsGet200ResponseMeetingInfoListInnerRecurringRule {

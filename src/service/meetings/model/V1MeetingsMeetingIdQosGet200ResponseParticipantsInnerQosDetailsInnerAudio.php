@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,26 +17,43 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio 
 
     /**
      * 下行码率（kbps）
+    * 类型：string
      */
     protected $downstreamBitrate = null;
 
     /**
      * 扬声器播放音量（db）
+    * 类型：string
      */
     protected $loudspeakerVolume = null;
 
     /**
      * 麦克风采集音量（db）
+    * 类型：string
      */
     protected $micVolume = null;
 
     /**
      * 上行码率（kbps）
+    * 类型：string
      */
     protected $upstreamBitrate = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['downstream_bitrate'])) {
+            $this->downstreamBitrate = $jsonArray['downstream_bitrate'];
+        }
+        if (isset($jsonArray['loudspeaker_volume'])) {
+            $this->loudspeakerVolume = $jsonArray['loudspeaker_volume'];
+        }
+        if (isset($jsonArray['mic_volume'])) {
+            $this->micVolume = $jsonArray['mic_volume'];
+        }
+        if (isset($jsonArray['upstream_bitrate'])) {
+            $this->upstreamBitrate = $jsonArray['upstream_bitrate'];
+        }
     }
 
     public function downstreamBitrate(string $downstreamBitrate): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio {

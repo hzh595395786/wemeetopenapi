@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,21 +17,34 @@ class V1UsersAccountStatisticsGet200ResponseAiAccountDetailsInner implements Mod
 
     /**
      * 账号数
+    * 类型：int
      */
     protected $aiAccountCount = null;
 
     /**
      * ai账号类型，1:购买版 2:赠送版
+    * 类型：int
      */
     protected $aiAccountType = null;
 
     /**
      * 已分配的账号数
+    * 类型：int
      */
     protected $aiAccountUsedCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ai_account_count'])) {
+            $this->aiAccountCount = $jsonArray['ai_account_count'];
+        }
+        if (isset($jsonArray['ai_account_type'])) {
+            $this->aiAccountType = $jsonArray['ai_account_type'];
+        }
+        if (isset($jsonArray['ai_account_used_count'])) {
+            $this->aiAccountUsedCount = $jsonArray['ai_account_used_count'];
+        }
     }
 
     public function aiAccountCount(int $aiAccountCount): V1UsersAccountStatisticsGet200ResponseAiAccountDetailsInner {

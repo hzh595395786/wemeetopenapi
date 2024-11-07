@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,21 +17,34 @@ class V1FilesRecordsUploadPreparePost200Response implements ModelInterface, \Jso
 
     /**
      * 分块数量
+    * 类型：int
      */
     protected $blockNum = null;
 
     /**
      * 分块大小策略（以字节为单位）
+    * 类型：int
      */
     protected $blockSize = null;
 
     /**
      * 上传事务 ID
+    * 类型：string
      */
     protected $uploadId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['block_num'])) {
+            $this->blockNum = $jsonArray['block_num'];
+        }
+        if (isset($jsonArray['block_size'])) {
+            $this->blockSize = $jsonArray['block_size'];
+        }
+        if (isset($jsonArray['upload_id'])) {
+            $this->uploadId = $jsonArray['upload_id'];
+        }
     }
 
     public function blockNum(int $blockNum): V1FilesRecordsUploadPreparePost200Response {

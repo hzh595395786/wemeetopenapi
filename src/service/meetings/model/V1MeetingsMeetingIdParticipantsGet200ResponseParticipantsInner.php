@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,110 +17,195 @@ class V1MeetingsMeetingIdParticipantsGet200ResponseParticipantsInner implements 
 
     /**
      * 用户的客户端版本。当用户在会中时才能返回。
+    * 类型：string
      */
     protected $appVersion = null;
 
     /**
      * 麦克风状态： true：开启 false：关闭
+    * 类型：bool
      */
     protected $audioState = null;
 
     /**
      * 专属字段
+    * 类型：string
      */
     protected $customerData = null;
 
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备（即MRA设备） 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS/iPadOS
+    * 类型：int
      */
     protected $instanceid = null;
 
     /**
      * 用户的 IP 地址。当用户在会中时才能返回。
+    * 类型：string
      */
     protected $ip = null;
 
     /**
      * 参会者加入会议时间戳（单位秒）。
+    * 类型：string
      */
     protected $joinTime = null;
 
     /**
      * 入会方式： 0：PSTN 普通用户，标准的手机或固话类型 1：普通 VOIP 用户 2：附属投屏 VOIP 3：linux sdk for VOIP 4：附属语音 PSTN 5：附属视频 PSTN 6：linux sdk for PSTN
+    * 类型：int
      */
     protected $joinType = null;
 
     /**
      * 参会者离开会议时间戳（单位秒）。
+    * 类型：string
      */
     protected $leftTime = null;
 
     /**
      * 用户的连接方式：UDP、TCP、未知，当用户在会中时才能返回。
+    * 类型：string
      */
     protected $linkType = null;
 
     /**
      * 用户的地理位置信息。当用户在会中时才能返回。
+    * 类型：string
      */
     protected $location = null;
 
     /**
      * 当场会议的用户临时 ID，可用于会控操作，适用于所有用户。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 网络类型：有线、WIFI、2G、3G、4G、未知。当用户在会中时才能返回。
+    * 类型：string
      */
     protected $net = null;
 
     /**
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 参会者手机号 hash 值 SHA256（手机号 + \"/\" + secretid）。
+    * 类型：string
      */
     protected $phone = null;
 
     /**
      * 屏幕共享状态： true：开启 false：关闭
+    * 类型：bool
      */
     protected $screenSharedState = null;
 
     /**
      * 入会用户名（base64）。
+    * 类型：string
      */
     protected $userName = null;
 
     /**
      * 用户角色： 0：普通成员角色 1：创建者角色 2：主持人 3：创建者+主持人 4：游客 5：游客+主持人 6：联席主持人 7：创建者+联席主持人
+    * 类型：int
      */
     protected $userRole = null;
 
     /**
      * 参会者用户 ID。 使用企业自建应用鉴权方式（JWT）时，该值为企业唯一用户标识。
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 用户的身份 ID，仅适用于单场会议。
+    * 类型：string
      */
     protected $uuid = null;
 
     /**
      * 摄像头状态： true：开启 false：关闭
+    * 类型：bool
      */
     protected $videoState = null;
 
     /**
      * 网络研讨会成员角色： 0：普通参会角色 1：内部嘉宾 2：外部嘉宾 3：邀请链接入会嘉宾 4：观众 5：有音视频权限的研讨会观众
+    * 类型：int
      */
     protected $webinarMemberRole = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['app_version'])) {
+            $this->appVersion = $jsonArray['app_version'];
+        }
+        if (isset($jsonArray['audio_state'])) {
+            $this->audioState = $jsonArray['audio_state'];
+        }
+        if (isset($jsonArray['customer_data'])) {
+            $this->customerData = $jsonArray['customer_data'];
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['ip'])) {
+            $this->ip = $jsonArray['ip'];
+        }
+        if (isset($jsonArray['join_time'])) {
+            $this->joinTime = $jsonArray['join_time'];
+        }
+        if (isset($jsonArray['join_type'])) {
+            $this->joinType = $jsonArray['join_type'];
+        }
+        if (isset($jsonArray['left_time'])) {
+            $this->leftTime = $jsonArray['left_time'];
+        }
+        if (isset($jsonArray['link_type'])) {
+            $this->linkType = $jsonArray['link_type'];
+        }
+        if (isset($jsonArray['location'])) {
+            $this->location = $jsonArray['location'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['net'])) {
+            $this->net = $jsonArray['net'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['phone'])) {
+            $this->phone = $jsonArray['phone'];
+        }
+        if (isset($jsonArray['screen_shared_state'])) {
+            $this->screenSharedState = $jsonArray['screen_shared_state'];
+        }
+        if (isset($jsonArray['user_name'])) {
+            $this->userName = $jsonArray['user_name'];
+        }
+        if (isset($jsonArray['user_role'])) {
+            $this->userRole = $jsonArray['user_role'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
+        if (isset($jsonArray['video_state'])) {
+            $this->videoState = $jsonArray['video_state'];
+        }
+        if (isset($jsonArray['webinar_member_role'])) {
+            $this->webinarMemberRole = $jsonArray['webinar_member_role'];
+        }
     }
 
     public function appVersion(string $appVersion): V1MeetingsMeetingIdParticipantsGet200ResponseParticipantsInner {

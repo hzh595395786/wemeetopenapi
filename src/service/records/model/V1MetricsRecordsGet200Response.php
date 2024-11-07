@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,11 +17,16 @@ class V1MetricsRecordsGet200Response implements ModelInterface, \JsonSerializabl
 
     /**
      * 概览数据集合。
+    * 类型：\wemeet\openapi\service\records\model\V1MetricsRecordsGet200ResponseSummariesInner[]
      */
     protected $summaries = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['summaries'])) {
+            $this->summaries = $jsonArray['summaries'];
+        }
     }
 
     public function summaries(array $summaries): V1MetricsRecordsGet200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,83 +16,144 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
 {
     /**
      * 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
 
     /**
      * 允许参会者聊天设置  0:允许参会者自由聊天  1:仅允许参会者公开聊天  2:只允许支持人发言
+    * 类型：int
      */
     protected $allowChat = null;
 
     /**
      * 是否允许成员自己解除静音
+    * 类型：bool
      */
     protected $allowUnmuteBySelf = null;
 
     /**
      * 是否开启等候室 true：开启 false：关闭
+    * 类型：bool
      */
     protected $autoWaitingRoom = null;
 
     /**
      * 是否允许参会者发送红包 true：允许 false：不允许
+    * 类型：bool
      */
     protected $enableRedEnvelope = null;
 
     /**
      * 隐藏会议号和密码 true：隐藏 false：不隐藏
+    * 类型：bool
      */
     protected $hideMeetingCodePassword = null;
 
     /**
      * 是否锁定会议 true：锁定 false：关闭锁定
+    * 类型：bool
      */
     protected $meetingLocked = null;
 
     /**
      * 是否全体静音，true：是；false关闭全体静音
+    * 类型：bool
      */
     protected $muteAll = null;
 
     /**
      * 是否仅企业成员可入会  true：仅企业成员可入会  false：不限制
+    * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
 
     /**
      * 操作者ID，根据operator_id_type的值，使用不同的类型
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者ID的类型：1:userid  2:openid（预留编号，本次不添加，未来新增接口使用）3:rooms_id  4: ms_open_id
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
      * 成员入会静音 0:关闭静音 1:开启静音 2:超过6人自动开启静音
+    * 类型：int
      */
     protected $participantJoinMute = null;
 
     /**
      * 成员入会是否播放提示音 true：成员入会播放提示音 false：不播放
+    * 类型：bool
      */
     protected $playIvrOnJoin = null;
 
     /**
      * 是否允许参会者发起屏幕共享 true：允许 false：不允许
+    * 类型：bool
      */
     protected $shareScreen = null;
 
     /**
      * 用户的唯一标识uuid
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
-        $instanceid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['allow_chat'])) {
+            $this->allowChat = $jsonArray['allow_chat'];
+        }
+        if (isset($jsonArray['allow_unmute_by_self'])) {
+            $this->allowUnmuteBySelf = $jsonArray['allow_unmute_by_self'];
+        }
+        if (isset($jsonArray['auto_waiting_room'])) {
+            $this->autoWaitingRoom = $jsonArray['auto_waiting_room'];
+        }
+        if (isset($jsonArray['enable_red_envelope'])) {
+            $this->enableRedEnvelope = $jsonArray['enable_red_envelope'];
+        }
+        if (isset($jsonArray['hide_meeting_code_password'])) {
+            $this->hideMeetingCodePassword = $jsonArray['hide_meeting_code_password'];
+        }
+        if (isset($jsonArray['meeting_locked'])) {
+            $this->meetingLocked = $jsonArray['meeting_locked'];
+        }
+        if (isset($jsonArray['mute_all'])) {
+            $this->muteAll = $jsonArray['mute_all'];
+        }
+        if (isset($jsonArray['only_enterprise_user_allowed'])) {
+            $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['participant_join_mute'])) {
+            $this->participantJoinMute = $jsonArray['participant_join_mute'];
+        }
+        if (isset($jsonArray['play_ivr_on_join'])) {
+            $this->playIvrOnJoin = $jsonArray['play_ivr_on_join'];
+        }
+        if (isset($jsonArray['share_screen'])) {
+            $this->shareScreen = $jsonArray['share_screen'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function allowChat(int $allowChat): V1RealControlMeetingsMeetingIdStatusPutRequest {

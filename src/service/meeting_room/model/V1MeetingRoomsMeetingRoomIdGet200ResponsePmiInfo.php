@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,16 +17,25 @@ class V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo implements ModelInterface
 
     /**
      * 设备会议号
+    * 类型：string
      */
     protected $pmiCode = null;
 
     /**
      * 设备入会密码
+    * 类型：string
      */
     protected $pmiPwd = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['pmi_code'])) {
+            $this->pmiCode = $jsonArray['pmi_code'];
+        }
+        if (isset($jsonArray['pmi_pwd'])) {
+            $this->pmiPwd = $jsonArray['pmi_pwd'];
+        }
     }
 
     public function pmiCode(string $pmiCode): V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo {

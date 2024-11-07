@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdInviteesGet200ResponseInviteesInner implements ModelInt
 
     /**
      * 用户昵称
+    * 类型：string
      */
     protected $nickName = null;
 
     /**
      * 用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['nick_name'])) {
+            $this->nickName = $jsonArray['nick_name'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function nickName(string $nickName): V1MeetingsMeetingIdInviteesGet200ResponseInviteesInner {

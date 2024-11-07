@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -16,25 +16,38 @@ class V1RecordsAccessMeetingRecordIdDeleteRequest implements ModelInterface, \Js
 {
     /**
      * 成员列表，如果传入非有权限的成员，则不生效
-     * @deprecated
+    * 类型：V1RecordsAccessMeetingRecordIdDeleteRequestAccessMembersInner
+     */
     protected $accessMembers;
     /**
      * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1:userid 2:open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     public function __construct(
-        $accessMembers,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->accessMembers = $accessMembers;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['access_members'])) {
+            $this->accessMembers = $jsonArray['access_members'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter access_members');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
     }
 
     public function accessMembers(array $accessMembers): V1RecordsAccessMeetingRecordIdDeleteRequest {

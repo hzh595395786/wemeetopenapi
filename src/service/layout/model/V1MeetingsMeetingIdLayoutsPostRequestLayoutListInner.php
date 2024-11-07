@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -15,19 +15,28 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1MeetingsMeetingIdLayoutsPostRequestLayoutListInner implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $layoutId;
     /**
      * 布局单页对象列表
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdLayoutsPostRequestLayoutListInnerPageListInner
+     */
     protected $pageList;
 
     public function __construct(
-        $layoutId,
-        $pageList,
+        $jsonArray = []
     ) {
-        $this->layoutId = $layoutId;
-        $this->pageList = $pageList;
+        if (isset($jsonArray['layout_id'])) {
+            $this->layoutId = $jsonArray['layout_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter layout_id');
+        }
+        if (isset($jsonArray['page_list'])) {
+            $this->pageList = $jsonArray['page_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter page_list');
+        }
     }
 
     public function layoutId(string $layoutId): V1MeetingsMeetingIdLayoutsPostRequestLayoutListInner {

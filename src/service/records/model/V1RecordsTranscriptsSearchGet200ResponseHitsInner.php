@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,26 +17,43 @@ class V1RecordsTranscriptsSearchGet200ResponseHitsInner implements ModelInterfac
 
     /**
      * 匹配长度
+    * 类型：int
      */
     protected $length = null;
 
     /**
      * text 相对词的偏移。
+    * 类型：int
      */
     protected $offset = null;
 
     /**
      * 段落 ID
+    * 类型：string
      */
     protected $pid = null;
 
     /**
      * 句子 ID
+    * 类型：string
      */
     protected $sid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['length'])) {
+            $this->length = $jsonArray['length'];
+        }
+        if (isset($jsonArray['offset'])) {
+            $this->offset = $jsonArray['offset'];
+        }
+        if (isset($jsonArray['pid'])) {
+            $this->pid = $jsonArray['pid'];
+        }
+        if (isset($jsonArray['sid'])) {
+            $this->sid = $jsonArray['sid'];
+        }
     }
 
     public function length(int $length): V1RecordsTranscriptsSearchGet200ResponseHitsInner {

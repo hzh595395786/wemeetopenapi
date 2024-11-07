@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,21 +17,34 @@ class V1MeetingJobIdGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 任务错误信息
+    * 类型：string
      */
     protected $errorMsg = null;
 
     /**
      * 任务下载链接，有效期2小时。
+    * 类型：string
      */
     protected $jobUrl = null;
 
     /**
      * 任务状态。 0：未完成 1：已完成
+    * 类型：int
      */
     protected $status = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['error_msg'])) {
+            $this->errorMsg = $jsonArray['error_msg'];
+        }
+        if (isset($jsonArray['job_url'])) {
+            $this->jobUrl = $jsonArray['job_url'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
     }
 
     public function errorMsg(string $errorMsg): V1MeetingJobIdGet200Response {

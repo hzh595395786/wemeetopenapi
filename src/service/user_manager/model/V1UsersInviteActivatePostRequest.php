@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,13 +16,18 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
 {
     /**
      * 未激活的账号列表，最多支持传100个
-     * @deprecated
+    * 类型：
+     */
     protected $useridList;
 
     public function __construct(
-        $useridList,
+        $jsonArray = []
     ) {
-        $this->useridList = $useridList;
+        if (isset($jsonArray['userid_list'])) {
+            $this->useridList = $jsonArray['userid_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid_list');
+        }
     }
 
     public function useridList(array $useridList): V1UsersInviteActivatePostRequest {

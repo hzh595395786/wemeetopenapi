@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,11 +17,16 @@ class V1UsersInviteActivatePost200Response implements ModelInterface, \JsonSeria
 
     /**
      * 未激活用户对象列表
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersInviteActivatePost200ResponseInactivateUserListInner[]
      */
     protected $inactivateUserList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['inactivate_user_list'])) {
+            $this->inactivateUserList = $jsonArray['inactivate_user_list'];
+        }
     }
 
     public function inactivateUserList(array $inactivateUserList): V1UsersInviteActivatePost200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,15 +16,24 @@ class V1UsersUseridGet200ResponseDepartmentListInner implements ModelInterface, 
 {
 
     /**
+    * 类型：string
      */
     protected $departmentId = null;
 
     /**
+    * 类型：string
      */
     protected $departmentName = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['department_id'])) {
+            $this->departmentId = $jsonArray['department_id'];
+        }
+        if (isset($jsonArray['department_name'])) {
+            $this->departmentName = $jsonArray['department_name'];
+        }
     }
 
     public function departmentId(string $departmentId): V1UsersUseridGet200ResponseDepartmentListInner {

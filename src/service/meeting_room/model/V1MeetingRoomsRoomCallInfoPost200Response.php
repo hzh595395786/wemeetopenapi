@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,16 +17,25 @@ class V1MeetingRoomsRoomCallInfoPost200Response implements ModelInterface, \Json
 
     /**
      * 最近一次应答时间。
+    * 类型：string
      */
     protected $responseTime = null;
 
     /**
      * 应答状态： 0：无应答，60秒无回应 1：未呼叫 2：入会中 3：被拒绝 4：呼叫中 5：取消呼叫（仅 Rooms 会议室有该状态） 6：已离会
+    * 类型：int
      */
     protected $status = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['response_time'])) {
+            $this->responseTime = $jsonArray['response_time'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
     }
 
     public function responseTime(string $responseTime): V1MeetingRoomsRoomCallInfoPost200Response {

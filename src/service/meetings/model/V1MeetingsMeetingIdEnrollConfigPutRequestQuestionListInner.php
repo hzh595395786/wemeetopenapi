@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,33 +16,54 @@ class V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInner implements Mode
 {
     /**
      * 是否必填：1 否，2 是
-     * @deprecated
+    * 类型：
+     */
     protected $isRequired;
 
     /**
      * 问题选项列表，按传入的顺序排序，仅单选/多选时有效，最多8个选项，每个选项限40个汉字
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInnerOptionListInner[]
      */
     protected $optionList = null;
 
     /**
      * 问题标题，限制40个字符（special_type为特殊问题时，该字段无效）
+    * 类型：string
      */
     protected $questionTitle = null;
 
     /**
      * 问题类型：1 单选，2 多选，3 简答（special_type为特殊问题时，该字段无效）
+    * 类型：int
      */
     protected $questionType = null;
 
     /**
      * 特殊问题类型：1 无，2 手机号，3 邮箱，4 姓名，5 组织名称，6 组织规模（目前除组织规模外均为简答题，组织规模为单选题）
+    * 类型：int
      */
     protected $specialType = null;
 
     public function __construct(
-        $isRequired,
+        $jsonArray = []
     ) {
-        $this->isRequired = $isRequired;
+        if (isset($jsonArray['is_required'])) {
+            $this->isRequired = $jsonArray['is_required'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter is_required');
+        }
+        if (isset($jsonArray['option_list'])) {
+            $this->optionList = $jsonArray['option_list'];
+        }
+        if (isset($jsonArray['question_title'])) {
+            $this->questionTitle = $jsonArray['question_title'];
+        }
+        if (isset($jsonArray['question_type'])) {
+            $this->questionType = $jsonArray['question_type'];
+        }
+        if (isset($jsonArray['special_type'])) {
+            $this->specialType = $jsonArray['special_type'];
+        }
     }
 
     public function isRequired(int $isRequired): V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInner {

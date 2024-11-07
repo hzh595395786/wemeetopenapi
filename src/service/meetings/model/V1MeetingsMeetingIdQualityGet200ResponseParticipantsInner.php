@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,56 +17,97 @@ class V1MeetingsMeetingIdQualityGet200ResponseParticipantsInner implements Model
 
     /**
      * 音频质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $audioQuality = null;
 
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
+    * 类型：string
      */
     protected $instanceid = null;
 
     /**
      * 当场会议的用户临时 ID，可用于会控操作，适用于所有用户。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 网络质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $networkQuality = null;
 
     /**
      * OAuth2.0 鉴权用户请使用 open_id。
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 告警的具体问题
+    * 类型：string[]
      */
     protected $problems = null;
 
     /**
      * 用户健康度：0-无数据，1-健康、2-告警
+    * 类型：int
      */
     protected $quality = null;
 
     /**
      * 共享屏幕质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $screenShareQuality = null;
 
     /**
      * 同企业内部请使用企业唯一用户标识； 其他企业，个人，小程序没有 。
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 视频质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $videoQuality = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['audio_quality'])) {
+            $this->audioQuality = $jsonArray['audio_quality'];
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['network_quality'])) {
+            $this->networkQuality = $jsonArray['network_quality'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['problems'])) {
+            $this->problems = $jsonArray['problems'];
+        }
+        if (isset($jsonArray['quality'])) {
+            $this->quality = $jsonArray['quality'];
+        }
+        if (isset($jsonArray['screen_share_quality'])) {
+            $this->screenShareQuality = $jsonArray['screen_share_quality'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['video_quality'])) {
+            $this->videoQuality = $jsonArray['video_quality'];
+        }
     }
 
     public function audioQuality(int $audioQuality): V1MeetingsMeetingIdQualityGet200ResponseParticipantsInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -17,41 +17,70 @@ class V1MeetingsMeetingIdLayoutsPost200ResponseLayoutListInnerPageListInnerUserS
 
     /**
      * 宫格ID
+    * 类型：string
      */
     protected $gridId = null;
 
     /**
      * 宫格类型
+    * 类型：int
      */
     protected $gridType = null;
 
     /**
      * 当场会议的用户临时 ID。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 工具箱id
+    * 类型：string
      */
     protected $toolSdkid = null;
 
     /**
      * 用户ID
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 用户昵称
+    * 类型：string
      */
     protected $username = null;
 
     /**
      * 用户身份 ID（腾讯会议颁发的用于开放平台的唯一用户 ID）
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['grid_id'])) {
+            $this->gridId = $jsonArray['grid_id'];
+        }
+        if (isset($jsonArray['grid_type'])) {
+            $this->gridType = $jsonArray['grid_type'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['tool_sdkid'])) {
+            $this->toolSdkid = $jsonArray['tool_sdkid'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function gridId(string $gridId): V1MeetingsMeetingIdLayoutsPost200ResponseLayoutListInnerPageListInnerUserSeatListInner {

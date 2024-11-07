@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -16,19 +16,28 @@ class V1RecordsAccessMeetingRecordIdDeleteRequestAccessMembersInner implements M
 {
     /**
      * 被操作者ID，根据 to_operator_id_type 的值，使用不同的类型
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorId;
     /**
      * 被操作者ID类型  1:userid  2:open_id  4:ms_open_id
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorIdType;
 
     public function __construct(
-        $toOperatorId,
-        $toOperatorIdType,
+        $jsonArray = []
     ) {
-        $this->toOperatorId = $toOperatorId;
-        $this->toOperatorIdType = $toOperatorIdType;
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id');
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id_type');
+        }
     }
 
     public function toOperatorId(string $toOperatorId): V1RecordsAccessMeetingRecordIdDeleteRequestAccessMembersInner {

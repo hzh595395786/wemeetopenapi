@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,30 +17,51 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
 
     /**
      * 是否开启直播
+    * 类型：bool
      */
     protected $enableLive = null;
 
     /**
      * 主持人密钥，仅支持6位数字。 如开启主持人密钥后没有填写此项，将自动分配一个6位数字的密钥。
+    * 类型：string
      */
     protected $hostKey = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig
      */
     protected $liveConfig = null;
 
     /**
      * 会议号码
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议的唯一 ID
+    * 类型：string
      */
     protected $meetingId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['enable_live'])) {
+            $this->enableLive = $jsonArray['enable_live'];
+        }
+        if (isset($jsonArray['host_key'])) {
+            $this->hostKey = $jsonArray['host_key'];
+        }
+        if (isset($jsonArray['live_config'])) {
+            $this->liveConfig = new V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig($jsonArray['live_config']);
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
     }
 
     public function enableLive(bool $enableLive): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner {
@@ -67,7 +88,7 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
     public function setHostKey(string $hostKey) {
         $this->hostKey = $hostKey;
     }
-    public function liveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig $liveConfig): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner {
+    public function liveConfig(V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig $liveConfig): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner {
         $this->liveConfig = $liveConfig;
         return $this;
     }
@@ -76,7 +97,7 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         return $this->liveConfig;
     }
 
-    public function setLiveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig $liveConfig) {
+    public function setLiveConfig(V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig $liveConfig) {
         $this->liveConfig = $liveConfig;
     }
     public function meetingCode(string $meetingCode): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner {

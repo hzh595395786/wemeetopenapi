@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,61 +17,106 @@ class V1MeetingsMeetingIdEnrollConfigGet200Response implements ModelInterface, \
 
     /**
      * 审批类型：1 自动审批，2 手动审批，默认自动审批
+    * 类型：int
      */
     protected $approveType = null;
 
     /**
      * 报名页封面图URL（base64编码）
+    * 类型：string[]
      */
     protected $coverImage = null;
 
     /**
      * 显示已报名/预约人数。0：不展示 1：展示，默认开启
+    * 类型：int
      */
     protected $displayNumberOfParticipants = null;
 
     /**
      * 报名截止时间（秒级时间戳）
+    * 类型：string
      */
     protected $enrollDeadline = null;
 
     /**
      * 报名页简介
+    * 类型：string
      */
     protected $enrollDescription = null;
 
     /**
      * 报名人数上限
+    * 类型：int
      */
     protected $enrollNumber = null;
 
     /**
      * 报名审批自动通知方式，1-短信通知；2-邮件中文；3-邮件英文；4-邮件中英文；5-公众号
+    * 类型：int[]
      */
     protected $enrollPushType = null;
 
     /**
      * 是否收集问题：1 不收集，2 收集，默认不收集问题
+    * 类型：int
      */
     protected $isCollectQuestion = null;
 
     /**
      * 会议id
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 本企业用户无需报名。 true: 本企业用户无需报名。 false：默认配置，所有用户需要报名。
+    * 类型：bool
      */
     protected $noRegistrationNeededForStaff = null;
 
     /**
      * 报名问题列表，自定义问题按传入的顺序排序，预设问题会优先放在最前面，仅开启收集问题时有效
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollConfigGet200ResponseQuestionListInner[]
      */
     protected $questionList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['approve_type'])) {
+            $this->approveType = $jsonArray['approve_type'];
+        }
+        if (isset($jsonArray['cover_image'])) {
+            $this->coverImage = $jsonArray['cover_image'];
+        }
+        if (isset($jsonArray['display_number_of_participants'])) {
+            $this->displayNumberOfParticipants = $jsonArray['display_number_of_participants'];
+        }
+        if (isset($jsonArray['enroll_deadline'])) {
+            $this->enrollDeadline = $jsonArray['enroll_deadline'];
+        }
+        if (isset($jsonArray['enroll_description'])) {
+            $this->enrollDescription = $jsonArray['enroll_description'];
+        }
+        if (isset($jsonArray['enroll_number'])) {
+            $this->enrollNumber = $jsonArray['enroll_number'];
+        }
+        if (isset($jsonArray['enroll_push_type'])) {
+            $this->enrollPushType = $jsonArray['enroll_push_type'];
+        }
+        if (isset($jsonArray['is_collect_question'])) {
+            $this->isCollectQuestion = $jsonArray['is_collect_question'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['no_registration_needed_for_staff'])) {
+            $this->noRegistrationNeededForStaff = $jsonArray['no_registration_needed_for_staff'];
+        }
+        if (isset($jsonArray['question_list'])) {
+            $this->questionList = $jsonArray['question_list'];
+        }
     }
 
     public function approveType(int $approveType): V1MeetingsMeetingIdEnrollConfigGet200Response {

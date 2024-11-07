@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,46 +17,79 @@ class V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo implements ModelInterfa
 
     /**
      * 建筑
+    * 类型：string
      */
     protected $building = null;
 
     /**
      * 城市
+    * 类型：string
      */
     protected $city = null;
 
     /**
      * 描述（base64）
+    * 类型：string
      */
     protected $desc = null;
 
     /**
      * 会议室设备
+    * 类型：string
      */
     protected $device = null;
 
     /**
      * 楼层
+    * 类型：string
      */
     protected $floor = null;
 
     /**
      * 会议室名称
+    * 类型：string
      */
     protected $meetingRoomName = null;
 
     /**
      * 容纳人数
+    * 类型：int
      */
     protected $participantNumber = null;
 
     /**
      * 管理员密码（base64）
+    * 类型：string
      */
     protected $password = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['building'])) {
+            $this->building = $jsonArray['building'];
+        }
+        if (isset($jsonArray['city'])) {
+            $this->city = $jsonArray['city'];
+        }
+        if (isset($jsonArray['desc'])) {
+            $this->desc = $jsonArray['desc'];
+        }
+        if (isset($jsonArray['device'])) {
+            $this->device = $jsonArray['device'];
+        }
+        if (isset($jsonArray['floor'])) {
+            $this->floor = $jsonArray['floor'];
+        }
+        if (isset($jsonArray['meeting_room_name'])) {
+            $this->meetingRoomName = $jsonArray['meeting_room_name'];
+        }
+        if (isset($jsonArray['participant_number'])) {
+            $this->participantNumber = $jsonArray['participant_number'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
     }
 
     public function building(string $building): V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdBookRoomsPost200Response implements ModelInterface, \Js
 
     /**
      * 会议室对象列表
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingsMeetingIdBookRoomsPost200ResponseMeetingRoomListInner[]
      */
     protected $meetingRoomList = null;
 
     /**
      * 会议室数量
+    * 类型：int
      */
     protected $meetingRoomNumber = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_room_list'])) {
+            $this->meetingRoomList = $jsonArray['meeting_room_list'];
+        }
+        if (isset($jsonArray['meeting_room_number'])) {
+            $this->meetingRoomNumber = $jsonArray['meeting_room_number'];
+        }
     }
 
     public function meetingRoomList(array $meetingRoomList): V1MeetingsMeetingIdBookRoomsPost200Response {

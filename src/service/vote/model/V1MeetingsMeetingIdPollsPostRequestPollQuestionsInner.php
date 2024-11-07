@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\vote\model;
 
@@ -15,25 +15,38 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $pollOption;
     /**
      * 问题描述，最多50个字符
-     * @deprecated
+    * 类型：
+     */
     protected $questionDesc;
     /**
      * 问题选择类型0 单选 1 多选
-     * @deprecated
+    * 类型：
+     */
     protected $questionType;
 
     public function __construct(
-        $pollOption,
-        $questionDesc,
-        $questionType,
+        $jsonArray = []
     ) {
-        $this->pollOption = $pollOption;
-        $this->questionDesc = $questionDesc;
-        $this->questionType = $questionType;
+        if (isset($jsonArray['poll_option'])) {
+            $this->pollOption = $jsonArray['poll_option'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter poll_option');
+        }
+        if (isset($jsonArray['question_desc'])) {
+            $this->questionDesc = $jsonArray['question_desc'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter question_desc');
+        }
+        if (isset($jsonArray['question_type'])) {
+            $this->questionType = $jsonArray['question_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter question_type');
+        }
     }
 
     public function pollOption(array $pollOption): V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,16 +17,25 @@ class V1RecordsTranscriptsDetailsGet200ResponseMinutes implements ModelInterface
 
     /**
      * 声纹识别状态0-未完成 1-已完成。说明：声纹识别是针对 Rooms 等设备出现一台设备多人讲话场景时，自动区分为多个发言人的能力。声纹识别与纪要生成的过程独立。无需声纹识别或声纹识别已完成时，该值为1。
+    * 类型：int
      */
     protected $audioDetect = null;
 
     /**
      * 段落对象列表
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInner[]
      */
     protected $paragraphs = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['audio_detect'])) {
+            $this->audioDetect = $jsonArray['audio_detect'];
+        }
+        if (isset($jsonArray['paragraphs'])) {
+            $this->paragraphs = $jsonArray['paragraphs'];
+        }
     }
 
     public function audioDetect(int $audioDetect): V1RecordsTranscriptsDetailsGet200ResponseMinutes {

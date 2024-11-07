@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,18 +16,27 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInner implements Mo
 {
     /**
      * 布局单页对象列表
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInner
+     */
     protected $pageList;
 
     /**
      * 布局名称
+    * 类型：string
      */
     protected $layoutName = null;
 
     public function __construct(
-        $pageList,
+        $jsonArray = []
     ) {
-        $this->pageList = $pageList;
+        if (isset($jsonArray['page_list'])) {
+            $this->pageList = $jsonArray['page_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter page_list');
+        }
+        if (isset($jsonArray['layout_name'])) {
+            $this->layoutName = $jsonArray['layout_name'];
+        }
     }
 
     public function layoutName(string $layoutName): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInner {

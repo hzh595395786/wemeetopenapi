@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,51 +16,84 @@ class V1UsersDeleteTransferPostRequest implements ModelInterface, \JsonSerializa
 {
     /**
      * 操作者 ID。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1：userid 2：open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 被操作者 ID，根据 to_operator_id_type 的值，使用不同的类型，这里指被删除的用户。
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorId;
     /**
      * 被操作者 ID 的类型： 1：userid 2：open_id
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorIdType;
 
     /**
      * 删除用户的数据处理方式： 1=彻底删除； 2=转移给指定成员；
+    * 类型：string
      */
     protected $dataProcess = null;
 
     /**
      * 数据接收者的ID，根据receiver_id_type的值，使用不同的类型。； data_process为2时生效； 该userid不存在时，将报错；
+    * 类型：string
      */
     protected $receiverId = null;
 
     /**
      * 数据接收者 ID 的类型：  1：userid  2：open_id
+    * 类型：int
      */
     protected $receiverIdType = null;
 
     /**
      * 转移的具体数据； 0=全部； 1=云录制； 2=会议列表； data_process为2时生效； 不传时默认为0；
+    * 类型：string
      */
     protected $transferData = null;
 
     public function __construct(
-        $operatorId,
-        $operatorIdType,
-        $toOperatorId,
-        $toOperatorIdType,
+        $jsonArray = []
     ) {
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->toOperatorId = $toOperatorId;
-        $this->toOperatorIdType = $toOperatorIdType;
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id');
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id_type');
+        }
+        if (isset($jsonArray['data_process'])) {
+            $this->dataProcess = $jsonArray['data_process'];
+        }
+        if (isset($jsonArray['receiver_id'])) {
+            $this->receiverId = $jsonArray['receiver_id'];
+        }
+        if (isset($jsonArray['receiver_id_type'])) {
+            $this->receiverIdType = $jsonArray['receiver_id_type'];
+        }
+        if (isset($jsonArray['transfer_data'])) {
+            $this->transferData = $jsonArray['transfer_data'];
+        }
     }
 
     public function dataProcess(string $dataProcess): V1UsersDeleteTransferPostRequest {

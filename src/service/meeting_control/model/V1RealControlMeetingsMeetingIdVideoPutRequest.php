@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,38 +16,63 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
 {
     /**
      * 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
-     * @deprecated
+    * 类型：V1RealControlMeetingsMeetingIdVideoPutRequestUser
+     */
     protected $user;
 
     /**
      * 操作者 ID。 1：operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 2：接口输入参数如果需要传用户 ID 时，operator_id 和 uuid 不可以同时为空，两个参数如果都传了以 operator_id 为准。 3：如果 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者ID的类型： 2:openid 4: ms_open_id
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
      * 操作者用户唯一身份 ID，仅支持主持人和联席主持人，且只适用于单场会议。即将废弃，推荐使用ms_open_id。
+    * 类型：string
      */
     protected $uuid = null;
 
     /**
      * 是否开启视频： false：关闭视频（默认值）。 true：开启视频， 仅支持 MRA 设备。
+    * 类型：bool
      */
     protected $video = null;
 
     public function __construct(
-        $instanceid,
-        $user,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->user = $user;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['user'])) {
+            $this->user = new _WemeetopenapiservicemeetingControlmodelV1RealControlMeetingsMeetingIdVideoPutRequestUser($jsonArray['user']);
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter user');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
+        if (isset($jsonArray['video'])) {
+            $this->video = $jsonArray['video'];
+        }
     }
 
     public function instanceid(int $instanceid): V1RealControlMeetingsMeetingIdVideoPutRequest {
@@ -86,7 +111,7 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
     public function setOperatorIdType(int $operatorIdType) {
         $this->operatorIdType = $operatorIdType;
     }
-    public function user(\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdVideoPutRequestUser $user): V1RealControlMeetingsMeetingIdVideoPutRequest {
+    public function user(V1RealControlMeetingsMeetingIdVideoPutRequestUser $user): V1RealControlMeetingsMeetingIdVideoPutRequest {
         $this->user = $user;
         return $this;
     }
@@ -95,7 +120,7 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         return $this->user;
     }
 
-    public function setUser(\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdVideoPutRequestUser $user) {
+    public function setUser(V1RealControlMeetingsMeetingIdVideoPutRequestUser $user) {
         $this->user = $user;
     }
     public function uuid(string $uuid): V1RealControlMeetingsMeetingIdVideoPutRequest {

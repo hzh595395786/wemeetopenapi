@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\record_intelligence\model;
 
@@ -17,11 +17,16 @@ class V1SmartFullsummaryGet200Response implements ModelInterface, \JsonSerializa
 
     /**
      * 智能总结内容
+    * 类型：string
      */
     protected $aiSummary = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ai_summary'])) {
+            $this->aiSummary = $jsonArray['ai_summary'];
+        }
     }
 
     public function aiSummary(string $aiSummary): V1SmartFullsummaryGet200Response {

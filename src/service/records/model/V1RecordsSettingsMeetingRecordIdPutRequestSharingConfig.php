@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,56 +17,97 @@ class V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig implements ModelIn
 
     /**
      * 是否允许下载，默认为 false。 true：允许下载
+    * 类型：bool
      */
     protected $allowDownload = null;
 
     /**
      * 是否允许查看会议纪要，默认为 true。
+    * 类型：bool
      */
     protected $allowViewTranscripts = null;
 
     /**
      * 是否需要审批，true：需要审批 false：不需要审批
+    * 类型：bool
      */
     protected $enableApprove = null;
 
     /**
      * 是否开启密码，默认为 true。 true：开启
+    * 类型：bool
      */
     protected $enablePassword = null;
 
     /**
      * 共享开关，是否开启共享，默认为 true。 true：开启 false：未开启 说明： 未开启时不允许设置以下参数。 修改为 false 关闭共享后，之前设置的共享设置将不保存。
+    * 类型：bool
      */
     protected $enableSharing = null;
 
     /**
      * 是否开启共享链接有效期，默认为 false。 true：开启
+    * 类型：bool
      */
     protected $enableSharingExpire = null;
 
     /**
      * 共享密码，默认随机生成。 说明：当 enable_password = true 时，必传；当 enable_password = false 时，不可传。
+    * 类型：string
      */
     protected $password = null;
 
     /**
      * 访问范围，0：所有人 1：同企业
+    * 类型：int
      */
     protected $shareScope = null;
 
     /**
      * 共享权限类型。 0：仅允许登录用户查看 1：仅企业用户成员可查看 2：仅参会成员可查看
+    * 类型：int
      */
     protected $sharingAuthType = null;
 
     /**
      * 共享链接有效期，unix 时间戳（单位毫秒），默认为空。 说明：当 enable_sharing_expire = true 时，必传；当 enable_sharing_expire = false 时，不可传。
+    * 类型：int
      */
     protected $sharingExpire = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_download'])) {
+            $this->allowDownload = $jsonArray['allow_download'];
+        }
+        if (isset($jsonArray['allow_view_transcripts'])) {
+            $this->allowViewTranscripts = $jsonArray['allow_view_transcripts'];
+        }
+        if (isset($jsonArray['enable_approve'])) {
+            $this->enableApprove = $jsonArray['enable_approve'];
+        }
+        if (isset($jsonArray['enable_password'])) {
+            $this->enablePassword = $jsonArray['enable_password'];
+        }
+        if (isset($jsonArray['enable_sharing'])) {
+            $this->enableSharing = $jsonArray['enable_sharing'];
+        }
+        if (isset($jsonArray['enable_sharing_expire'])) {
+            $this->enableSharingExpire = $jsonArray['enable_sharing_expire'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
+        if (isset($jsonArray['share_scope'])) {
+            $this->shareScope = $jsonArray['share_scope'];
+        }
+        if (isset($jsonArray['sharing_auth_type'])) {
+            $this->sharingAuthType = $jsonArray['sharing_auth_type'];
+        }
+        if (isset($jsonArray['sharing_expire'])) {
+            $this->sharingExpire = $jsonArray['sharing_expire'];
+        }
     }
 
     public function allowDownload(bool $allowDownload): V1RecordsSettingsMeetingRecordIdPutRequestSharingConfig {

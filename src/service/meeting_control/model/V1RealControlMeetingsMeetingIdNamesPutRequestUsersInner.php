@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,24 +16,37 @@ class V1RealControlMeetingsMeetingIdNamesPutRequestUsersInner implements ModelIn
 {
     /**
      * 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 被操作者ms_open_id
-     * @deprecated
+    * 类型：
+     */
     protected $msOpenId;
 
     /**
      * 要修改的昵称名，限制20个字符。
+    * 类型：string
      */
     protected $nickName = null;
 
     public function __construct(
-        $instanceid,
-        $msOpenId,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->msOpenId = $msOpenId;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter ms_open_id');
+        }
+        if (isset($jsonArray['nick_name'])) {
+            $this->nickName = $jsonArray['nick_name'];
+        }
     }
 
     public function instanceid(int $instanceid): V1RealControlMeetingsMeetingIdNamesPutRequestUsersInner {

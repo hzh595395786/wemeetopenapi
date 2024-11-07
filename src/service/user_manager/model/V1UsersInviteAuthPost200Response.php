@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,15 +17,24 @@ class V1UsersInviteAuthPost200Response implements ModelInterface, \JsonSerializa
 
     /**
      * 未验证用户对象列表
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersInviteAuthPost200ResponseAuthUserListInner[]
      */
     protected $authUserList = null;
 
     /**
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersInviteAuthPost200ResponseErrorUserListInner[]
      */
     protected $errorUserList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['auth_user_list'])) {
+            $this->authUserList = $jsonArray['auth_user_list'];
+        }
+        if (isset($jsonArray['error_user_list'])) {
+            $this->errorUserList = $jsonArray['error_user_list'];
+        }
     }
 
     public function authUserList(array $authUserList): V1UsersInviteAuthPost200Response {

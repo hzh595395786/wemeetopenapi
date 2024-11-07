@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,51 +17,88 @@ class V1MeetingsMeetingIdParticipantsGet200Response implements ModelInterface, \
 
     /**
      * 是否还有未拉取的数据，该接口可多次拉取到的数据总量上限为5w条。
+    * 类型：bool
      */
     protected $hasRemaining = null;
 
     /**
      * 会议号码。
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议的唯一 ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 和“has_remaining”一起，数据量比较大的情况下支持参会成员列表的多次获取。
+    * 类型：int
      */
     protected $nextPos = null;
 
     /**
      * 参会人员对象数组。
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdParticipantsGet200ResponseParticipantsInner[]
      */
     protected $participants = null;
 
     /**
      * 预定会议开始时间戳（单位秒）。
+    * 类型：string
      */
     protected $scheduleEndTime = null;
 
     /**
      * 预定会议结束时间戳（单位秒）。
+    * 类型：string
      */
     protected $scheduleStartTime = null;
 
     /**
      * 会议主题。
+    * 类型：string
      */
     protected $subject = null;
 
     /**
      * 当前参会总人次。
+    * 类型：int
      */
     protected $totalCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['has_remaining'])) {
+            $this->hasRemaining = $jsonArray['has_remaining'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['next_pos'])) {
+            $this->nextPos = $jsonArray['next_pos'];
+        }
+        if (isset($jsonArray['participants'])) {
+            $this->participants = $jsonArray['participants'];
+        }
+        if (isset($jsonArray['schedule_end_time'])) {
+            $this->scheduleEndTime = $jsonArray['schedule_end_time'];
+        }
+        if (isset($jsonArray['schedule_start_time'])) {
+            $this->scheduleStartTime = $jsonArray['schedule_start_time'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
     }
 
     public function hasRemaining(bool $hasRemaining): V1MeetingsMeetingIdParticipantsGet200Response {

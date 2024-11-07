@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,26 +16,43 @@ class V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo implements ModelInter
 {
 
     /**
+    * 类型：int
      */
     protected $accountNewType = null;
 
     /**
      * 账号类型，0：普通 1：专款 2：试用
+    * 类型：int
      */
     protected $accountType = null;
 
     /**
      * 1-预装 2-体验 3-付费
+    * 类型：int
      */
     protected $proAccountType = null;
 
     /**
      * 有效期限
+    * 类型：string
      */
     protected $validPeriod = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['account_new_type'])) {
+            $this->accountNewType = $jsonArray['account_new_type'];
+        }
+        if (isset($jsonArray['account_type'])) {
+            $this->accountType = $jsonArray['account_type'];
+        }
+        if (isset($jsonArray['pro_account_type'])) {
+            $this->proAccountType = $jsonArray['pro_account_type'];
+        }
+        if (isset($jsonArray['valid_period'])) {
+            $this->validPeriod = $jsonArray['valid_period'];
+        }
     }
 
     public function accountNewType(int $accountNewType): V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo {

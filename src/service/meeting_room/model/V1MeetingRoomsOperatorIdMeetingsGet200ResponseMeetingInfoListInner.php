@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,41 +17,70 @@ class V1MeetingRoomsOperatorIdMeetingsGet200ResponseMeetingInfoListInner impleme
 
     /**
      * 会议预订结束时间（Unix 秒）。
+    * 类型：int
      */
     protected $endTime = null;
 
     /**
      * 有效会议 Code。PMI会议需返回PMI号，不是真实的meeting_code
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议 ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 会议类型(0-一次性会议，1-周期性会议，2-微信专属会议，4-rooms投屏会议，5-个人会议号会议，6-网络研讨会（Webinar）)
+    * 类型：int
      */
     protected $meetingType = null;
 
     /**
      * 会议预订开始时间（Unix 秒）。
+    * 类型：int
      */
     protected $startTime = null;
 
     /**
      * 会议状态。
+    * 类型：string
      */
     protected $status = null;
 
     /**
      * 会议主题。
+    * 类型：string
      */
     protected $subject = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['meeting_type'])) {
+            $this->meetingType = $jsonArray['meeting_type'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
     }
 
     public function endTime(int $endTime): V1MeetingRoomsOperatorIdMeetingsGet200ResponseMeetingInfoListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,11 +17,16 @@ class V1MeetingsMeetingIdCustomerShortUrlGet200Response implements ModelInterfac
 
     /**
      * 用户专属参会链接对象。
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdCustomerShortUrlGet200ResponseMeetingShortUrlCustomerDataInner[]
      */
     protected $meetingShortUrlCustomerData = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_short_url_customer_data'])) {
+            $this->meetingShortUrlCustomerData = $jsonArray['meeting_short_url_customer_data'];
+        }
     }
 
     public function meetingShortUrlCustomerData(array $meetingShortUrlCustomerData): V1MeetingsMeetingIdCustomerShortUrlGet200Response {

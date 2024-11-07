@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,56 +17,97 @@ class V1MeetingsMeetingIdEnrollApprovalsGet200ResponseEnrollListInner implements
 
     /**
      * 答题列表
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollApprovalsGet200ResponseEnrollListInnerAnswerListInner[]
      */
     protected $answerList = null;
 
     /**
      * pstn入会凭证
+    * 类型：string
      */
     protected $enrollCode = null;
 
     /**
      * 报名id
+    * 类型：int
      */
     protected $enrollId = null;
 
     /**
      * 报名来源： 1：用户手动报名 2：批量导入报名
+    * 类型：int
      */
     protected $enrollSourceType = null;
 
     /**
      * 报名时间（utc+8，非时间戳）
+    * 类型：string
      */
     protected $enrollTime = null;
 
     /**
      * 当场会议的用户临时id，所有用户都有
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 昵称
+    * 类型：string
      */
     protected $nickName = null;
 
     /**
      * 报名者已授权过会议创建的应用时返回openid，否则为空
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 报名状态：1 待审批，2 已拒绝，3 已批准
+    * 类型：int
      */
     protected $status = null;
 
     /**
      * 报名者与会议创建者为同企业时，返回userid，否则为空,导入报名入参为手机号的情况不返回userid。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['answer_list'])) {
+            $this->answerList = $jsonArray['answer_list'];
+        }
+        if (isset($jsonArray['enroll_code'])) {
+            $this->enrollCode = $jsonArray['enroll_code'];
+        }
+        if (isset($jsonArray['enroll_id'])) {
+            $this->enrollId = $jsonArray['enroll_id'];
+        }
+        if (isset($jsonArray['enroll_source_type'])) {
+            $this->enrollSourceType = $jsonArray['enroll_source_type'];
+        }
+        if (isset($jsonArray['enroll_time'])) {
+            $this->enrollTime = $jsonArray['enroll_time'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['nick_name'])) {
+            $this->nickName = $jsonArray['nick_name'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function answerList(array $answerList): V1MeetingsMeetingIdEnrollApprovalsGet200ResponseEnrollListInner {

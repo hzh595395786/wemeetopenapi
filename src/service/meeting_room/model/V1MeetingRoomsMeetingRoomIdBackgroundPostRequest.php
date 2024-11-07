@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -15,24 +15,37 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1MeetingRoomsMeetingRoomIdBackgroundPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 1:userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 不传或者传空则设置为默认背景，目前只能设置一张 背景图片地址，1920*1080,大小10M以内，png/jpg/jpeg格式
+    * 类型：string
      */
     protected $backgroundImage = null;
 
     public function __construct(
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['background_image'])) {
+            $this->backgroundImage = $jsonArray['background_image'];
+        }
     }
 
     public function backgroundImage(string $backgroundImage): V1MeetingRoomsMeetingRoomIdBackgroundPostRequest {

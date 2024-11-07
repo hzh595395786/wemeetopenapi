@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsQueryMeetingidForDevicePost200ResponseMeetingIdMapInner implemen
 
     /**
      * 终端设备类型。
+    * 类型：int
      */
     protected $instanceid = null;
 
     /**
      * 会议ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsQueryMeetingidForDevicePost200ResponseMeetingIdMapInner {

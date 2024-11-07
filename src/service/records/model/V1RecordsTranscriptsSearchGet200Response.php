@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,16 +17,25 @@ class V1RecordsTranscriptsSearchGet200Response implements ModelInterface, \JsonS
 
     /**
      * 搜索结果列表
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsTranscriptsSearchGet200ResponseHitsInner[]
      */
     protected $hits = null;
 
     /**
      * 搜索结果时间戳对象列表
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsTranscriptsSearchGet200ResponseTimelinesInner[]
      */
     protected $timelines = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['hits'])) {
+            $this->hits = $jsonArray['hits'];
+        }
+        if (isset($jsonArray['timelines'])) {
+            $this->timelines = $jsonArray['timelines'];
+        }
     }
 
     public function hits(array $hits): V1RecordsTranscriptsSearchGet200Response {

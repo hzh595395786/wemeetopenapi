@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,21 +17,34 @@ class V1RecordsTranscriptsSearchGet200ResponseTimelinesInner implements ModelInt
 
     /**
      * 段落id
+    * 类型：string
      */
     protected $pid = null;
 
     /**
      * 句子id
+    * 类型：string
      */
     protected $sid = null;
 
     /**
      * 录制文件中的词开始时间（毫秒）
+    * 类型：int
      */
     protected $startTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['pid'])) {
+            $this->pid = $jsonArray['pid'];
+        }
+        if (isset($jsonArray['sid'])) {
+            $this->sid = $jsonArray['sid'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
     }
 
     public function pid(string $pid): V1RecordsTranscriptsSearchGet200ResponseTimelinesInner {

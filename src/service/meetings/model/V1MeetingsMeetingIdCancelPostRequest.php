@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,40 +16,65 @@ class V1MeetingsMeetingIdCancelPostRequest implements ModelInterface, \JsonSeria
 {
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 原因代码，可为用户自定义
-     * @deprecated
+    * 类型：
+     */
     protected $reasonCode;
     /**
      * 调用 API 的用户 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明： 1：企业对接 SSO 时使用的员工唯一标识 ID。 2：企业调用创建用户接口时传递的 userid 参数。
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     /**
      * 会议类型，默认值为0。 0：普通会议 1：周期性会议
+    * 类型：int
      */
     protected $meetingType = null;
 
     /**
      * 取消原因描述
+    * 类型：string
      */
     protected $reasonDetail = null;
 
     /**
      * 周期性子会议 ID，如果不传，则会取消该系列的周期性会议
+    * 类型：string
      */
     protected $subMeetingId = null;
 
     public function __construct(
-        $instanceid,
-        $reasonCode,
-        $userid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->reasonCode = $reasonCode;
-        $this->userid = $userid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['reason_code'])) {
+            $this->reasonCode = $jsonArray['reason_code'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter reason_code');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['meeting_type'])) {
+            $this->meetingType = $jsonArray['meeting_type'];
+        }
+        if (isset($jsonArray['reason_detail'])) {
+            $this->reasonDetail = $jsonArray['reason_detail'];
+        }
+        if (isset($jsonArray['sub_meeting_id'])) {
+            $this->subMeetingId = $jsonArray['sub_meeting_id'];
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdCancelPostRequest {

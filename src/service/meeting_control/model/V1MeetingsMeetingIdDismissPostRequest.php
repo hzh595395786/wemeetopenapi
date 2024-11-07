@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,49 +16,82 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
 {
     /**
      * 设备类型
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 原因代码，可为用户自定义
-     * @deprecated
+    * 类型：
+     */
     protected $reasonCode;
 
     /**
      * 是否强制结束会议，默认值为1：0：不强制结束会议，会议中有参会者，则无法强制结束会议 1 ：强制结束会议，会议中有参会者，也会强制结束会议
+    * 类型：int
      */
     protected $forceDismissMeeting = null;
 
     /**
      * 操作者ID，根据operator_id_type的值，使用不同的类型
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者ID的类型：1:userid  2:openid（预留编号，本次不添加，未来新增接口使用）3:rooms_id  4: ms_open_id
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
      * 取消原因
+    * 类型：string
      */
     protected $reasonDetail = null;
 
     /**
      * 是否回收会议号，默认值为0： 0：不回收会议号，可以重新入会 1： 回收会议号，不可重新入会
+    * 类型：int
      */
     protected $retrieveCode = null;
 
     /**
      * 调用方用于标示用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明：企业对接 SSO 时使用的员工唯一标识 ID，企业调用创建用户接口时传递的 userid 参数。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
-        $instanceid,
-        $reasonCode,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->reasonCode = $reasonCode;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['reason_code'])) {
+            $this->reasonCode = $jsonArray['reason_code'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter reason_code');
+        }
+        if (isset($jsonArray['force_dismiss_meeting'])) {
+            $this->forceDismissMeeting = $jsonArray['force_dismiss_meeting'];
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['reason_detail'])) {
+            $this->reasonDetail = $jsonArray['reason_detail'];
+        }
+        if (isset($jsonArray['retrieve_code'])) {
+            $this->retrieveCode = $jsonArray['retrieve_code'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function forceDismissMeeting(int $forceDismissMeeting): V1MeetingsMeetingIdDismissPostRequest {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,31 +17,52 @@ class V1RecordsEventsGet200ResponseEventsInner implements ModelInterface, \JsonS
 
     /**
      * 查询事件类型：1：下载，2：查看。
+    * 类型：int
      */
     protected $eventType = null;
 
     /**
      * 操作时间，UNIX 时间戳（单位毫秒）。
+    * 类型：int
      */
     protected $operateTime = null;
 
     /**
      * 录制文件名称。
+    * 类型：string
      */
     protected $recordName = null;
 
     /**
      * 用户名称。
+    * 类型：string
      */
     protected $userName = null;
 
     /**
      * 用户 ID。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['event_type'])) {
+            $this->eventType = $jsonArray['event_type'];
+        }
+        if (isset($jsonArray['operate_time'])) {
+            $this->operateTime = $jsonArray['operate_time'];
+        }
+        if (isset($jsonArray['record_name'])) {
+            $this->recordName = $jsonArray['record_name'];
+        }
+        if (isset($jsonArray['user_name'])) {
+            $this->userName = $jsonArray['user_name'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function eventType(int $eventType): V1RecordsEventsGet200ResponseEventsInner {

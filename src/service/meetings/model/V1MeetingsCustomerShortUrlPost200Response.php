@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,14 +16,19 @@ class V1MeetingsCustomerShortUrlPost200Response implements ModelInterface, \Json
 {
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData
      */
     protected $meetingShortUrlCustomerData = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_short_url_customer_data'])) {
+            $this->meetingShortUrlCustomerData = new V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData($jsonArray['meeting_short_url_customer_data']);
+        }
     }
 
-    public function meetingShortUrlCustomerData(\wemeet\openapi\service\meetings\model\V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData $meetingShortUrlCustomerData): V1MeetingsCustomerShortUrlPost200Response {
+    public function meetingShortUrlCustomerData(V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData $meetingShortUrlCustomerData): V1MeetingsCustomerShortUrlPost200Response {
         $this->meetingShortUrlCustomerData = $meetingShortUrlCustomerData;
         return $this;
     }
@@ -32,7 +37,7 @@ class V1MeetingsCustomerShortUrlPost200Response implements ModelInterface, \Json
         return $this->meetingShortUrlCustomerData;
     }
 
-    public function setMeetingShortUrlCustomerData(\wemeet\openapi\service\meetings\model\V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData $meetingShortUrlCustomerData) {
+    public function setMeetingShortUrlCustomerData(V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData $meetingShortUrlCustomerData) {
         $this->meetingShortUrlCustomerData = $meetingShortUrlCustomerData;
     }
 

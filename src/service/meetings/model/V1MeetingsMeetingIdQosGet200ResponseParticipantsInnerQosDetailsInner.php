@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,31 +16,52 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner imple
 {
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio
      */
     protected $audio = null;
 
     /**
      * 设备类型
+    * 类型：int
      */
     protected $instanceid = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork
      */
     protected $network = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerShareScreen
      */
     protected $shareScreen = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo
      */
     protected $video = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['audio'])) {
+            $this->audio = new V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio($jsonArray['audio']);
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['network'])) {
+            $this->network = new V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork($jsonArray['network']);
+        }
+        if (isset($jsonArray['share_screen'])) {
+            $this->shareScreen = new V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerShareScreen($jsonArray['share_screen']);
+        }
+        if (isset($jsonArray['video'])) {
+            $this->video = new V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo($jsonArray['video']);
+        }
     }
 
-    public function audio(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio $audio): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
+    public function audio(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio $audio): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
         $this->audio = $audio;
         return $this;
     }
@@ -49,7 +70,7 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner imple
         return $this->audio;
     }
 
-    public function setAudio(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio $audio) {
+    public function setAudio(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerAudio $audio) {
         $this->audio = $audio;
     }
     public function instanceid(int $instanceid): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
@@ -64,7 +85,7 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner imple
     public function setInstanceid(int $instanceid) {
         $this->instanceid = $instanceid;
     }
-    public function network(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork $network): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
+    public function network(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork $network): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
         $this->network = $network;
         return $this;
     }
@@ -73,10 +94,10 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner imple
         return $this->network;
     }
 
-    public function setNetwork(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork $network) {
+    public function setNetwork(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork $network) {
         $this->network = $network;
     }
-    public function shareScreen(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerShareScreen $shareScreen): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
+    public function shareScreen(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerShareScreen $shareScreen): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
         $this->shareScreen = $shareScreen;
         return $this;
     }
@@ -85,10 +106,10 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner imple
         return $this->shareScreen;
     }
 
-    public function setShareScreen(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerShareScreen $shareScreen) {
+    public function setShareScreen(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerShareScreen $shareScreen) {
         $this->shareScreen = $shareScreen;
     }
-    public function video(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo $video): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
+    public function video(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo $video): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner {
         $this->video = $video;
         return $this;
     }
@@ -97,7 +118,7 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner imple
         return $this->video;
     }
 
-    public function setVideo(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo $video) {
+    public function setVideo(V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo $video) {
         $this->video = $video;
     }
 

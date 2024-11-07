@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,11 +17,16 @@ class V1FilesRecordsUploadAllPost200Response implements ModelInterface, \JsonSer
 
     /**
      * 任务ID
+    * 类型：string
      */
     protected $jobId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['job_id'])) {
+            $this->jobId = $jsonArray['job_id'];
+        }
     }
 
     public function jobId(string $jobId): V1FilesRecordsUploadAllPost200Response {

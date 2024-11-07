@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,36 +17,61 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo 
 
     /**
      * 下行码率（kbps）
+    * 类型：string
      */
     protected $downstreamBitrate = null;
 
     /**
      * 下行帧率（fps）
+    * 类型：string
      */
     protected $downstreamFramerate = null;
 
     /**
      * 下行分辨率
+    * 类型：string
      */
     protected $downstreamResolution = null;
 
     /**
      * 上行码率（kbps）
+    * 类型：string
      */
     protected $upstreamBitrate = null;
 
     /**
      * 上行帧率（fps）
+    * 类型：string
      */
     protected $upstreamFramerate = null;
 
     /**
      * 上行分辨率
+    * 类型：string
      */
     protected $upstreamResolution = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['downstream_bitrate'])) {
+            $this->downstreamBitrate = $jsonArray['downstream_bitrate'];
+        }
+        if (isset($jsonArray['downstream_framerate'])) {
+            $this->downstreamFramerate = $jsonArray['downstream_framerate'];
+        }
+        if (isset($jsonArray['downstream_resolution'])) {
+            $this->downstreamResolution = $jsonArray['downstream_resolution'];
+        }
+        if (isset($jsonArray['upstream_bitrate'])) {
+            $this->upstreamBitrate = $jsonArray['upstream_bitrate'];
+        }
+        if (isset($jsonArray['upstream_framerate'])) {
+            $this->upstreamFramerate = $jsonArray['upstream_framerate'];
+        }
+        if (isset($jsonArray['upstream_resolution'])) {
+            $this->upstreamResolution = $jsonArray['upstream_resolution'];
+        }
     }
 
     public function downstreamBitrate(string $downstreamBitrate): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerVideo {

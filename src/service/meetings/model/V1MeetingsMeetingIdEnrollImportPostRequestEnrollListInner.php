@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,31 +17,52 @@ class V1MeetingsMeetingIdEnrollImportPostRequestEnrollListInner implements Model
 
     /**
      * 国家/地区代码，若使用手机号，必填（例如：中国传86，不是+86）
+    * 类型：string
      */
     protected $area = null;
 
     /**
      * 报名的昵称，与会中昵称可能不一致
+    * 类型：string
      */
     protected $nickName = null;
 
     /**
      * OAuth授权用户ID。  导入报名对象支持本企业（或与OAuth应用同企业）内 userid、授权用户的openid、phone_number 三种形式，三者必填其一；  如果都传了以openid为准；（优先级为：openid -> userid -> phone_number）  JWT鉴权方式无法使用open_id导入报名。
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 手机号,导入报名支持本企业（或与OAuth应用同企业）内 userid、授权用户的openid、phone_number 三种形式，三者必填其一。
+    * 类型：string
      */
     protected $phoneNumber = null;
 
     /**
      * 用户的唯一 ID（企业内部请使用企业唯一用户标识）。 导入报名支持本企业（或与OAuth应用同企业）内 userid、授权用户的openid、phone_number 三种形式，三者必填其一。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        }
+        if (isset($jsonArray['nick_name'])) {
+            $this->nickName = $jsonArray['nick_name'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['phone_number'])) {
+            $this->phoneNumber = $jsonArray['phone_number'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function area(string $area): V1MeetingsMeetingIdEnrollImportPostRequestEnrollListInner {

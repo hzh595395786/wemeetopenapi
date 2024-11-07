@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,24 +16,37 @@ class V1MeetingsMeetingIdInviteesPutRequest implements ModelInterface, \JsonSeri
 {
     /**
      * 用户的终端设备类型：1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 会议创建者ID。调用方用于标示用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明： 1. 企业对接 SSO 时使用的员工唯一标识 ID。 2. 企业调用创建用户接口时传递的 userid 参数。
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     /**
      * 会议邀请的参会者（传空数组或不传会清空受邀成员列表，最大支持2000人）
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdInviteesPutRequestInviteesInner[]
      */
     protected $invitees = null;
 
     public function __construct(
-        $instanceid,
-        $userid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->userid = $userid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['invitees'])) {
+            $this->invitees = $jsonArray['invitees'];
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdInviteesPutRequest {

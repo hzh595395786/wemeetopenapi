@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,31 +17,52 @@ class V1MeetingsMeetingIdEnrollApprovalsGet200Response implements ModelInterface
 
     /**
      * 当前页
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 当前页实际大小
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 当前页的报名列表，current_size为0时无该字段
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollApprovalsGet200ResponseEnrollListInner[]
      */
     protected $enrollList = null;
 
     /**
      * 根据条件筛选后的总报名人数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 根据条件筛选后的总分页数
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['enroll_list'])) {
+            $this->enrollList = $jsonArray['enroll_list'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currentPage(int $currentPage): V1MeetingsMeetingIdEnrollApprovalsGet200Response {

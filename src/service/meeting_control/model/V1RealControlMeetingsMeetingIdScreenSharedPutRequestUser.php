@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,28 +16,45 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequestUser implements ModelI
 {
     /**
      * 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
 
     /**
      * 用户ID，根据to_operator_id_type的值，使用不同的类型
+    * 类型：string
      */
     protected $toOperatorId = null;
 
     /**
      * 用户ID的类型：4: ms_open_id
+    * 类型：int
      */
     protected $toOperatorIdType = null;
 
     /**
      * 用户的唯一标识uuid
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
-        $instanceid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function instanceid(int $instanceid): V1RealControlMeetingsMeetingIdScreenSharedPutRequestUser {

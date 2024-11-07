@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,31 +16,48 @@ class V1MeetingsMeetingIdEnrollUnregistrationDeleteRequest implements ModelInter
 {
     /**
      * 报名对象列表
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdEnrollUnregistrationDeleteRequestEnrollIdListInner
+     */
     protected $enrollIdList;
     /**
      * 操作者的终端设备类型
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1. 企业用户 userid 2: open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     public function __construct(
-        $enrollIdList,
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->enrollIdList = $enrollIdList;
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['enroll_id_list'])) {
+            $this->enrollIdList = $jsonArray['enroll_id_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter enroll_id_list');
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
     }
 
     public function enrollIdList(array $enrollIdList): V1MeetingsMeetingIdEnrollUnregistrationDeleteRequest {

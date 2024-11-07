@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,46 +17,79 @@ class V1MeetingsMeetingIdWaitingRoomParticipantsGet200ResponseParticipantsInner 
 
     /**
      * 客户端版本
+    * 类型：string
      */
     protected $appVersion = null;
 
     /**
      * 用户自定义参数
+    * 类型：string
      */
     protected $customerData = null;
 
     /**
      * 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
+    * 类型：int
      */
     protected $instanceid = null;
 
     /**
      * 成员会中唯一 ID。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 等候室 OAuth2.0 鉴权用户的 ID。
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 入会用户名（base64）
+    * 类型：string
      */
     protected $userName = null;
 
     /**
      * 等候室成员用户 ID
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 用户的唯一标识uuid
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['app_version'])) {
+            $this->appVersion = $jsonArray['app_version'];
+        }
+        if (isset($jsonArray['customer_data'])) {
+            $this->customerData = $jsonArray['customer_data'];
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['user_name'])) {
+            $this->userName = $jsonArray['user_name'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function appVersion(string $appVersion): V1MeetingsMeetingIdWaitingRoomParticipantsGet200ResponseParticipantsInner {

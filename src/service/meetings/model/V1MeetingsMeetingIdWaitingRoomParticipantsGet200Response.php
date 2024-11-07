@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,56 +17,97 @@ class V1MeetingsMeetingIdWaitingRoomParticipantsGet200Response implements ModelI
 
     /**
      * 分页查询返回当前页码
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 分页查询返回单页数据条数
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 会议CODE
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议唯一 ID
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 等候室人员对象数组
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdWaitingRoomParticipantsGet200ResponseParticipantsInner[]
      */
     protected $participants = null;
 
     /**
      * 预定的会议结束时间戳（单位秒）
+    * 类型：int
      */
     protected $scheduleEndTime = null;
 
     /**
      * 预定的会议开始时间戳（单位秒）
+    * 类型：int
      */
     protected $scheduleStartTime = null;
 
     /**
      * 会议主题 (base64 编码)
+    * 类型：string
      */
     protected $subject = null;
 
     /**
      * 分页查询返回数据总数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 分页查询返回分页总数
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['participants'])) {
+            $this->participants = $jsonArray['participants'];
+        }
+        if (isset($jsonArray['schedule_end_time'])) {
+            $this->scheduleEndTime = $jsonArray['schedule_end_time'];
+        }
+        if (isset($jsonArray['schedule_start_time'])) {
+            $this->scheduleStartTime = $jsonArray['schedule_start_time'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currentPage(int $currentPage): V1MeetingsMeetingIdWaitingRoomParticipantsGet200Response {

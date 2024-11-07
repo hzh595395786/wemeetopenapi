@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,111 +17,196 @@ class V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo implements ModelInte
 
     /**
      * 激活时间
+    * 类型：string
      */
     protected $activeTime = null;
 
     /**
      * 摄像头型号
+    * 类型：string
      */
     protected $cameraModel = null;
 
     /**
      * CPU信息
+    * 类型：string
      */
     protected $cpuInfo = null;
 
     /**
      * CPU最大占用率
+    * 类型：string
      */
     protected $cpuUsage = null;
 
     /**
      * 设备型号
+    * 类型：string
      */
     protected $deviceModel = null;
 
     /**
      * 是否开启视频镜像
+    * 类型：bool
      */
     protected $enableVideoMirror = null;
 
     /**
      * 厂家
+    * 类型：string
      */
     protected $factory = null;
 
     /**
      * 固件版本
+    * 类型：string
      */
     protected $firmwareVersion = null;
 
     /**
      * GPU信息
+    * 类型：string
      */
     protected $gpuInfo = null;
 
     /**
      * 健康状况
+    * 类型：string
      */
     protected $healthStatus = null;
 
     /**
      * ip地址
+    * 类型：string
      */
     protected $ip = null;
 
     /**
      * MAC地址
+    * 类型：string
      */
     protected $mac = null;
 
     /**
      * 会议室状态
+    * 类型：int
      */
     protected $meetingRoomStatus = null;
 
     /**
      * 内存信息
+    * 类型：string
      */
     protected $memoryInfo = null;
 
     /**
      * 麦克风信息
+    * 类型：string
      */
     protected $microphoneInfo = null;
 
     /**
      * 显示器刷新率
+    * 类型：int
      */
     protected $monitorFrequency = null;
 
     /**
      * 网络类型
+    * 类型：string
      */
     protected $netType = null;
 
     /**
      * Rooms版本
+    * 类型：string
      */
     protected $roomsVersion = null;
 
     /**
      * 序列号
+    * 类型：string
      */
     protected $sn = null;
 
     /**
      * 扬声器信息
+    * 类型：string
      */
     protected $speakerInfo = null;
 
     /**
      * 设备系统
+    * 类型：string
      */
     protected $systemType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['active_time'])) {
+            $this->activeTime = $jsonArray['active_time'];
+        }
+        if (isset($jsonArray['camera_model'])) {
+            $this->cameraModel = $jsonArray['camera_model'];
+        }
+        if (isset($jsonArray['cpu_info'])) {
+            $this->cpuInfo = $jsonArray['cpu_info'];
+        }
+        if (isset($jsonArray['cpu_usage'])) {
+            $this->cpuUsage = $jsonArray['cpu_usage'];
+        }
+        if (isset($jsonArray['device_model'])) {
+            $this->deviceModel = $jsonArray['device_model'];
+        }
+        if (isset($jsonArray['enable_video_mirror'])) {
+            $this->enableVideoMirror = $jsonArray['enable_video_mirror'];
+        }
+        if (isset($jsonArray['factory'])) {
+            $this->factory = $jsonArray['factory'];
+        }
+        if (isset($jsonArray['firmware_version'])) {
+            $this->firmwareVersion = $jsonArray['firmware_version'];
+        }
+        if (isset($jsonArray['gpu_info'])) {
+            $this->gpuInfo = $jsonArray['gpu_info'];
+        }
+        if (isset($jsonArray['health_status'])) {
+            $this->healthStatus = $jsonArray['health_status'];
+        }
+        if (isset($jsonArray['ip'])) {
+            $this->ip = $jsonArray['ip'];
+        }
+        if (isset($jsonArray['mac'])) {
+            $this->mac = $jsonArray['mac'];
+        }
+        if (isset($jsonArray['meeting_room_status'])) {
+            $this->meetingRoomStatus = $jsonArray['meeting_room_status'];
+        }
+        if (isset($jsonArray['memory_info'])) {
+            $this->memoryInfo = $jsonArray['memory_info'];
+        }
+        if (isset($jsonArray['microphone_info'])) {
+            $this->microphoneInfo = $jsonArray['microphone_info'];
+        }
+        if (isset($jsonArray['monitor_frequency'])) {
+            $this->monitorFrequency = $jsonArray['monitor_frequency'];
+        }
+        if (isset($jsonArray['net_type'])) {
+            $this->netType = $jsonArray['net_type'];
+        }
+        if (isset($jsonArray['rooms_version'])) {
+            $this->roomsVersion = $jsonArray['rooms_version'];
+        }
+        if (isset($jsonArray['sn'])) {
+            $this->sn = $jsonArray['sn'];
+        }
+        if (isset($jsonArray['speaker_info'])) {
+            $this->speakerInfo = $jsonArray['speaker_info'];
+        }
+        if (isset($jsonArray['system_type'])) {
+            $this->systemType = $jsonArray['system_type'];
+        }
     }
 
     public function activeTime(string $activeTime): V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo {

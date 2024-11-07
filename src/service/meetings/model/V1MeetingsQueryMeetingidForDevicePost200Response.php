@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,11 +17,16 @@ class V1MeetingsQueryMeetingidForDevicePost200Response implements ModelInterface
 
     /**
      * 用户设备已加入的会议的列表
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsQueryMeetingidForDevicePost200ResponseMeetingIdMapInner[]
      */
     protected $meetingIdMap = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_id_map'])) {
+            $this->meetingIdMap = $jsonArray['meeting_id_map'];
+        }
     }
 
     public function meetingIdMap(array $meetingIdMap): V1MeetingsQueryMeetingidForDevicePost200Response {

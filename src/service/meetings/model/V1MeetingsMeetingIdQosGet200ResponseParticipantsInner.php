@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,20 +17,33 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInner implements ModelInte
 
     /**
      * 会中ID
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 会中用户名
+    * 类型：string
      */
     protected $nickName = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInner[]
      */
     protected $qosDetails = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['nick_name'])) {
+            $this->nickName = $jsonArray['nick_name'];
+        }
+        if (isset($jsonArray['qos_details'])) {
+            $this->qosDetails = $jsonArray['qos_details'];
+        }
     }
 
     public function msOpenId(string $msOpenId): V1MeetingsMeetingIdQosGet200ResponseParticipantsInner {

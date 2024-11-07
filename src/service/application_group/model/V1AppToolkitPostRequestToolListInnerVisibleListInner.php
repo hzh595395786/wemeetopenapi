@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\application_group\model;
 
@@ -17,21 +17,34 @@ class V1AppToolkitPostRequestToolListInnerVisibleListInner implements ModelInter
 
     /**
      * 对哪个企业的用户可见
+    * 类型：string
      */
     protected $visibleAppid = null;
 
     /**
      * 可见用户openid，OAuth2.0鉴权用户请用此字段（visible_userid和visible_openid二者选一，同时存在时以visible_openid为准）
+    * 类型：string
      */
     protected $visibleOpenid = null;
 
     /**
      * 可见用户userid，若不填则对该企业下所有用户可见
+    * 类型：string
      */
     protected $visibleUserid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['visible_appid'])) {
+            $this->visibleAppid = $jsonArray['visible_appid'];
+        }
+        if (isset($jsonArray['visible_openid'])) {
+            $this->visibleOpenid = $jsonArray['visible_openid'];
+        }
+        if (isset($jsonArray['visible_userid'])) {
+            $this->visibleUserid = $jsonArray['visible_userid'];
+        }
     }
 
     public function visibleAppid(string $visibleAppid): V1AppToolkitPostRequestToolListInnerVisibleListInner {

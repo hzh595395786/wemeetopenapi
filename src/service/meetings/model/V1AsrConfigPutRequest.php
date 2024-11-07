@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,36 +16,57 @@ class V1AsrConfigPutRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 自定义热词，不得包含数字、特殊字符、中英混合，中文十个字以内，英文 20 个字母以内。同场会议或同一个人每次设置会覆盖上次设置内容。会议维度最多支持设置 500 个，创建者维度最多支持设置 100 个。
-     * @deprecated
+    * 类型：
+     */
     protected $customizeWords;
     /**
      * 操作者ID
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID类型 1:userid，2:openid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 自定义热词标签，便于热词分类，最多支持输入 32 个字符（中英文）
-     * @deprecated
+    * 类型：
+     */
     protected $tag;
 
     /**
      * 会议ID，有该字段则对该场会议生效。不传该字段则对操作人创建的会议生效
+    * 类型：string
      */
     protected $meetingId = null;
 
     public function __construct(
-        $customizeWords,
-        $operatorId,
-        $operatorIdType,
-        $tag,
+        $jsonArray = []
     ) {
-        $this->customizeWords = $customizeWords;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->tag = $tag;
+        if (isset($jsonArray['customize_words'])) {
+            $this->customizeWords = $jsonArray['customize_words'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter customize_words');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['tag'])) {
+            $this->tag = $jsonArray['tag'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter tag');
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
     }
 
     public function customizeWords(array $customizeWords): V1AsrConfigPutRequest {

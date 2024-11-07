@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,35 +16,64 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule impleme
 {
 
     /**
+    * 类型：int
      */
     protected $customizedRecurringDays = null;
 
     /**
+    * 类型：int
      */
     protected $customizedRecurringStep = null;
 
     /**
+    * 类型：int
      */
     protected $customizedRecurringType = null;
 
     /**
+    * 类型：int
      */
     protected $recurringType = null;
 
     /**
+    * 类型：int
      */
     protected $untilCount = null;
 
     /**
+    * 类型：int
      */
     protected $untilDate = null;
 
     /**
+    * 类型：int
      */
     protected $untilType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['customized_recurring_days'])) {
+            $this->customizedRecurringDays = $jsonArray['customized_recurring_days'];
+        }
+        if (isset($jsonArray['customized_recurring_step'])) {
+            $this->customizedRecurringStep = $jsonArray['customized_recurring_step'];
+        }
+        if (isset($jsonArray['customized_recurring_type'])) {
+            $this->customizedRecurringType = $jsonArray['customized_recurring_type'];
+        }
+        if (isset($jsonArray['recurring_type'])) {
+            $this->recurringType = $jsonArray['recurring_type'];
+        }
+        if (isset($jsonArray['until_count'])) {
+            $this->untilCount = $jsonArray['until_count'];
+        }
+        if (isset($jsonArray['until_date'])) {
+            $this->untilDate = $jsonArray['until_date'];
+        }
+        if (isset($jsonArray['until_type'])) {
+            $this->untilType = $jsonArray['until_type'];
+        }
     }
 
     public function customizedRecurringDays(int $customizedRecurringDays): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,16 +17,25 @@ class V1UsersOpenIdToUseridPost200ResponseUseridListInner implements ModelInterf
 
     /**
      * 需要转换的open_id
+    * 类型：string
      */
     protected $openId = null;
 
     /**
      * 转换成功后，该open_id所对应的本企业下用户的userid。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['open_id'])) {
+            $this->openId = $jsonArray['open_id'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function openId(string $openId): V1UsersOpenIdToUseridPost200ResponseUseridListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,31 +17,52 @@ class V1DevicesGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 当前页
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 单页条数
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 设备对象列表
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1DevicesGet200ResponseDeviceInfoListInner[]
      */
     protected $deviceInfoList = null;
 
     /**
      * 数据总条数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 数据总页数
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['device_info_list'])) {
+            $this->deviceInfoList = $jsonArray['device_info_list'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currentPage(int $currentPage): V1DevicesGet200Response {

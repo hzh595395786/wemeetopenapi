@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,39 +16,72 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfig implements ModelInt
 {
 
     /**
+    * 类型：bool
      */
     protected $enableLiveIm = null;
 
     /**
+    * 类型：bool
      */
     protected $enableLivePassword = null;
 
     /**
+    * 类型：bool
      */
     protected $enableLiveReplay = null;
 
     /**
+    * 类型：string
      */
     protected $liveAddr = null;
 
     /**
+    * 类型：string
      */
     protected $livePassword = null;
 
     /**
+    * 类型：string
      */
     protected $liveSubject = null;
 
     /**
+    * 类型：string
      */
     protected $liveSummary = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark
      */
     protected $liveWatermark = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['enable_live_im'])) {
+            $this->enableLiveIm = $jsonArray['enable_live_im'];
+        }
+        if (isset($jsonArray['enable_live_password'])) {
+            $this->enableLivePassword = $jsonArray['enable_live_password'];
+        }
+        if (isset($jsonArray['enable_live_replay'])) {
+            $this->enableLiveReplay = $jsonArray['enable_live_replay'];
+        }
+        if (isset($jsonArray['live_addr'])) {
+            $this->liveAddr = $jsonArray['live_addr'];
+        }
+        if (isset($jsonArray['live_password'])) {
+            $this->livePassword = $jsonArray['live_password'];
+        }
+        if (isset($jsonArray['live_subject'])) {
+            $this->liveSubject = $jsonArray['live_subject'];
+        }
+        if (isset($jsonArray['live_summary'])) {
+            $this->liveSummary = $jsonArray['live_summary'];
+        }
+        if (isset($jsonArray['live_watermark'])) {
+            $this->liveWatermark = new V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark($jsonArray['live_watermark']);
+        }
     }
 
     public function enableLiveIm(bool $enableLiveIm): V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfig {
@@ -135,7 +168,7 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfig implements ModelInt
     public function setLiveSummary(string $liveSummary) {
         $this->liveSummary = $liveSummary;
     }
-    public function liveWatermark(\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark $liveWatermark): V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfig {
+    public function liveWatermark(V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark $liveWatermark): V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfig {
         $this->liveWatermark = $liveWatermark;
         return $this;
     }
@@ -144,7 +177,7 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfig implements ModelInt
         return $this->liveWatermark;
     }
 
-    public function setLiveWatermark(\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark $liveWatermark) {
+    public function setLiveWatermark(V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark $liveWatermark) {
         $this->liveWatermark = $liveWatermark;
     }
 

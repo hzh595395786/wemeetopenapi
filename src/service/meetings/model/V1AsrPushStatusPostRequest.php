@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,31 +16,48 @@ class V1AsrPushStatusPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 开启/取消转写内容推送 true：开启推送 false：取消推送
-     * @deprecated
+    * 类型：
+     */
     protected $isOpen;
     /**
      * 会议 ID。
-     * @deprecated
+    * 类型：
+     */
     protected $meetingId;
     /**
      * 操作者ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID类型： 1：userid 2:openid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     public function __construct(
-        $isOpen,
-        $meetingId,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->isOpen = $isOpen;
-        $this->meetingId = $meetingId;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['is_open'])) {
+            $this->isOpen = $jsonArray['is_open'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter is_open');
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_id');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
     }
 
     public function isOpen(bool $isOpen): V1AsrPushStatusPostRequest {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,51 +17,88 @@ class V1AddressesGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 当前页
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 当前size
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 会议 code。
+    * 类型：string
      */
     protected $meetingCode = null;
 
     /**
      * 会议唯一 ID。
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 会议录制 ID。
+    * 类型：string
      */
     protected $meetingRecordId = null;
 
     /**
      * 录制文件列表。
+    * 类型：\wemeet\openapi\service\records\model\V1AddressesGet200ResponseRecordFilesInner[]
      */
     protected $recordFiles = null;
 
     /**
      * 会议主题。
+    * 类型：string
      */
     protected $subject = null;
 
     /**
      * 录制总数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 总页数
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['meeting_record_id'])) {
+            $this->meetingRecordId = $jsonArray['meeting_record_id'];
+        }
+        if (isset($jsonArray['record_files'])) {
+            $this->recordFiles = $jsonArray['record_files'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currentPage(int $currentPage): V1AddressesGet200Response {

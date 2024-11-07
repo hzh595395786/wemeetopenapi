@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,11 +16,16 @@ class V1MeetingRoomsMeetingRoomIdBackgroundPost200Response implements ModelInter
 {
 
     /**
+    * 类型：string
      */
     protected $jobId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['job_id'])) {
+            $this->jobId = $jsonArray['job_id'];
+        }
     }
 
     public function jobId(string $jobId): V1MeetingRoomsMeetingRoomIdBackgroundPost200Response {

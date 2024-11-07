@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,16 +17,25 @@ class V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo
 
     /**
      * 同企业返回企业用户 userid。
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 昵称
+    * 类型：string
      */
     protected $username = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
     }
 
     public function userid(string $userid): V1RecordsTranscriptsDetailsGet200ResponseMinutesParagraphsInnerSpeakerInfo {

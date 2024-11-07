@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,11 +17,16 @@ class V1MeetingRoomsMeetingRoomIdActiveCodePost200Response implements ModelInter
 
     /**
      * 激活码
+    * 类型：string
      */
     protected $activeCode = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['active_code'])) {
+            $this->activeCode = $jsonArray['active_code'];
+        }
     }
 
     public function activeCode(string $activeCode): V1MeetingRoomsMeetingRoomIdActiveCodePost200Response {

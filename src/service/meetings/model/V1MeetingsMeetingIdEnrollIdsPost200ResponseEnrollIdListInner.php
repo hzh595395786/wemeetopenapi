@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdEnrollIdsPost200ResponseEnrollIdListInner implements Mo
 
     /**
      * 报名ID
+    * 类型：int
      */
     protected $enrollId = null;
 
     /**
      * 当场会议的用户临时 ID，适用于所有用户。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['enroll_id'])) {
+            $this->enrollId = $jsonArray['enroll_id'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
     }
 
     public function enrollId(int $enrollId): V1MeetingsMeetingIdEnrollIdsPost200ResponseEnrollIdListInner {

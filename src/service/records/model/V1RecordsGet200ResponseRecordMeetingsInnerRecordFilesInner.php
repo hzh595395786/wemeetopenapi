@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,61 +17,106 @@ class V1RecordsGet200ResponseRecordMeetingsInnerRecordFilesInner implements Mode
 
     /**
      * 是否允许下载，开启共享时返回。
+    * 类型：bool
      */
     protected $allowDownload = null;
 
     /**
      * 访问密码，开启共享时返回。
+    * 类型：string
      */
     protected $password = null;
 
     /**
      * 结束录制时间，UNIX 时间戳（单位毫秒）。
+    * 类型：int
      */
     protected $recordEndTime = null;
 
     /**
      * 录制文件 ID。
+    * 类型：string
      */
     protected $recordFileId = null;
 
     /**
      * 文件大小（单位字节）。
+    * 类型：int
      */
     protected $recordSize = null;
 
     /**
      * 开始录制时间，UNIX 时间戳（单位毫秒）。
+    * 类型：int
      */
     protected $recordStartTime = null;
 
     /**
      * 仅参会成员可查看，开启共享时返回。
+    * 类型：bool
      */
     protected $requiredParticipant = null;
 
     /**
      * 仅企业用户可查看，开启共享时返回。
+    * 类型：bool
      */
     protected $requiredSameCorp = null;
 
     /**
      * 共享链接有效期（单位毫秒），当未开启共享时，返回0表示永久有效；开启共享时返回。
+    * 类型：int
      */
     protected $sharingExpire = null;
 
     /**
      * 共享状态，是否开启共享。0：未开启1：开启，当开启共享时返回访问权限、访问密码、共享链接有效期、是否允许下载。
+    * 类型：int
      */
     protected $sharingState = null;
 
     /**
      * 共享链接，开启共享时返回。
+    * 类型：string
      */
     protected $sharingUrl = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_download'])) {
+            $this->allowDownload = $jsonArray['allow_download'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
+        if (isset($jsonArray['record_end_time'])) {
+            $this->recordEndTime = $jsonArray['record_end_time'];
+        }
+        if (isset($jsonArray['record_file_id'])) {
+            $this->recordFileId = $jsonArray['record_file_id'];
+        }
+        if (isset($jsonArray['record_size'])) {
+            $this->recordSize = $jsonArray['record_size'];
+        }
+        if (isset($jsonArray['record_start_time'])) {
+            $this->recordStartTime = $jsonArray['record_start_time'];
+        }
+        if (isset($jsonArray['required_participant'])) {
+            $this->requiredParticipant = $jsonArray['required_participant'];
+        }
+        if (isset($jsonArray['required_same_corp'])) {
+            $this->requiredSameCorp = $jsonArray['required_same_corp'];
+        }
+        if (isset($jsonArray['sharing_expire'])) {
+            $this->sharingExpire = $jsonArray['sharing_expire'];
+        }
+        if (isset($jsonArray['sharing_state'])) {
+            $this->sharingState = $jsonArray['sharing_state'];
+        }
+        if (isset($jsonArray['sharing_url'])) {
+            $this->sharingUrl = $jsonArray['sharing_url'];
+        }
     }
 
     public function allowDownload(bool $allowDownload): V1RecordsGet200ResponseRecordMeetingsInnerRecordFilesInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,81 +17,142 @@ class V1MeetingRoomsMonitorDeviceControllerInfoGet200ResponseControllerInfoListI
 
     /**
      * 应用程序版本。
+    * 类型：string
      */
     protected $appVersion = null;
 
     /**
      * 控制器型号
+    * 类型：string
      */
     protected $controllerModel = null;
 
     /**
      * 控制器名称
+    * 类型：string
      */
     protected $controllerName = null;
 
     /**
      * CPU 类型
+    * 类型：string
      */
     protected $cpuType = null;
 
     /**
      * CPU 当前占有率
+    * 类型：string
      */
     protected $cpuUsage = null;
 
     /**
      * 固件版本
+    * 类型：string
      */
     protected $frameworkVersion = null;
 
     /**
      * IP 地址
+    * 类型：string
      */
     protected $ipAddress = null;
 
     /**
      * MAC 地址
+    * 类型：string
      */
     protected $macAddress = null;
 
     /**
      * 厂商
+    * 类型：string
      */
     protected $manufactureName = null;
 
     /**
      * 会议室地址。
+    * 类型：string
      */
     protected $meetingRoomLocation = null;
 
     /**
      * 会议室名称。
+    * 类型：string
      */
     protected $meetingRoomName = null;
 
     /**
      * 内存使用大小
+    * 类型：string
      */
     protected $memUsage = null;
 
     /**
      * 网络类型
+    * 类型：string
      */
     protected $networkType = null;
 
     /**
      * 会议室 ID。
+    * 类型：string
      */
     protected $roomsId = null;
 
     /**
      * 设备状态；0:离线 1:在线
+    * 类型：string
      */
     protected $status = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['app_version'])) {
+            $this->appVersion = $jsonArray['app_version'];
+        }
+        if (isset($jsonArray['controller_model'])) {
+            $this->controllerModel = $jsonArray['controller_model'];
+        }
+        if (isset($jsonArray['controller_name'])) {
+            $this->controllerName = $jsonArray['controller_name'];
+        }
+        if (isset($jsonArray['cpu_type'])) {
+            $this->cpuType = $jsonArray['cpu_type'];
+        }
+        if (isset($jsonArray['cpu_usage'])) {
+            $this->cpuUsage = $jsonArray['cpu_usage'];
+        }
+        if (isset($jsonArray['framework_version'])) {
+            $this->frameworkVersion = $jsonArray['framework_version'];
+        }
+        if (isset($jsonArray['ip_address'])) {
+            $this->ipAddress = $jsonArray['ip_address'];
+        }
+        if (isset($jsonArray['mac_address'])) {
+            $this->macAddress = $jsonArray['mac_address'];
+        }
+        if (isset($jsonArray['manufacture_name'])) {
+            $this->manufactureName = $jsonArray['manufacture_name'];
+        }
+        if (isset($jsonArray['meeting_room_location'])) {
+            $this->meetingRoomLocation = $jsonArray['meeting_room_location'];
+        }
+        if (isset($jsonArray['meeting_room_name'])) {
+            $this->meetingRoomName = $jsonArray['meeting_room_name'];
+        }
+        if (isset($jsonArray['mem_usage'])) {
+            $this->memUsage = $jsonArray['mem_usage'];
+        }
+        if (isset($jsonArray['network_type'])) {
+            $this->networkType = $jsonArray['network_type'];
+        }
+        if (isset($jsonArray['rooms_id'])) {
+            $this->roomsId = $jsonArray['rooms_id'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
     }
 
     public function appVersion(string $appVersion): V1MeetingRoomsMonitorDeviceControllerInfoGet200ResponseControllerInfoListInner {

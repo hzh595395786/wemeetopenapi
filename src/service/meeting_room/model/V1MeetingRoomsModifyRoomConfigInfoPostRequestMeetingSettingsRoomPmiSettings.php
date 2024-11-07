@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,27 +16,48 @@ class V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettingsRoomPmiSetting
 {
 
     /**
+    * 类型：bool
      */
     protected $allowInBeforeHost = null;
 
     /**
+    * 类型：int
      */
     protected $muteEnableTypeJoin = null;
 
     /**
+    * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
 
     /**
+    * 类型：string
      */
     protected $roomPmiPsw = null;
 
     /**
+    * 类型：bool
      */
     protected $waitingRoom = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_in_before_host'])) {
+            $this->allowInBeforeHost = $jsonArray['allow_in_before_host'];
+        }
+        if (isset($jsonArray['mute_enable_type_join'])) {
+            $this->muteEnableTypeJoin = $jsonArray['mute_enable_type_join'];
+        }
+        if (isset($jsonArray['only_enterprise_user_allowed'])) {
+            $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['room_pmi_psw'])) {
+            $this->roomPmiPsw = $jsonArray['room_pmi_psw'];
+        }
+        if (isset($jsonArray['waiting_room'])) {
+            $this->waitingRoom = $jsonArray['waiting_room'];
+        }
     }
 
     public function allowInBeforeHost(bool $allowInBeforeHost): V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettingsRoomPmiSettings {

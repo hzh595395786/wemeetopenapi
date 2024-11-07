@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,11 +17,16 @@ class V1MeetingsMeetingIdBookRoomsPostRequest implements ModelInterface, \JsonSe
 
     /**
      * true：在会议开始前的一小时内，在 Room 上显示会议主题。默认值为 true。 false：在会议开始前的一小时内，在 Room 上不显示会议主题。 说明：该参数并不影响预定时间晚过当前时间一个小时以上的会议。超过一小时的会议默认不显示会议主题。
+    * 类型：bool
      */
     protected $subjectVisible = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['subject_visible'])) {
+            $this->subjectVisible = $jsonArray['subject_visible'];
+        }
     }
 
     public function subjectVisible(bool $subjectVisible): V1MeetingsMeetingIdBookRoomsPostRequest {

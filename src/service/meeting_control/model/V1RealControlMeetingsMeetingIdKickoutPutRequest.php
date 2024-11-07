@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,45 +16,74 @@ class V1RealControlMeetingsMeetingIdKickoutPutRequest implements ModelInterface,
 {
     /**
      * 移出后是否允许再次入会： true：允许再次入会 false：不允许
-     * @deprecated
+    * 类型：
+     */
     protected $allowRejoin;
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 被操作用户对象信息列表
-     * @deprecated
+    * 类型：V1RealControlMeetingsMeetingIdKickoutPutRequestUsersInner
+     */
     protected $users;
 
     /**
      * 操作者 ID。 1：operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 2：接口输入参数如果需要传用户 ID 时，operator_id 和 uuid 不可以同时为空，两个参数如果都传了以 operator_id 为准。 3：如果 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者ID的类型：2:openid 4: ms_open_id
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
      * 移出原因说明。当用户设备为 MRA 时，该参数必须填写移出原因。
+    * 类型：string
      */
     protected $reason = null;
 
     /**
      * 操作者用户唯一身份 ID，仅支持主持人和联席主持人，且只适用于单场会议。即将废弃，推荐使用ms_open_id。
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
-        $allowRejoin,
-        $instanceid,
-        $users,
+        $jsonArray = []
     ) {
-        $this->allowRejoin = $allowRejoin;
-        $this->instanceid = $instanceid;
-        $this->users = $users;
+        if (isset($jsonArray['allow_rejoin'])) {
+            $this->allowRejoin = $jsonArray['allow_rejoin'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter allow_rejoin');
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['users'])) {
+            $this->users = $jsonArray['users'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter users');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['reason'])) {
+            $this->reason = $jsonArray['reason'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function allowRejoin(bool $allowRejoin): V1RealControlMeetingsMeetingIdKickoutPutRequest {

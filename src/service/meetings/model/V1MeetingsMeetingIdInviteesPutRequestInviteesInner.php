@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,13 +16,18 @@ class V1MeetingsMeetingIdInviteesPutRequestInviteesInner implements ModelInterfa
 {
     /**
      * 调用方用于标示用户的唯一 ID，仅支持邀请与会议创建者同企业的成员（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明： 企业对接 SSO 时使用的员工唯一标识 ID。 企业调用创建用户接口时传递的 userid 参数。
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     public function __construct(
-        $userid,
+        $jsonArray = []
     ) {
-        $this->userid = $userid;
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
     }
 
     public function userid(string $userid): V1MeetingsMeetingIdInviteesPutRequestInviteesInner {

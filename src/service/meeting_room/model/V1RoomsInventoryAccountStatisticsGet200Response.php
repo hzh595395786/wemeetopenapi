@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,21 +17,34 @@ class V1RoomsInventoryAccountStatisticsGet200Response implements ModelInterface,
 
     /**
      * 基础版账号使用数
+    * 类型：int
      */
     protected $customUsedCount = null;
 
     /**
      * 专业版账号数
+    * 类型：int
      */
     protected $proCount = null;
 
     /**
      * 专业版账号使用数
+    * 类型：int
      */
     protected $proUsedCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['custom_used_count'])) {
+            $this->customUsedCount = $jsonArray['custom_used_count'];
+        }
+        if (isset($jsonArray['pro_count'])) {
+            $this->proCount = $jsonArray['pro_count'];
+        }
+        if (isset($jsonArray['pro_used_count'])) {
+            $this->proUsedCount = $jsonArray['pro_used_count'];
+        }
     }
 
     public function customUsedCount(int $customUsedCount): V1RoomsInventoryAccountStatisticsGet200Response {

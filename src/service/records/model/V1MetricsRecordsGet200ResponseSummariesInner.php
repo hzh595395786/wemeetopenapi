@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,21 +17,34 @@ class V1MetricsRecordsGet200ResponseSummariesInner implements ModelInterface, \J
 
     /**
      * 统计时间，格式：yyyy-MM-dd。
+    * 类型：string
      */
     protected $date = null;
 
     /**
      * 下载次数（当天数据），默认0。
+    * 类型：int
      */
     protected $downloadCounts = null;
 
     /**
      * 观看次数（当天数据），默认0。
+    * 类型：int
      */
     protected $viewCounts = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['date'])) {
+            $this->date = $jsonArray['date'];
+        }
+        if (isset($jsonArray['download_counts'])) {
+            $this->downloadCounts = $jsonArray['download_counts'];
+        }
+        if (isset($jsonArray['view_counts'])) {
+            $this->viewCounts = $jsonArray['view_counts'];
+        }
     }
 
     public function date(string $date): V1MetricsRecordsGet200ResponseSummariesInner {

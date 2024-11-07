@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,116 +16,205 @@ class V1MeetingsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 会议创建者 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明： 1. 企业对接 SSO 时使用的员工唯一标识 ID。 2. 企业调用创建用户接口时传递的 userid 参数。
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     /**
      * 如果没有权限创建专网会议，该字段忽略
+    * 类型：bool
      */
     protected $allowEnterpriseIntranetOnly = null;
 
     /**
      * 是否允许成员上传文档，默认为允许
+    * 类型：bool
      */
     protected $enableDocUploadPermission = null;
 
     /**
      * 是否开启报名开关，默认不开启
+    * 类型：bool
      */
     protected $enableEnroll = null;
 
     /**
      * 是否开启主持人密钥，默认为false。 true：开启 false：关闭 修改周期性会议的主持人密钥适用于接下来的所有子会议。
+    * 类型：bool
      */
     protected $enableHostKey = null;
 
     /**
      * 是否开启直播,默认不开启
+    * 类型：bool
      */
     protected $enableLive = null;
 
     /**
      * 会议结束时间戳（单位秒）
+    * 类型：string
      */
     protected $endTime = null;
 
     /**
      * 会议嘉宾列表，会议嘉宾不受会议密码和等候室的限制。不传该字段代表不修改。注意：传空数组会清空嘉宾列表。
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPostRequestGuestsInner[]
      */
     protected $guests = null;
 
     /**
      * 主持人密钥，仅支持6位数字。 如开启主持人密钥后没有填写此项，将自动分配一个6位数字的密钥。
+    * 类型：string
      */
     protected $hostKey = null;
 
     /**
      * 主持人列表。 不传入该字段则不修改，传入空列表即覆盖为空。
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestHostsInner[]
      */
     protected $hosts = null;
 
     /**
      * 邀请人列表，调用方用于标示用户的唯一 ID，仅支持邀请与会议创建者同企业的成员（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明： 企业对接 SSO 时使用的员工唯一标识 ID。 企业调用创建用户接口时传递的 userid 参数。 注意：仅腾讯会议商业版和企业版可邀请参会者，邀请者列表仅支持300人；需要邀请超过300人的场景请调用 设置会议邀请成员 接口。
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsPostRequestInviteesInner[]
      */
     protected $invitees = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestLiveConfig
      */
     protected $liveConfig = null;
 
     /**
      * 会议地点。最长支持18个汉字或36个英文字母。
+    * 类型：string
      */
     protected $location = null;
 
     /**
      * 该参数仅提供给支持混合云的企业可见，默认值为0。 0：外部会议 1：内部会议
+    * 类型：int
      */
     protected $mediaSetType = null;
 
     /**
      * 默认值为0。  0：普通会议  1：周期性会议（周期性会议时 type 不能为快速会议，同一账号同时最多可预定50场周期性会议）
+    * 类型：int
      */
     protected $meetingType = null;
 
     /**
      * 会议密码（4~6位数字），可不填。如果将字段值改为空字符串\"\"，则表示取消会议密码
+    * 类型：string
      */
     protected $password = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestRecurringRule
      */
     protected $recurringRule = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestSettings
      */
     protected $settings = null;
 
     /**
      * 会议开始时间戳（单位秒）
+    * 类型：string
      */
     protected $startTime = null;
 
     /**
      * 会议主题
+    * 类型：string
      */
     protected $subject = null;
 
     /**
      * 时区，可参见 Oracle-TimeZone 标准。
+    * 类型：string
      */
     protected $timeZone = null;
 
     public function __construct(
-        $instanceid,
-        $userid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->userid = $userid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['allow_enterprise_intranet_only'])) {
+            $this->allowEnterpriseIntranetOnly = $jsonArray['allow_enterprise_intranet_only'];
+        }
+        if (isset($jsonArray['enable_doc_upload_permission'])) {
+            $this->enableDocUploadPermission = $jsonArray['enable_doc_upload_permission'];
+        }
+        if (isset($jsonArray['enable_enroll'])) {
+            $this->enableEnroll = $jsonArray['enable_enroll'];
+        }
+        if (isset($jsonArray['enable_host_key'])) {
+            $this->enableHostKey = $jsonArray['enable_host_key'];
+        }
+        if (isset($jsonArray['enable_live'])) {
+            $this->enableLive = $jsonArray['enable_live'];
+        }
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['guests'])) {
+            $this->guests = $jsonArray['guests'];
+        }
+        if (isset($jsonArray['host_key'])) {
+            $this->hostKey = $jsonArray['host_key'];
+        }
+        if (isset($jsonArray['hosts'])) {
+            $this->hosts = $jsonArray['hosts'];
+        }
+        if (isset($jsonArray['invitees'])) {
+            $this->invitees = $jsonArray['invitees'];
+        }
+        if (isset($jsonArray['live_config'])) {
+            $this->liveConfig = new V1MeetingsMeetingIdPutRequestLiveConfig($jsonArray['live_config']);
+        }
+        if (isset($jsonArray['location'])) {
+            $this->location = $jsonArray['location'];
+        }
+        if (isset($jsonArray['media_set_type'])) {
+            $this->mediaSetType = $jsonArray['media_set_type'];
+        }
+        if (isset($jsonArray['meeting_type'])) {
+            $this->meetingType = $jsonArray['meeting_type'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
+        if (isset($jsonArray['recurring_rule'])) {
+            $this->recurringRule = new V1MeetingsMeetingIdPutRequestRecurringRule($jsonArray['recurring_rule']);
+        }
+        if (isset($jsonArray['settings'])) {
+            $this->settings = new V1MeetingsMeetingIdPutRequestSettings($jsonArray['settings']);
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
+        if (isset($jsonArray['subject'])) {
+            $this->subject = $jsonArray['subject'];
+        }
+        if (isset($jsonArray['time_zone'])) {
+            $this->timeZone = $jsonArray['time_zone'];
+        }
     }
 
     public function allowEnterpriseIntranetOnly(bool $allowEnterpriseIntranetOnly): V1MeetingsMeetingIdPutRequest {
@@ -260,7 +349,7 @@ class V1MeetingsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
     public function setInvitees(array $invitees) {
         $this->invitees = $invitees;
     }
-    public function liveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestLiveConfig $liveConfig): V1MeetingsMeetingIdPutRequest {
+    public function liveConfig(V1MeetingsMeetingIdPutRequestLiveConfig $liveConfig): V1MeetingsMeetingIdPutRequest {
         $this->liveConfig = $liveConfig;
         return $this;
     }
@@ -269,7 +358,7 @@ class V1MeetingsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
         return $this->liveConfig;
     }
 
-    public function setLiveConfig(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestLiveConfig $liveConfig) {
+    public function setLiveConfig(V1MeetingsMeetingIdPutRequestLiveConfig $liveConfig) {
         $this->liveConfig = $liveConfig;
     }
     public function location(string $location): V1MeetingsMeetingIdPutRequest {
@@ -320,7 +409,7 @@ class V1MeetingsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
     public function setPassword(string $password) {
         $this->password = $password;
     }
-    public function recurringRule(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestRecurringRule $recurringRule): V1MeetingsMeetingIdPutRequest {
+    public function recurringRule(V1MeetingsMeetingIdPutRequestRecurringRule $recurringRule): V1MeetingsMeetingIdPutRequest {
         $this->recurringRule = $recurringRule;
         return $this;
     }
@@ -329,10 +418,10 @@ class V1MeetingsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
         return $this->recurringRule;
     }
 
-    public function setRecurringRule(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestRecurringRule $recurringRule) {
+    public function setRecurringRule(V1MeetingsMeetingIdPutRequestRecurringRule $recurringRule) {
         $this->recurringRule = $recurringRule;
     }
-    public function settings(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestSettings $settings): V1MeetingsMeetingIdPutRequest {
+    public function settings(V1MeetingsMeetingIdPutRequestSettings $settings): V1MeetingsMeetingIdPutRequest {
         $this->settings = $settings;
         return $this;
     }
@@ -341,7 +430,7 @@ class V1MeetingsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
         return $this->settings;
     }
 
-    public function setSettings(\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPutRequestSettings $settings) {
+    public function setSettings(V1MeetingsMeetingIdPutRequestSettings $settings) {
         $this->settings = $settings;
     }
     public function startTime(string $startTime): V1MeetingsMeetingIdPutRequest {

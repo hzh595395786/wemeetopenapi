@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,11 +16,16 @@ class V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark implem
 {
 
     /**
+    * 类型：int
      */
     protected $watermarkOpt = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['watermark_opt'])) {
+            $this->watermarkOpt = $jsonArray['watermark_opt'];
+        }
     }
 
     public function watermarkOpt(int $watermarkOpt): V1MeetingsGet200ResponseMeetingInfoListInnerLiveConfigLiveWatermark {

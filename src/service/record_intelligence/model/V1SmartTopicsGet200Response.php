@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\record_intelligence\model;
 
@@ -17,11 +17,16 @@ class V1SmartTopicsGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 本录制文件的智能话题列表，以对象数组形式返回
+    * 类型：\wemeet\openapi\service\record_intelligence\model\V1SmartTopicsGet200ResponseAiTopicListInner[]
      */
     protected $aiTopicList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ai_topic_list'])) {
+            $this->aiTopicList = $jsonArray['ai_topic_list'];
+        }
     }
 
     public function aiTopicList(array $aiTopicList): V1SmartTopicsGet200Response {

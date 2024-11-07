@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdLayoutsPost200ResponseLayoutListInnerPageListInner impl
 
     /**
      * 布局模板ID
+    * 类型：string
      */
     protected $layoutTemplateId = null;
 
     /**
      * 用户座次对象列表
+    * 类型：\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdLayoutsPost200ResponseLayoutListInnerPageListInnerUserSeatListInner[]
      */
     protected $userSeatList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['layout_template_id'])) {
+            $this->layoutTemplateId = $jsonArray['layout_template_id'];
+        }
+        if (isset($jsonArray['user_seat_list'])) {
+            $this->userSeatList = $jsonArray['user_seat_list'];
+        }
     }
 
     public function layoutTemplateId(string $layoutTemplateId): V1MeetingsMeetingIdLayoutsPost200ResponseLayoutListInnerPageListInner {

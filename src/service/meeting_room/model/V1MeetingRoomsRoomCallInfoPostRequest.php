@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -15,39 +15,64 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1MeetingRoomsRoomCallInfoPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $instanceId;
     /**
      * 会议ID
-     * @deprecated
+    * 类型：
+     */
     protected $meetingId;
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1：userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 会议室 ID，与 mra_address 二选一。
+    * 类型：string
      */
     protected $meetingRoomId = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsCancelRoomCallPutRequestMraAddress
      */
     protected $mraAddress = null;
 
     public function __construct(
-        $instanceId,
-        $meetingId,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceId = $instanceId;
-        $this->meetingId = $meetingId;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instance_id'])) {
+            $this->instanceId = $jsonArray['instance_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instance_id');
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_id');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['meeting_room_id'])) {
+            $this->meetingRoomId = $jsonArray['meeting_room_id'];
+        }
+        if (isset($jsonArray['mra_address'])) {
+            $this->mraAddress = new V1MeetingRoomsCancelRoomCallPutRequestMraAddress($jsonArray['mra_address']);
+        }
     }
 
     public function instanceId(int $instanceId): V1MeetingRoomsRoomCallInfoPostRequest {
@@ -86,7 +111,7 @@ class V1MeetingRoomsRoomCallInfoPostRequest implements ModelInterface, \JsonSeri
     public function setMeetingRoomId(string $meetingRoomId) {
         $this->meetingRoomId = $meetingRoomId;
     }
-    public function mraAddress(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsCancelRoomCallPutRequestMraAddress $mraAddress): V1MeetingRoomsRoomCallInfoPostRequest {
+    public function mraAddress(V1MeetingRoomsCancelRoomCallPutRequestMraAddress $mraAddress): V1MeetingRoomsRoomCallInfoPostRequest {
         $this->mraAddress = $mraAddress;
         return $this;
     }
@@ -95,7 +120,7 @@ class V1MeetingRoomsRoomCallInfoPostRequest implements ModelInterface, \JsonSeri
         return $this->mraAddress;
     }
 
-    public function setMraAddress(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsCancelRoomCallPutRequestMraAddress $mraAddress) {
+    public function setMraAddress(V1MeetingRoomsCancelRoomCallPutRequestMraAddress $mraAddress) {
         $this->mraAddress = $mraAddress;
     }
     public function operatorId(string $operatorId): V1MeetingRoomsRoomCallInfoPostRequest {

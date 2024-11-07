@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,66 +17,115 @@ class V1MeetingsMeetingIdQualityGet200Response implements ModelInterface, \JsonS
 
     /**
      * 音频质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $audioQuality = null;
 
     /**
      * 分页查询返回当前页码
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 分页查询返回单页数据条数
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 会议的唯一 ID
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 网络质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $networkQuality = null;
 
     /**
      * 参会人员健康度对象数组（按成员入会时间正序排列，入会越早的在越上面；成员使用不同端入会时平铺返回数据，instanceid不同）
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdQualityGet200ResponseParticipantsInner[]
      */
     protected $participants = null;
 
     /**
      * 告警的具体问题
+    * 类型：string[]
      */
     protected $problems = null;
 
     /**
      * 健康度：0-无数据，1-健康、2-告警
+    * 类型：int
      */
     protected $quality = null;
 
     /**
      * 共享屏幕质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $screenShareQuality = null;
 
     /**
      * 分页查询返回数据总数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 分页查询返回分页总数
+    * 类型：int
      */
     protected $totalPage = null;
 
     /**
      * 视频质量：0-无数据，1-好、2-较好、3-中、4-差
+    * 类型：int
      */
     protected $videoQuality = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['audio_quality'])) {
+            $this->audioQuality = $jsonArray['audio_quality'];
+        }
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['network_quality'])) {
+            $this->networkQuality = $jsonArray['network_quality'];
+        }
+        if (isset($jsonArray['participants'])) {
+            $this->participants = $jsonArray['participants'];
+        }
+        if (isset($jsonArray['problems'])) {
+            $this->problems = $jsonArray['problems'];
+        }
+        if (isset($jsonArray['quality'])) {
+            $this->quality = $jsonArray['quality'];
+        }
+        if (isset($jsonArray['screen_share_quality'])) {
+            $this->screenShareQuality = $jsonArray['screen_share_quality'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
+        if (isset($jsonArray['video_quality'])) {
+            $this->videoQuality = $jsonArray['video_quality'];
+        }
     }
 
     public function audioQuality(int $audioQuality): V1MeetingsMeetingIdQualityGet200Response {

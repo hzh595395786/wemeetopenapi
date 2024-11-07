@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,39 +16,64 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
 {
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 当场会议的用户临时 ID（适用于所有用户）数组，单次最多支持500条。
-     * @deprecated
+    * 类型：
+     */
     protected $msOpenIdList;
 
     /**
      * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。 operator_id 和 userid 至少填写一个，两个参数如果都传了以 operator_id 为准。 使用 OAuth 公参鉴权后不能使用 userid 为入参。
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者 ID 的类型： 1：userid 2：open_id 如果 operator_id 和 userid 具有值，则以 operator_id 为准。
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     /**
      * 查询报名 ID 的排序规则。当该账号存在多条报名记录（手机号导入、手动报名等）时，该接口返回的顺序。 1：优先查询手机号导入报名，再查询用户手动报名，默认值。 2：优先查询用户手动报名，再查手机号导入。
+    * 类型：int
      */
     protected $sortingRules = null;
 
     /**
      * 会议创建者的用户 ID。为了防止现网应用报错，此参数实则仍然兼容 openid，如无 oauth 应用使用报名接口则也可做成不兼容变更。
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
-        $instanceid,
-        $msOpenIdList,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->msOpenIdList = $msOpenIdList;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['ms_open_id_list'])) {
+            $this->msOpenIdList = $jsonArray['ms_open_id_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter ms_open_id_list');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
+        if (isset($jsonArray['sorting_rules'])) {
+            $this->sortingRules = $jsonArray['sorting_rules'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function instanceid(int $instanceid): V1MeetingsMeetingIdEnrollIdsPostRequest {

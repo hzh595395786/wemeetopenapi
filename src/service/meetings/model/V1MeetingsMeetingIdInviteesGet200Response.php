@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,21 +17,34 @@ class V1MeetingsMeetingIdInviteesGet200Response implements ModelInterface, \Json
 
     /**
      * 是否还存在受邀成员需要继续查询。
+    * 类型：bool
      */
     protected $hasRemaining = null;
 
     /**
      * 会议邀请的参会者
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdInviteesGet200ResponseInviteesInner[]
      */
     protected $invitees = null;
 
     /**
      * 当has_remaining为true时，下次查询时输入参数pos的值
+    * 类型：int
      */
     protected $nextPos = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['has_remaining'])) {
+            $this->hasRemaining = $jsonArray['has_remaining'];
+        }
+        if (isset($jsonArray['invitees'])) {
+            $this->invitees = $jsonArray['invitees'];
+        }
+        if (isset($jsonArray['next_pos'])) {
+            $this->nextPos = $jsonArray['next_pos'];
+        }
     }
 
     public function hasRemaining(bool $hasRemaining): V1MeetingsMeetingIdInviteesGet200Response {

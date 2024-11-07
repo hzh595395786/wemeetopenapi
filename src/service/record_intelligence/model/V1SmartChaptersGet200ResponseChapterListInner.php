@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\record_intelligence\model;
 
@@ -17,26 +17,43 @@ class V1SmartChaptersGet200ResponseChapterListInner implements ModelInterface, \
 
     /**
      * 章节唯一ID
+    * 类型：string
      */
     protected $chapterId = null;
 
     /**
      * 章节主题，返回base64编码后的结果
+    * 类型：string
      */
     protected $chapterName = null;
 
     /**
      * 章节封面图片url
+    * 类型：string
      */
     protected $picUrl = null;
 
     /**
      * 开始时间戳（单位毫秒）
+    * 类型：string
      */
     protected $startTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['chapter_id'])) {
+            $this->chapterId = $jsonArray['chapter_id'];
+        }
+        if (isset($jsonArray['chapter_name'])) {
+            $this->chapterName = $jsonArray['chapter_name'];
+        }
+        if (isset($jsonArray['pic_url'])) {
+            $this->picUrl = $jsonArray['pic_url'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
     }
 
     public function chapterId(string $chapterId): V1SmartChaptersGet200ResponseChapterListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_guest\model;
 
@@ -16,31 +16,48 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 会议嘉宾列表（传空数组会清空嘉宾列表）。
-     * @deprecated
+    * 类型：V1GuestsPutRequestGuestsInner
+     */
     protected $guests;
     /**
      * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 会议码。
-     * @deprecated
+    * 类型：
+     */
     protected $meetingCode;
     /**
      * 用户的 ID（企业内部请使用企业唯一用户标识，OAuth2.0 鉴权用户请使用 openId）
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     public function __construct(
-        $guests,
-        $instanceid,
-        $meetingCode,
-        $userid,
+        $jsonArray = []
     ) {
-        $this->guests = $guests;
-        $this->instanceid = $instanceid;
-        $this->meetingCode = $meetingCode;
-        $this->userid = $userid;
+        if (isset($jsonArray['guests'])) {
+            $this->guests = $jsonArray['guests'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter guests');
+        }
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['meeting_code'])) {
+            $this->meetingCode = $jsonArray['meeting_code'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_code');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
     }
 
     public function guests(array $guests): V1GuestsPutRequest {

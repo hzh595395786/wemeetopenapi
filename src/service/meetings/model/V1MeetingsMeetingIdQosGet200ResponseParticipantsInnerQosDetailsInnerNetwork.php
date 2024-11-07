@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,31 +17,52 @@ class V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwor
 
     /**
      * 下行带宽（kbps）
+    * 类型：string
      */
     protected $downstreamBindwidth = null;
 
     /**
      * 下行丢包（%）
+    * 类型：string
      */
     protected $downstreamPacketLoss = null;
 
     /**
      * 网络延迟 (ms)
+    * 类型：string
      */
     protected $networkDelay = null;
 
     /**
      * 上行带宽（kbps）
+    * 类型：string
      */
     protected $upstreamBindwidth = null;
 
     /**
      * 上行丢包（%）
+    * 类型：string
      */
     protected $upstreamPacketLoss = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['downstream_bindwidth'])) {
+            $this->downstreamBindwidth = $jsonArray['downstream_bindwidth'];
+        }
+        if (isset($jsonArray['downstream_packet_loss'])) {
+            $this->downstreamPacketLoss = $jsonArray['downstream_packet_loss'];
+        }
+        if (isset($jsonArray['network_delay'])) {
+            $this->networkDelay = $jsonArray['network_delay'];
+        }
+        if (isset($jsonArray['upstream_bindwidth'])) {
+            $this->upstreamBindwidth = $jsonArray['upstream_bindwidth'];
+        }
+        if (isset($jsonArray['upstream_packet_loss'])) {
+            $this->upstreamPacketLoss = $jsonArray['upstream_packet_loss'];
+        }
     }
 
     public function downstreamBindwidth(string $downstreamBindwidth): V1MeetingsMeetingIdQosGet200ResponseParticipantsInnerQosDetailsInnerNetwork {

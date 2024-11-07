@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdMsOpenIdGet200Response implements ModelInterface, \Json
 
     /**
      * 会议唯一id
+    * 类型：string
      */
     protected $meetingId = null;
 
     /**
      * 当场会议的用户临时 ID，可用于会控操作，适用于所有用户。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
     }
 
     public function meetingId(string $meetingId): V1MeetingsMeetingIdMsOpenIdGet200Response {

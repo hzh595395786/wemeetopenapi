@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,15 +17,24 @@ class V1UsersInviteActivatePost200ResponseInactivateUserListInner implements Mod
 
     /**
      * 激活链接
+    * 类型：string
      */
     protected $activateUrl = null;
 
     /**
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['activate_url'])) {
+            $this->activateUrl = $jsonArray['activate_url'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function activateUrl(string $activateUrl): V1UsersInviteActivatePost200ResponseInactivateUserListInner {

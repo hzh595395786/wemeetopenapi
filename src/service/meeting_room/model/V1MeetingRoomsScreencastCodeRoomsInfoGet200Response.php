@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,31 +17,52 @@ class V1MeetingRoomsScreencastCodeRoomsInfoGet200Response implements ModelInterf
 
     /**
      * 中控API密码
+    * 类型：string
      */
     protected $apiPassword = null;
 
     /**
      * 中控API开关
+    * 类型：bool
      */
     protected $csApiEnable = null;
 
     /**
      * 会议室ID
+    * 类型：string
      */
     protected $meetingRoomId = null;
 
     /**
      * Rooms ID
+    * 类型：string
      */
     protected $roomsId = null;
 
     /**
      * rooms的IP列表
+    * 类型：string[]
      */
     protected $roomsIpList = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['api_password'])) {
+            $this->apiPassword = $jsonArray['api_password'];
+        }
+        if (isset($jsonArray['cs_api_enable'])) {
+            $this->csApiEnable = $jsonArray['cs_api_enable'];
+        }
+        if (isset($jsonArray['meeting_room_id'])) {
+            $this->meetingRoomId = $jsonArray['meeting_room_id'];
+        }
+        if (isset($jsonArray['rooms_id'])) {
+            $this->roomsId = $jsonArray['rooms_id'];
+        }
+        if (isset($jsonArray['rooms_ip_list'])) {
+            $this->roomsIpList = $jsonArray['rooms_ip_list'];
+        }
     }
 
     public function apiPassword(string $apiPassword): V1MeetingRoomsScreencastCodeRoomsInfoGet200Response {

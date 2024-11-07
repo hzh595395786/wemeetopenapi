@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,91 +17,160 @@ class V1UsersGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * ai账号类型 1：购买版 2:赠送版
+    * 类型：int
      */
     protected $aiAccountType = null;
 
     /**
      * 地区编码（国内默认86）。
+    * 类型：string
      */
     protected $area = null;
 
     /**
      * 用户部门信息。
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersGet200ResponseDepartmentListInner[]
      */
     protected $departmentList = null;
 
     /**
      * 邮箱地址。
+    * 类型：string
      */
     protected $email = null;
 
     /**
      * 是否有ai账号能力
+    * 类型：bool
      */
     protected $enableAiAccount = null;
 
     /**
      * 入职时间。
+    * 类型：string
      */
     protected $entryTime = null;
 
     /**
      * 员工职位。
+    * 类型：string
      */
     protected $jobTitle = null;
 
     /**
      * 企业员工手机号码。
+    * 类型：string
      */
     protected $phone = null;
 
     /**
      * 手机号验证状态。 0：未知 1：已验证 2：未验证
+    * 类型：int
      */
     protected $phoneStatus = null;
 
     /**
      * 角色类型。
+    * 类型：string
      */
     protected $roleCode = null;
 
     /**
      * 角色名称。
+    * 类型：string
      */
     protected $roleName = null;
 
     /**
      * 员工工号。
+    * 类型：string
      */
     protected $staffId = null;
 
     /**
      * 用户状态： 1：正常 2：注销 3：未激活 4：禁用
+    * 类型：string
      */
     protected $status = null;
 
     /**
      * 更新时间，格式：yyyy-MM-dd HH:mm:ss。
+    * 类型：string
      */
     protected $updateTime = null;
 
     /**
      * 调用方用于标示用户的唯一 ID（例如企业用户可以为企业账户英文名、个人用户可以为手机号等）。
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 用户昵称。
+    * 类型：string
      */
     protected $username = null;
 
     /**
      * String 用户身份 ID（腾讯会议颁发的用于开放平台的唯一用户 ID）。
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ai_account_type'])) {
+            $this->aiAccountType = $jsonArray['ai_account_type'];
+        }
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        }
+        if (isset($jsonArray['department_list'])) {
+            $this->departmentList = $jsonArray['department_list'];
+        }
+        if (isset($jsonArray['email'])) {
+            $this->email = $jsonArray['email'];
+        }
+        if (isset($jsonArray['enable_ai_account'])) {
+            $this->enableAiAccount = $jsonArray['enable_ai_account'];
+        }
+        if (isset($jsonArray['entry_time'])) {
+            $this->entryTime = $jsonArray['entry_time'];
+        }
+        if (isset($jsonArray['job_title'])) {
+            $this->jobTitle = $jsonArray['job_title'];
+        }
+        if (isset($jsonArray['phone'])) {
+            $this->phone = $jsonArray['phone'];
+        }
+        if (isset($jsonArray['phone_status'])) {
+            $this->phoneStatus = $jsonArray['phone_status'];
+        }
+        if (isset($jsonArray['role_code'])) {
+            $this->roleCode = $jsonArray['role_code'];
+        }
+        if (isset($jsonArray['role_name'])) {
+            $this->roleName = $jsonArray['role_name'];
+        }
+        if (isset($jsonArray['staff_id'])) {
+            $this->staffId = $jsonArray['staff_id'];
+        }
+        if (isset($jsonArray['status'])) {
+            $this->status = $jsonArray['status'];
+        }
+        if (isset($jsonArray['update_time'])) {
+            $this->updateTime = $jsonArray['update_time'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function aiAccountType(int $aiAccountType): V1UsersGet200Response {

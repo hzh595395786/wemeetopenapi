@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -17,26 +17,43 @@ class V1MeetingsMeetingIdAdvancedLayoutsPost200ResponseLayoutListInnerPageListIn
 
     /**
      * 轮询开启后设置参数， 设置是否忽略未入会成员
+    * 类型：bool
      */
     protected $ignoreUserAbsence = null;
 
     /**
      * 轮询开启后设置参数，设置是否忽略没开启视频成员
+    * 类型：bool
      */
     protected $ignoreUserNovideo = null;
 
     /**
      * 轮询开启后设置参数 轮询间隔时长， 允许取值范围1～999999
+    * 类型：int
      */
     protected $pollingInterval = null;
 
     /**
      * 轮询开启后设置参数。 轮询间隔时间类型： 1-秒 2-分钟
+    * 类型：int
      */
     protected $pollingIntervalUnit = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ignore_user_absence'])) {
+            $this->ignoreUserAbsence = $jsonArray['ignore_user_absence'];
+        }
+        if (isset($jsonArray['ignore_user_novideo'])) {
+            $this->ignoreUserNovideo = $jsonArray['ignore_user_novideo'];
+        }
+        if (isset($jsonArray['polling_interval'])) {
+            $this->pollingInterval = $jsonArray['polling_interval'];
+        }
+        if (isset($jsonArray['polling_interval_unit'])) {
+            $this->pollingIntervalUnit = $jsonArray['polling_interval_unit'];
+        }
     }
 
     public function ignoreUserAbsence(bool $ignoreUserAbsence): V1MeetingsMeetingIdAdvancedLayoutsPost200ResponseLayoutListInnerPageListInnerPollingSetting {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,11 +16,16 @@ class V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInnerOptionListInner 
 {
 
     /**
+    * 类型：string
      */
     protected $content = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['content'])) {
+            $this->content = $jsonArray['content'];
+        }
     }
 
     public function content(string $content): V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInnerOptionListInner {

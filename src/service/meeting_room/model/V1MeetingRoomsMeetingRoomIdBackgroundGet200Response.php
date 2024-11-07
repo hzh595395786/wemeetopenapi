@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,11 +17,16 @@ class V1MeetingRoomsMeetingRoomIdBackgroundGet200Response implements ModelInterf
 
     /**
      * 背景图片地址
+    * 类型：string
      */
     protected $backgroundImage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['background_image'])) {
+            $this->backgroundImage = $jsonArray['background_image'];
+        }
     }
 
     public function backgroundImage(string $backgroundImage): V1MeetingRoomsMeetingRoomIdBackgroundGet200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,21 +17,34 @@ class V1UsersAccountStatisticsGet200Response implements ModelInterface, \JsonSer
 
     /**
      * ai账号类型使用对象（商业版不返回）
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersAccountStatisticsGet200ResponseAiAccountDetailsInner[]
      */
     protected $aiAccountDetails = null;
 
     /**
      * 账号类型使用对象
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersAccountStatisticsGet200ResponseUserAccountDetailsInner[]
      */
     protected $userAccountDetails = null;
 
     /**
      * 当前用户数
+    * 类型：int
      */
     protected $userCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['ai_account_details'])) {
+            $this->aiAccountDetails = $jsonArray['ai_account_details'];
+        }
+        if (isset($jsonArray['user_account_details'])) {
+            $this->userAccountDetails = $jsonArray['user_account_details'];
+        }
+        if (isset($jsonArray['user_count'])) {
+            $this->userCount = $jsonArray['user_count'];
+        }
     }
 
     public function aiAccountDetails(array $aiAccountDetails): V1UsersAccountStatisticsGet200Response {

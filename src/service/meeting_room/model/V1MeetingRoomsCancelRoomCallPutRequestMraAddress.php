@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,19 +16,28 @@ class V1MeetingRoomsCancelRoomCallPutRequestMraAddress implements ModelInterface
 {
     /**
      * 信令地址。 如果是 H.323 类型，输入 IP 地址或 E.164 号码。 如果是 SIP 类型，输入 IP 地址或 URI。
-     * @deprecated
+    * 类型：
+     */
     protected $dialString;
     /**
      * 信令协议。 1：SIP 2：H.323
-     * @deprecated
+    * 类型：
+     */
     protected $protocol;
 
     public function __construct(
-        $dialString,
-        $protocol,
+        $jsonArray = []
     ) {
-        $this->dialString = $dialString;
-        $this->protocol = $protocol;
+        if (isset($jsonArray['dial_string'])) {
+            $this->dialString = $jsonArray['dial_string'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter dial_string');
+        }
+        if (isset($jsonArray['protocol'])) {
+            $this->protocol = $jsonArray['protocol'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter protocol');
+        }
     }
 
     public function dialString(string $dialString): V1MeetingRoomsCancelRoomCallPutRequestMraAddress {

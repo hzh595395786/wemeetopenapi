@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,66 +17,115 @@ class V1PmiMeetingsPmiConfigGet200Response implements ModelInterface, \JsonSeria
 
     /**
      * 是否允许成员在主持人前入会
+    * 类型：bool
      */
     protected $allowInBeforeHost = null;
 
     /**
      * 是否开启等候室
+    * 类型：bool
      */
     protected $allowInWaitingRoom = null;
 
     /**
      * 是否允许多端入会
+    * 类型：bool
      */
     protected $allowMultiDevice = null;
 
     /**
      * 是否禁止笔记截屏
+    * 类型：bool
      */
     protected $disableNoteCapture = null;
 
     /**
      * 指定主持人列表
+    * 类型：\wemeet\openapi\service\user_manager\model\V1PmiMeetingsPmiConfigGet200ResponseHostsInner[]
      */
     protected $hosts = null;
 
     /**
      * 成员入会静音设置，0-关闭，1-开启，2-超过6人后自动开启
+    * 类型：int
      */
     protected $muteEnableTypeJoin = null;
 
     /**
      * 是否仅企业内部成员可入会
+    * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
 
     /**
      * 个人会议号
+    * 类型：string
      */
     protected $pmiCode = null;
 
     /**
      * 个人会议室名称
+    * 类型：string
      */
     protected $pmiName = null;
 
     /**
      * 个人会议号密码，经过base64处理
+    * 类型：string
      */
     protected $pmiPassword = null;
 
     /**
      * 水印样式，0-单排，1-多排
+    * 类型：int
      */
     protected $waterMarkType = null;
 
     /**
      * 是否开启会议水印
+    * 类型：bool
      */
     protected $watermark = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_in_before_host'])) {
+            $this->allowInBeforeHost = $jsonArray['allow_in_before_host'];
+        }
+        if (isset($jsonArray['allow_in_waiting_room'])) {
+            $this->allowInWaitingRoom = $jsonArray['allow_in_waiting_room'];
+        }
+        if (isset($jsonArray['allow_multi_device'])) {
+            $this->allowMultiDevice = $jsonArray['allow_multi_device'];
+        }
+        if (isset($jsonArray['disable_note_capture'])) {
+            $this->disableNoteCapture = $jsonArray['disable_note_capture'];
+        }
+        if (isset($jsonArray['hosts'])) {
+            $this->hosts = $jsonArray['hosts'];
+        }
+        if (isset($jsonArray['mute_enable_type_join'])) {
+            $this->muteEnableTypeJoin = $jsonArray['mute_enable_type_join'];
+        }
+        if (isset($jsonArray['only_enterprise_user_allowed'])) {
+            $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['pmi_code'])) {
+            $this->pmiCode = $jsonArray['pmi_code'];
+        }
+        if (isset($jsonArray['pmi_name'])) {
+            $this->pmiName = $jsonArray['pmi_name'];
+        }
+        if (isset($jsonArray['pmi_password'])) {
+            $this->pmiPassword = $jsonArray['pmi_password'];
+        }
+        if (isset($jsonArray['water_mark_type'])) {
+            $this->waterMarkType = $jsonArray['water_mark_type'];
+        }
+        if (isset($jsonArray['watermark'])) {
+            $this->watermark = $jsonArray['watermark'];
+        }
     }
 
     public function allowInBeforeHost(bool $allowInBeforeHost): V1PmiMeetingsPmiConfigGet200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,23 +16,36 @@ class V1MeetingsMeetingIdPutRequestHostsInner implements ModelInterface, \JsonSe
 {
     /**
      * 用户 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。  企业唯一用户标识说明：  企业对接 SSO 时使用的员工唯一标识 ID，企业调用创建用户接口时传递的 userid 参数。
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     /**
      * 用户是否匿名入会，缺省为 false，不匿名。 true：匿名 false：不匿名
+    * 类型：bool
      */
     protected $isAnonymous = null;
 
     /**
      * 用户匿名字符串。如果字段“is_anonymous”设置为“true”，但是无指定匿名字符串, 会议将分配缺省名称，例如 “会议用户xxxx”，其中“xxxx”为随机数字。
+    * 类型：string
      */
     protected $nickName = null;
 
     public function __construct(
-        $userid,
+        $jsonArray = []
     ) {
-        $this->userid = $userid;
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['is_anonymous'])) {
+            $this->isAnonymous = $jsonArray['is_anonymous'];
+        }
+        if (isset($jsonArray['nick_name'])) {
+            $this->nickName = $jsonArray['nick_name'];
+        }
     }
 
     public function isAnonymous(bool $isAnonymous): V1MeetingsMeetingIdPutRequestHostsInner {

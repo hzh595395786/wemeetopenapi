@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,41 +17,70 @@ class V1RecordsViewDetailsGet200ResponseViewDetailsInner implements ModelInterfa
 
     /**
      * 录制文件名称。
+    * 类型：string
      */
     protected $recordFileName = null;
 
     /**
      * 观看完成度（百分比），该用户累计观看该视频的完成度。
+    * 类型：string
      */
     protected $totalViewProgress = null;
 
     /**
      * 用户名称。匿名用户给出匿名用户标识。
+    * 类型：string
      */
     protected $userName = null;
 
     /**
      * 所在同一企业下的用户 ID。
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 观看结束时间，UNIX时间戳（单位毫秒）。
+    * 类型：int
      */
     protected $viewEndTime = null;
 
     /**
      * Integer 观看开始时间，UNIX 时间戳（单位毫秒）。
+    * 类型：int
      */
     protected $viewStartTime = null;
 
     /**
      * 实际观看时长（单位毫秒）。
+    * 类型：int
      */
     protected $viewTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['record_file_name'])) {
+            $this->recordFileName = $jsonArray['record_file_name'];
+        }
+        if (isset($jsonArray['total_view_progress'])) {
+            $this->totalViewProgress = $jsonArray['total_view_progress'];
+        }
+        if (isset($jsonArray['user_name'])) {
+            $this->userName = $jsonArray['user_name'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['view_end_time'])) {
+            $this->viewEndTime = $jsonArray['view_end_time'];
+        }
+        if (isset($jsonArray['view_start_time'])) {
+            $this->viewStartTime = $jsonArray['view_start_time'];
+        }
+        if (isset($jsonArray['view_time'])) {
+            $this->viewTime = $jsonArray['view_time'];
+        }
     }
 
     public function recordFileName(string $recordFileName): V1RecordsViewDetailsGet200ResponseViewDetailsInner {

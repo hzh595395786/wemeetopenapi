@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,30 +16,47 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
 {
     /**
      * 用户的终端设备类型：1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 布局对象列表
-     * @deprecated
+    * 类型：V1MeetingsMeetingIdLayoutsPostRequestLayoutListInner
+     */
     protected $layoutList;
     /**
      * 会议创建者ID
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
 
     /**
      * 布局列表中会议需要应用的布局序号，从1开始计数（首次添加时若该参数不送，则默认选中第一个布局作为会议应用的布局）
+    * 类型：int
      */
     protected $defaultLayoutOrder = null;
 
     public function __construct(
-        $instanceid,
-        $layoutList,
-        $userid,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->layoutList = $layoutList;
-        $this->userid = $userid;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['layout_list'])) {
+            $this->layoutList = $jsonArray['layout_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter layout_list');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['default_layout_order'])) {
+            $this->defaultLayoutOrder = $jsonArray['default_layout_order'];
+        }
     }
 
     public function defaultLayoutOrder(int $defaultLayoutOrder): V1MeetingsMeetingIdLayoutsPostRequest {

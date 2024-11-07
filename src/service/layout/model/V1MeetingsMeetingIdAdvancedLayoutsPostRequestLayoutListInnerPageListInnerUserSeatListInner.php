@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,29 +16,46 @@ class V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerU
 {
     /**
      * 宫格 ID
-     * @deprecated
+    * 类型：
+     */
     protected $gridId;
     /**
      * 宫格类型： 1-视频画面 2-共享画面
-     * @deprecated
+    * 类型：
+     */
     protected $gridType;
 
     /**
      * 宫格中的用户列表 ● 轮询关闭， 只有一个用户 ● 轮询开启后， 可以包含多个用户
+    * 类型：\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerUserSeatListInnerUserListInner[]
      */
     protected $userList = null;
 
     /**
      * 视频画面来源 1-演讲者 2-自动填充 3-指定人员，根据user_list的定义显示视频内容（此类型需传递 userid 或 ms_open_id、username 入参，作为视频画面展示；若会中参会成员有外部企业用户，需传递该用户的 ms_open_id；如果 userid、ms_open_id 同时传递则以 ms_open_id 为准）
+    * 类型：int
      */
     protected $videoType = null;
 
     public function __construct(
-        $gridId,
-        $gridType,
+        $jsonArray = []
     ) {
-        $this->gridId = $gridId;
-        $this->gridType = $gridType;
+        if (isset($jsonArray['grid_id'])) {
+            $this->gridId = $jsonArray['grid_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter grid_id');
+        }
+        if (isset($jsonArray['grid_type'])) {
+            $this->gridType = $jsonArray['grid_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter grid_type');
+        }
+        if (isset($jsonArray['user_list'])) {
+            $this->userList = $jsonArray['user_list'];
+        }
+        if (isset($jsonArray['video_type'])) {
+            $this->videoType = $jsonArray['video_type'];
+        }
     }
 
     public function gridId(string $gridId): V1MeetingsMeetingIdAdvancedLayoutsPostRequestLayoutListInnerPageListInnerUserSeatListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData imple
 
     /**
      * 用户专属字段
+    * 类型：string
      */
     protected $customerData = null;
 
     /**
      * 用户专属参会链接
+    * 类型：string
      */
     protected $meetingShortUrl = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['customer_data'])) {
+            $this->customerData = $jsonArray['customer_data'];
+        }
+        if (isset($jsonArray['meeting_short_url'])) {
+            $this->meetingShortUrl = $jsonArray['meeting_short_url'];
+        }
     }
 
     public function customerData(string $customerData): V1MeetingsCustomerShortUrlPost200ResponseMeetingShortUrlCustomerData {

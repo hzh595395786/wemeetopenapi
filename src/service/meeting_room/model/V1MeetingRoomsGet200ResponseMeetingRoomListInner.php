@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,61 +17,106 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
 
     /**
      * 0:基础版账号 1:专业版账号
+    * 类型：int
      */
     protected $accountNewType = null;
 
     /**
      * 账号类型0:普通，1:专款，2:试用
+    * 类型：int
      */
     protected $accountType = null;
 
     /**
      * 激活码
+    * 类型：string
      */
     protected $activeCode = null;
 
     /**
      * 是否允许被呼叫
+    * 类型：bool
      */
     protected $isAllowCall = null;
 
     /**
      * 会议室ID
+    * 类型：string
      */
     protected $meetingRoomId = null;
 
     /**
      * 会议室地址
+    * 类型：string
      */
     protected $meetingRoomLocation = null;
 
     /**
      * 会议室名称
+    * 类型：string
      */
     protected $meetingRoomName = null;
 
     /**
      * 会议室状态0:未激活，1:未绑定，2:空闲，3:试用中，4:离线，5:未登录
+    * 类型：int
      */
     protected $meetingRoomStatus = null;
 
     /**
      * 容纳人数
+    * 类型：int
      */
     protected $participantNumber = null;
 
     /**
      * 1-预装 2-体验 3-付费
+    * 类型：int
      */
     protected $proAccountType = null;
 
     /**
      * 预定状态
+    * 类型：int
      */
     protected $scheduledStatus = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['account_new_type'])) {
+            $this->accountNewType = $jsonArray['account_new_type'];
+        }
+        if (isset($jsonArray['account_type'])) {
+            $this->accountType = $jsonArray['account_type'];
+        }
+        if (isset($jsonArray['active_code'])) {
+            $this->activeCode = $jsonArray['active_code'];
+        }
+        if (isset($jsonArray['is_allow_call'])) {
+            $this->isAllowCall = $jsonArray['is_allow_call'];
+        }
+        if (isset($jsonArray['meeting_room_id'])) {
+            $this->meetingRoomId = $jsonArray['meeting_room_id'];
+        }
+        if (isset($jsonArray['meeting_room_location'])) {
+            $this->meetingRoomLocation = $jsonArray['meeting_room_location'];
+        }
+        if (isset($jsonArray['meeting_room_name'])) {
+            $this->meetingRoomName = $jsonArray['meeting_room_name'];
+        }
+        if (isset($jsonArray['meeting_room_status'])) {
+            $this->meetingRoomStatus = $jsonArray['meeting_room_status'];
+        }
+        if (isset($jsonArray['participant_number'])) {
+            $this->participantNumber = $jsonArray['participant_number'];
+        }
+        if (isset($jsonArray['pro_account_type'])) {
+            $this->proAccountType = $jsonArray['pro_account_type'];
+        }
+        if (isset($jsonArray['scheduled_status'])) {
+            $this->scheduledStatus = $jsonArray['scheduled_status'];
+        }
     }
 
     public function accountNewType(int $accountNewType): V1MeetingRoomsGet200ResponseMeetingRoomListInner {

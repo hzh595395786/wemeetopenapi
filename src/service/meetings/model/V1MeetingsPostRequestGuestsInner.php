@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,24 +16,37 @@ class V1MeetingsPostRequestGuestsInner implements ModelInterface, \JsonSerializa
 {
     /**
      * 国家/地区代码（例如：中国传86，不是+86，也不是0086）
-     * @deprecated
+    * 类型：
+     */
     protected $area;
     /**
      * 手机号
-     * @deprecated
+    * 类型：
+     */
     protected $phoneNumber;
 
     /**
      * 嘉宾名称
+    * 类型：string
      */
     protected $guestName = null;
 
     public function __construct(
-        $area,
-        $phoneNumber,
+        $jsonArray = []
     ) {
-        $this->area = $area;
-        $this->phoneNumber = $phoneNumber;
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter area');
+        }
+        if (isset($jsonArray['phone_number'])) {
+            $this->phoneNumber = $jsonArray['phone_number'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter phone_number');
+        }
+        if (isset($jsonArray['guest_name'])) {
+            $this->guestName = $jsonArray['guest_name'];
+        }
     }
 
     public function area(string $area): V1MeetingsPostRequestGuestsInner {

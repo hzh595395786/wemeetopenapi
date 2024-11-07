@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -16,19 +16,28 @@ class V1RecordsTranscriptsDetailsGet200Response implements ModelInterface, \Json
 {
 
     /**
+    * 类型：\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutes
      */
     protected $minutes = null;
 
     /**
      * 是否还有更多
+    * 类型：bool
      */
     protected $more = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['minutes'])) {
+            $this->minutes = new V1RecordsTranscriptsDetailsGet200ResponseMinutes($jsonArray['minutes']);
+        }
+        if (isset($jsonArray['more'])) {
+            $this->more = $jsonArray['more'];
+        }
     }
 
-    public function minutes(\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutes $minutes): V1RecordsTranscriptsDetailsGet200Response {
+    public function minutes(V1RecordsTranscriptsDetailsGet200ResponseMinutes $minutes): V1RecordsTranscriptsDetailsGet200Response {
         $this->minutes = $minutes;
         return $this;
     }
@@ -37,7 +46,7 @@ class V1RecordsTranscriptsDetailsGet200Response implements ModelInterface, \Json
         return $this->minutes;
     }
 
-    public function setMinutes(\wemeet\openapi\service\records\model\V1RecordsTranscriptsDetailsGet200ResponseMinutes $minutes) {
+    public function setMinutes(V1RecordsTranscriptsDetailsGet200ResponseMinutes $minutes) {
         $this->minutes = $minutes;
     }
     public function more(bool $more): V1RecordsTranscriptsDetailsGet200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,69 +16,118 @@ class V1MeetingRoomsModifyPutRequestMeetingRoomInfo implements ModelInterface, \
 {
     /**
      * 会议室名称。长度不超过36个字符。
-     * @deprecated
+    * 类型：
+     */
     protected $meetingRoomName;
     /**
      * 会议室类型。 0：rooms 会议室 1：无类型会议室 2：SIP 会议室 4：H.323 会议室
-     * @deprecated
+    * 类型：
+     */
     protected $meetingRoomType;
 
     /**
      * 建筑。若非输入城市下现有建筑则自动创建该建筑与楼层。长度不超过36个字符或18个汉字。
+    * 类型：string
      */
     protected $building = null;
 
     /**
      * 城市。若非已添加城市则自动创建城市及建筑与楼层。长度不超过36个字符或18个汉字。city、building、floor 需同时传入或都不传入。
+    * 类型：string
      */
     protected $city = null;
 
     /**
      * 描述（base64）。长度不超过1000个字符。
+    * 类型：string
      */
     protected $desc = null;
 
     /**
      * 会议室设备，输入非现有类型内容则无效。设备类型有：TV，投影，会议电话机，MIC，视频电视，PC，无线投屏。
+    * 类型：string[]
      */
     protected $device = null;
 
     /**
      * 楼层。若非输入建筑下现有楼层则自动创建楼层。输入应为数字或字母，长度不超过36个字符。
+    * 类型：string
      */
     protected $floor = null;
 
     /**
      * 会议室信令地址。会议室类型为2或4时必填写，与mra_register_account 二选一。
+    * 类型：string
      */
     protected $mraAddress = null;
 
     /**
      * SIP/ H.323注册账号。会议室类型为2或4时填写。
+    * 类型：string
      */
     protected $mraRegisterAccount = null;
 
     /**
      * 容纳人数。不超过9位数。
+    * 类型：int
      */
     protected $participantNumber = null;
 
     /**
      * 使用管理员密码时必须填写管理员密码（base64）。若不使用密码，该字段无效。输入应为1-16位的数字、字母或字符。
+    * 类型：string
      */
     protected $password = null;
 
     /**
      * 会议室类型为1时选择是否使用管理员密码，默认为 false。 true：使用 false：不使用
+    * 类型：bool
      */
     protected $usePassword = null;
 
     public function __construct(
-        $meetingRoomName,
-        $meetingRoomType,
+        $jsonArray = []
     ) {
-        $this->meetingRoomName = $meetingRoomName;
-        $this->meetingRoomType = $meetingRoomType;
+        if (isset($jsonArray['meeting_room_name'])) {
+            $this->meetingRoomName = $jsonArray['meeting_room_name'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_room_name');
+        }
+        if (isset($jsonArray['meeting_room_type'])) {
+            $this->meetingRoomType = $jsonArray['meeting_room_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_room_type');
+        }
+        if (isset($jsonArray['building'])) {
+            $this->building = $jsonArray['building'];
+        }
+        if (isset($jsonArray['city'])) {
+            $this->city = $jsonArray['city'];
+        }
+        if (isset($jsonArray['desc'])) {
+            $this->desc = $jsonArray['desc'];
+        }
+        if (isset($jsonArray['device'])) {
+            $this->device = $jsonArray['device'];
+        }
+        if (isset($jsonArray['floor'])) {
+            $this->floor = $jsonArray['floor'];
+        }
+        if (isset($jsonArray['mra_address'])) {
+            $this->mraAddress = $jsonArray['mra_address'];
+        }
+        if (isset($jsonArray['mra_register_account'])) {
+            $this->mraRegisterAccount = $jsonArray['mra_register_account'];
+        }
+        if (isset($jsonArray['participant_number'])) {
+            $this->participantNumber = $jsonArray['participant_number'];
+        }
+        if (isset($jsonArray['password'])) {
+            $this->password = $jsonArray['password'];
+        }
+        if (isset($jsonArray['use_password'])) {
+            $this->usePassword = $jsonArray['use_password'];
+        }
     }
 
     public function building(string $building): V1MeetingRoomsModifyPutRequestMeetingRoomInfo {

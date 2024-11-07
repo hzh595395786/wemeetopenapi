@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\vote\model;
 
@@ -17,21 +17,34 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
 
     /**
      * 选项内容
+    * 类型：string[]
      */
     protected $pollOption = null;
 
     /**
      * 问题描述，最多50个字符
+    * 类型：string
      */
     protected $questionDesc = null;
 
     /**
      * 问题选择类型0 单选 1 多选
+    * 类型：int
      */
     protected $questionType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['poll_option'])) {
+            $this->pollOption = $jsonArray['poll_option'];
+        }
+        if (isset($jsonArray['question_desc'])) {
+            $this->questionDesc = $jsonArray['question_desc'];
+        }
+        if (isset($jsonArray['question_type'])) {
+            $this->questionType = $jsonArray['question_type'];
+        }
     }
 
     public function pollOption(array $pollOption): V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner {

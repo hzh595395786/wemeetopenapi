@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,21 +17,34 @@ class V1UsersInviteAuthPost200ResponseErrorUserListInner implements ModelInterfa
 
     /**
      * 错误码
+    * 类型：int
      */
     protected $errorCode = null;
 
     /**
      * 错误描述
+    * 类型：string
      */
     protected $errorMsg = null;
 
     /**
      * 账号ID
+    * 类型：string
      */
     protected $userid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['error_code'])) {
+            $this->errorCode = $jsonArray['error_code'];
+        }
+        if (isset($jsonArray['error_msg'])) {
+            $this->errorMsg = $jsonArray['error_msg'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
     }
 
     public function errorCode(int $errorCode): V1UsersInviteAuthPost200ResponseErrorUserListInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,30 +16,47 @@ class V1UsersAccountAiAccountDeleteRequest implements ModelInterface, \JsonSeria
 {
     /**
      * 用户拥有企管用户管理权限
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 1:userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorId;
     /**
      * 1:userid
-     * @deprecated
+    * 类型：
+     */
     protected $toOperatorIdType;
 
     public function __construct(
-        $operatorId,
-        $operatorIdType,
-        $toOperatorId,
-        $toOperatorIdType,
+        $jsonArray = []
     ) {
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->toOperatorId = $toOperatorId;
-        $this->toOperatorIdType = $toOperatorIdType;
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id');
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter to_operator_id_type');
+        }
     }
 
     public function operatorId(string $operatorId): V1UsersAccountAiAccountDeleteRequest {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,34 +16,55 @@ class V1RealControlMeetingsMeetingIdAsrPutRequest implements ModelInterface, \Js
 {
     /**
      * 用户的终端设备类型：  0：PSTN  1：PC  2：Mac  3：Android  4：iOS  5：Web  6：iPad  7：Android Pad  8：小程序  9：voip、sip 设备  10：Linux  20：Rooms for Touch Windows  21：Rooms for Touch MacOS  22：Rooms for Touch Android  30：Controller for Touch Windows  32：Controller for Touch Android  33：Controller for Touch iOS
-     * @deprecated
+    * 类型：
+     */
     protected $instanceId;
     /**
      * 开启/关闭实时转写 true：开启实时转写 false：关闭实时转写
-     * @deprecated
+    * 类型：
+     */
     protected $isOpen;
 
     /**
      * 是否自动打开转写侧边栏，仅在is_open 为 true 时生效，默认为 0， 0：打开实时转写页面 。1：不打开实时转写页面
+    * 类型：int
      */
     protected $openAsrView = null;
 
     /**
      * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
+    * 类型：string
      */
     protected $operatorId = null;
 
     /**
      * 操作者 ID 的类型： 1：userid
+    * 类型：int
      */
     protected $operatorIdType = null;
 
     public function __construct(
-        $instanceId,
-        $isOpen,
+        $jsonArray = []
     ) {
-        $this->instanceId = $instanceId;
-        $this->isOpen = $isOpen;
+        if (isset($jsonArray['instance_id'])) {
+            $this->instanceId = $jsonArray['instance_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instance_id');
+        }
+        if (isset($jsonArray['is_open'])) {
+            $this->isOpen = $jsonArray['is_open'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter is_open');
+        }
+        if (isset($jsonArray['open_asr_view'])) {
+            $this->openAsrView = $jsonArray['open_asr_view'];
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        }
     }
 
     public function instanceId(int $instanceId): V1RealControlMeetingsMeetingIdAsrPutRequest {

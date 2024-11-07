@@ -1,6 +1,6 @@
 {
-    "name": "wemeet/openapi-test",
-    "version": "v1.0.2",
+    "name": "wemeet/openapi",
+    "version": "v1.0.3",
     "description": "api测试专用",
     "keywords": [
         "openapitools",
@@ -11,6 +11,7 @@
         "rest",
         "api"
     ],
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "wemeet-openapi-sdk",

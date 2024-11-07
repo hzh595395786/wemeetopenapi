@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,21 +17,34 @@ class V1MeetingsMeetingIdEnrollImportPost200Response implements ModelInterface, 
 
     /**
      * 报名对象列表
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollImportPost200ResponseEnrollListInner[]
      */
     protected $enrollList = null;
 
     /**
      * 成功导入的报名信息条数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 未注册用户列表
+    * 类型：string[]
      */
     protected $userNonRegistered = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['enroll_list'])) {
+            $this->enrollList = $jsonArray['enroll_list'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['user_non_registered'])) {
+            $this->userNonRegistered = $jsonArray['user_non_registered'];
+        }
     }
 
     public function enrollList(array $enrollList): V1MeetingsMeetingIdEnrollImportPost200Response {

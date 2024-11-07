@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,76 +17,133 @@ class V1MeetingsPostRequestSettings implements ModelInterface, \JsonSerializable
 
     /**
      * 是否允许成员在主持人进会前加入会议，默认值为 true。 true：允许 false：不允许
+    * 类型：bool
      */
     protected $allowInBeforeHost = null;
 
     /**
      * 是否允许多端入会
+    * 类型：bool
      */
     protected $allowMultiDevice = null;
 
     /**
      * 是否开启屏幕共享水印，默认值为 false。 true： 开启 false：不开启
+    * 类型：bool
      */
     protected $allowScreenSharedWatermark = null;
 
     /**
      * 允许参会者取消静音，默认值为 true。 true：开启 false：关闭
+    * 类型：bool
      */
     protected $allowUnmuteSelf = null;
 
     /**
      * 是否开启等候室，默认值为 false。 true：开启 false：不开启
+    * 类型：bool
      */
     protected $autoInWaitingRoom = null;
 
     /**
      * 自动会议录制类型。 none：禁用，表示不开启自动会议录制。 local：本地录制，表示主持人入会后自动开启本地录制。 cloud：云录制，表示主持人入会后自动开启云录制。 说明： 该参数依赖企业账户设置，当企业强制锁定后，该参数必须与企业配置保持一致。 仅客户端2.7及以上版本可生效。
+    * 类型：string
      */
     protected $autoRecordType = null;
 
     /**
      * 允许主持人暂停或者停止云录制，默认值为 true 开启，开启时，主持人允许暂停和停止云录制；当设置为关闭时，则主持人不允许暂停和关闭云录制。 说明： 该参数必须 auto_record_type 设置为“cloud”时才生效，该参数依赖企业账户设置，当企业强制锁定后，该参数必须与企业配置保持一致。 仅客户端2.7及以上版本生效。
+    * 类型：bool
      */
     protected $enableHostPauseAutoRecord = null;
 
     /**
      * 入会时静音，默认值为 true true：开启 false：关闭
+    * 类型：bool
      */
     protected $muteEnableJoin = null;
 
     /**
      * 成员入会时静音选项，默认值为2。 当同时传入“mute_enable_join”和“mute_enable_type_join”时，将以“mute_enable_type_join”的选项为准。 0：关闭 1：开启 2：超过6人后自动开启
+    * 类型：int
      */
     protected $muteEnableTypeJoin = null;
 
     /**
      * 是否仅企业内部成员可入会，默认值为 false。 true：仅企业内部用户可入会 false：所有人可入会
+    * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
 
     /**
      * 当有参会成员入会时立即开启云录制，默认值为 false 关闭，关闭时，主持人入会自动开启云录制；当设置为开启时，则有参会成员入会自动开启云录制。 说明： 该参数必须 auto_record_type 设置为“cloud”时才生效，该参数依赖企业账户设置，当企业强制锁定后，该参数必须与企业配置保持一致。 仅客户端2.7及以上版本生效。
+    * 类型：bool
      */
     protected $participantJoinAutoRecord = null;
 
     /**
      * 有新的与会者加入时播放提示音，暂不支持，可在客户端设置
+    * 类型：bool
      */
     protected $playIvrOnJoin = null;
 
     /**
      * 参会者离开时播放提示音，暂时不支持，可在客户端设置。
+    * 类型：bool
      */
     protected $playIvrOnLeave = null;
 
     /**
      * 水印样式，默认为单排。当屏幕共享水印参数为开启时，此参数才生效。 0：单排 1：多排
+    * 类型：int
      */
     protected $waterMarkType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['allow_in_before_host'])) {
+            $this->allowInBeforeHost = $jsonArray['allow_in_before_host'];
+        }
+        if (isset($jsonArray['allow_multi_device'])) {
+            $this->allowMultiDevice = $jsonArray['allow_multi_device'];
+        }
+        if (isset($jsonArray['allow_screen_shared_watermark'])) {
+            $this->allowScreenSharedWatermark = $jsonArray['allow_screen_shared_watermark'];
+        }
+        if (isset($jsonArray['allow_unmute_self'])) {
+            $this->allowUnmuteSelf = $jsonArray['allow_unmute_self'];
+        }
+        if (isset($jsonArray['auto_in_waiting_room'])) {
+            $this->autoInWaitingRoom = $jsonArray['auto_in_waiting_room'];
+        }
+        if (isset($jsonArray['auto_record_type'])) {
+            $this->autoRecordType = $jsonArray['auto_record_type'];
+        }
+        if (isset($jsonArray['enable_host_pause_auto_record'])) {
+            $this->enableHostPauseAutoRecord = $jsonArray['enable_host_pause_auto_record'];
+        }
+        if (isset($jsonArray['mute_enable_join'])) {
+            $this->muteEnableJoin = $jsonArray['mute_enable_join'];
+        }
+        if (isset($jsonArray['mute_enable_type_join'])) {
+            $this->muteEnableTypeJoin = $jsonArray['mute_enable_type_join'];
+        }
+        if (isset($jsonArray['only_enterprise_user_allowed'])) {
+            $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['participant_join_auto_record'])) {
+            $this->participantJoinAutoRecord = $jsonArray['participant_join_auto_record'];
+        }
+        if (isset($jsonArray['play_ivr_on_join'])) {
+            $this->playIvrOnJoin = $jsonArray['play_ivr_on_join'];
+        }
+        if (isset($jsonArray['play_ivr_on_leave'])) {
+            $this->playIvrOnLeave = $jsonArray['play_ivr_on_leave'];
+        }
+        if (isset($jsonArray['water_mark_type'])) {
+            $this->waterMarkType = $jsonArray['water_mark_type'];
+        }
     }
 
     public function allowInBeforeHost(bool $allowInBeforeHost): V1MeetingsPostRequestSettings {

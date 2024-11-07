@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,37 +16,58 @@ class V1MeetingSetWaitingRoomWelcomeMessagePostRequest implements ModelInterface
 {
     /**
      * 是否开启等候室欢迎语能力。
-     * @deprecated
+    * 类型：
+     */
     protected $enableWelcome;
     /**
      * 会议ID
-     * @deprecated
+    * 类型：
+     */
     protected $meetingId;
     /**
      * 操作者 ID，设置等候室欢迎语的用户。会议的创建者、主持人、联席主持人，企业管理平台有会控权限的用户可以设置。  operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1: 企业内用户 userid。 2: open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 欢迎语，文本类型，最大长度1000字符。欢迎语中如果传入占位符%NICKNAME%（大小写敏感），则该占位符会被替换为被私聊用户的会中昵称。一条消息中支持多个占位符。
-     * @deprecated
+    * 类型：
+     */
     protected $welcomeText;
 
     public function __construct(
-        $enableWelcome,
-        $meetingId,
-        $operatorId,
-        $operatorIdType,
-        $welcomeText,
+        $jsonArray = []
     ) {
-        $this->enableWelcome = $enableWelcome;
-        $this->meetingId = $meetingId;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->welcomeText = $welcomeText;
+        if (isset($jsonArray['enable_welcome'])) {
+            $this->enableWelcome = $jsonArray['enable_welcome'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter enable_welcome');
+        }
+        if (isset($jsonArray['meeting_id'])) {
+            $this->meetingId = $jsonArray['meeting_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_id');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['welcome_text'])) {
+            $this->welcomeText = $jsonArray['welcome_text'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter welcome_text');
+        }
     }
 
     public function enableWelcome(bool $enableWelcome): V1MeetingSetWaitingRoomWelcomeMessagePostRequest {

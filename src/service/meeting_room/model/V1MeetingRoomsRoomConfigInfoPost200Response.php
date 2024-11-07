@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,18 +16,27 @@ class V1MeetingRoomsRoomConfigInfoPost200Response implements ModelInterface, \Js
 {
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings
      */
     protected $meetingSettings = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings
      */
     protected $recordSettings = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_settings'])) {
+            $this->meetingSettings = new V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings($jsonArray['meeting_settings']);
+        }
+        if (isset($jsonArray['record_settings'])) {
+            $this->recordSettings = new V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings($jsonArray['record_settings']);
+        }
     }
 
-    public function meetingSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings $meetingSettings): V1MeetingRoomsRoomConfigInfoPost200Response {
+    public function meetingSettings(V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings $meetingSettings): V1MeetingRoomsRoomConfigInfoPost200Response {
         $this->meetingSettings = $meetingSettings;
         return $this;
     }
@@ -36,10 +45,10 @@ class V1MeetingRoomsRoomConfigInfoPost200Response implements ModelInterface, \Js
         return $this->meetingSettings;
     }
 
-    public function setMeetingSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings $meetingSettings) {
+    public function setMeetingSettings(V1MeetingRoomsRoomConfigInfoPost200ResponseMeetingSettings $meetingSettings) {
         $this->meetingSettings = $meetingSettings;
     }
-    public function recordSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings $recordSettings): V1MeetingRoomsRoomConfigInfoPost200Response {
+    public function recordSettings(V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings $recordSettings): V1MeetingRoomsRoomConfigInfoPost200Response {
         $this->recordSettings = $recordSettings;
         return $this;
     }
@@ -48,7 +57,7 @@ class V1MeetingRoomsRoomConfigInfoPost200Response implements ModelInterface, \Js
         return $this->recordSettings;
     }
 
-    public function setRecordSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings $recordSettings) {
+    public function setRecordSettings(V1MeetingRoomsRoomConfigInfoPost200ResponseRecordSettings $recordSettings) {
         $this->recordSettings = $recordSettings;
     }
 

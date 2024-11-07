@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,26 +17,43 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 分页查询返回分页总数
+    * 类型：int
      */
     protected $currPage = null;
 
     /**
      * 分页查询返回当前页码
+    * 类型：int
      */
     protected $currSize = null;
 
     /**
      * 分页查询返回数据总数
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 分页查询返回单页数据条数
+    * 类型：int
      */
     protected $totalPage = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['curr_page'])) {
+            $this->currPage = $jsonArray['curr_page'];
+        }
+        if (isset($jsonArray['curr_size'])) {
+            $this->currSize = $jsonArray['curr_size'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['total_page'])) {
+            $this->totalPage = $jsonArray['total_page'];
+        }
     }
 
     public function currPage(int $currPage): V1AsrDetailsGet200Response {

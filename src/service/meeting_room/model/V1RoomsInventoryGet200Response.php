@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,36 +17,61 @@ class V1RoomsInventoryGet200Response implements ModelInterface, \JsonSerializabl
 
     /**
      * 普通设备数
+    * 类型：int
      */
     protected $normalCount = null;
 
     /**
      * 普通设备过期数
+    * 类型：int
      */
     protected $normalExpiredCount = null;
 
     /**
      * 普通设备使用数
+    * 类型：int
      */
     protected $normalUsedCount = null;
 
     /**
      * 专款设备数
+    * 类型：int
      */
     protected $specialCount = null;
 
     /**
      * 专款设备过期数
+    * 类型：int
      */
     protected $specialExpiredCount = null;
 
     /**
      * 专款设备使用数
+    * 类型：int
      */
     protected $specialUsedCount = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['normal_count'])) {
+            $this->normalCount = $jsonArray['normal_count'];
+        }
+        if (isset($jsonArray['normal_expired_count'])) {
+            $this->normalExpiredCount = $jsonArray['normal_expired_count'];
+        }
+        if (isset($jsonArray['normal_used_count'])) {
+            $this->normalUsedCount = $jsonArray['normal_used_count'];
+        }
+        if (isset($jsonArray['special_count'])) {
+            $this->specialCount = $jsonArray['special_count'];
+        }
+        if (isset($jsonArray['special_expired_count'])) {
+            $this->specialExpiredCount = $jsonArray['special_expired_count'];
+        }
+        if (isset($jsonArray['special_used_count'])) {
+            $this->specialUsedCount = $jsonArray['special_used_count'];
+        }
     }
 
     public function normalCount(int $normalCount): V1RoomsInventoryGet200Response {

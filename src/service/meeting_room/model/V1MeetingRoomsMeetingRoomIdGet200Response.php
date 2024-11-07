@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -16,41 +16,70 @@ class V1MeetingRoomsMeetingRoomIdGet200Response implements ModelInterface, \Json
 {
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo
      */
     protected $accountInfo = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo
      */
     protected $basicInfo = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo
      */
     protected $hardwareInfo = null;
 
     /**
      * 是否允许被呼叫，true：是 false：否
+    * 类型：bool
      */
     protected $isAllowCall = null;
 
     /**
      * 告警通知状态，0：未开启 1：已开启
+    * 类型：int
      */
     protected $monitorStatus = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo
      */
     protected $pmiInfo = null;
 
     /**
      * 预定状态： 0：未开放预定 1：开放预定
+    * 类型：int
      */
     protected $scheduledStatus = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['account_info'])) {
+            $this->accountInfo = new V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo($jsonArray['account_info']);
+        }
+        if (isset($jsonArray['basic_info'])) {
+            $this->basicInfo = new V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo($jsonArray['basic_info']);
+        }
+        if (isset($jsonArray['hardware_info'])) {
+            $this->hardwareInfo = new V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo($jsonArray['hardware_info']);
+        }
+        if (isset($jsonArray['is_allow_call'])) {
+            $this->isAllowCall = $jsonArray['is_allow_call'];
+        }
+        if (isset($jsonArray['monitor_status'])) {
+            $this->monitorStatus = $jsonArray['monitor_status'];
+        }
+        if (isset($jsonArray['pmi_info'])) {
+            $this->pmiInfo = new V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo($jsonArray['pmi_info']);
+        }
+        if (isset($jsonArray['scheduled_status'])) {
+            $this->scheduledStatus = $jsonArray['scheduled_status'];
+        }
     }
 
-    public function accountInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo $accountInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
+    public function accountInfo(V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo $accountInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
         $this->accountInfo = $accountInfo;
         return $this;
     }
@@ -59,10 +88,10 @@ class V1MeetingRoomsMeetingRoomIdGet200Response implements ModelInterface, \Json
         return $this->accountInfo;
     }
 
-    public function setAccountInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo $accountInfo) {
+    public function setAccountInfo(V1MeetingRoomsMeetingRoomIdGet200ResponseAccountInfo $accountInfo) {
         $this->accountInfo = $accountInfo;
     }
-    public function basicInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo $basicInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
+    public function basicInfo(V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo $basicInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
         $this->basicInfo = $basicInfo;
         return $this;
     }
@@ -71,10 +100,10 @@ class V1MeetingRoomsMeetingRoomIdGet200Response implements ModelInterface, \Json
         return $this->basicInfo;
     }
 
-    public function setBasicInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo $basicInfo) {
+    public function setBasicInfo(V1MeetingRoomsMeetingRoomIdGet200ResponseBasicInfo $basicInfo) {
         $this->basicInfo = $basicInfo;
     }
-    public function hardwareInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo $hardwareInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
+    public function hardwareInfo(V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo $hardwareInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
         $this->hardwareInfo = $hardwareInfo;
         return $this;
     }
@@ -83,7 +112,7 @@ class V1MeetingRoomsMeetingRoomIdGet200Response implements ModelInterface, \Json
         return $this->hardwareInfo;
     }
 
-    public function setHardwareInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo $hardwareInfo) {
+    public function setHardwareInfo(V1MeetingRoomsMeetingRoomIdGet200ResponseHardwareInfo $hardwareInfo) {
         $this->hardwareInfo = $hardwareInfo;
     }
     public function isAllowCall(bool $isAllowCall): V1MeetingRoomsMeetingRoomIdGet200Response {
@@ -110,7 +139,7 @@ class V1MeetingRoomsMeetingRoomIdGet200Response implements ModelInterface, \Json
     public function setMonitorStatus(int $monitorStatus) {
         $this->monitorStatus = $monitorStatus;
     }
-    public function pmiInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo $pmiInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
+    public function pmiInfo(V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo $pmiInfo): V1MeetingRoomsMeetingRoomIdGet200Response {
         $this->pmiInfo = $pmiInfo;
         return $this;
     }
@@ -119,7 +148,7 @@ class V1MeetingRoomsMeetingRoomIdGet200Response implements ModelInterface, \Json
         return $this->pmiInfo;
     }
 
-    public function setPmiInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo $pmiInfo) {
+    public function setPmiInfo(V1MeetingRoomsMeetingRoomIdGet200ResponsePmiInfo $pmiInfo) {
         $this->pmiInfo = $pmiInfo;
     }
     public function scheduledStatus(int $scheduledStatus): V1MeetingRoomsMeetingRoomIdGet200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\record_intelligence\model;
 
@@ -17,21 +17,34 @@ class V1SmartTopicsGet200ResponseAiTopicListInnerTopicTimeInner implements Model
 
     /**
      * 结束时间戳（单位毫秒）
+    * 类型：string
      */
     protected $endTime = null;
 
     /**
      * 段落ID
+    * 类型：string
      */
     protected $pid = null;
 
     /**
      * 开始时间戳（单位毫秒）
+    * 类型：string
      */
     protected $startTime = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['end_time'])) {
+            $this->endTime = $jsonArray['end_time'];
+        }
+        if (isset($jsonArray['pid'])) {
+            $this->pid = $jsonArray['pid'];
+        }
+        if (isset($jsonArray['start_time'])) {
+            $this->startTime = $jsonArray['start_time'];
+        }
     }
 
     public function endTime(string $endTime): V1SmartTopicsGet200ResponseAiTopicListInnerTopicTimeInner {

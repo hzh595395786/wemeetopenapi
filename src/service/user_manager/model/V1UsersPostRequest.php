@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -15,53 +15,94 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1UsersPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $phone;
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $userid;
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $username;
 
     /**
+    * 类型：string
      */
     protected $area = null;
 
     /**
      * 自动发送邀请，开启之后调用接口后自动发送激活邀请 true：开启，默认开启;false：关闭
+    * 类型：bool
      */
     protected $autoInvite = null;
 
     /**
+    * 类型：string
      */
     protected $email = null;
 
     /**
+    * 类型：int
      */
     protected $entryTime = null;
 
     /**
+    * 类型：string
      */
     protected $jobTitle = null;
 
     /**
+    * 类型：string
      */
     protected $staffId = null;
 
     /**
      * 1：高级账号  2：免费账号  3：免费账号100方 4:高级账号300方，5:高级账号500方，6：高级账号1000方，7:高级账号2000方     其中企业版/教育版：1，2 。免费组织 2。 商业版：2-7      根据传入的参数判断是否有该类型账号，没有则报错。创建成功即锁定该账号资源。默认值：商业版默认为高级账号，绑定资源为由小到大，资源消耗完账号为免费账号，企业版-高级账号
+    * 类型：int
      */
     protected $userAccountType = null;
 
     public function __construct(
-        $phone,
-        $userid,
-        $username,
+        $jsonArray = []
     ) {
-        $this->phone = $phone;
-        $this->userid = $userid;
-        $this->username = $username;
+        if (isset($jsonArray['phone'])) {
+            $this->phone = $jsonArray['phone'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter phone');
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter userid');
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter username');
+        }
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
+        }
+        if (isset($jsonArray['auto_invite'])) {
+            $this->autoInvite = $jsonArray['auto_invite'];
+        }
+        if (isset($jsonArray['email'])) {
+            $this->email = $jsonArray['email'];
+        }
+        if (isset($jsonArray['entry_time'])) {
+            $this->entryTime = $jsonArray['entry_time'];
+        }
+        if (isset($jsonArray['job_title'])) {
+            $this->jobTitle = $jsonArray['job_title'];
+        }
+        if (isset($jsonArray['staff_id'])) {
+            $this->staffId = $jsonArray['staff_id'];
+        }
+        if (isset($jsonArray['user_account_type'])) {
+            $this->userAccountType = $jsonArray['user_account_type'];
+        }
     }
 
     public function area(string $area): V1UsersPostRequest {

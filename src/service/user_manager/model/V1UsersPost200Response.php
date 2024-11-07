@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -16,27 +16,48 @@ class V1UsersPost200Response implements ModelInterface, \JsonSerializable
 {
 
     /**
+    * 类型：string
      */
     protected $email = null;
 
     /**
+    * 类型：string
      */
     protected $phone = null;
 
     /**
+    * 类型：string
      */
     protected $userid = null;
 
     /**
+    * 类型：string
      */
     protected $username = null;
 
     /**
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['email'])) {
+            $this->email = $jsonArray['email'];
+        }
+        if (isset($jsonArray['phone'])) {
+            $this->phone = $jsonArray['phone'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function email(string $email): V1UsersPost200Response {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -16,31 +16,48 @@ class V1RealControlMeetingsMeetingIdNamesPutRequest implements ModelInterface, \
 {
     /**
      * 用户的终端设备类型： 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch Mac 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch Iphone
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作者 ID。 1：operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 2：如果 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者ID的类型：2:openid 4: ms_open_id
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
     /**
      * 要改名的用户
-     * @deprecated
+    * 类型：V1RealControlMeetingsMeetingIdNamesPutRequestUsersInner
+     */
     protected $users;
 
     public function __construct(
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
-        $users,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
-        $this->users = $users;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['users'])) {
+            $this->users = $jsonArray['users'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter users');
+        }
     }
 
     public function instanceid(int $instanceid): V1RealControlMeetingsMeetingIdNamesPutRequest {

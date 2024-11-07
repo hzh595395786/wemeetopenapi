@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,16 +17,25 @@ class V1AddressesRecordFileIdGet200ResponseAiMeetingTranscriptsInner implements 
 
     /**
      * 录制转写文件下载文件地址，链接有效期为5分钟。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：string
      */
     protected $downloadAddress = null;
 
     /**
      * 下载文件类型，例如：txt、pdf、docx。OAuth 鉴权方式下，账号类型为个人免费版、企微创建企业时，该值返回为空。
+    * 类型：string
      */
     protected $fileType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['download_address'])) {
+            $this->downloadAddress = $jsonArray['download_address'];
+        }
+        if (isset($jsonArray['file_type'])) {
+            $this->fileType = $jsonArray['file_type'];
+        }
     }
 
     public function downloadAddress(string $downloadAddress): V1AddressesRecordFileIdGet200ResponseAiMeetingTranscriptsInner {

@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,16 +17,25 @@ class V1MeetingsMeetingIdPut200Response implements ModelInterface, \JsonSerializ
 
     /**
      * 会议列表
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner[]
      */
     protected $meetingInfoList = null;
 
     /**
      * 会议数量
+    * 类型：int
      */
     protected $meetingNumber = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['meeting_info_list'])) {
+            $this->meetingInfoList = $jsonArray['meeting_info_list'];
+        }
+        if (isset($jsonArray['meeting_number'])) {
+            $this->meetingNumber = $jsonArray['meeting_number'];
+        }
     }
 
     public function meetingInfoList(array $meetingInfoList): V1MeetingsMeetingIdPut200Response {

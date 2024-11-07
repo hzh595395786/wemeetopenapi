@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -16,44 +16,73 @@ class V1MeetingsMeetingIdLayoutsPostRequestLayoutListInnerPageListInnerUserSeatL
 {
     /**
      * 宫格ID
-     * @deprecated
+    * 类型：
+     */
     protected $gridId;
     /**
      * 宫格类型，注意：多次传入同一宫格ID的对象，仅第一次出现的对象生效。 宫格类型： 1. 视频画面（此类型需传递 userid 或 uuid、username 入参，作为视频画面展示；若会中参会成员有外部企业用户，需传递该用户的 uuid；如果 userid、uuid 同时传递则以 uuid 为准）。 2. 共享画面。 3. 拓展应用（目前一页仅可添加一个应用）。 添加的应用需满足以下条件： 与会议绑定。 开启网页服务。 同企业下的仅企业内可见应用或外部企业可见应用。
-     * @deprecated
+    * 类型：
+     */
     protected $gridType;
 
     /**
      * 当场会议的用户临时 ID。
+    * 类型：string
      */
     protected $msOpenId = null;
 
     /**
      * 工具箱id
+    * 类型：string
      */
     protected $toolSdkid = null;
 
     /**
      * 用户ID
+    * 类型：string
      */
     protected $userid = null;
 
     /**
      * 用户昵称
+    * 类型：string
      */
     protected $username = null;
 
     /**
      * 用户身份 ID（腾讯会议颁发的用于开放平台的唯一用户 ID）
+    * 类型：string
      */
     protected $uuid = null;
 
     public function __construct(
-        $gridId,
-        $gridType,
+        $jsonArray = []
     ) {
-        $this->gridId = $gridId;
-        $this->gridType = $gridType;
+        if (isset($jsonArray['grid_id'])) {
+            $this->gridId = $jsonArray['grid_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter grid_id');
+        }
+        if (isset($jsonArray['grid_type'])) {
+            $this->gridType = $jsonArray['grid_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter grid_type');
+        }
+        if (isset($jsonArray['ms_open_id'])) {
+            $this->msOpenId = $jsonArray['ms_open_id'];
+        }
+        if (isset($jsonArray['tool_sdkid'])) {
+            $this->toolSdkid = $jsonArray['tool_sdkid'];
+        }
+        if (isset($jsonArray['userid'])) {
+            $this->userid = $jsonArray['userid'];
+        }
+        if (isset($jsonArray['username'])) {
+            $this->username = $jsonArray['username'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
+        }
     }
 
     public function gridId(string $gridId): V1MeetingsMeetingIdLayoutsPostRequestLayoutListInnerPageListInnerUserSeatListInner {

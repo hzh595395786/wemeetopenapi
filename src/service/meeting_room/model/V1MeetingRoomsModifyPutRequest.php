@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -15,45 +15,74 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1MeetingRoomsModifyPutRequest implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $instanceId;
     /**
      * 要设置的会议室 ID。
-     * @deprecated
+    * 类型：
+     */
     protected $meetingRoomId;
     /**
      * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1：userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 是否允许被呼叫
+    * 类型：bool
      */
     protected $isAllowCall = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyPutRequestMeetingRoomInfo
      */
     protected $meetingRoomInfo = null;
 
     /**
      * 是否开放预定初始值false
+    * 类型：bool
      */
     protected $scheduledStatus = null;
 
     public function __construct(
-        $instanceId,
-        $meetingRoomId,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceId = $instanceId;
-        $this->meetingRoomId = $meetingRoomId;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instance_id'])) {
+            $this->instanceId = $jsonArray['instance_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instance_id');
+        }
+        if (isset($jsonArray['meeting_room_id'])) {
+            $this->meetingRoomId = $jsonArray['meeting_room_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_room_id');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['is_allow_call'])) {
+            $this->isAllowCall = $jsonArray['is_allow_call'];
+        }
+        if (isset($jsonArray['meeting_room_info'])) {
+            $this->meetingRoomInfo = new V1MeetingRoomsModifyPutRequestMeetingRoomInfo($jsonArray['meeting_room_info']);
+        }
+        if (isset($jsonArray['scheduled_status'])) {
+            $this->scheduledStatus = $jsonArray['scheduled_status'];
+        }
     }
 
     public function instanceId(int $instanceId): V1MeetingRoomsModifyPutRequest {
@@ -92,7 +121,7 @@ class V1MeetingRoomsModifyPutRequest implements ModelInterface, \JsonSerializabl
     public function setMeetingRoomId(string $meetingRoomId) {
         $this->meetingRoomId = $meetingRoomId;
     }
-    public function meetingRoomInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyPutRequestMeetingRoomInfo $meetingRoomInfo): V1MeetingRoomsModifyPutRequest {
+    public function meetingRoomInfo(V1MeetingRoomsModifyPutRequestMeetingRoomInfo $meetingRoomInfo): V1MeetingRoomsModifyPutRequest {
         $this->meetingRoomInfo = $meetingRoomInfo;
         return $this;
     }
@@ -101,7 +130,7 @@ class V1MeetingRoomsModifyPutRequest implements ModelInterface, \JsonSerializabl
         return $this->meetingRoomInfo;
     }
 
-    public function setMeetingRoomInfo(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyPutRequestMeetingRoomInfo $meetingRoomInfo) {
+    public function setMeetingRoomInfo(V1MeetingRoomsModifyPutRequestMeetingRoomInfo $meetingRoomInfo) {
         $this->meetingRoomInfo = $meetingRoomInfo;
     }
     public function operatorId(string $operatorId): V1MeetingRoomsModifyPutRequest {

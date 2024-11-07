@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -17,21 +17,34 @@ class V1RecordsAccessMeetingRecordIdPost200ResponseFailAccessMembersInner implem
 
     /**
      * 成员访问权限，默认为 0 ； 0：仅查看，1：可管理
+    * 类型：int
      */
     protected $permission = null;
 
     /**
      * 被操作者ID，根据 to_operator_id_type 的值，使用不同的类型
+    * 类型：string
      */
     protected $toOperatorId = null;
 
     /**
      * 被操作者ID类型  1:userid  2:open_id  4:ms_open_id
+    * 类型：int
      */
     protected $toOperatorIdType = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['permission'])) {
+            $this->permission = $jsonArray['permission'];
+        }
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        }
     }
 
     public function permission(int $permission): V1RecordsAccessMeetingRecordIdPost200ResponseFailAccessMembersInner {

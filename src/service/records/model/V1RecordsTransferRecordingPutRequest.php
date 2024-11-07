@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -15,30 +15,47 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1RecordsTransferRecordingPutRequest implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $instanceid;
     /**
      * 操作者 ID，根据 operator_id_type 的值，使用不同的类型。
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
      * 操作者 ID 的类型： 1：userid
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
      * 如果参数未带， 则按集群删除策略对指定录制删除操作。    转存完成后删除录制策略：  0 - 转存完成后立刻删除录制文件  1～30 - 转存完成后1～30天后删除录制文件  不删除 - 转存完成后不删除录制文件
+    * 类型：string
      */
     protected $deleteRecordingAfterTransfer = null;
 
     public function __construct(
-        $instanceid,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceid = $instanceid;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instanceid'])) {
+            $this->instanceid = $jsonArray['instanceid'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['delete_recording_after_transfer'])) {
+            $this->deleteRecordingAfterTransfer = $jsonArray['delete_recording_after_transfer'];
+        }
     }
 
     public function deleteRecordingAfterTransfer(string $deleteRecordingAfterTransfer): V1RecordsTransferRecordingPutRequest {

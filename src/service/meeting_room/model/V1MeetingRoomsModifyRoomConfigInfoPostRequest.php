@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -15,37 +15,62 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1MeetingRoomsModifyRoomConfigInfoPostRequest implements ModelInterface, \JsonSerializable
 {
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $instanceId;
     /**
      * 要配置的会议室 ID。
-     * @deprecated
+    * 类型：
+     */
     protected $meetingRoomId;
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $operatorId;
     /**
-     * @deprecated
+    * 类型：
+     */
     protected $operatorIdType;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettings
      */
     protected $meetingSettings = null;
 
     /**
+    * 类型：\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyRoomConfigInfoPostRequestRecordSettings
      */
     protected $recordSettings = null;
 
     public function __construct(
-        $instanceId,
-        $meetingRoomId,
-        $operatorId,
-        $operatorIdType,
+        $jsonArray = []
     ) {
-        $this->instanceId = $instanceId;
-        $this->meetingRoomId = $meetingRoomId;
-        $this->operatorId = $operatorId;
-        $this->operatorIdType = $operatorIdType;
+        if (isset($jsonArray['instance_id'])) {
+            $this->instanceId = $jsonArray['instance_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter instance_id');
+        }
+        if (isset($jsonArray['meeting_room_id'])) {
+            $this->meetingRoomId = $jsonArray['meeting_room_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter meeting_room_id');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['meeting_settings'])) {
+            $this->meetingSettings = new V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettings($jsonArray['meeting_settings']);
+        }
+        if (isset($jsonArray['record_settings'])) {
+            $this->recordSettings = new V1MeetingRoomsModifyRoomConfigInfoPostRequestRecordSettings($jsonArray['record_settings']);
+        }
     }
 
     public function instanceId(int $instanceId): V1MeetingRoomsModifyRoomConfigInfoPostRequest {
@@ -72,7 +97,7 @@ class V1MeetingRoomsModifyRoomConfigInfoPostRequest implements ModelInterface, \
     public function setMeetingRoomId(string $meetingRoomId) {
         $this->meetingRoomId = $meetingRoomId;
     }
-    public function meetingSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettings $meetingSettings): V1MeetingRoomsModifyRoomConfigInfoPostRequest {
+    public function meetingSettings(V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettings $meetingSettings): V1MeetingRoomsModifyRoomConfigInfoPostRequest {
         $this->meetingSettings = $meetingSettings;
         return $this;
     }
@@ -81,7 +106,7 @@ class V1MeetingRoomsModifyRoomConfigInfoPostRequest implements ModelInterface, \
         return $this->meetingSettings;
     }
 
-    public function setMeetingSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettings $meetingSettings) {
+    public function setMeetingSettings(V1MeetingRoomsModifyRoomConfigInfoPostRequestMeetingSettings $meetingSettings) {
         $this->meetingSettings = $meetingSettings;
     }
     public function operatorId(string $operatorId): V1MeetingRoomsModifyRoomConfigInfoPostRequest {
@@ -108,7 +133,7 @@ class V1MeetingRoomsModifyRoomConfigInfoPostRequest implements ModelInterface, \
     public function setOperatorIdType(int $operatorIdType) {
         $this->operatorIdType = $operatorIdType;
     }
-    public function recordSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyRoomConfigInfoPostRequestRecordSettings $recordSettings): V1MeetingRoomsModifyRoomConfigInfoPostRequest {
+    public function recordSettings(V1MeetingRoomsModifyRoomConfigInfoPostRequestRecordSettings $recordSettings): V1MeetingRoomsModifyRoomConfigInfoPostRequest {
         $this->recordSettings = $recordSettings;
         return $this;
     }
@@ -117,7 +142,7 @@ class V1MeetingRoomsModifyRoomConfigInfoPostRequest implements ModelInterface, \
         return $this->recordSettings;
     }
 
-    public function setRecordSettings(\wemeet\openapi\service\meeting_room\model\V1MeetingRoomsModifyRoomConfigInfoPostRequestRecordSettings $recordSettings) {
+    public function setRecordSettings(V1MeetingRoomsModifyRoomConfigInfoPostRequestRecordSettings $recordSettings) {
         $this->recordSettings = $recordSettings;
     }
 

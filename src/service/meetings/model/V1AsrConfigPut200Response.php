@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -17,11 +17,16 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 自定义热词标签
+    * 类型：string
      */
     protected $tag = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['tag'])) {
+            $this->tag = $jsonArray['tag'];
+        }
     }
 
     public function tag(string $tag): V1AsrConfigPut200Response {

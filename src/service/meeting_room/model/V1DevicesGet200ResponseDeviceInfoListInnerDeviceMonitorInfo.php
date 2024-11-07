@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -17,21 +17,34 @@ class V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo implements Mod
 
     /**
      * 摄像头健康状态
+    * 类型：bool
      */
     protected $cameraStatus = null;
 
     /**
      * 麦克风健康状态
+    * 类型：bool
      */
     protected $microphoneStatus = null;
 
     /**
      * 扬声器健康状态
+    * 类型：bool
      */
     protected $speakerStatus = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['camera_status'])) {
+            $this->cameraStatus = $jsonArray['camera_status'];
+        }
+        if (isset($jsonArray['microphone_status'])) {
+            $this->microphoneStatus = $jsonArray['microphone_status'];
+        }
+        if (isset($jsonArray['speaker_status'])) {
+            $this->speakerStatus = $jsonArray['speaker_status'];
+        }
     }
 
     public function cameraStatus(bool $cameraStatus): V1DevicesGet200ResponseDeviceInfoListInnerDeviceMonitorInfo {

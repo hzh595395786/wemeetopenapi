@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,13 +16,18 @@ class V1MeetingsMeetingIdEnrollUnregistrationDeleteRequestEnrollIdListInner impl
 {
     /**
      * 报名ID
-     * @deprecated
+    * 类型：
+     */
     protected $enrollId;
 
     public function __construct(
-        $enrollId,
+        $jsonArray = []
     ) {
-        $this->enrollId = $enrollId;
+        if (isset($jsonArray['enroll_id'])) {
+            $this->enrollId = $jsonArray['enroll_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter enroll_id');
+        }
     }
 
     public function enrollId(int $enrollId): V1MeetingsMeetingIdEnrollUnregistrationDeleteRequestEnrollIdListInner {

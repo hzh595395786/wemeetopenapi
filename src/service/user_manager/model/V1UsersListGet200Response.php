@@ -5,7 +5,7 @@
  *
  * api测试专用
  *
- * The version of the OpenAPI document: v1.0.2
+ * The version of the OpenAPI document: v1.0.0.76
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -17,31 +17,52 @@ class V1UsersListGet200Response implements ModelInterface, \JsonSerializable
 
     /**
      * 当前页数。
+    * 类型：int
      */
     protected $currentPage = null;
 
     /**
      * 当前页实际大小。
+    * 类型：int
      */
     protected $currentSize = null;
 
     /**
      * 分页大小。
+    * 类型：int
      */
     protected $pageSize = null;
 
     /**
      * 总数。
+    * 类型：int
      */
     protected $totalCount = null;
 
     /**
      * 数组格式，item 为用户对象。
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersListGet200ResponseUsersInner[]
      */
     protected $users = null;
 
     public function __construct(
+        $jsonArray = []
     ) {
+        if (isset($jsonArray['current_page'])) {
+            $this->currentPage = $jsonArray['current_page'];
+        }
+        if (isset($jsonArray['current_size'])) {
+            $this->currentSize = $jsonArray['current_size'];
+        }
+        if (isset($jsonArray['page_size'])) {
+            $this->pageSize = $jsonArray['page_size'];
+        }
+        if (isset($jsonArray['total_count'])) {
+            $this->totalCount = $jsonArray['total_count'];
+        }
+        if (isset($jsonArray['users'])) {
+            $this->users = $jsonArray['users'];
+        }
     }
 
     public function currentPage(int $currentPage): V1UsersListGet200Response {
