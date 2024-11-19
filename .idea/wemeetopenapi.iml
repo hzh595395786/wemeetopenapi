@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="wemeet\openapi\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/core" isTestSource="false" packagePrefix="wemeet\openapi\core\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/core/authenticator" isTestSource="false" packagePrefix="wemeet\openapi\core\authenticator\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/core/exception" isTestSource="false" packagePrefix="wemeet\openapi\core\exception\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/core/xhttp" isTestSource="false" packagePrefix="wemeet\openapi\core\xhttp\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/application_group/api" isTestSource="false" packagePrefix="wemeet\openapi\service\application_group\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/application_group/model" isTestSource="false" packagePrefix="wemeet\openapi\service\application_group\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/layout/api" isTestSource="false" packagePrefix="wemeet\openapi\service\layout\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/layout/model" isTestSource="false" packagePrefix="wemeet\openapi\service\layout\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meeting_control/api" isTestSource="false" packagePrefix="wemeet\openapi\service\meeting_control\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meeting_control/model" isTestSource="false" packagePrefix="wemeet\openapi\service\meeting_control\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meeting_guest/api" isTestSource="false" packagePrefix="wemeet\openapi\service\meeting_guest\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meeting_guest/model" isTestSource="false" packagePrefix="wemeet\openapi\service\meeting_guest\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meeting_room/api" isTestSource="false" packagePrefix="wemeet\openapi\service\meeting_room\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meeting_room/model" isTestSource="false" packagePrefix="wemeet\openapi\service\meeting_room\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meetings/api" isTestSource="false" packagePrefix="wemeet\openapi\service\meetings\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/meetings/model" isTestSource="false" packagePrefix="wemeet\openapi\service\meetings\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/record_intelligence/api" isTestSource="false" packagePrefix="wemeet\openapi\service\record_intelligence\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/record_intelligence/model" isTestSource="false" packagePrefix="wemeet\openapi\service\record_intelligence\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/records/api" isTestSource="false" packagePrefix="wemeet\openapi\service\records\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/records/model" isTestSource="false" packagePrefix="wemeet\openapi\service\records\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/user_manager/api" isTestSource="false" packagePrefix="wemeet\openapi\service\user_manager\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/user_manager/model" isTestSource="false" packagePrefix="wemeet\openapi\service\user_manager\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/vote/api" isTestSource="false" packagePrefix="wemeet\openapi\service\vote\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/service/vote/model" isTestSource="false" packagePrefix="wemeet\openapi\service\vote\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" packagePrefix="wemeet\openapi\Test\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
