@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -44,6 +44,11 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
      */
     protected $meetingId = null;
 
+    /**
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings
+     */
+    protected $settings = null;
+
     public function __construct(
         $jsonArray = []
     ) {
@@ -61,6 +66,9 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         }
         if (isset($jsonArray['meeting_id'])) {
             $this->meetingId = $jsonArray['meeting_id'];
+        }
+        if (isset($jsonArray['settings'])) {
+            $this->settings = new V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings($jsonArray['settings']);
         }
     }
 
@@ -124,6 +132,18 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
     public function setMeetingId(string $meetingId) {
         $this->meetingId = $meetingId;
     }
+    public function settings(V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner {
+        $this->settings = $settings;
+        return $this;
+    }
+
+    public function getSettings() {
+        return $this->settings;
+    }
+
+    public function setSettings(V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings $settings) {
+        $this->settings = $settings;
+    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -135,7 +155,8 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         'host_key' => 'string',
         'live_config' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerLiveConfig',
         'meeting_code' => 'string',
-        'meeting_id' => 'string'
+        'meeting_id' => 'string',
+        'settings' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings'
     ];
 
     /**
@@ -150,7 +171,8 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         'host_key' => null,
         'live_config' => null,
         'meeting_code' => null,
-        'meeting_id' => null
+        'meeting_id' => null,
+        'settings' => null
     ];
 
     /**
@@ -163,7 +185,8 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         'host_key' => false,
         'live_config' => false,
         'meeting_code' => false,
-        'meeting_id' => false
+        'meeting_id' => false,
+        'settings' => false
     ];
 
     /**
@@ -256,7 +279,8 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         'host_key' => 'host_key',
         'live_config' => 'live_config',
         'meeting_code' => 'meeting_code',
-        'meeting_id' => 'meeting_id'
+        'meeting_id' => 'meeting_id',
+        'settings' => 'settings'
     ];
 
     /**
@@ -269,7 +293,8 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         'host_key' => 'setHostKey',
         'live_config' => 'setLiveConfig',
         'meeting_code' => 'setMeetingCode',
-        'meeting_id' => 'setMeetingId'
+        'meeting_id' => 'setMeetingId',
+        'settings' => 'setSettings'
     ];
 
     /**
@@ -282,7 +307,8 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
         'host_key' => 'getHostKey',
         'live_config' => 'getLiveConfig',
         'meeting_code' => 'getMeetingCode',
-        'meeting_id' => 'getMeetingId'
+        'meeting_id' => 'getMeetingId',
+        'settings' => 'getSettings'
     ];
 
     /**
@@ -323,6 +349,7 @@ class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInner implements ModelInte
             'live_config' => $this->liveConfig,
             'meeting_code' => $this->meetingCode,
             'meeting_id' => $this->meetingId,
+            'settings' => $this->settings,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

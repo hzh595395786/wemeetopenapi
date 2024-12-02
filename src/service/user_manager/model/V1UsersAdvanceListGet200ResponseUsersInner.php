@@ -12,63 +12,65 @@ namespace wemeet\openapi\service\user_manager\model;
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
+class V1UsersAdvanceListGet200ResponseUsersInner implements ModelInterface, \JsonSerializable
 {
 
     /**
-    * 类型：int
-     */
-    protected $accountType = null;
-
-    /**
-     * 账号版本
+     * 账号版本。 0：其他 1：商业版 2：企业版 3：教育版
     * 类型：int
      */
     protected $accountVersion = null;
 
     /**
-     * ai账号类型 1:购买版 2:赠送版
+     * AI 账号类型。 0：无账号 1：购买版 2：赠送版
     * 类型：int
      */
     protected $aiAccountType = null;
 
     /**
+     * 手机区号
     * 类型：string
      */
     protected $area = null;
 
     /**
+     * 头像地址
     * 类型：string
      */
     protected $avatarUrl = null;
 
     /**
-    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersUseridGet200ResponseDepartmentListInner[]
+     * 用户部门信息
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner[]
      */
     protected $departmentList = null;
 
     /**
+     * 邮箱
     * 类型：string
      */
     protected $email = null;
 
     /**
-     * 是否有ai账号能力，true：有，false：无
+     * 是否有 AI 账号能力。 true：有  false：无  教育版/企业版存在有 AI 账号，商业版都具有 AI 能力，其余为 false。
     * 类型：bool
      */
     protected $enableAiAccount = null;
 
     /**
+     * 入职时间
     * 类型：string
      */
     protected $entryTime = null;
 
     /**
+     * 员工职位
     * 类型：string
      */
     protected $jobTitle = null;
 
     /**
+     * 手机号
     * 类型：string
      */
     protected $phone = null;
@@ -80,47 +82,55 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     protected $phoneStatus = null;
 
     /**
+     * 角色类型
     * 类型：string
      */
     protected $roleCode = null;
 
     /**
+     * 角色名称
     * 类型：string
      */
     protected $roleName = null;
 
     /**
+     * 员工工号
     * 类型：string
      */
     protected $staffId = null;
 
     /**
+     * 账号状态。账号状态： 1：正常 2：注销 3：未激活 4：禁用 5：预注册
     * 类型：string
      */
     protected $status = null;
 
     /**
+     * 更新时间
     * 类型：string
      */
     protected $updateTime = null;
 
     /**
-     * 1：高级账号  2：免费账号  3：免费账号100方 4:高级账号300方，5:高级账号500方，6：高级账号1000方，7:高级账号2000方
+     * 账号类型。 1：高级账号（企业版/教育版） 2：免费账号（企业版/教育版） 3：免费账号100方 （商业版） 4：高级账号300方（商业版） 5：高级账号500方（商业版） 6：高级账号1000方（商业版） 7：高级账号2000方（商业版） 8：高级账号100方（商业版）
     * 类型：int
      */
     protected $userAccountType = null;
 
     /**
+     * 用户userid
     * 类型：string
      */
     protected $userid = null;
 
     /**
+     * 用户名称
     * 类型：string
      */
     protected $username = null;
 
     /**
+     * 用户uuid
     * 类型：string
      */
     protected $uuid = null;
@@ -128,9 +138,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function __construct(
         $jsonArray = []
     ) {
-        if (isset($jsonArray['account_type'])) {
-            $this->accountType = $jsonArray['account_type'];
-        }
         if (isset($jsonArray['account_version'])) {
             $this->accountVersion = $jsonArray['account_version'];
         }
@@ -193,19 +200,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
         }
     }
 
-    public function accountType(int $accountType): V1UsersUseridGet200Response {
-        $this->accountType = $accountType;
-        return $this;
-    }
-
-    public function getAccountType() {
-        return $this->accountType;
-    }
-
-    public function setAccountType(int $accountType) {
-        $this->accountType = $accountType;
-    }
-    public function accountVersion(int $accountVersion): V1UsersUseridGet200Response {
+    public function accountVersion(int $accountVersion): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->accountVersion = $accountVersion;
         return $this;
     }
@@ -217,7 +212,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setAccountVersion(int $accountVersion) {
         $this->accountVersion = $accountVersion;
     }
-    public function aiAccountType(int $aiAccountType): V1UsersUseridGet200Response {
+    public function aiAccountType(int $aiAccountType): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->aiAccountType = $aiAccountType;
         return $this;
     }
@@ -229,7 +224,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setAiAccountType(int $aiAccountType) {
         $this->aiAccountType = $aiAccountType;
     }
-    public function area(string $area): V1UsersUseridGet200Response {
+    public function area(string $area): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->area = $area;
         return $this;
     }
@@ -241,7 +236,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setArea(string $area) {
         $this->area = $area;
     }
-    public function avatarUrl(string $avatarUrl): V1UsersUseridGet200Response {
+    public function avatarUrl(string $avatarUrl): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->avatarUrl = $avatarUrl;
         return $this;
     }
@@ -253,7 +248,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setAvatarUrl(string $avatarUrl) {
         $this->avatarUrl = $avatarUrl;
     }
-    public function departmentList(array $departmentList): V1UsersUseridGet200Response {
+    public function departmentList(array $departmentList): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->departmentList = $departmentList;
         return $this;
     }
@@ -265,7 +260,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setDepartmentList(array $departmentList) {
         $this->departmentList = $departmentList;
     }
-    public function email(string $email): V1UsersUseridGet200Response {
+    public function email(string $email): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->email = $email;
         return $this;
     }
@@ -277,7 +272,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setEmail(string $email) {
         $this->email = $email;
     }
-    public function enableAiAccount(bool $enableAiAccount): V1UsersUseridGet200Response {
+    public function enableAiAccount(bool $enableAiAccount): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->enableAiAccount = $enableAiAccount;
         return $this;
     }
@@ -289,7 +284,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setEnableAiAccount(bool $enableAiAccount) {
         $this->enableAiAccount = $enableAiAccount;
     }
-    public function entryTime(string $entryTime): V1UsersUseridGet200Response {
+    public function entryTime(string $entryTime): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->entryTime = $entryTime;
         return $this;
     }
@@ -301,7 +296,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setEntryTime(string $entryTime) {
         $this->entryTime = $entryTime;
     }
-    public function jobTitle(string $jobTitle): V1UsersUseridGet200Response {
+    public function jobTitle(string $jobTitle): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->jobTitle = $jobTitle;
         return $this;
     }
@@ -313,7 +308,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setJobTitle(string $jobTitle) {
         $this->jobTitle = $jobTitle;
     }
-    public function phone(string $phone): V1UsersUseridGet200Response {
+    public function phone(string $phone): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->phone = $phone;
         return $this;
     }
@@ -325,7 +320,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setPhone(string $phone) {
         $this->phone = $phone;
     }
-    public function phoneStatus(int $phoneStatus): V1UsersUseridGet200Response {
+    public function phoneStatus(int $phoneStatus): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->phoneStatus = $phoneStatus;
         return $this;
     }
@@ -337,7 +332,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setPhoneStatus(int $phoneStatus) {
         $this->phoneStatus = $phoneStatus;
     }
-    public function roleCode(string $roleCode): V1UsersUseridGet200Response {
+    public function roleCode(string $roleCode): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->roleCode = $roleCode;
         return $this;
     }
@@ -349,7 +344,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setRoleCode(string $roleCode) {
         $this->roleCode = $roleCode;
     }
-    public function roleName(string $roleName): V1UsersUseridGet200Response {
+    public function roleName(string $roleName): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->roleName = $roleName;
         return $this;
     }
@@ -361,7 +356,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setRoleName(string $roleName) {
         $this->roleName = $roleName;
     }
-    public function staffId(string $staffId): V1UsersUseridGet200Response {
+    public function staffId(string $staffId): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->staffId = $staffId;
         return $this;
     }
@@ -373,7 +368,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setStaffId(string $staffId) {
         $this->staffId = $staffId;
     }
-    public function status(string $status): V1UsersUseridGet200Response {
+    public function status(string $status): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->status = $status;
         return $this;
     }
@@ -385,7 +380,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setStatus(string $status) {
         $this->status = $status;
     }
-    public function updateTime(string $updateTime): V1UsersUseridGet200Response {
+    public function updateTime(string $updateTime): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->updateTime = $updateTime;
         return $this;
     }
@@ -397,7 +392,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setUpdateTime(string $updateTime) {
         $this->updateTime = $updateTime;
     }
-    public function userAccountType(int $userAccountType): V1UsersUseridGet200Response {
+    public function userAccountType(int $userAccountType): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->userAccountType = $userAccountType;
         return $this;
     }
@@ -409,7 +404,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setUserAccountType(int $userAccountType) {
         $this->userAccountType = $userAccountType;
     }
-    public function userid(string $userid): V1UsersUseridGet200Response {
+    public function userid(string $userid): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->userid = $userid;
         return $this;
     }
@@ -421,7 +416,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setUserid(string $userid) {
         $this->userid = $userid;
     }
-    public function username(string $username): V1UsersUseridGet200Response {
+    public function username(string $username): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->username = $username;
         return $this;
     }
@@ -433,7 +428,7 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
     public function setUsername(string $username) {
         $this->username = $username;
     }
-    public function uuid(string $uuid): V1UsersUseridGet200Response {
+    public function uuid(string $uuid): V1UsersAdvanceListGet200ResponseUsersInner {
         $this->uuid = $uuid;
         return $this;
     }
@@ -452,12 +447,11 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_type' => 'int',
         'account_version' => 'int',
         'ai_account_type' => 'int',
         'area' => 'string',
         'avatar_url' => 'string',
-        'department_list' => '\wemeet\openapi\service\user_manager\model\V1UsersUseridGet200ResponseDepartmentListInner[]',
+        'department_list' => '\wemeet\openapi\service\user_manager\model\V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner[]',
         'email' => 'string',
         'enable_ai_account' => 'bool',
         'entry_time' => 'string',
@@ -483,7 +477,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_type' => 'int64',
         'account_version' => 'int64',
         'ai_account_type' => 'int64',
         'area' => null,
@@ -512,7 +505,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_type' => false,
         'account_version' => false,
         'ai_account_type' => false,
         'area' => false,
@@ -621,7 +613,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_type' => 'account_type',
         'account_version' => 'account_version',
         'ai_account_type' => 'ai_account_type',
         'area' => 'area',
@@ -650,7 +641,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'account_type' => 'setAccountType',
         'account_version' => 'setAccountVersion',
         'ai_account_type' => 'setAiAccountType',
         'area' => 'setArea',
@@ -679,7 +669,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'account_type' => 'getAccountType',
         'account_version' => 'getAccountVersion',
         'ai_account_type' => 'getAiAccountType',
         'area' => 'getArea',
@@ -735,7 +724,6 @@ class V1UsersUseridGet200Response implements ModelInterface, \JsonSerializable
 
     public function jsonSerialize(): mixed {
         $data = [
-            'account_type' => $this->accountType,
             'account_version' => $this->accountVersion,
             'ai_account_type' => $this->aiAccountType,
             'area' => $this->area,

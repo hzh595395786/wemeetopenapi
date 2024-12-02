@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meeting_guest\model;
 
@@ -17,7 +17,7 @@ class V1GuestsMeetingIdGet200Response implements ModelInterface, \JsonSerializab
 
     /**
      * 会议嘉宾列表数组。
-    * 类型：\wemeet\openapi\service\meeting_guest\model\V1GuestsGet200ResponseGuestsInner[]
+    * 类型：\wemeet\openapi\service\meeting_guest\model\V1GuestsMeetingIdGet200ResponseGuestsInner[]
      */
     protected $guests = null;
 
@@ -111,7 +111,7 @@ class V1GuestsMeetingIdGet200Response implements ModelInterface, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'guests' => '\wemeet\openapi\service\meeting_guest\model\V1GuestsGet200ResponseGuestsInner[]',
+        'guests' => '\wemeet\openapi\service\meeting_guest\model\V1GuestsMeetingIdGet200ResponseGuestsInner[]',
         'meeting_code' => 'string',
         'meeting_id' => 'string',
         'subject' => 'string'

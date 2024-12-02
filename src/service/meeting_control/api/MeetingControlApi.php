@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meeting_control\api;
 
@@ -819,7 +819,7 @@ class ApiV1RealControlMeetingsMeetingIdAsrPutRequest {
 
 class ApiV1RealControlMeetingsMeetingIdAsrPutResponse extends ApiResponse {
 
-    protected object $data;
+    protected \wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdAsrPut200Response $data;
 
     public function __construct(ApiResponse $response) {
         parent::__construct(
@@ -828,7 +828,7 @@ class ApiV1RealControlMeetingsMeetingIdAsrPutResponse extends ApiResponse {
             $response->getBody()
         );
         try {
-            $this->data = $response->translate('object');
+            $this->data = $response->translate('\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdAsrPut200Response');
         } catch (\Exception $e) {
             throw new Exception("translate失败: " . $e->getMessage(), $e->getCode(), $e);
         }

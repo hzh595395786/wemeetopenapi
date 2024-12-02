@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -97,6 +97,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
      */
     protected $subject = null;
 
+    /**
+     * 邀请的参会者中未注册用户。注意：仅腾讯会议商业版和企业版可获取该参数。
+    * 类型：string[]
+     */
+    protected $userNonRegistered = null;
+
     public function __construct(
         $jsonArray = []
     ) {
@@ -141,6 +147,9 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         }
         if (isset($jsonArray['subject'])) {
             $this->subject = $jsonArray['subject'];
+        }
+        if (isset($jsonArray['user_non_registered'])) {
+            $this->userNonRegistered = $jsonArray['user_non_registered'];
         }
     }
 
@@ -312,6 +321,18 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
     public function setSubject(string $subject) {
         $this->subject = $subject;
     }
+    public function userNonRegistered(array $userNonRegistered): V1MeetingsPost200ResponseMeetingInfoListInner {
+        $this->userNonRegistered = $userNonRegistered;
+        return $this;
+    }
+
+    public function getUserNonRegistered() {
+        return $this->userNonRegistered;
+    }
+
+    public function setUserNonRegistered(array $userNonRegistered) {
+        $this->userNonRegistered = $userNonRegistered;
+    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -332,7 +353,8 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         'password' => 'string',
         'settings' => '\wemeet\openapi\service\meetings\model\V1MeetingsPost200ResponseMeetingInfoListInnerSettings',
         'start_time' => 'string',
-        'subject' => 'string'
+        'subject' => 'string',
+        'user_non_registered' => 'string[]'
     ];
 
     /**
@@ -356,7 +378,8 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         'password' => null,
         'settings' => null,
         'start_time' => null,
-        'subject' => null
+        'subject' => null,
+        'user_non_registered' => null
     ];
 
     /**
@@ -378,7 +401,8 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         'password' => false,
         'settings' => false,
         'start_time' => false,
-        'subject' => false
+        'subject' => false,
+        'user_non_registered' => false
     ];
 
     /**
@@ -480,7 +504,8 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         'password' => 'password',
         'settings' => 'settings',
         'start_time' => 'start_time',
-        'subject' => 'subject'
+        'subject' => 'subject',
+        'user_non_registered' => 'user_non_registered'
     ];
 
     /**
@@ -502,7 +527,8 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         'password' => 'setPassword',
         'settings' => 'setSettings',
         'start_time' => 'setStartTime',
-        'subject' => 'setSubject'
+        'subject' => 'setSubject',
+        'user_non_registered' => 'setUserNonRegistered'
     ];
 
     /**
@@ -524,7 +550,8 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
         'password' => 'getPassword',
         'settings' => 'getSettings',
         'start_time' => 'getStartTime',
-        'subject' => 'getSubject'
+        'subject' => 'getSubject',
+        'user_non_registered' => 'getUserNonRegistered'
     ];
 
     /**
@@ -574,6 +601,7 @@ class V1MeetingsPost200ResponseMeetingInfoListInner implements ModelInterface, \
             'settings' => $this->settings,
             'start_time' => $this->startTime,
             'subject' => $this->subject,
+            'user_non_registered' => $this->userNonRegistered,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

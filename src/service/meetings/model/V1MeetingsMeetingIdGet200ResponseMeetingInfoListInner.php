@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -136,7 +136,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
     protected $remainSubMeetings = null;
 
     /**
-    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerSettings
+    * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings
      */
     protected $settings = null;
 
@@ -251,7 +251,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
             $this->remainSubMeetings = $jsonArray['remain_sub_meetings'];
         }
         if (isset($jsonArray['settings'])) {
-            $this->settings = new V1MeetingsGet200ResponseMeetingInfoListInnerSettings($jsonArray['settings']);
+            $this->settings = new V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings($jsonArray['settings']);
         }
         if (isset($jsonArray['start_time'])) {
             $this->startTime = $jsonArray['start_time'];
@@ -564,7 +564,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
     public function setRemainSubMeetings(int $remainSubMeetings) {
         $this->remainSubMeetings = $remainSubMeetings;
     }
-    public function settings(V1MeetingsGet200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
+    public function settings(V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings $settings): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
         $this->settings = $settings;
         return $this;
     }
@@ -573,7 +573,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
         return $this->settings;
     }
 
-    public function setSettings(V1MeetingsGet200ResponseMeetingInfoListInnerSettings $settings) {
+    public function setSettings(V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings $settings) {
         $this->settings = $settings;
     }
     public function startTime(string $startTime): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner {
@@ -691,7 +691,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInner implements ModelInte
         'password' => 'string',
         'recurring_rule' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerRecurringRule',
         'remain_sub_meetings' => 'int',
-        'settings' => '\wemeet\openapi\service\meetings\model\V1MeetingsGet200ResponseMeetingInfoListInnerSettings',
+        'settings' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings',
         'start_time' => 'string',
         'status' => 'string',
         'sub_meetings' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSubMeetingsInner[]',

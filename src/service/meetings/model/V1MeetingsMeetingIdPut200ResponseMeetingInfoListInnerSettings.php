@@ -1,87 +1,66 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
-namespace wemeet\openapi\service\vote\model;
+namespace wemeet\openapi\service\meetings\model;
 
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements ModelInterface, \JsonSerializable
+class V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings implements ModelInterface, \JsonSerializable
 {
 
     /**
-     * 选项内容
-    * 类型：string[]
-     */
-    protected $pollOption = null;
-
-    /**
-     * 问题描述，最多50个字符
-    * 类型：string
-     */
-    protected $questionDesc = null;
-
-    /**
-     * 问题选择类型0 单选 1 多选
+     * 是否允许用户自己改名 1:允许用户自己改名，2:不允许用户自己改名，默认为1
     * 类型：int
      */
-    protected $questionType = null;
+    protected $changeNickname = null;
+
+    /**
+     * 是否仅受邀成员可入会，默认值为false，true：仅受邀成员可入会，false：所有成员可入会
+    * 类型：bool
+     */
+    protected $onlyInviteesAllowed = null;
 
     public function __construct(
         $jsonArray = []
     ) {
-        if (isset($jsonArray['poll_option'])) {
-            $this->pollOption = $jsonArray['poll_option'];
+        if (isset($jsonArray['change_nickname'])) {
+            $this->changeNickname = $jsonArray['change_nickname'];
         }
-        if (isset($jsonArray['question_desc'])) {
-            $this->questionDesc = $jsonArray['question_desc'];
-        }
-        if (isset($jsonArray['question_type'])) {
-            $this->questionType = $jsonArray['question_type'];
+        if (isset($jsonArray['only_invitees_allowed'])) {
+            $this->onlyInviteesAllowed = $jsonArray['only_invitees_allowed'];
         }
     }
 
-    public function pollOption(array $pollOption): V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner {
-        $this->pollOption = $pollOption;
+    public function changeNickname(int $changeNickname): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings {
+        $this->changeNickname = $changeNickname;
         return $this;
     }
 
-    public function getPollOption() {
-        return $this->pollOption;
+    public function getChangeNickname() {
+        return $this->changeNickname;
     }
 
-    public function setPollOption(array $pollOption) {
-        $this->pollOption = $pollOption;
+    public function setChangeNickname(int $changeNickname) {
+        $this->changeNickname = $changeNickname;
     }
-    public function questionDesc(string $questionDesc): V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner {
-        $this->questionDesc = $questionDesc;
+    public function onlyInviteesAllowed(bool $onlyInviteesAllowed): V1MeetingsMeetingIdPut200ResponseMeetingInfoListInnerSettings {
+        $this->onlyInviteesAllowed = $onlyInviteesAllowed;
         return $this;
     }
 
-    public function getQuestionDesc() {
-        return $this->questionDesc;
+    public function getOnlyInviteesAllowed() {
+        return $this->onlyInviteesAllowed;
     }
 
-    public function setQuestionDesc(string $questionDesc) {
-        $this->questionDesc = $questionDesc;
-    }
-    public function questionType(int $questionType): V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner {
-        $this->questionType = $questionType;
-        return $this;
-    }
-
-    public function getQuestionType() {
-        return $this->questionType;
-    }
-
-    public function setQuestionType(int $questionType) {
-        $this->questionType = $questionType;
+    public function setOnlyInviteesAllowed(bool $onlyInviteesAllowed) {
+        $this->onlyInviteesAllowed = $onlyInviteesAllowed;
     }
 
     /**
@@ -90,9 +69,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
       * @var string[]
       */
     protected static $openAPITypes = [
-        'poll_option' => 'string[]',
-        'question_desc' => 'string',
-        'question_type' => 'int'
+        'change_nickname' => 'int',
+        'only_invitees_allowed' => 'bool'
     ];
 
     /**
@@ -103,9 +81,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'poll_option' => null,
-        'question_desc' => null,
-        'question_type' => 'int64'
+        'change_nickname' => 'int64',
+        'only_invitees_allowed' => null
     ];
 
     /**
@@ -114,9 +91,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'poll_option' => false,
-        'question_desc' => false,
-        'question_type' => false
+        'change_nickname' => false,
+        'only_invitees_allowed' => false
     ];
 
     /**
@@ -205,9 +181,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
      * @var string[]
      */
     protected static $attributeMap = [
-        'poll_option' => 'poll_option',
-        'question_desc' => 'question_desc',
-        'question_type' => 'question_type'
+        'change_nickname' => 'change_nickname',
+        'only_invitees_allowed' => 'only_invitees_allowed'
     ];
 
     /**
@@ -216,9 +191,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
      * @var string[]
      */
     protected static $setters = [
-        'poll_option' => 'setPollOption',
-        'question_desc' => 'setQuestionDesc',
-        'question_type' => 'setQuestionType'
+        'change_nickname' => 'setChangeNickname',
+        'only_invitees_allowed' => 'setOnlyInviteesAllowed'
     ];
 
     /**
@@ -227,9 +201,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
      * @var string[]
      */
     protected static $getters = [
-        'poll_option' => 'getPollOption',
-        'question_desc' => 'getQuestionDesc',
-        'question_type' => 'getQuestionType'
+        'change_nickname' => 'getChangeNickname',
+        'only_invitees_allowed' => 'getOnlyInviteesAllowed'
     ];
 
     /**
@@ -265,9 +238,8 @@ class V1MeetingsMeetingIdPollsPost200ResponsePollQuestionsInner implements Model
 
     public function jsonSerialize(): mixed {
         $data = [
-            'poll_option' => $this->pollOption,
-            'question_desc' => $this->questionDesc,
-            'question_type' => $this->questionType,
+            'change_nickname' => $this->changeNickname,
+            'only_invitees_allowed' => $this->onlyInviteesAllowed,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -16,6 +16,12 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
 {
 
     /**
+     * 热词设置结果
+    * 类型：string[]
+     */
+    protected $customizeWords = null;
+
+    /**
      * 自定义热词标签
     * 类型：string
      */
@@ -24,11 +30,26 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
     public function __construct(
         $jsonArray = []
     ) {
+        if (isset($jsonArray['customize_words'])) {
+            $this->customizeWords = $jsonArray['customize_words'];
+        }
         if (isset($jsonArray['tag'])) {
             $this->tag = $jsonArray['tag'];
         }
     }
 
+    public function customizeWords(array $customizeWords): V1AsrConfigPut200Response {
+        $this->customizeWords = $customizeWords;
+        return $this;
+    }
+
+    public function getCustomizeWords() {
+        return $this->customizeWords;
+    }
+
+    public function setCustomizeWords(array $customizeWords) {
+        $this->customizeWords = $customizeWords;
+    }
     public function tag(string $tag): V1AsrConfigPut200Response {
         $this->tag = $tag;
         return $this;
@@ -48,6 +69,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'customize_words' => 'string[]',
         'tag' => 'string'
     ];
 
@@ -59,6 +81,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'customize_words' => null,
         'tag' => null
     ];
 
@@ -68,6 +91,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'customize_words' => false,
         'tag' => false
     ];
 
@@ -157,6 +181,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'customize_words' => 'customize_words',
         'tag' => 'tag'
     ];
 
@@ -166,6 +191,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'customize_words' => 'setCustomizeWords',
         'tag' => 'setTag'
     ];
 
@@ -175,6 +201,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'customize_words' => 'getCustomizeWords',
         'tag' => 'getTag'
     ];
 
@@ -211,6 +238,7 @@ class V1AsrConfigPut200Response implements ModelInterface, \JsonSerializable
 
     public function jsonSerialize(): mixed {
         $data = [
+            'customize_words' => $this->customizeWords,
             'tag' => $this->tag,
         ];
         return array_filter($data, function($value) {

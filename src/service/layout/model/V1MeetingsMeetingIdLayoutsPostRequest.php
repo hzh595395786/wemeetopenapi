@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -24,6 +24,16 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
     * 类型：V1MeetingsMeetingIdLayoutsPostRequestLayoutListInner
      */
     protected $layoutList;
+    /**
+     * 操作者ID
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者id的类型，1:userid
+    * 类型：
+     */
+    protected $operatorIdType;
     /**
      * 会议创建者ID
     * 类型：
@@ -48,6 +58,16 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
             $this->layoutList = $jsonArray['layout_list'];
         } else {
             throw new \InvalidArgumentException('Missing required parameter layout_list');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
         }
         if (isset($jsonArray['userid'])) {
             $this->userid = $jsonArray['userid'];
@@ -95,6 +115,30 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
     public function setLayoutList(array $layoutList) {
         $this->layoutList = $layoutList;
     }
+    public function operatorId(string $operatorId): V1MeetingsMeetingIdLayoutsPostRequest {
+        $this->operatorId = $operatorId;
+        return $this;
+    }
+
+    public function getOperatorId() {
+        return $this->operatorId;
+    }
+
+    public function setOperatorId(string $operatorId) {
+        $this->operatorId = $operatorId;
+    }
+    public function operatorIdType(int $operatorIdType): V1MeetingsMeetingIdLayoutsPostRequest {
+        $this->operatorIdType = $operatorIdType;
+        return $this;
+    }
+
+    public function getOperatorIdType() {
+        return $this->operatorIdType;
+    }
+
+    public function setOperatorIdType(int $operatorIdType) {
+        $this->operatorIdType = $operatorIdType;
+    }
     public function userid(string $userid): V1MeetingsMeetingIdLayoutsPostRequest {
         $this->userid = $userid;
         return $this;
@@ -117,6 +161,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'default_layout_order' => 'int',
         'instanceid' => 'int',
         'layout_list' => '\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdLayoutsPostRequestLayoutListInner[]',
+        'operator_id' => 'string',
+        'operator_id_type' => 'int',
         'userid' => 'string'
     ];
 
@@ -131,6 +177,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'default_layout_order' => 'int64',
         'instanceid' => 'int64',
         'layout_list' => null,
+        'operator_id' => null,
+        'operator_id_type' => 'int64',
         'userid' => null
     ];
 
@@ -143,6 +191,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'default_layout_order' => false,
         'instanceid' => false,
         'layout_list' => false,
+        'operator_id' => false,
+        'operator_id_type' => false,
         'userid' => false
     ];
 
@@ -235,6 +285,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'default_layout_order' => 'default_layout_order',
         'instanceid' => 'instanceid',
         'layout_list' => 'layout_list',
+        'operator_id' => 'operator_id',
+        'operator_id_type' => 'operator_id_type',
         'userid' => 'userid'
     ];
 
@@ -247,6 +299,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'default_layout_order' => 'setDefaultLayoutOrder',
         'instanceid' => 'setInstanceid',
         'layout_list' => 'setLayoutList',
+        'operator_id' => 'setOperatorId',
+        'operator_id_type' => 'setOperatorIdType',
         'userid' => 'setUserid'
     ];
 
@@ -259,6 +313,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'default_layout_order' => 'getDefaultLayoutOrder',
         'instanceid' => 'getInstanceid',
         'layout_list' => 'getLayoutList',
+        'operator_id' => 'getOperatorId',
+        'operator_id_type' => 'getOperatorIdType',
         'userid' => 'getUserid'
     ];
 
@@ -298,6 +354,8 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
             'default_layout_order' => $this->defaultLayoutOrder,
             'instanceid' => $this->instanceid,
             'layout_list' => $this->layoutList,
+            'operator_id' => $this->operatorId,
+            'operator_id_type' => $this->operatorIdType,
             'userid' => $this->userid,
         ];
         return array_filter($data, function($value) {

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meeting_room\model;
 
@@ -70,12 +70,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
     protected $participantNumber = null;
 
     /**
-     * 1-预装 2-体验 3-付费
-    * 类型：int
-     */
-    protected $proAccountType = null;
-
-    /**
      * 预定状态
     * 类型：int
      */
@@ -110,9 +104,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         }
         if (isset($jsonArray['participant_number'])) {
             $this->participantNumber = $jsonArray['participant_number'];
-        }
-        if (isset($jsonArray['pro_account_type'])) {
-            $this->proAccountType = $jsonArray['pro_account_type'];
         }
         if (isset($jsonArray['scheduled_status'])) {
             $this->scheduledStatus = $jsonArray['scheduled_status'];
@@ -227,18 +218,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
     public function setParticipantNumber(int $participantNumber) {
         $this->participantNumber = $participantNumber;
     }
-    public function proAccountType(int $proAccountType): V1MeetingRoomsGet200ResponseMeetingRoomListInner {
-        $this->proAccountType = $proAccountType;
-        return $this;
-    }
-
-    public function getProAccountType() {
-        return $this->proAccountType;
-    }
-
-    public function setProAccountType(int $proAccountType) {
-        $this->proAccountType = $proAccountType;
-    }
     public function scheduledStatus(int $scheduledStatus): V1MeetingRoomsGet200ResponseMeetingRoomListInner {
         $this->scheduledStatus = $scheduledStatus;
         return $this;
@@ -267,7 +246,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         'meeting_room_name' => 'string',
         'meeting_room_status' => 'int',
         'participant_number' => 'int',
-        'pro_account_type' => 'int',
         'scheduled_status' => 'int'
     ];
 
@@ -288,7 +266,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         'meeting_room_name' => null,
         'meeting_room_status' => 'int64',
         'participant_number' => 'int64',
-        'pro_account_type' => 'int64',
         'scheduled_status' => 'int64'
     ];
 
@@ -307,7 +284,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         'meeting_room_name' => false,
         'meeting_room_status' => false,
         'participant_number' => false,
-        'pro_account_type' => false,
         'scheduled_status' => false
     ];
 
@@ -406,7 +382,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         'meeting_room_name' => 'meeting_room_name',
         'meeting_room_status' => 'meeting_room_status',
         'participant_number' => 'participant_number',
-        'pro_account_type' => 'pro_account_type',
         'scheduled_status' => 'scheduled_status'
     ];
 
@@ -425,7 +400,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         'meeting_room_name' => 'setMeetingRoomName',
         'meeting_room_status' => 'setMeetingRoomStatus',
         'participant_number' => 'setParticipantNumber',
-        'pro_account_type' => 'setProAccountType',
         'scheduled_status' => 'setScheduledStatus'
     ];
 
@@ -444,7 +418,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
         'meeting_room_name' => 'getMeetingRoomName',
         'meeting_room_status' => 'getMeetingRoomStatus',
         'participant_number' => 'getParticipantNumber',
-        'pro_account_type' => 'getProAccountType',
         'scheduled_status' => 'getScheduledStatus'
     ];
 
@@ -490,7 +463,6 @@ class V1MeetingRoomsGet200ResponseMeetingRoomListInner implements ModelInterface
             'meeting_room_name' => $this->meetingRoomName,
             'meeting_room_status' => $this->meetingRoomStatus,
             'participant_number' => $this->participantNumber,
-            'pro_account_type' => $this->proAccountType,
             'scheduled_status' => $this->scheduledStatus,
         ];
         return array_filter($data, function($value) {

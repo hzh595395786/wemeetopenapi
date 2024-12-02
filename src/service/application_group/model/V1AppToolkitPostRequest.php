@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\application_group\model;
 
@@ -25,6 +25,11 @@ class V1AppToolkitPostRequest implements ModelInterface, \JsonSerializable
      */
     protected $meetingId;
     /**
+     * 工具箱应用列表
+    * 类型：V1AppToolkitPostRequestToolListInner
+     */
+    protected $toolList;
+    /**
      * 调用方用于标示用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0鉴权用户请使用openId） 企业唯一用户标识说明： 1、 企业对接SSO时使用的员工唯一标识ID 2、 企业调用创建用户接口时传递的userid参数
     * 类型：
      */
@@ -35,12 +40,6 @@ class V1AppToolkitPostRequest implements ModelInterface, \JsonSerializable
     * 类型：string
      */
     protected $autoOpenSdkid = null;
-
-    /**
-     * 工具箱应用列表
-    * 类型：\wemeet\openapi\service\application_group\model\V1AppToolkitPostRequestToolListInner[]
-     */
-    protected $toolList = null;
 
     /**
      * 外显在会中工具栏的应用id（需要保证在tool_list列表中，且列表中的可见范围对此设置也生效）
@@ -61,6 +60,11 @@ class V1AppToolkitPostRequest implements ModelInterface, \JsonSerializable
         } else {
             throw new \InvalidArgumentException('Missing required parameter meeting_id');
         }
+        if (isset($jsonArray['tool_list'])) {
+            $this->toolList = $jsonArray['tool_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter tool_list');
+        }
         if (isset($jsonArray['userid'])) {
             $this->userid = $jsonArray['userid'];
         } else {
@@ -68,9 +72,6 @@ class V1AppToolkitPostRequest implements ModelInterface, \JsonSerializable
         }
         if (isset($jsonArray['auto_open_sdkid'])) {
             $this->autoOpenSdkid = $jsonArray['auto_open_sdkid'];
-        }
-        if (isset($jsonArray['tool_list'])) {
-            $this->toolList = $jsonArray['tool_list'];
         }
         if (isset($jsonArray['toolbar_sdkid'])) {
             $this->toolbarSdkid = $jsonArray['toolbar_sdkid'];

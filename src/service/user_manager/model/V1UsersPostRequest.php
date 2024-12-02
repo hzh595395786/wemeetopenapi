@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -14,6 +14,16 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 
 class V1UsersPostRequest implements ModelInterface, \JsonSerializable
 {
+    /**
+     * 操作者ID
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者ID类型，1:userid
+    * 类型：
+     */
+    protected $operatorIdType;
     /**
     * 类型：
      */
@@ -67,6 +77,16 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
     public function __construct(
         $jsonArray = []
     ) {
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
         if (isset($jsonArray['phone'])) {
             $this->phone = $jsonArray['phone'];
         } else {
@@ -165,6 +185,30 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
     public function setJobTitle(string $jobTitle) {
         $this->jobTitle = $jobTitle;
     }
+    public function operatorId(string $operatorId): V1UsersPostRequest {
+        $this->operatorId = $operatorId;
+        return $this;
+    }
+
+    public function getOperatorId() {
+        return $this->operatorId;
+    }
+
+    public function setOperatorId(string $operatorId) {
+        $this->operatorId = $operatorId;
+    }
+    public function operatorIdType(int $operatorIdType): V1UsersPostRequest {
+        $this->operatorIdType = $operatorIdType;
+        return $this;
+    }
+
+    public function getOperatorIdType() {
+        return $this->operatorIdType;
+    }
+
+    public function setOperatorIdType(int $operatorIdType) {
+        $this->operatorIdType = $operatorIdType;
+    }
     public function phone(string $phone): V1UsersPostRequest {
         $this->phone = $phone;
         return $this;
@@ -237,6 +281,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
         'email' => 'string',
         'entry_time' => 'int',
         'job_title' => 'string',
+        'operator_id' => 'string',
+        'operator_id_type' => 'int',
         'phone' => 'string',
         'staff_id' => 'string',
         'user_account_type' => 'int',
@@ -257,6 +303,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
         'email' => null,
         'entry_time' => 'int64',
         'job_title' => null,
+        'operator_id' => null,
+        'operator_id_type' => 'int64',
         'phone' => null,
         'staff_id' => null,
         'user_account_type' => 'int64',
@@ -275,6 +323,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
         'email' => false,
         'entry_time' => false,
         'job_title' => false,
+        'operator_id' => false,
+        'operator_id_type' => false,
         'phone' => false,
         'staff_id' => false,
         'user_account_type' => false,
@@ -373,6 +423,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
         'email' => 'email',
         'entry_time' => 'entry_time',
         'job_title' => 'job_title',
+        'operator_id' => 'operator_id',
+        'operator_id_type' => 'operator_id_type',
         'phone' => 'phone',
         'staff_id' => 'staff_id',
         'user_account_type' => 'user_account_type',
@@ -391,6 +443,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
         'email' => 'setEmail',
         'entry_time' => 'setEntryTime',
         'job_title' => 'setJobTitle',
+        'operator_id' => 'setOperatorId',
+        'operator_id_type' => 'setOperatorIdType',
         'phone' => 'setPhone',
         'staff_id' => 'setStaffId',
         'user_account_type' => 'setUserAccountType',
@@ -409,6 +463,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
         'email' => 'getEmail',
         'entry_time' => 'getEntryTime',
         'job_title' => 'getJobTitle',
+        'operator_id' => 'getOperatorId',
+        'operator_id_type' => 'getOperatorIdType',
         'phone' => 'getPhone',
         'staff_id' => 'getStaffId',
         'user_account_type' => 'getUserAccountType',
@@ -454,6 +510,8 @@ class V1UsersPostRequest implements ModelInterface, \JsonSerializable
             'email' => $this->email,
             'entry_time' => $this->entryTime,
             'job_title' => $this->jobTitle,
+            'operator_id' => $this->operatorId,
+            'operator_id_type' => $this->operatorIdType,
             'phone' => $this->phone,
             'staff_id' => $this->staffId,
             'user_account_type' => $this->userAccountType,

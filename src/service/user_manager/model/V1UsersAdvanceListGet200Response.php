@@ -1,87 +1,86 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
-namespace wemeet\openapi\service\meeting_guest\model;
+namespace wemeet\openapi\service\user_manager\model;
 
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializable
+class V1UsersAdvanceListGet200Response implements ModelInterface, \JsonSerializable
 {
 
     /**
-     * 国家/地区代码（例如：中国传86，不是+86，也不是0086）。
-    * 类型：string
+     * 是否还有未拉取的数据
+    * 类型：bool
      */
-    protected $area = null;
+    protected $hasRemaining = null;
 
     /**
-     * 嘉宾名称。
+     * 下一次查询pos位置
     * 类型：string
      */
-    protected $guestName = null;
+    protected $nextPos = null;
 
     /**
-     * 手机号。
-    * 类型：string
+    * 类型：\wemeet\openapi\service\user_manager\model\V1UsersAdvanceListGet200ResponseUsersInner[]
      */
-    protected $phoneNumber = null;
+    protected $users = null;
 
     public function __construct(
         $jsonArray = []
     ) {
-        if (isset($jsonArray['area'])) {
-            $this->area = $jsonArray['area'];
+        if (isset($jsonArray['has_remaining'])) {
+            $this->hasRemaining = $jsonArray['has_remaining'];
         }
-        if (isset($jsonArray['guest_name'])) {
-            $this->guestName = $jsonArray['guest_name'];
+        if (isset($jsonArray['next_pos'])) {
+            $this->nextPos = $jsonArray['next_pos'];
         }
-        if (isset($jsonArray['phone_number'])) {
-            $this->phoneNumber = $jsonArray['phone_number'];
+        if (isset($jsonArray['users'])) {
+            $this->users = $jsonArray['users'];
         }
     }
 
-    public function area(string $area): V1GuestsGet200ResponseGuestsInner {
-        $this->area = $area;
+    public function hasRemaining(bool $hasRemaining): V1UsersAdvanceListGet200Response {
+        $this->hasRemaining = $hasRemaining;
         return $this;
     }
 
-    public function getArea() {
-        return $this->area;
+    public function getHasRemaining() {
+        return $this->hasRemaining;
     }
 
-    public function setArea(string $area) {
-        $this->area = $area;
+    public function setHasRemaining(bool $hasRemaining) {
+        $this->hasRemaining = $hasRemaining;
     }
-    public function guestName(string $guestName): V1GuestsGet200ResponseGuestsInner {
-        $this->guestName = $guestName;
+    public function nextPos(string $nextPos): V1UsersAdvanceListGet200Response {
+        $this->nextPos = $nextPos;
         return $this;
     }
 
-    public function getGuestName() {
-        return $this->guestName;
+    public function getNextPos() {
+        return $this->nextPos;
     }
 
-    public function setGuestName(string $guestName) {
-        $this->guestName = $guestName;
+    public function setNextPos(string $nextPos) {
+        $this->nextPos = $nextPos;
     }
-    public function phoneNumber(string $phoneNumber): V1GuestsGet200ResponseGuestsInner {
-        $this->phoneNumber = $phoneNumber;
+    public function users(array $users): V1UsersAdvanceListGet200Response {
+        $this->users = $users;
         return $this;
     }
 
-    public function getPhoneNumber() {
-        return $this->phoneNumber;
+    public function getUsers() {
+        return $this->users;
     }
 
-    public function setPhoneNumber(string $phoneNumber) {
-        $this->phoneNumber = $phoneNumber;
+    public function setUsers(array $users) {
+        $this->users = $users;
     }
 
     /**
@@ -90,9 +89,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'area' => 'string',
-        'guest_name' => 'string',
-        'phone_number' => 'string'
+        'has_remaining' => 'bool',
+        'next_pos' => 'string',
+        'users' => '\wemeet\openapi\service\user_manager\model\V1UsersAdvanceListGet200ResponseUsersInner[]'
     ];
 
     /**
@@ -103,9 +102,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'area' => null,
-        'guest_name' => null,
-        'phone_number' => null
+        'has_remaining' => null,
+        'next_pos' => null,
+        'users' => null
     ];
 
     /**
@@ -114,9 +113,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'area' => false,
-        'guest_name' => false,
-        'phone_number' => false
+        'has_remaining' => false,
+        'next_pos' => false,
+        'users' => false
     ];
 
     /**
@@ -205,9 +204,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'area' => 'area',
-        'guest_name' => 'guest_name',
-        'phone_number' => 'phone_number'
+        'has_remaining' => 'has_remaining',
+        'next_pos' => 'next_pos',
+        'users' => 'users'
     ];
 
     /**
@@ -216,9 +215,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'area' => 'setArea',
-        'guest_name' => 'setGuestName',
-        'phone_number' => 'setPhoneNumber'
+        'has_remaining' => 'setHasRemaining',
+        'next_pos' => 'setNextPos',
+        'users' => 'setUsers'
     ];
 
     /**
@@ -227,9 +226,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'area' => 'getArea',
-        'guest_name' => 'getGuestName',
-        'phone_number' => 'getPhoneNumber'
+        'has_remaining' => 'getHasRemaining',
+        'next_pos' => 'getNextPos',
+        'users' => 'getUsers'
     ];
 
     /**
@@ -265,9 +264,9 @@ class V1GuestsGet200ResponseGuestsInner implements ModelInterface, \JsonSerializ
 
     public function jsonSerialize(): mixed {
         $data = [
-            'area' => $this->area,
-            'guest_name' => $this->guestName,
-            'phone_number' => $this->phoneNumber,
+            'has_remaining' => $this->hasRemaining,
+            'next_pos' => $this->nextPos,
+            'users' => $this->users,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

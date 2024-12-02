@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -52,6 +52,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
     protected $autoRecordType = null;
 
     /**
+     * 是否允许用户自己改名 1:允许用户自己改名，2:不允许用户自己改名，默认为1
+    * 类型：int
+     */
+    protected $changeNickname = null;
+
+    /**
      * 允许主持人暂停或者停止云录制，默认值为 true 开启，开启时，主持人允许暂停和停止云录制；当设置为关闭时，则主持人不允许暂停和关闭云录制
     * 类型：bool
      */
@@ -74,6 +80,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
     * 类型：bool
      */
     protected $onlyEnterpriseUserAllowed = null;
+
+    /**
+     * 成员入会限制，1：所有成员可入会，2：仅受邀成员可入会，3：仅企业内部成员可入会 ；当only_user_join_type和only_allow_enterprise_user_join同时传的时候，以only_user_join_type为准
+    * 类型：int
+     */
+    protected $onlyUserJoinType = null;
 
     /**
      * 当有参会成员入会时立即开启云录制，默认值为 false 关闭，关闭时，主持人入会自动开启云录制；当设置为开启时，则有参会成员入会自动开启云录制。
@@ -120,6 +132,9 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         if (isset($jsonArray['auto_record_type'])) {
             $this->autoRecordType = $jsonArray['auto_record_type'];
         }
+        if (isset($jsonArray['change_nickname'])) {
+            $this->changeNickname = $jsonArray['change_nickname'];
+        }
         if (isset($jsonArray['enable_host_pause_auto_record'])) {
             $this->enableHostPauseAutoRecord = $jsonArray['enable_host_pause_auto_record'];
         }
@@ -131,6 +146,9 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         }
         if (isset($jsonArray['only_enterprise_user_allowed'])) {
             $this->onlyEnterpriseUserAllowed = $jsonArray['only_enterprise_user_allowed'];
+        }
+        if (isset($jsonArray['only_user_join_type'])) {
+            $this->onlyUserJoinType = $jsonArray['only_user_join_type'];
         }
         if (isset($jsonArray['participant_join_auto_record'])) {
             $this->participantJoinAutoRecord = $jsonArray['participant_join_auto_record'];
@@ -218,6 +236,18 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
     public function setAutoRecordType(string $autoRecordType) {
         $this->autoRecordType = $autoRecordType;
     }
+    public function changeNickname(int $changeNickname): V1MeetingsPost200ResponseMeetingInfoListInnerSettings {
+        $this->changeNickname = $changeNickname;
+        return $this;
+    }
+
+    public function getChangeNickname() {
+        return $this->changeNickname;
+    }
+
+    public function setChangeNickname(int $changeNickname) {
+        $this->changeNickname = $changeNickname;
+    }
     public function enableHostPauseAutoRecord(bool $enableHostPauseAutoRecord): V1MeetingsPost200ResponseMeetingInfoListInnerSettings {
         $this->enableHostPauseAutoRecord = $enableHostPauseAutoRecord;
         return $this;
@@ -265,6 +295,18 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
 
     public function setOnlyEnterpriseUserAllowed(bool $onlyEnterpriseUserAllowed) {
         $this->onlyEnterpriseUserAllowed = $onlyEnterpriseUserAllowed;
+    }
+    public function onlyUserJoinType(int $onlyUserJoinType): V1MeetingsPost200ResponseMeetingInfoListInnerSettings {
+        $this->onlyUserJoinType = $onlyUserJoinType;
+        return $this;
+    }
+
+    public function getOnlyUserJoinType() {
+        return $this->onlyUserJoinType;
+    }
+
+    public function setOnlyUserJoinType(int $onlyUserJoinType) {
+        $this->onlyUserJoinType = $onlyUserJoinType;
     }
     public function participantJoinAutoRecord(bool $participantJoinAutoRecord): V1MeetingsPost200ResponseMeetingInfoListInnerSettings {
         $this->participantJoinAutoRecord = $participantJoinAutoRecord;
@@ -327,10 +369,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         'allow_unmute_self' => 'bool',
         'auto_in_waiting_room' => 'bool',
         'auto_record_type' => 'string',
+        'change_nickname' => 'int',
         'enable_host_pause_auto_record' => 'bool',
         'mute_enable_join' => 'bool',
         'mute_enable_type_join' => 'int',
         'only_enterprise_user_allowed' => 'bool',
+        'only_user_join_type' => 'int',
         'participant_join_auto_record' => 'bool',
         'play_ivr_on_join' => 'bool',
         'play_ivr_on_leave' => 'bool',
@@ -351,10 +395,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         'allow_unmute_self' => null,
         'auto_in_waiting_room' => null,
         'auto_record_type' => null,
+        'change_nickname' => 'int64',
         'enable_host_pause_auto_record' => null,
         'mute_enable_join' => null,
         'mute_enable_type_join' => 'int64',
         'only_enterprise_user_allowed' => null,
+        'only_user_join_type' => 'int64',
         'participant_join_auto_record' => null,
         'play_ivr_on_join' => null,
         'play_ivr_on_leave' => null,
@@ -373,10 +419,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         'allow_unmute_self' => false,
         'auto_in_waiting_room' => false,
         'auto_record_type' => false,
+        'change_nickname' => false,
         'enable_host_pause_auto_record' => false,
         'mute_enable_join' => false,
         'mute_enable_type_join' => false,
         'only_enterprise_user_allowed' => false,
+        'only_user_join_type' => false,
         'participant_join_auto_record' => false,
         'play_ivr_on_join' => false,
         'play_ivr_on_leave' => false,
@@ -475,10 +523,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         'allow_unmute_self' => 'allow_unmute_self',
         'auto_in_waiting_room' => 'auto_in_waiting_room',
         'auto_record_type' => 'auto_record_type',
+        'change_nickname' => 'change_nickname',
         'enable_host_pause_auto_record' => 'enable_host_pause_auto_record',
         'mute_enable_join' => 'mute_enable_join',
         'mute_enable_type_join' => 'mute_enable_type_join',
         'only_enterprise_user_allowed' => 'only_enterprise_user_allowed',
+        'only_user_join_type' => 'only_user_join_type',
         'participant_join_auto_record' => 'participant_join_auto_record',
         'play_ivr_on_join' => 'play_ivr_on_join',
         'play_ivr_on_leave' => 'play_ivr_on_leave',
@@ -497,10 +547,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         'allow_unmute_self' => 'setAllowUnmuteSelf',
         'auto_in_waiting_room' => 'setAutoInWaitingRoom',
         'auto_record_type' => 'setAutoRecordType',
+        'change_nickname' => 'setChangeNickname',
         'enable_host_pause_auto_record' => 'setEnableHostPauseAutoRecord',
         'mute_enable_join' => 'setMuteEnableJoin',
         'mute_enable_type_join' => 'setMuteEnableTypeJoin',
         'only_enterprise_user_allowed' => 'setOnlyEnterpriseUserAllowed',
+        'only_user_join_type' => 'setOnlyUserJoinType',
         'participant_join_auto_record' => 'setParticipantJoinAutoRecord',
         'play_ivr_on_join' => 'setPlayIvrOnJoin',
         'play_ivr_on_leave' => 'setPlayIvrOnLeave',
@@ -519,10 +571,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
         'allow_unmute_self' => 'getAllowUnmuteSelf',
         'auto_in_waiting_room' => 'getAutoInWaitingRoom',
         'auto_record_type' => 'getAutoRecordType',
+        'change_nickname' => 'getChangeNickname',
         'enable_host_pause_auto_record' => 'getEnableHostPauseAutoRecord',
         'mute_enable_join' => 'getMuteEnableJoin',
         'mute_enable_type_join' => 'getMuteEnableTypeJoin',
         'only_enterprise_user_allowed' => 'getOnlyEnterpriseUserAllowed',
+        'only_user_join_type' => 'getOnlyUserJoinType',
         'participant_join_auto_record' => 'getParticipantJoinAutoRecord',
         'play_ivr_on_join' => 'getPlayIvrOnJoin',
         'play_ivr_on_leave' => 'getPlayIvrOnLeave',
@@ -568,10 +622,12 @@ class V1MeetingsPost200ResponseMeetingInfoListInnerSettings implements ModelInte
             'allow_unmute_self' => $this->allowUnmuteSelf,
             'auto_in_waiting_room' => $this->autoInWaitingRoom,
             'auto_record_type' => $this->autoRecordType,
+            'change_nickname' => $this->changeNickname,
             'enable_host_pause_auto_record' => $this->enableHostPauseAutoRecord,
             'mute_enable_join' => $this->muteEnableJoin,
             'mute_enable_type_join' => $this->muteEnableTypeJoin,
             'only_enterprise_user_allowed' => $this->onlyEnterpriseUserAllowed,
+            'only_user_join_type' => $this->onlyUserJoinType,
             'participant_join_auto_record' => $this->participantJoinAutoRecord,
             'play_ivr_on_join' => $this->playIvrOnJoin,
             'play_ivr_on_leave' => $this->playIvrOnLeave,

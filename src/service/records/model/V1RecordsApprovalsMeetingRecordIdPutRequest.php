@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\records\model;
 
@@ -19,6 +19,11 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
     * 类型：
      */
     protected $action;
+    /**
+     * 申请 ID 列表，通过订阅云录制查看申请事件（可跳转链接），可以获取申请 ID。
+    * 类型：
+     */
+    protected $applyIdList;
     /**
      * 操作者 ID。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。 operator_id 和 userid 至少填写一个，两个参数如果都传了以 operator_id 为准。 使用 OAuth 公参鉴权后不能使用 userid 为入参。
     * 类型：
@@ -37,6 +42,11 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
             $this->action = $jsonArray['action'];
         } else {
             throw new \InvalidArgumentException('Missing required parameter action');
+        }
+        if (isset($jsonArray['apply_id_list'])) {
+            $this->applyIdList = $jsonArray['apply_id_list'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter apply_id_list');
         }
         if (isset($jsonArray['operator_id'])) {
             $this->operatorId = $jsonArray['operator_id'];
@@ -61,6 +71,18 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
 
     public function setAction(int $action) {
         $this->action = $action;
+    }
+    public function applyIdList(array $applyIdList): V1RecordsApprovalsMeetingRecordIdPutRequest {
+        $this->applyIdList = $applyIdList;
+        return $this;
+    }
+
+    public function getApplyIdList() {
+        return $this->applyIdList;
+    }
+
+    public function setApplyIdList(array $applyIdList) {
+        $this->applyIdList = $applyIdList;
     }
     public function operatorId(string $operatorId): V1RecordsApprovalsMeetingRecordIdPutRequest {
         $this->operatorId = $operatorId;
@@ -94,6 +116,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
       */
     protected static $openAPITypes = [
         'action' => 'int',
+        'apply_id_list' => 'string[]',
         'operator_id' => 'string',
         'operator_id_type' => 'int'
     ];
@@ -107,6 +130,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
       */
     protected static $openAPIFormats = [
         'action' => 'int64',
+        'apply_id_list' => null,
         'operator_id' => null,
         'operator_id_type' => 'int64'
     ];
@@ -118,6 +142,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
       */
     protected static array $openAPINullables = [
         'action' => false,
+        'apply_id_list' => false,
         'operator_id' => false,
         'operator_id_type' => false
     ];
@@ -209,6 +234,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
      */
     protected static $attributeMap = [
         'action' => 'action',
+        'apply_id_list' => 'apply_id_list',
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type'
     ];
@@ -220,6 +246,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
      */
     protected static $setters = [
         'action' => 'setAction',
+        'apply_id_list' => 'setApplyIdList',
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType'
     ];
@@ -231,6 +258,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
      */
     protected static $getters = [
         'action' => 'getAction',
+        'apply_id_list' => 'getApplyIdList',
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType'
     ];
@@ -269,6 +297,7 @@ class V1RecordsApprovalsMeetingRecordIdPutRequest implements ModelInterface, \Js
     public function jsonSerialize(): mixed {
         $data = [
             'action' => $this->action,
+            'apply_id_list' => $this->applyIdList,
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
         ];

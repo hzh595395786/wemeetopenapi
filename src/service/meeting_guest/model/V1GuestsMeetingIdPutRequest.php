@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meeting_guest\model;
 
@@ -16,7 +16,7 @@ class V1GuestsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
 {
     /**
      * 会议嘉宾列表（传空数组会清空嘉宾列表）。
-    * 类型：V1GuestsPutRequestGuestsInner
+    * 类型：V1GuestsMeetingIdPutRequestGuestsInner
      */
     protected $guests;
     /**
@@ -93,7 +93,7 @@ class V1GuestsMeetingIdPutRequest implements ModelInterface, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'guests' => '\wemeet\openapi\service\meeting_guest\model\V1GuestsPutRequestGuestsInner[]',
+        'guests' => '\wemeet\openapi\service\meeting_guest\model\V1GuestsMeetingIdPutRequestGuestsInner[]',
         'instanceid' => 'int',
         'userid' => 'string'
     ];

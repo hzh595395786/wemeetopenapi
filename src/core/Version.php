@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\core;
 
@@ -13,7 +13,7 @@ namespace wemeet\openapi\core;
 class Version {
 
     // Version SDK 版本
-    public $version = "openapi-sdk-php/v1.0.0.80";
+    public $version = "openapi-sdk-php/v1.0.0";
 
     public function getVersion() {
         return $this->version;

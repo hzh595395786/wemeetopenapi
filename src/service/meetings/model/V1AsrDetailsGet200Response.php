@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -28,6 +28,12 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected $currSize = null;
 
     /**
+     * 文件下载链接列表，有效期2个小时
+    * 类型：string[]
+     */
+    protected $downloadUrl = null;
+
+    /**
      * 分页查询返回数据总数
     * 类型：int
      */
@@ -47,6 +53,9 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
         }
         if (isset($jsonArray['curr_size'])) {
             $this->currSize = $jsonArray['curr_size'];
+        }
+        if (isset($jsonArray['download_url'])) {
+            $this->downloadUrl = $jsonArray['download_url'];
         }
         if (isset($jsonArray['total_count'])) {
             $this->totalCount = $jsonArray['total_count'];
@@ -79,6 +88,18 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
 
     public function setCurrSize(int $currSize) {
         $this->currSize = $currSize;
+    }
+    public function downloadUrl(array $downloadUrl): V1AsrDetailsGet200Response {
+        $this->downloadUrl = $downloadUrl;
+        return $this;
+    }
+
+    public function getDownloadUrl() {
+        return $this->downloadUrl;
+    }
+
+    public function setDownloadUrl(array $downloadUrl) {
+        $this->downloadUrl = $downloadUrl;
     }
     public function totalCount(int $totalCount): V1AsrDetailsGet200Response {
         $this->totalCount = $totalCount;
@@ -113,6 +134,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected static $openAPITypes = [
         'curr_page' => 'int',
         'curr_size' => 'int',
+        'download_url' => 'string[]',
         'total_count' => 'int',
         'total_page' => 'int'
     ];
@@ -127,6 +149,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected static $openAPIFormats = [
         'curr_page' => 'int64',
         'curr_size' => 'int64',
+        'download_url' => null,
         'total_count' => 'int64',
         'total_page' => 'int64'
     ];
@@ -139,6 +162,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected static array $openAPINullables = [
         'curr_page' => false,
         'curr_size' => false,
+        'download_url' => false,
         'total_count' => false,
         'total_page' => false
     ];
@@ -231,6 +255,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected static $attributeMap = [
         'curr_page' => 'curr_page',
         'curr_size' => 'curr_size',
+        'download_url' => 'download_url',
         'total_count' => 'total_count',
         'total_page' => 'total_page'
     ];
@@ -243,6 +268,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected static $setters = [
         'curr_page' => 'setCurrPage',
         'curr_size' => 'setCurrSize',
+        'download_url' => 'setDownloadUrl',
         'total_count' => 'setTotalCount',
         'total_page' => 'setTotalPage'
     ];
@@ -255,6 +281,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
     protected static $getters = [
         'curr_page' => 'getCurrPage',
         'curr_size' => 'getCurrSize',
+        'download_url' => 'getDownloadUrl',
         'total_count' => 'getTotalCount',
         'total_page' => 'getTotalPage'
     ];
@@ -294,6 +321,7 @@ class V1AsrDetailsGet200Response implements ModelInterface, \JsonSerializable
         $data = [
             'curr_page' => $this->currPage,
             'curr_size' => $this->currSize,
+            'download_url' => $this->downloadUrl,
             'total_count' => $this->totalCount,
             'total_page' => $this->totalPage,
         ];

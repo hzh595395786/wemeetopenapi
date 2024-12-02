@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -15,6 +15,16 @@ use wemeet\openapi\core\xhttp\ModelInterface;
 class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializable
 {
     /**
+     * 操作者ID
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者ID类型，1:userid
+    * 类型：
+     */
+    protected $operatorIdType;
+    /**
      * 未激活的账号列表，最多支持传100个
     * 类型：
      */
@@ -23,6 +33,16 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
     public function __construct(
         $jsonArray = []
     ) {
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
         if (isset($jsonArray['userid_list'])) {
             $this->useridList = $jsonArray['userid_list'];
         } else {
@@ -30,6 +50,30 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
         }
     }
 
+    public function operatorId(string $operatorId): V1UsersInviteActivatePostRequest {
+        $this->operatorId = $operatorId;
+        return $this;
+    }
+
+    public function getOperatorId() {
+        return $this->operatorId;
+    }
+
+    public function setOperatorId(string $operatorId) {
+        $this->operatorId = $operatorId;
+    }
+    public function operatorIdType(int $operatorIdType): V1UsersInviteActivatePostRequest {
+        $this->operatorIdType = $operatorIdType;
+        return $this;
+    }
+
+    public function getOperatorIdType() {
+        return $this->operatorIdType;
+    }
+
+    public function setOperatorIdType(int $operatorIdType) {
+        $this->operatorIdType = $operatorIdType;
+    }
     public function useridList(array $useridList): V1UsersInviteActivatePostRequest {
         $this->useridList = $useridList;
         return $this;
@@ -49,6 +93,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'operator_id' => 'string',
+        'operator_id_type' => 'int',
         'userid_list' => 'string[]'
     ];
 
@@ -60,6 +106,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'operator_id' => null,
+        'operator_id_type' => 'int64',
         'userid_list' => null
     ];
 
@@ -69,6 +117,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'operator_id' => false,
+        'operator_id_type' => false,
         'userid_list' => false
     ];
 
@@ -158,6 +208,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'operator_id' => 'operator_id',
+        'operator_id_type' => 'operator_id_type',
         'userid_list' => 'userid_list'
     ];
 
@@ -167,6 +219,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'operator_id' => 'setOperatorId',
+        'operator_id_type' => 'setOperatorIdType',
         'userid_list' => 'setUseridList'
     ];
 
@@ -176,6 +230,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'operator_id' => 'getOperatorId',
+        'operator_id_type' => 'getOperatorIdType',
         'userid_list' => 'getUseridList'
     ];
 
@@ -212,6 +268,8 @@ class V1UsersInviteActivatePostRequest implements ModelInterface, \JsonSerializa
 
     public function jsonSerialize(): mixed {
         $data = [
+            'operator_id' => $this->operatorId,
+            'operator_id_type' => $this->operatorIdType,
             'userid_list' => $this->useridList,
         ];
         return array_filter($data, function($value) {

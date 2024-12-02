@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\records\api;
 
@@ -401,23 +401,20 @@ class RecordsApi
          if (is_null($request->getOperatorIdType())) {
             throw new InvalidArgumentException("operator_id_type is required and must be specified");
          }
-         if (is_null($request->getFileName())) {
-            throw new InvalidArgumentException("file_name is required and must be specified");
-         }
-         if (is_null($request->getFileType())) {
-            throw new InvalidArgumentException("file_type is required and must be specified");
+         if (is_null($request->getUploadId())) {
+            throw new InvalidArgumentException("upload_id is required and must be specified");
          }
          if (is_null($request->getFileSize())) {
             throw new InvalidArgumentException("file_size is required and must be specified");
+         }
+         if (is_null($request->getFileSeq())) {
+            throw new InvalidArgumentException("file_seq is required and must be specified");
          }
          if (is_null($request->getFileChecksum())) {
             throw new InvalidArgumentException("file_checksum is required and must be specified");
          }
          if (is_null($request->getFileContent())) {
             throw new InvalidArgumentException("file_content is required and must be specified");
-         }
-         if (is_null($request->getSpeakNumber())) {
-            throw new InvalidArgumentException("speak_number is required and must be specified");
          }
 
          $formData = [
@@ -430,16 +427,16 @@ class RecordsApi
                  'contents' => $request->getOperatorIdType(),
              ],
              [
-                 'name' => 'file_name',
-                 'contents' => $request->getFileName(),
-             ],
-             [
-                 'name' => 'file_type',
-                 'contents' => $request->getFileType(),
+                 'name' => 'upload_id',
+                 'contents' => $request->getUploadId(),
              ],
              [
                  'name' => 'file_size',
                  'contents' => $request->getFileSize(),
+             ],
+             [
+                 'name' => 'file_seq',
+                 'contents' => $request->getFileSeq(),
              ],
              [
                  'name' => 'file_checksum',
@@ -450,10 +447,6 @@ class RecordsApi
                   'contents' => $request->getFileContent(),
                   'filename' => $request->getFileName(),
               ],
-             [
-                 'name' => 'speak_number',
-                 'contents' => $request->getSpeakNumber(),
-             ],
          ];
          if (!empty($formData)) {
              $requestBody = new MultipartStream($formData);
@@ -585,6 +578,7 @@ class RecordsApi
              $headers['Content-Type'] = 'multipart/form-data; boundary=' . $requestBody->getBoundary();
          }
 
+         $requestBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request->getBody()));
 
          foreach ($authentications as $auth) {
              if (!$auth instanceof Authentication) {
@@ -2012,13 +2006,11 @@ class ApiV1FilesRecordsUploadPartPostRequest {
 
     protected string|null $operator_id = null;
     protected int|null $operator_id_type = null;
-    protected string|null $file_name = null;
-    protected string|null $file_type = null;
+    protected string|null $upload_id = null;
     protected int|null $file_size = null;
+    protected int|null $file_seq = null;
     protected string|null $file_checksum = null;
     protected \SplFileObject|null $file_content = null;
-    protected int|null $speak_number = null;
-    protected bool|null $ai_record = null;
 
     public function getOperatorId(): string|null  {
         return $this->operator_id;
@@ -2026,26 +2018,20 @@ class ApiV1FilesRecordsUploadPartPostRequest {
     public function getOperatorIdType(): int|null  {
         return $this->operator_id_type;
     }
-    public function getFileName(): string|null  {
-        return $this->file_name;
-    }
-    public function getFileType(): string|null  {
-        return $this->file_type;
+    public function getUploadId(): string|null  {
+        return $this->upload_id;
     }
     public function getFileSize(): int|null  {
         return $this->file_size;
+    }
+    public function getFileSeq(): int|null  {
+        return $this->file_seq;
     }
     public function getFileChecksum(): string|null  {
         return $this->file_checksum;
     }
     public function getFileContent(): \SplFileObject|null  {
         return $this->file_content;
-    }
-    public function getSpeakNumber(): int|null  {
-        return $this->speak_number;
-    }
-    public function getAiRecord(): bool|null  {
-        return $this->ai_record;
     }
 
 
@@ -2059,18 +2045,18 @@ class ApiV1FilesRecordsUploadPartPostRequest {
         return $this;
     }
 
-    public function withFileName(string $file_name): ApiV1FilesRecordsUploadPartPostRequest  {
-        $this->file_name = $file_name;
-        return $this;
-    }
-
-    public function withFileType(string $file_type): ApiV1FilesRecordsUploadPartPostRequest  {
-        $this->file_type = $file_type;
+    public function withUploadId(string $upload_id): ApiV1FilesRecordsUploadPartPostRequest  {
+        $this->upload_id = $upload_id;
         return $this;
     }
 
     public function withFileSize(int $file_size): ApiV1FilesRecordsUploadPartPostRequest  {
         $this->file_size = $file_size;
+        return $this;
+    }
+
+    public function withFileSeq(int $file_seq): ApiV1FilesRecordsUploadPartPostRequest  {
+        $this->file_seq = $file_seq;
         return $this;
     }
 
@@ -2081,16 +2067,6 @@ class ApiV1FilesRecordsUploadPartPostRequest {
 
     public function withFileContent(\SplFileObject $file_content): ApiV1FilesRecordsUploadPartPostRequest  {
         $this->file_content = $file_content;
-        return $this;
-    }
-
-    public function withSpeakNumber(int $speak_number): ApiV1FilesRecordsUploadPartPostRequest  {
-        $this->speak_number = $speak_number;
-        return $this;
-    }
-
-    public function withAiRecord(bool $ai_record): ApiV1FilesRecordsUploadPartPostRequest  {
-        $this->ai_record = $ai_record;
         return $this;
     }
 
@@ -2160,6 +2136,7 @@ class ApiV1MetricsRecordsGetRequest {
     protected string|null $meeting_record_id = null;
     protected string|null $start_time = null;
     protected string|null $end_time = null;
+    protected object|null $body = null;
 
     public function getMeetingRecordId(): string|null  {
         return $this->meeting_record_id;
@@ -2169,6 +2146,9 @@ class ApiV1MetricsRecordsGetRequest {
     }
     public function getEndTime(): string|null  {
         return $this->end_time;
+    }
+    public function getBody(): object|null  {
+        return $this->body;
     }
 
 
@@ -2184,6 +2164,10 @@ class ApiV1MetricsRecordsGetRequest {
 
     public function withEndTime(string $end_time): ApiV1MetricsRecordsGetRequest  {
         $this->end_time = $end_time;
+        return $this;
+    }
+    public function withBody(object $body)  {
+        $this->body = $body;
         return $this;
     }
 

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\user_manager\api;
 
@@ -67,6 +67,18 @@ class UserManagerApi
          $pathParams = [];
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
+         }
 
          $requestBody = null;
 
@@ -491,6 +503,93 @@ class UserManagerApi
      }
 
     /**
+     * Operation V1UsersAdvanceListGet
+     *
+     * 获取用户列表（新）
+     *
+     */
+     public function V1UsersAdvanceListGet(ApiV1UsersAdvanceListGetRequest $request, array $authentications = [], array $options = ['http_errors' => false]): ApiV1UsersAdvanceListGetResponse {
+
+         $headers = $this->headerSelector->selectHeaders([], '', false);
+
+         $resourcePath = '/v1/users/advance/list';
+
+         $pathParams = [];
+
+         $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
+         }
+         if ($request->getPos() !== null) {
+             $queryParams['pos'] = $request->getPos();
+         }
+         if ($request->getSize() !== null) {
+             $queryParams['size'] = $request->getSize();
+         }
+         if ($request->getStatus() !== null) {
+             $queryParams['status'] = $request->getStatus();
+         }
+         if ($request->getUserAccountType() !== null) {
+             $queryParams['user_account_type'] = $request->getUserAccountType();
+         }
+         if ($request->getEnableAiAccount() !== null) {
+             $queryParams['enable_ai_account'] = $request->getEnableAiAccount();
+         }
+         if ($request->getDepartmentId() !== null) {
+             $queryParams['department_id'] = $request->getDepartmentId();
+         }
+
+         $requestBody = null;
+
+         $formData = [
+         ];
+         if (!empty($formData)) {
+             $requestBody = new MultipartStream($formData);
+             $headers['Content-Type'] = 'multipart/form-data; boundary=' . $requestBody->getBoundary();
+         }
+
+         $requestBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request->getBody()));
+
+         foreach ($authentications as $auth) {
+             if (!$auth instanceof Authentication) {
+                 throw new InvalidArgumentException("All elements must implement the Authentication interface.");
+             }
+             $auth->withConfig($this->config);
+         }
+
+         $apiRequest = new ApiRequest($resourcePath, $requestBody, new PathParams($pathParams), new QueryParams($queryParams), $headers, $authentications);
+
+         try {
+             $response = $this->config->getClt()->get($apiRequest, $options);
+             $statusCode = $response->getStatusCode();
+             if ($statusCode >= 300) {
+                 throw new ServiceException($response);
+             } else {
+                 return new ApiV1UsersAdvanceListGetResponse($response);
+             }
+         } catch(ServiceException $e) {
+             throw $e;
+         } catch (ConnectException $e) {
+             throw new ClientException(
+                 $e->getMessage(),
+                 $e->getCode(),
+                 $e->getPrevious(),
+             );
+         } catch (Exception $e) {
+             throw new Exception("发生了一个未知错误: " . $e->getMessage(), $e->getCode(), $e);
+         }
+     }
+
+    /**
      * Operation V1UsersDelete
      *
      * 删除用户（通过 uuid 删除用户）
@@ -508,8 +607,20 @@ class UserManagerApi
          if (is_null($request->getUuid())) {
             throw new InvalidArgumentException("uuid is required and must be specified");
          }
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
          if ($request->getUuid() !== null) {
              $queryParams['uuid'] = $request->getUuid();
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
          }
 
          $requestBody = null;
@@ -628,8 +739,20 @@ class UserManagerApi
          if (is_null($request->getUuid())) {
             throw new InvalidArgumentException("uuid is required and must be specified");
          }
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
          if ($request->getUuid() !== null) {
              $queryParams['uuid'] = $request->getUuid();
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
          }
 
          $requestBody = null;
@@ -877,20 +1000,23 @@ class UserManagerApi
          if (is_null($request->getPageSize())) {
             throw new InvalidArgumentException("page_size is required and must be specified");
          }
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
          if ($request->getPage() !== null) {
              $queryParams['page'] = $request->getPage();
          }
          if ($request->getPageSize() !== null) {
              $queryParams['page_size'] = $request->getPageSize();
          }
-         if ($request->getAiAccountType() !== null) {
-             $queryParams['ai_account_type'] = $request->getAiAccountType();
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
          }
-         if ($request->getUserAccountType() !== null) {
-             $queryParams['user_account_type'] = $request->getUserAccountType();
-         }
-         if ($request->getEnableAiAccount() !== null) {
-             $queryParams['enable_ai_account'] = $request->getEnableAiAccount();
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
          }
 
          $requestBody = null;
@@ -1132,6 +1258,18 @@ class UserManagerApi
          }
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
+         }
 
          $requestBody = null;
 
@@ -1258,6 +1396,18 @@ class UserManagerApi
          }
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
+         }
 
          $requestBody = null;
 
@@ -1321,6 +1471,18 @@ class UserManagerApi
          }
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
+         if ($request->getOperatorId() !== null) {
+             $queryParams['operator_id'] = $request->getOperatorId();
+         }
+         if ($request->getOperatorIdType() !== null) {
+             $queryParams['operator_id_type'] = $request->getOperatorIdType();
+         }
 
          $requestBody = null;
 
@@ -1493,12 +1655,30 @@ class UserManagerApi
 
 class ApiV1AuthUsersCancelAuthPutRequest {
 
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
+    }
     public function getBody(): object|null  {
         return $this->body;
     }
 
+
+    public function withOperatorId(string $operator_id): ApiV1AuthUsersCancelAuthPutRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1AuthUsersCancelAuthPutRequest  {
+        $this->operator_id_type = $operator_id_type;
+        return $this;
+    }
     public function withBody(object $body)  {
         $this->body = $body;
         return $this;
@@ -1813,13 +1993,130 @@ class ApiV1UsersAccountStatisticsGetResponse extends ApiResponse {
     }
 }
 
+class ApiV1UsersAdvanceListGetRequest {
+
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
+    protected string|null $pos = null;
+    protected string|null $size = null;
+    protected string|null $status = null;
+    protected string|null $user_account_type = null;
+    protected string|null $enable_ai_account = null;
+    protected string|null $department_id = null;
+    protected object|null $body = null;
+
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
+    }
+    public function getPos(): string|null  {
+        return $this->pos;
+    }
+    public function getSize(): string|null  {
+        return $this->size;
+    }
+    public function getStatus(): string|null  {
+        return $this->status;
+    }
+    public function getUserAccountType(): string|null  {
+        return $this->user_account_type;
+    }
+    public function getEnableAiAccount(): string|null  {
+        return $this->enable_ai_account;
+    }
+    public function getDepartmentId(): string|null  {
+        return $this->department_id;
+    }
+    public function getBody(): object|null  {
+        return $this->body;
+    }
+
+
+    public function withOperatorId(string $operator_id): ApiV1UsersAdvanceListGetRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersAdvanceListGetRequest  {
+        $this->operator_id_type = $operator_id_type;
+        return $this;
+    }
+
+    public function withPos(string $pos): ApiV1UsersAdvanceListGetRequest  {
+        $this->pos = $pos;
+        return $this;
+    }
+
+    public function withSize(string $size): ApiV1UsersAdvanceListGetRequest  {
+        $this->size = $size;
+        return $this;
+    }
+
+    public function withStatus(string $status): ApiV1UsersAdvanceListGetRequest  {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function withUserAccountType(string $user_account_type): ApiV1UsersAdvanceListGetRequest  {
+        $this->user_account_type = $user_account_type;
+        return $this;
+    }
+
+    public function withEnableAiAccount(string $enable_ai_account): ApiV1UsersAdvanceListGetRequest  {
+        $this->enable_ai_account = $enable_ai_account;
+        return $this;
+    }
+
+    public function withDepartmentId(string $department_id): ApiV1UsersAdvanceListGetRequest  {
+        $this->department_id = $department_id;
+        return $this;
+    }
+    public function withBody(object $body)  {
+        $this->body = $body;
+        return $this;
+    }
+
+}
+
+class ApiV1UsersAdvanceListGetResponse extends ApiResponse {
+
+    protected \wemeet\openapi\service\user_manager\model\V1UsersAdvanceListGet200Response $data;
+
+    public function __construct(ApiResponse $response) {
+        parent::__construct(
+            $response->getStatusCode(),
+            $response->getHeaders(),
+            $response->getBody()
+        );
+        try {
+            $this->data = $response->translate('\wemeet\openapi\service\user_manager\model\V1UsersAdvanceListGet200Response');
+        } catch (\Exception $e) {
+            throw new Exception("translate失败: " . $e->getMessage(), $e->getCode(), $e);
+        }
+    }
+
+    public function getData() {
+        return $this->data;
+    }
+}
+
 class ApiV1UsersDeleteRequest {
 
     protected string|null $uuid = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
     public function getUuid(): string|null  {
         return $this->uuid;
+    }
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -1828,6 +2125,16 @@ class ApiV1UsersDeleteRequest {
 
     public function withUuid(string $uuid): ApiV1UsersDeleteRequest  {
         $this->uuid = $uuid;
+        return $this;
+    }
+
+    public function withOperatorId(string $operator_id): ApiV1UsersDeleteRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersDeleteRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
     public function withBody(object $body)  {
@@ -1899,10 +2206,18 @@ class ApiV1UsersDeleteTransferPostResponse extends ApiResponse {
 class ApiV1UsersGetRequest {
 
     protected string|null $uuid = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
     public function getUuid(): string|null  {
         return $this->uuid;
+    }
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -1911,6 +2226,16 @@ class ApiV1UsersGetRequest {
 
     public function withUuid(string $uuid): ApiV1UsersGetRequest  {
         $this->uuid = $uuid;
+        return $this;
+    }
+
+    public function withOperatorId(string $operator_id): ApiV1UsersGetRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersGetRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
     public function withBody(object $body)  {
@@ -2075,9 +2400,8 @@ class ApiV1UsersListGetRequest {
 
     protected string|null $page = null;
     protected string|null $page_size = null;
-    protected string|null $ai_account_type = null;
-    protected string|null $user_account_type = null;
-    protected string|null $enable_ai_account = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
     public function getPage(): string|null  {
@@ -2086,14 +2410,11 @@ class ApiV1UsersListGetRequest {
     public function getPageSize(): string|null  {
         return $this->page_size;
     }
-    public function getAiAccountType(): string|null  {
-        return $this->ai_account_type;
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
     }
-    public function getUserAccountType(): string|null  {
-        return $this->user_account_type;
-    }
-    public function getEnableAiAccount(): string|null  {
-        return $this->enable_ai_account;
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -2110,18 +2431,13 @@ class ApiV1UsersListGetRequest {
         return $this;
     }
 
-    public function withAiAccountType(string $ai_account_type): ApiV1UsersListGetRequest  {
-        $this->ai_account_type = $ai_account_type;
+    public function withOperatorId(string $operator_id): ApiV1UsersListGetRequest  {
+        $this->operator_id = $operator_id;
         return $this;
     }
 
-    public function withUserAccountType(string $user_account_type): ApiV1UsersListGetRequest  {
-        $this->user_account_type = $user_account_type;
-        return $this;
-    }
-
-    public function withEnableAiAccount(string $enable_ai_account): ApiV1UsersListGetRequest  {
-        $this->enable_ai_account = $enable_ai_account;
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersListGetRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
     public function withBody(object $body)  {
@@ -2276,10 +2592,18 @@ class ApiV1UsersPutResponse extends ApiResponse {
 class ApiV1UsersUseridDeleteRequest {
 
     protected string|null $userid = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
     public function getUserid(): string|null  {
         return $this->userid;
+    }
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -2288,6 +2612,16 @@ class ApiV1UsersUseridDeleteRequest {
 
     public function withUserid(string $userid): ApiV1UsersUseridDeleteRequest  {
         $this->userid = $userid;
+        return $this;
+    }
+
+    public function withOperatorId(string $operator_id): ApiV1UsersUseridDeleteRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersUseridDeleteRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
     public function withBody(object $body)  {
@@ -2368,10 +2702,18 @@ class ApiV1UsersUseridEnablePutResponse extends ApiResponse {
 class ApiV1UsersUseridGetRequest {
 
     protected string|null $userid = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
     public function getUserid(): string|null  {
         return $this->userid;
+    }
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -2380,6 +2722,16 @@ class ApiV1UsersUseridGetRequest {
 
     public function withUserid(string $userid): ApiV1UsersUseridGetRequest  {
         $this->userid = $userid;
+        return $this;
+    }
+
+    public function withOperatorId(string $operator_id): ApiV1UsersUseridGetRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersUseridGetRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
     public function withBody(object $body)  {
@@ -2414,10 +2766,18 @@ class ApiV1UsersUseridGetResponse extends ApiResponse {
 class ApiV1UsersUseridInviteActivatePutRequest {
 
     protected string|null $userid = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected object|null $body = null;
 
     public function getUserid(): string|null  {
         return $this->userid;
+    }
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -2426,6 +2786,16 @@ class ApiV1UsersUseridInviteActivatePutRequest {
 
     public function withUserid(string $userid): ApiV1UsersUseridInviteActivatePutRequest  {
         $this->userid = $userid;
+        return $this;
+    }
+
+    public function withOperatorId(string $operator_id): ApiV1UsersUseridInviteActivatePutRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1UsersUseridInviteActivatePutRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
     public function withBody(object $body)  {

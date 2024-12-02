@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi;
 
@@ -20,7 +20,6 @@ use wemeet\openapi\service\user_manager\api\UserManagerApi;
 use wemeet\openapi\service\records\api\RecordsApi;
 use wemeet\openapi\service\record_intelligence\api\RecordIntelligenceApi;
 use wemeet\openapi\service\meeting_guest\api\MeetingGuestApi;
-use wemeet\openapi\service\vote\api\VoteApi;
 use wemeet\openapi\service\meeting_room\api\MeetingRoomApi;
 use wemeet\openapi\service\layout\api\LayoutApi;
 
@@ -34,7 +33,6 @@ class Client {
     private RecordsApi $records;
     private RecordIntelligenceApi $record_intelligence;
     private MeetingGuestApi $meeting_guest;
-    private VoteApi $vote;
     private MeetingRoomApi $meeting_room;
     private LayoutApi $layout;
 
@@ -60,7 +58,6 @@ class Client {
         $this->records = new RecordsApi($this->config);
         $this->record_intelligence = new RecordIntelligenceApi($this->config);
         $this->meeting_guest = new MeetingGuestApi($this->config);
-        $this->vote = new VoteApi($this->config);
         $this->meeting_room = new MeetingRoomApi($this->config);
         $this->layout = new LayoutApi($this->config);
         return $this;
@@ -86,9 +83,6 @@ class Client {
     }
     public function MeetingGuest() {
         return $this->meeting_guest;
-    }
-    public function Vote() {
-        return $this->vote;
     }
     public function MeetingRoom() {
         return $this->meeting_room;

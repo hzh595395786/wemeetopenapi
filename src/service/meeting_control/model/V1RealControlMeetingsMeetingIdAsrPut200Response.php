@@ -1,89 +1,64 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
-namespace wemeet\openapi\service\vote\model;
+namespace wemeet\openapi\service\meeting_control\model;
 
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInterface, \JsonSerializable
+class V1RealControlMeetingsMeetingIdAsrPut200Response implements ModelInterface, \JsonSerializable
 {
+
     /**
-    * 类型：
+    * 类型：int
      */
-    protected $pollOption;
+    protected $code = null;
+
     /**
-     * 问题描述，最多50个字符
-    * 类型：
+    * 类型：string
      */
-    protected $questionDesc;
-    /**
-     * 问题选择类型0 单选 1 多选
-    * 类型：
-     */
-    protected $questionType;
+    protected $message = null;
 
     public function __construct(
         $jsonArray = []
     ) {
-        if (isset($jsonArray['poll_option'])) {
-            $this->pollOption = $jsonArray['poll_option'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter poll_option');
+        if (isset($jsonArray['code'])) {
+            $this->code = $jsonArray['code'];
         }
-        if (isset($jsonArray['question_desc'])) {
-            $this->questionDesc = $jsonArray['question_desc'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter question_desc');
-        }
-        if (isset($jsonArray['question_type'])) {
-            $this->questionType = $jsonArray['question_type'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter question_type');
+        if (isset($jsonArray['message'])) {
+            $this->message = $jsonArray['message'];
         }
     }
 
-    public function pollOption(array $pollOption): V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner {
-        $this->pollOption = $pollOption;
+    public function code(int $code): V1RealControlMeetingsMeetingIdAsrPut200Response {
+        $this->code = $code;
         return $this;
     }
 
-    public function getPollOption() {
-        return $this->pollOption;
+    public function getCode() {
+        return $this->code;
     }
 
-    public function setPollOption(array $pollOption) {
-        $this->pollOption = $pollOption;
+    public function setCode(int $code) {
+        $this->code = $code;
     }
-    public function questionDesc(string $questionDesc): V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner {
-        $this->questionDesc = $questionDesc;
+    public function message(string $message): V1RealControlMeetingsMeetingIdAsrPut200Response {
+        $this->message = $message;
         return $this;
     }
 
-    public function getQuestionDesc() {
-        return $this->questionDesc;
+    public function getMessage() {
+        return $this->message;
     }
 
-    public function setQuestionDesc(string $questionDesc) {
-        $this->questionDesc = $questionDesc;
-    }
-    public function questionType(int $questionType): V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner {
-        $this->questionType = $questionType;
-        return $this;
-    }
-
-    public function getQuestionType() {
-        return $this->questionType;
-    }
-
-    public function setQuestionType(int $questionType) {
-        $this->questionType = $questionType;
+    public function setMessage(string $message) {
+        $this->message = $message;
     }
 
     /**
@@ -92,9 +67,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
       * @var string[]
       */
     protected static $openAPITypes = [
-        'poll_option' => 'string[]',
-        'question_desc' => 'string',
-        'question_type' => 'int'
+        'code' => 'int',
+        'message' => 'string'
     ];
 
     /**
@@ -105,9 +79,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'poll_option' => null,
-        'question_desc' => null,
-        'question_type' => 'int64'
+        'code' => 'int64',
+        'message' => null
     ];
 
     /**
@@ -116,9 +89,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'poll_option' => false,
-        'question_desc' => false,
-        'question_type' => false
+        'code' => false,
+        'message' => false
     ];
 
     /**
@@ -207,9 +179,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
      * @var string[]
      */
     protected static $attributeMap = [
-        'poll_option' => 'poll_option',
-        'question_desc' => 'question_desc',
-        'question_type' => 'question_type'
+        'code' => 'code',
+        'message' => 'message'
     ];
 
     /**
@@ -218,9 +189,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
      * @var string[]
      */
     protected static $setters = [
-        'poll_option' => 'setPollOption',
-        'question_desc' => 'setQuestionDesc',
-        'question_type' => 'setQuestionType'
+        'code' => 'setCode',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -229,9 +199,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
      * @var string[]
      */
     protected static $getters = [
-        'poll_option' => 'getPollOption',
-        'question_desc' => 'getQuestionDesc',
-        'question_type' => 'getQuestionType'
+        'code' => 'getCode',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -267,9 +236,8 @@ class V1MeetingsMeetingIdPollsPostRequestPollQuestionsInner implements ModelInte
 
     public function jsonSerialize(): mixed {
         $data = [
-            'poll_option' => $this->pollOption,
-            'question_desc' => $this->questionDesc,
-            'question_type' => $this->questionType,
+            'code' => $this->code,
+            'message' => $this->message,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

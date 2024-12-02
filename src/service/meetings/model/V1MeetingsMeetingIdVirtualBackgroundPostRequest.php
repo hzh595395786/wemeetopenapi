@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -41,6 +41,12 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
      */
     protected $image = null;
 
+    /**
+     * userid数组
+    * 类型：string[]
+     */
+    protected $users = null;
+
     public function __construct(
         $jsonArray = []
     ) {
@@ -66,6 +72,9 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         }
         if (isset($jsonArray['image'])) {
             $this->image = $jsonArray['image'];
+        }
+        if (isset($jsonArray['users'])) {
+            $this->users = $jsonArray['users'];
         }
     }
 
@@ -129,6 +138,18 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
     public function setType(int $type) {
         $this->type = $type;
     }
+    public function users(array $users): V1MeetingsMeetingIdVirtualBackgroundPostRequest {
+        $this->users = $users;
+        return $this;
+    }
+
+    public function getUsers() {
+        return $this->users;
+    }
+
+    public function setUsers(array $users) {
+        $this->users = $users;
+    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -140,7 +161,8 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         'instanceid' => 'int',
         'operator_id' => 'string',
         'operator_id_type' => 'int',
-        'type' => 'int'
+        'type' => 'int',
+        'users' => 'string[]'
     ];
 
     /**
@@ -155,7 +177,8 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         'instanceid' => 'int64',
         'operator_id' => null,
         'operator_id_type' => 'int64',
-        'type' => 'int64'
+        'type' => 'int64',
+        'users' => null
     ];
 
     /**
@@ -168,7 +191,8 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         'instanceid' => false,
         'operator_id' => false,
         'operator_id_type' => false,
-        'type' => false
+        'type' => false,
+        'users' => false
     ];
 
     /**
@@ -261,7 +285,8 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         'instanceid' => 'instanceid',
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type',
-        'type' => 'type'
+        'type' => 'type',
+        'users' => 'users'
     ];
 
     /**
@@ -274,7 +299,8 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         'instanceid' => 'setInstanceid',
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType',
-        'type' => 'setType'
+        'type' => 'setType',
+        'users' => 'setUsers'
     ];
 
     /**
@@ -287,7 +313,8 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
         'instanceid' => 'getInstanceid',
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType',
-        'type' => 'getType'
+        'type' => 'getType',
+        'users' => 'getUsers'
     ];
 
     /**
@@ -328,6 +355,7 @@ class V1MeetingsMeetingIdVirtualBackgroundPostRequest implements ModelInterface,
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
             'type' => $this->type,
+            'users' => $this->users,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

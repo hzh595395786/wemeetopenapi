@@ -1,89 +1,108 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
-namespace wemeet\openapi\service\meeting_guest\model;
+namespace wemeet\openapi\service\user_manager\model;
 
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
+class V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner implements ModelInterface, \JsonSerializable
 {
-    /**
-     * 国家/地区代码（例如：中国传86，不是+86，也不是0086）。
-    * 类型：
-     */
-    protected $area;
-    /**
-     * 手机号
-    * 类型：
-     */
-    protected $phoneNumber;
 
     /**
-     * 嘉宾名称
+     * 部门全路径
     * 类型：string
      */
-    protected $guestName = null;
+    protected $departmentFullName = null;
+
+    /**
+     * 部门ID
+    * 类型：string
+     */
+    protected $departmentId = null;
+
+    /**
+     * 部门名称
+    * 类型：string
+     */
+    protected $departmentName = null;
+
+    /**
+     * 是否主部门
+    * 类型：bool
+     */
+    protected $isMain = null;
 
     public function __construct(
         $jsonArray = []
     ) {
-        if (isset($jsonArray['area'])) {
-            $this->area = $jsonArray['area'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter area');
+        if (isset($jsonArray['department_full_name'])) {
+            $this->departmentFullName = $jsonArray['department_full_name'];
         }
-        if (isset($jsonArray['phone_number'])) {
-            $this->phoneNumber = $jsonArray['phone_number'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter phone_number');
+        if (isset($jsonArray['department_id'])) {
+            $this->departmentId = $jsonArray['department_id'];
         }
-        if (isset($jsonArray['guest_name'])) {
-            $this->guestName = $jsonArray['guest_name'];
+        if (isset($jsonArray['department_name'])) {
+            $this->departmentName = $jsonArray['department_name'];
+        }
+        if (isset($jsonArray['is_main'])) {
+            $this->isMain = $jsonArray['is_main'];
         }
     }
 
-    public function area(string $area): V1GuestsPutRequestGuestsInner {
-        $this->area = $area;
+    public function departmentFullName(string $departmentFullName): V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner {
+        $this->departmentFullName = $departmentFullName;
         return $this;
     }
 
-    public function getArea() {
-        return $this->area;
+    public function getDepartmentFullName() {
+        return $this->departmentFullName;
     }
 
-    public function setArea(string $area) {
-        $this->area = $area;
+    public function setDepartmentFullName(string $departmentFullName) {
+        $this->departmentFullName = $departmentFullName;
     }
-    public function guestName(string $guestName): V1GuestsPutRequestGuestsInner {
-        $this->guestName = $guestName;
+    public function departmentId(string $departmentId): V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner {
+        $this->departmentId = $departmentId;
         return $this;
     }
 
-    public function getGuestName() {
-        return $this->guestName;
+    public function getDepartmentId() {
+        return $this->departmentId;
     }
 
-    public function setGuestName(string $guestName) {
-        $this->guestName = $guestName;
+    public function setDepartmentId(string $departmentId) {
+        $this->departmentId = $departmentId;
     }
-    public function phoneNumber(string $phoneNumber): V1GuestsPutRequestGuestsInner {
-        $this->phoneNumber = $phoneNumber;
+    public function departmentName(string $departmentName): V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner {
+        $this->departmentName = $departmentName;
         return $this;
     }
 
-    public function getPhoneNumber() {
-        return $this->phoneNumber;
+    public function getDepartmentName() {
+        return $this->departmentName;
     }
 
-    public function setPhoneNumber(string $phoneNumber) {
-        $this->phoneNumber = $phoneNumber;
+    public function setDepartmentName(string $departmentName) {
+        $this->departmentName = $departmentName;
+    }
+    public function isMain(bool $isMain): V1UsersAdvanceListGet200ResponseUsersInnerDepartmentListInner {
+        $this->isMain = $isMain;
+        return $this;
+    }
+
+    public function getIsMain() {
+        return $this->isMain;
+    }
+
+    public function setIsMain(bool $isMain) {
+        $this->isMain = $isMain;
     }
 
     /**
@@ -92,9 +111,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'area' => 'string',
-        'guest_name' => 'string',
-        'phone_number' => 'string'
+        'department_full_name' => 'string',
+        'department_id' => 'string',
+        'department_name' => 'string',
+        'is_main' => 'bool'
     ];
 
     /**
@@ -105,9 +125,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'area' => null,
-        'guest_name' => null,
-        'phone_number' => null
+        'department_full_name' => null,
+        'department_id' => null,
+        'department_name' => null,
+        'is_main' => null
     ];
 
     /**
@@ -116,9 +137,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'area' => false,
-        'guest_name' => false,
-        'phone_number' => false
+        'department_full_name' => false,
+        'department_id' => false,
+        'department_name' => false,
+        'is_main' => false
     ];
 
     /**
@@ -207,9 +229,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'area' => 'area',
-        'guest_name' => 'guest_name',
-        'phone_number' => 'phone_number'
+        'department_full_name' => 'department_full_name',
+        'department_id' => 'department_id',
+        'department_name' => 'department_name',
+        'is_main' => 'is_main'
     ];
 
     /**
@@ -218,9 +241,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'area' => 'setArea',
-        'guest_name' => 'setGuestName',
-        'phone_number' => 'setPhoneNumber'
+        'department_full_name' => 'setDepartmentFullName',
+        'department_id' => 'setDepartmentId',
+        'department_name' => 'setDepartmentName',
+        'is_main' => 'setIsMain'
     ];
 
     /**
@@ -229,9 +253,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'area' => 'getArea',
-        'guest_name' => 'getGuestName',
-        'phone_number' => 'getPhoneNumber'
+        'department_full_name' => 'getDepartmentFullName',
+        'department_id' => 'getDepartmentId',
+        'department_name' => 'getDepartmentName',
+        'is_main' => 'getIsMain'
     ];
 
     /**
@@ -267,9 +292,10 @@ class V1GuestsPutRequestGuestsInner implements ModelInterface, \JsonSerializable
 
     public function jsonSerialize(): mixed {
         $data = [
-            'area' => $this->area,
-            'guest_name' => $this->guestName,
-            'phone_number' => $this->phoneNumber,
+            'department_full_name' => $this->departmentFullName,
+            'department_id' => $this->departmentId,
+            'department_name' => $this->departmentName,
+            'is_main' => $this->isMain,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

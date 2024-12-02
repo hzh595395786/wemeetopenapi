@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -19,6 +19,16 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
     * 类型：
      */
     protected $enable;
+    /**
+     * 操作者ID
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者ID类型，1:userid
+    * 类型：
+     */
+    protected $operatorIdType;
 
     public function __construct(
         $jsonArray = []
@@ -27,6 +37,16 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
             $this->enable = $jsonArray['enable'];
         } else {
             throw new \InvalidArgumentException('Missing required parameter enable');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
         }
     }
 
@@ -42,6 +62,30 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
     public function setEnable(bool $enable) {
         $this->enable = $enable;
     }
+    public function operatorId(string $operatorId): V1UsersUseridEnablePutRequest {
+        $this->operatorId = $operatorId;
+        return $this;
+    }
+
+    public function getOperatorId() {
+        return $this->operatorId;
+    }
+
+    public function setOperatorId(string $operatorId) {
+        $this->operatorId = $operatorId;
+    }
+    public function operatorIdType(int $operatorIdType): V1UsersUseridEnablePutRequest {
+        $this->operatorIdType = $operatorIdType;
+        return $this;
+    }
+
+    public function getOperatorIdType() {
+        return $this->operatorIdType;
+    }
+
+    public function setOperatorIdType(int $operatorIdType) {
+        $this->operatorIdType = $operatorIdType;
+    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -49,7 +93,9 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'enable' => 'bool'
+        'enable' => 'bool',
+        'operator_id' => 'string',
+        'operator_id_type' => 'int'
     ];
 
     /**
@@ -60,7 +106,9 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'enable' => null
+        'enable' => null,
+        'operator_id' => null,
+        'operator_id_type' => 'int64'
     ];
 
     /**
@@ -69,7 +117,9 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'enable' => false
+        'enable' => false,
+        'operator_id' => false,
+        'operator_id_type' => false
     ];
 
     /**
@@ -158,7 +208,9 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'enable' => 'enable'
+        'enable' => 'enable',
+        'operator_id' => 'operator_id',
+        'operator_id_type' => 'operator_id_type'
     ];
 
     /**
@@ -167,7 +219,9 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'enable' => 'setEnable'
+        'enable' => 'setEnable',
+        'operator_id' => 'setOperatorId',
+        'operator_id_type' => 'setOperatorIdType'
     ];
 
     /**
@@ -176,7 +230,9 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'enable' => 'getEnable'
+        'enable' => 'getEnable',
+        'operator_id' => 'getOperatorId',
+        'operator_id_type' => 'getOperatorIdType'
     ];
 
     /**
@@ -213,6 +269,8 @@ class V1UsersUseridEnablePutRequest implements ModelInterface, \JsonSerializable
     public function jsonSerialize(): mixed {
         $data = [
             'enable' => $this->enable,
+            'operator_id' => $this->operatorId,
+            'operator_id_type' => $this->operatorIdType,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

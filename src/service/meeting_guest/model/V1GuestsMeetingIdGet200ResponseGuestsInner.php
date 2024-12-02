@@ -1,112 +1,87 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\meeting_guest\model;
 
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
+class V1GuestsMeetingIdGet200ResponseGuestsInner implements ModelInterface, \JsonSerializable
 {
+
     /**
-     * 会议嘉宾列表（传空数组会清空嘉宾列表）。
-    * 类型：V1GuestsPutRequestGuestsInner
+     * 国家/地区代码（例如：中国传86，不是+86，也不是0086）。
+    * 类型：string
      */
-    protected $guests;
+    protected $area = null;
+
     /**
-     * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS
-    * 类型：
+     * 嘉宾名称。
+    * 类型：string
      */
-    protected $instanceid;
+    protected $guestName = null;
+
     /**
-     * 会议码。
-    * 类型：
+     * 手机号。
+    * 类型：string
      */
-    protected $meetingCode;
-    /**
-     * 用户的 ID（企业内部请使用企业唯一用户标识，OAuth2.0 鉴权用户请使用 openId）
-    * 类型：
-     */
-    protected $userid;
+    protected $phoneNumber = null;
 
     public function __construct(
         $jsonArray = []
     ) {
-        if (isset($jsonArray['guests'])) {
-            $this->guests = $jsonArray['guests'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter guests');
+        if (isset($jsonArray['area'])) {
+            $this->area = $jsonArray['area'];
         }
-        if (isset($jsonArray['instanceid'])) {
-            $this->instanceid = $jsonArray['instanceid'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter instanceid');
+        if (isset($jsonArray['guest_name'])) {
+            $this->guestName = $jsonArray['guest_name'];
         }
-        if (isset($jsonArray['meeting_code'])) {
-            $this->meetingCode = $jsonArray['meeting_code'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter meeting_code');
-        }
-        if (isset($jsonArray['userid'])) {
-            $this->userid = $jsonArray['userid'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter userid');
+        if (isset($jsonArray['phone_number'])) {
+            $this->phoneNumber = $jsonArray['phone_number'];
         }
     }
 
-    public function guests(array $guests): V1GuestsPutRequest {
-        $this->guests = $guests;
+    public function area(string $area): V1GuestsMeetingIdGet200ResponseGuestsInner {
+        $this->area = $area;
         return $this;
     }
 
-    public function getGuests() {
-        return $this->guests;
+    public function getArea() {
+        return $this->area;
     }
 
-    public function setGuests(array $guests) {
-        $this->guests = $guests;
+    public function setArea(string $area) {
+        $this->area = $area;
     }
-    public function instanceid(int $instanceid): V1GuestsPutRequest {
-        $this->instanceid = $instanceid;
+    public function guestName(string $guestName): V1GuestsMeetingIdGet200ResponseGuestsInner {
+        $this->guestName = $guestName;
         return $this;
     }
 
-    public function getInstanceid() {
-        return $this->instanceid;
+    public function getGuestName() {
+        return $this->guestName;
     }
 
-    public function setInstanceid(int $instanceid) {
-        $this->instanceid = $instanceid;
+    public function setGuestName(string $guestName) {
+        $this->guestName = $guestName;
     }
-    public function meetingCode(string $meetingCode): V1GuestsPutRequest {
-        $this->meetingCode = $meetingCode;
+    public function phoneNumber(string $phoneNumber): V1GuestsMeetingIdGet200ResponseGuestsInner {
+        $this->phoneNumber = $phoneNumber;
         return $this;
     }
 
-    public function getMeetingCode() {
-        return $this->meetingCode;
+    public function getPhoneNumber() {
+        return $this->phoneNumber;
     }
 
-    public function setMeetingCode(string $meetingCode) {
-        $this->meetingCode = $meetingCode;
-    }
-    public function userid(string $userid): V1GuestsPutRequest {
-        $this->userid = $userid;
-        return $this;
-    }
-
-    public function getUserid() {
-        return $this->userid;
-    }
-
-    public function setUserid(string $userid) {
-        $this->userid = $userid;
+    public function setPhoneNumber(string $phoneNumber) {
+        $this->phoneNumber = $phoneNumber;
     }
 
     /**
@@ -115,10 +90,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'guests' => '\wemeet\openapi\service\meeting_guest\model\V1GuestsPutRequestGuestsInner[]',
-        'instanceid' => 'int',
-        'meeting_code' => 'string',
-        'userid' => 'string'
+        'area' => 'string',
+        'guest_name' => 'string',
+        'phone_number' => 'string'
     ];
 
     /**
@@ -129,10 +103,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'guests' => null,
-        'instanceid' => 'int64',
-        'meeting_code' => null,
-        'userid' => null
+        'area' => null,
+        'guest_name' => null,
+        'phone_number' => null
     ];
 
     /**
@@ -141,10 +114,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'guests' => false,
-        'instanceid' => false,
-        'meeting_code' => false,
-        'userid' => false
+        'area' => false,
+        'guest_name' => false,
+        'phone_number' => false
     ];
 
     /**
@@ -233,10 +205,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'guests' => 'guests',
-        'instanceid' => 'instanceid',
-        'meeting_code' => 'meeting_code',
-        'userid' => 'userid'
+        'area' => 'area',
+        'guest_name' => 'guest_name',
+        'phone_number' => 'phone_number'
     ];
 
     /**
@@ -245,10 +216,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'guests' => 'setGuests',
-        'instanceid' => 'setInstanceid',
-        'meeting_code' => 'setMeetingCode',
-        'userid' => 'setUserid'
+        'area' => 'setArea',
+        'guest_name' => 'setGuestName',
+        'phone_number' => 'setPhoneNumber'
     ];
 
     /**
@@ -257,10 +227,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'guests' => 'getGuests',
-        'instanceid' => 'getInstanceid',
-        'meeting_code' => 'getMeetingCode',
-        'userid' => 'getUserid'
+        'area' => 'getArea',
+        'guest_name' => 'getGuestName',
+        'phone_number' => 'getPhoneNumber'
     ];
 
     /**
@@ -296,10 +265,9 @@ class V1GuestsPutRequest implements ModelInterface, \JsonSerializable
 
     public function jsonSerialize(): mixed {
         $data = [
-            'guests' => $this->guests,
-            'instanceid' => $this->instanceid,
-            'meeting_code' => $this->meetingCode,
-            'userid' => $this->userid,
+            'area' => $this->area,
+            'guest_name' => $this->guestName,
+            'phone_number' => $this->phoneNumber,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

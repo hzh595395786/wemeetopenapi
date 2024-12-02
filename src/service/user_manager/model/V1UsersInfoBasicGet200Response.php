@@ -1,11 +1,11 @@
 <?php
 
 /**
- * 测试环境项目
+ * 腾讯会议OpenAPI
  *
- * api测试专用
+ * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0.80
+ * The version of the OpenAPI document: v1.0.0
  */
 namespace wemeet\openapi\service\user_manager\model;
 
@@ -19,6 +19,12 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
     * 类型：int
      */
     protected $accountType = null;
+
+    /**
+     * 商企版计费需求，账号版本
+    * 类型：int
+     */
+    protected $accountVersion = null;
 
     /**
      * AI账号类型 1:购买版 2:赠送版
@@ -75,6 +81,9 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
         if (isset($jsonArray['account_type'])) {
             $this->accountType = $jsonArray['account_type'];
         }
+        if (isset($jsonArray['account_version'])) {
+            $this->accountVersion = $jsonArray['account_version'];
+        }
         if (isset($jsonArray['ai_account_type'])) {
             $this->aiAccountType = $jsonArray['ai_account_type'];
         }
@@ -115,6 +124,18 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
 
     public function setAccountType(int $accountType) {
         $this->accountType = $accountType;
+    }
+    public function accountVersion(int $accountVersion): V1UsersInfoBasicGet200Response {
+        $this->accountVersion = $accountVersion;
+        return $this;
+    }
+
+    public function getAccountVersion() {
+        return $this->accountVersion;
+    }
+
+    public function setAccountVersion(int $accountVersion) {
+        $this->accountVersion = $accountVersion;
     }
     public function aiAccountType(int $aiAccountType): V1UsersInfoBasicGet200Response {
         $this->aiAccountType = $aiAccountType;
@@ -232,6 +253,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'account_type' => 'int',
+        'account_version' => 'int',
         'ai_account_type' => 'int',
         'avatar_url' => 'string',
         'enable_ai_account' => 'bool',
@@ -252,6 +274,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'account_type' => 'int64',
+        'account_version' => 'int64',
         'ai_account_type' => 'int64',
         'avatar_url' => null,
         'enable_ai_account' => null,
@@ -270,6 +293,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'account_type' => false,
+        'account_version' => false,
         'ai_account_type' => false,
         'avatar_url' => false,
         'enable_ai_account' => false,
@@ -368,6 +392,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
      */
     protected static $attributeMap = [
         'account_type' => 'account_type',
+        'account_version' => 'account_version',
         'ai_account_type' => 'ai_account_type',
         'avatar_url' => 'avatar_url',
         'enable_ai_account' => 'enable_ai_account',
@@ -386,6 +411,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
      */
     protected static $setters = [
         'account_type' => 'setAccountType',
+        'account_version' => 'setAccountVersion',
         'ai_account_type' => 'setAiAccountType',
         'avatar_url' => 'setAvatarUrl',
         'enable_ai_account' => 'setEnableAiAccount',
@@ -404,6 +430,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
      */
     protected static $getters = [
         'account_type' => 'getAccountType',
+        'account_version' => 'getAccountVersion',
         'ai_account_type' => 'getAiAccountType',
         'avatar_url' => 'getAvatarUrl',
         'enable_ai_account' => 'getEnableAiAccount',
@@ -449,6 +476,7 @@ class V1UsersInfoBasicGet200Response implements ModelInterface, \JsonSerializabl
     public function jsonSerialize(): mixed {
         $data = [
             'account_type' => $this->accountType,
+            'account_version' => $this->accountVersion,
             'ai_account_type' => $this->aiAccountType,
             'avatar_url' => $this->avatarUrl,
             'enable_ai_account' => $this->enableAiAccount,
