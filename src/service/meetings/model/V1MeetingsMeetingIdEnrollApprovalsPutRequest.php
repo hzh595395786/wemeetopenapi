@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -25,6 +25,11 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
      */
     protected $enrollIdList;
     /**
+     * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。  operator_id_type=2，operator_id必须和公共参数的openid一致。  operator_id和userid至少填写一个，两个参数如果都传了以operator_id为准。  使用OAuth公参鉴权后不能使用userid为入参。
+    * 类型：
+     */
+    protected $operatorId;
+    /**
      * 操作者 ID 的类型：  1: userid 2: open_id  如果operator_id和userid具有值，则以operator_id为准；
     * 类型：
      */
@@ -35,18 +40,6 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
     * 类型：int
      */
     protected $instanceid = null;
-
-    /**
-     * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。  operator_id_type=2，operator_id必须和公共参数的openid一致。  operator_id和userid至少填写一个，两个参数如果都传了以operator_id为准。  使用OAuth公参鉴权后不能使用userid为入参。
-    * 类型：string
-     */
-    protected $operatorId = null;
-
-    /**
-     * 用户id
-    * 类型：string
-     */
-    protected $userid = null;
 
     public function __construct(
         $jsonArray = []
@@ -61,6 +54,11 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         } else {
             throw new \InvalidArgumentException('Missing required parameter enroll_id_list');
         }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
         } else {
@@ -68,12 +66,6 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         }
         if (isset($jsonArray['instanceid'])) {
             $this->instanceid = $jsonArray['instanceid'];
-        }
-        if (isset($jsonArray['operator_id'])) {
-            $this->operatorId = $jsonArray['operator_id'];
-        }
-        if (isset($jsonArray['userid'])) {
-            $this->userid = $jsonArray['userid'];
         }
     }
 
@@ -137,18 +129,6 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
     public function setOperatorIdType(int $operatorIdType) {
         $this->operatorIdType = $operatorIdType;
     }
-    public function userid(string $userid): V1MeetingsMeetingIdEnrollApprovalsPutRequest {
-        $this->userid = $userid;
-        return $this;
-    }
-
-    public function getUserid() {
-        return $this->userid;
-    }
-
-    public function setUserid(string $userid) {
-        $this->userid = $userid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -160,8 +140,7 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         'enroll_id_list' => 'int[]',
         'instanceid' => 'int',
         'operator_id' => 'string',
-        'operator_id_type' => 'int',
-        'userid' => 'string'
+        'operator_id_type' => 'int'
     ];
 
     /**
@@ -176,8 +155,7 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         'enroll_id_list' => 'int64',
         'instanceid' => 'int64',
         'operator_id' => null,
-        'operator_id_type' => 'int64',
-        'userid' => null
+        'operator_id_type' => 'int64'
     ];
 
     /**
@@ -190,8 +168,7 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         'enroll_id_list' => false,
         'instanceid' => false,
         'operator_id' => false,
-        'operator_id_type' => false,
-        'userid' => false
+        'operator_id_type' => false
     ];
 
     /**
@@ -284,8 +261,7 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         'enroll_id_list' => 'enroll_id_list',
         'instanceid' => 'instanceid',
         'operator_id' => 'operator_id',
-        'operator_id_type' => 'operator_id_type',
-        'userid' => 'userid'
+        'operator_id_type' => 'operator_id_type'
     ];
 
     /**
@@ -298,8 +274,7 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         'enroll_id_list' => 'setEnrollIdList',
         'instanceid' => 'setInstanceid',
         'operator_id' => 'setOperatorId',
-        'operator_id_type' => 'setOperatorIdType',
-        'userid' => 'setUserid'
+        'operator_id_type' => 'setOperatorIdType'
     ];
 
     /**
@@ -312,8 +287,7 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
         'enroll_id_list' => 'getEnrollIdList',
         'instanceid' => 'getInstanceid',
         'operator_id' => 'getOperatorId',
-        'operator_id_type' => 'getOperatorIdType',
-        'userid' => 'getUserid'
+        'operator_id_type' => 'getOperatorIdType'
     ];
 
     /**
@@ -354,7 +328,6 @@ class V1MeetingsMeetingIdEnrollApprovalsPutRequest implements ModelInterface, \J
             'instanceid' => $this->instanceid,
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
-            'userid' => $this->userid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

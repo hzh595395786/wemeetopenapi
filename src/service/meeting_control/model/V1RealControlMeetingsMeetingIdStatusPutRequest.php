@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -98,12 +98,6 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
      */
     protected $shareScreen = null;
 
-    /**
-     * 用户的唯一标识uuid
-    * 类型：string
-     */
-    protected $uuid = null;
-
     public function __construct(
         $jsonArray = []
     ) {
@@ -150,9 +144,6 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         }
         if (isset($jsonArray['share_screen'])) {
             $this->shareScreen = $jsonArray['share_screen'];
-        }
-        if (isset($jsonArray['uuid'])) {
-            $this->uuid = $jsonArray['uuid'];
         }
     }
 
@@ -324,18 +315,6 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
     public function setShareScreen(bool $shareScreen) {
         $this->shareScreen = $shareScreen;
     }
-    public function uuid(string $uuid): V1RealControlMeetingsMeetingIdStatusPutRequest {
-        $this->uuid = $uuid;
-        return $this;
-    }
-
-    public function getUuid() {
-        return $this->uuid;
-    }
-
-    public function setUuid(string $uuid) {
-        $this->uuid = $uuid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -356,8 +335,7 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         'operator_id_type' => 'int',
         'participant_join_mute' => 'int',
         'play_ivr_on_join' => 'bool',
-        'share_screen' => 'bool',
-        'uuid' => 'string'
+        'share_screen' => 'bool'
     ];
 
     /**
@@ -381,8 +359,7 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         'operator_id_type' => 'int64',
         'participant_join_mute' => 'int64',
         'play_ivr_on_join' => null,
-        'share_screen' => null,
-        'uuid' => null
+        'share_screen' => null
     ];
 
     /**
@@ -404,8 +381,7 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         'operator_id_type' => false,
         'participant_join_mute' => false,
         'play_ivr_on_join' => false,
-        'share_screen' => false,
-        'uuid' => false
+        'share_screen' => false
     ];
 
     /**
@@ -507,8 +483,7 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         'operator_id_type' => 'operator_id_type',
         'participant_join_mute' => 'participant_join_mute',
         'play_ivr_on_join' => 'play_ivr_on_join',
-        'share_screen' => 'share_screen',
-        'uuid' => 'uuid'
+        'share_screen' => 'share_screen'
     ];
 
     /**
@@ -530,8 +505,7 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         'operator_id_type' => 'setOperatorIdType',
         'participant_join_mute' => 'setParticipantJoinMute',
         'play_ivr_on_join' => 'setPlayIvrOnJoin',
-        'share_screen' => 'setShareScreen',
-        'uuid' => 'setUuid'
+        'share_screen' => 'setShareScreen'
     ];
 
     /**
@@ -553,8 +527,7 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
         'operator_id_type' => 'getOperatorIdType',
         'participant_join_mute' => 'getParticipantJoinMute',
         'play_ivr_on_join' => 'getPlayIvrOnJoin',
-        'share_screen' => 'getShareScreen',
-        'uuid' => 'getUuid'
+        'share_screen' => 'getShareScreen'
     ];
 
     /**
@@ -604,7 +577,6 @@ class V1RealControlMeetingsMeetingIdStatusPutRequest implements ModelInterface, 
             'participant_join_mute' => $this->participantJoinMute,
             'play_ivr_on_join' => $this->playIvrOnJoin,
             'share_screen' => $this->shareScreen,
-            'uuid' => $this->uuid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

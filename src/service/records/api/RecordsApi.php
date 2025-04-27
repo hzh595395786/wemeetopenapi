@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\records\api;
 
@@ -969,6 +969,12 @@ class RecordsApi
          $pathParams = [];
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
          if (is_null($request->getStartTime())) {
             throw new InvalidArgumentException("start_time is required and must be specified");
          }
@@ -980,9 +986,6 @@ class RecordsApi
          }
          if ($request->getOperatorIdType() !== null) {
              $queryParams['operator_id_type'] = $request->getOperatorIdType();
-         }
-         if ($request->getUserid() !== null) {
-             $queryParams['userid'] = $request->getUserid();
          }
          if ($request->getMeetingId() !== null) {
              $queryParams['meeting_id'] = $request->getMeetingId();
@@ -2500,11 +2503,10 @@ class ApiV1RecordsEventsGetResponse extends ApiResponse {
 
 class ApiV1RecordsGetRequest {
 
-    protected string|null $start_time = null;
-    protected string|null $end_time = null;
     protected string|null $operator_id = null;
     protected string|null $operator_id_type = null;
-    protected string|null $userid = null;
+    protected string|null $start_time = null;
+    protected string|null $end_time = null;
     protected string|null $meeting_id = null;
     protected string|null $meeting_code = null;
     protected string|null $page_size = null;
@@ -2513,20 +2515,17 @@ class ApiV1RecordsGetRequest {
     protected string|null $query_record_type = null;
     protected object|null $body = null;
 
-    public function getStartTime(): string|null  {
-        return $this->start_time;
-    }
-    public function getEndTime(): string|null  {
-        return $this->end_time;
-    }
     public function getOperatorId(): string|null  {
         return $this->operator_id;
     }
     public function getOperatorIdType(): string|null  {
         return $this->operator_id_type;
     }
-    public function getUserid(): string|null  {
-        return $this->userid;
+    public function getStartTime(): string|null  {
+        return $this->start_time;
+    }
+    public function getEndTime(): string|null  {
+        return $this->end_time;
     }
     public function getMeetingId(): string|null  {
         return $this->meeting_id;
@@ -2551,16 +2550,6 @@ class ApiV1RecordsGetRequest {
     }
 
 
-    public function withStartTime(string $start_time): ApiV1RecordsGetRequest  {
-        $this->start_time = $start_time;
-        return $this;
-    }
-
-    public function withEndTime(string $end_time): ApiV1RecordsGetRequest  {
-        $this->end_time = $end_time;
-        return $this;
-    }
-
     public function withOperatorId(string $operator_id): ApiV1RecordsGetRequest  {
         $this->operator_id = $operator_id;
         return $this;
@@ -2571,8 +2560,13 @@ class ApiV1RecordsGetRequest {
         return $this;
     }
 
-    public function withUserid(string $userid): ApiV1RecordsGetRequest  {
-        $this->userid = $userid;
+    public function withStartTime(string $start_time): ApiV1RecordsGetRequest  {
+        $this->start_time = $start_time;
+        return $this;
+    }
+
+    public function withEndTime(string $end_time): ApiV1RecordsGetRequest  {
+        $this->end_time = $end_time;
         return $this;
     }
 

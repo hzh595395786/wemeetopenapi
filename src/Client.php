@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi;
 
@@ -20,6 +20,7 @@ use wemeet\openapi\service\user_manager\api\UserManagerApi;
 use wemeet\openapi\service\records\api\RecordsApi;
 use wemeet\openapi\service\record_intelligence\api\RecordIntelligenceApi;
 use wemeet\openapi\service\meeting_guest\api\MeetingGuestApi;
+use wemeet\openapi\service\pstn\api\PstnApi;
 use wemeet\openapi\service\meeting_room\api\MeetingRoomApi;
 use wemeet\openapi\service\layout\api\LayoutApi;
 
@@ -33,6 +34,7 @@ class Client {
     private RecordsApi $records;
     private RecordIntelligenceApi $record_intelligence;
     private MeetingGuestApi $meeting_guest;
+    private PstnApi $pstn;
     private MeetingRoomApi $meeting_room;
     private LayoutApi $layout;
 
@@ -58,6 +60,7 @@ class Client {
         $this->records = new RecordsApi($this->config);
         $this->record_intelligence = new RecordIntelligenceApi($this->config);
         $this->meeting_guest = new MeetingGuestApi($this->config);
+        $this->pstn = new PstnApi($this->config);
         $this->meeting_room = new MeetingRoomApi($this->config);
         $this->layout = new LayoutApi($this->config);
         return $this;
@@ -83,6 +86,9 @@ class Client {
     }
     public function MeetingGuest() {
         return $this->meeting_guest;
+    }
+    public function Pstn() {
+        return $this->pstn;
     }
     public function MeetingRoom() {
         return $this->meeting_room;

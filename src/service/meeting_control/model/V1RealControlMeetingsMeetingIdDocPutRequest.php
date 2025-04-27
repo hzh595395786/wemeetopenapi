@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -37,12 +37,6 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
      */
     protected $operatorIdType = null;
 
-    /**
-     * 操作者用户唯一身份 ID，仅支持主持人和联席主持人，且只适用于单场会议。即将废弃，推荐使用ms_open_id。
-    * 类型：string
-     */
-    protected $uuid = null;
-
     public function __construct(
         $jsonArray = []
     ) {
@@ -61,9 +55,6 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
-        }
-        if (isset($jsonArray['uuid'])) {
-            $this->uuid = $jsonArray['uuid'];
         }
     }
 
@@ -115,18 +106,6 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
     public function setOperatorIdType(int $operatorIdType) {
         $this->operatorIdType = $operatorIdType;
     }
-    public function uuid(string $uuid): V1RealControlMeetingsMeetingIdDocPutRequest {
-        $this->uuid = $uuid;
-        return $this;
-    }
-
-    public function getUuid() {
-        return $this->uuid;
-    }
-
-    public function setUuid(string $uuid) {
-        $this->uuid = $uuid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -137,8 +116,7 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         'enable_upload_doc' => 'bool',
         'instanceid' => 'int',
         'operator_id' => 'string',
-        'operator_id_type' => 'int',
-        'uuid' => 'string'
+        'operator_id_type' => 'int'
     ];
 
     /**
@@ -152,8 +130,7 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         'enable_upload_doc' => null,
         'instanceid' => 'int64',
         'operator_id' => null,
-        'operator_id_type' => 'int64',
-        'uuid' => null
+        'operator_id_type' => 'int64'
     ];
 
     /**
@@ -165,8 +142,7 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         'enable_upload_doc' => false,
         'instanceid' => false,
         'operator_id' => false,
-        'operator_id_type' => false,
-        'uuid' => false
+        'operator_id_type' => false
     ];
 
     /**
@@ -258,8 +234,7 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         'enable_upload_doc' => 'enable_upload_doc',
         'instanceid' => 'instanceid',
         'operator_id' => 'operator_id',
-        'operator_id_type' => 'operator_id_type',
-        'uuid' => 'uuid'
+        'operator_id_type' => 'operator_id_type'
     ];
 
     /**
@@ -271,8 +246,7 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         'enable_upload_doc' => 'setEnableUploadDoc',
         'instanceid' => 'setInstanceid',
         'operator_id' => 'setOperatorId',
-        'operator_id_type' => 'setOperatorIdType',
-        'uuid' => 'setUuid'
+        'operator_id_type' => 'setOperatorIdType'
     ];
 
     /**
@@ -284,8 +258,7 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
         'enable_upload_doc' => 'getEnableUploadDoc',
         'instanceid' => 'getInstanceid',
         'operator_id' => 'getOperatorId',
-        'operator_id_type' => 'getOperatorIdType',
-        'uuid' => 'getUuid'
+        'operator_id_type' => 'getOperatorIdType'
     ];
 
     /**
@@ -325,7 +298,6 @@ class V1RealControlMeetingsMeetingIdDocPutRequest implements ModelInterface, \Js
             'instanceid' => $this->instanceid,
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
-            'uuid' => $this->uuid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

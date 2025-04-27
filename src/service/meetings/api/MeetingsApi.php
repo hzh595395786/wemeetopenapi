@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meetings\api;
 
@@ -925,6 +925,12 @@ class MeetingsApi
          }
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
          if (is_null($request->getInstanceid())) {
             throw new InvalidArgumentException("instanceid is required and must be specified");
          }
@@ -939,9 +945,6 @@ class MeetingsApi
          }
          if ($request->getOperatorIdType() !== null) {
              $queryParams['operator_id_type'] = $request->getOperatorIdType();
-         }
-         if ($request->getUserid() !== null) {
-             $queryParams['userid'] = $request->getUserid();
          }
          if ($request->getInstanceid() !== null) {
              $queryParams['instanceid'] = $request->getInstanceid();
@@ -1081,6 +1084,12 @@ class MeetingsApi
          }
 
          $queryParams = [];
+         if (is_null($request->getOperatorId())) {
+            throw new InvalidArgumentException("operator_id is required and must be specified");
+         }
+         if (is_null($request->getOperatorIdType())) {
+            throw new InvalidArgumentException("operator_id_type is required and must be specified");
+         }
          if (is_null($request->getInstanceid())) {
             throw new InvalidArgumentException("instanceid is required and must be specified");
          }
@@ -1089,9 +1098,6 @@ class MeetingsApi
          }
          if ($request->getOperatorIdType() !== null) {
              $queryParams['operator_id_type'] = $request->getOperatorIdType();
-         }
-         if ($request->getUserid() !== null) {
-             $queryParams['userid'] = $request->getUserid();
          }
          if ($request->getInstanceid() !== null) {
              $queryParams['instanceid'] = $request->getInstanceid();
@@ -1419,9 +1425,6 @@ class MeetingsApi
          }
          if ($request->getOperatorIdType() !== null) {
              $queryParams['operator_id_type'] = $request->getOperatorIdType();
-         }
-         if ($request->getUserid() !== null) {
-             $queryParams['userid'] = $request->getUserid();
          }
          if ($request->getInstanceid() !== null) {
              $queryParams['instanceid'] = $request->getInstanceid();
@@ -1786,9 +1789,6 @@ class MeetingsApi
          if (is_null($request->getOperatorIdType())) {
             throw new InvalidArgumentException("operator_id_type is required and must be specified");
          }
-         if (is_null($request->getSubMeetingId())) {
-            throw new InvalidArgumentException("sub_meeting_id is required and must be specified");
-         }
          if ($request->getOperatorId() !== null) {
              $queryParams['operator_id'] = $request->getOperatorId();
          }
@@ -1815,9 +1815,6 @@ class MeetingsApi
          }
          if ($request->getMaxValue() !== null) {
              $queryParams['max_value'] = $request->getMaxValue();
-         }
-         if ($request->getSubMeetingId() !== null) {
-             $queryParams['sub_meeting_id'] = $request->getSubMeetingId();
          }
 
          $requestBody = null;
@@ -3162,17 +3159,22 @@ class ApiV1MeetingsMeetingIdCustomerShortUrlGetResponse extends ApiResponse {
 class ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest {
 
     protected string|null $meeting_id = null;
+    protected string|null $operator_id = null;
+    protected string|null $operator_id_type = null;
     protected string|null $instanceid = null;
     protected string|null $page = null;
     protected string|null $page_size = null;
-    protected string|null $operator_id = null;
-    protected string|null $operator_id_type = null;
-    protected string|null $userid = null;
     protected string|null $status = null;
     protected object|null $body = null;
 
     public function getMeetingId(): string|null  {
         return $this->meeting_id;
+    }
+    public function getOperatorId(): string|null  {
+        return $this->operator_id;
+    }
+    public function getOperatorIdType(): string|null  {
+        return $this->operator_id_type;
     }
     public function getInstanceid(): string|null  {
         return $this->instanceid;
@@ -3182,15 +3184,6 @@ class ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest {
     }
     public function getPageSize(): string|null  {
         return $this->page_size;
-    }
-    public function getOperatorId(): string|null  {
-        return $this->operator_id;
-    }
-    public function getOperatorIdType(): string|null  {
-        return $this->operator_id_type;
-    }
-    public function getUserid(): string|null  {
-        return $this->userid;
     }
     public function getStatus(): string|null  {
         return $this->status;
@@ -3202,6 +3195,16 @@ class ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest {
 
     public function withMeetingId(string $meeting_id): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
         $this->meeting_id = $meeting_id;
+        return $this;
+    }
+
+    public function withOperatorId(string $operator_id): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
+        $this->operator_id = $operator_id;
+        return $this;
+    }
+
+    public function withOperatorIdType(string $operator_id_type): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
+        $this->operator_id_type = $operator_id_type;
         return $this;
     }
 
@@ -3217,21 +3220,6 @@ class ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest {
 
     public function withPageSize(string $page_size): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
         $this->page_size = $page_size;
-        return $this;
-    }
-
-    public function withOperatorId(string $operator_id): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
-        $this->operator_id = $operator_id;
-        return $this;
-    }
-
-    public function withOperatorIdType(string $operator_id_type): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
-        $this->operator_id_type = $operator_id_type;
-        return $this;
-    }
-
-    public function withUserid(string $userid): ApiV1MeetingsMeetingIdEnrollApprovalsGetRequest  {
-        $this->userid = $userid;
         return $this;
     }
 
@@ -3317,17 +3305,13 @@ class ApiV1MeetingsMeetingIdEnrollApprovalsPutResponse extends ApiResponse {
 class ApiV1MeetingsMeetingIdEnrollConfigGetRequest {
 
     protected string|null $meeting_id = null;
-    protected string|null $instanceid = null;
     protected string|null $operator_id = null;
     protected string|null $operator_id_type = null;
-    protected string|null $userid = null;
+    protected string|null $instanceid = null;
     protected object|null $body = null;
 
     public function getMeetingId(): string|null  {
         return $this->meeting_id;
-    }
-    public function getInstanceid(): string|null  {
-        return $this->instanceid;
     }
     public function getOperatorId(): string|null  {
         return $this->operator_id;
@@ -3335,8 +3319,8 @@ class ApiV1MeetingsMeetingIdEnrollConfigGetRequest {
     public function getOperatorIdType(): string|null  {
         return $this->operator_id_type;
     }
-    public function getUserid(): string|null  {
-        return $this->userid;
+    public function getInstanceid(): string|null  {
+        return $this->instanceid;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -3345,11 +3329,6 @@ class ApiV1MeetingsMeetingIdEnrollConfigGetRequest {
 
     public function withMeetingId(string $meeting_id): ApiV1MeetingsMeetingIdEnrollConfigGetRequest  {
         $this->meeting_id = $meeting_id;
-        return $this;
-    }
-
-    public function withInstanceid(string $instanceid): ApiV1MeetingsMeetingIdEnrollConfigGetRequest  {
-        $this->instanceid = $instanceid;
         return $this;
     }
 
@@ -3363,8 +3342,8 @@ class ApiV1MeetingsMeetingIdEnrollConfigGetRequest {
         return $this;
     }
 
-    public function withUserid(string $userid): ApiV1MeetingsMeetingIdEnrollConfigGetRequest  {
-        $this->userid = $userid;
+    public function withInstanceid(string $instanceid): ApiV1MeetingsMeetingIdEnrollConfigGetRequest  {
+        $this->instanceid = $instanceid;
         return $this;
     }
     public function withBody(object $body)  {
@@ -3586,7 +3565,6 @@ class ApiV1MeetingsMeetingIdGetRequest {
     protected string|null $instanceid = null;
     protected string|null $operator_id = null;
     protected string|null $operator_id_type = null;
-    protected string|null $userid = null;
     protected object|null $body = null;
 
     public function getMeetingId(): string|null  {
@@ -3600,9 +3578,6 @@ class ApiV1MeetingsMeetingIdGetRequest {
     }
     public function getOperatorIdType(): string|null  {
         return $this->operator_id_type;
-    }
-    public function getUserid(): string|null  {
-        return $this->userid;
     }
     public function getBody(): object|null  {
         return $this->body;
@@ -3626,11 +3601,6 @@ class ApiV1MeetingsMeetingIdGetRequest {
 
     public function withOperatorIdType(string $operator_id_type): ApiV1MeetingsMeetingIdGetRequest  {
         $this->operator_id_type = $operator_id_type;
-        return $this;
-    }
-
-    public function withUserid(string $userid): ApiV1MeetingsMeetingIdGetRequest  {
-        $this->userid = $userid;
         return $this;
     }
     public function withBody(object $body)  {
@@ -3950,7 +3920,6 @@ class ApiV1MeetingsMeetingIdQosGetRequest {
     protected string|null $meeting_id = null;
     protected string|null $operator_id = null;
     protected string|null $operator_id_type = null;
-    protected string|null $sub_meeting_id = null;
     protected string|null $page_size = null;
     protected string|null $page = null;
     protected string|null $to_operator_id = null;
@@ -3968,9 +3937,6 @@ class ApiV1MeetingsMeetingIdQosGetRequest {
     }
     public function getOperatorIdType(): string|null  {
         return $this->operator_id_type;
-    }
-    public function getSubMeetingId(): string|null  {
-        return $this->sub_meeting_id;
     }
     public function getPageSize(): string|null  {
         return $this->page_size;
@@ -4010,11 +3976,6 @@ class ApiV1MeetingsMeetingIdQosGetRequest {
 
     public function withOperatorIdType(string $operator_id_type): ApiV1MeetingsMeetingIdQosGetRequest  {
         $this->operator_id_type = $operator_id_type;
-        return $this;
-    }
-
-    public function withSubMeetingId(string $sub_meeting_id): ApiV1MeetingsMeetingIdQosGetRequest  {
-        $this->sub_meeting_id = $sub_meeting_id;
         return $this;
     }
 

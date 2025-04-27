@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -19,6 +19,16 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
     * 类型：
      */
     protected $instanceid;
+    /**
+     * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。  operator_id_type=2，operator_id必须和公共参数的openid一致。  operator_id和userid至少填写一个，两个参数如果都传了以operator_id为准。  使用OAuth公参鉴权后不能使用userid为入参。
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者 ID 的类型：  1: userid 2: open_id  如果operator_id和userid具有值，则以operator_id为准；
+    * 类型：
+     */
+    protected $operatorIdType;
 
     /**
      * 审批类型：1 自动审批，2 手动审批，默认自动审批
@@ -75,28 +85,10 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
     protected $noRegistrationNeededForStaff = null;
 
     /**
-     * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。  operator_id_type=2，operator_id必须和公共参数的openid一致。  operator_id和userid至少填写一个，两个参数如果都传了以operator_id为准。  使用OAuth公参鉴权后不能使用userid为入参。
-    * 类型：string
-     */
-    protected $operatorId = null;
-
-    /**
-     * 操作者 ID 的类型：  1: userid 2: open_id  如果operator_id和userid具有值，则以operator_id为准；
-    * 类型：int
-     */
-    protected $operatorIdType = null;
-
-    /**
      * 报名问题列表，非特殊问题按传入的顺序排序，特殊问题会优先放在最前面，仅开启收集问题时有效
     * 类型：\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInner[]
      */
     protected $questionList = null;
-
-    /**
-     * 用户id
-    * 类型：string
-     */
-    protected $userid = null;
 
     public function __construct(
         $jsonArray = []
@@ -105,6 +97,16 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
             $this->instanceid = $jsonArray['instanceid'];
         } else {
             throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
         }
         if (isset($jsonArray['approve_type'])) {
             $this->approveType = $jsonArray['approve_type'];
@@ -133,17 +135,8 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         if (isset($jsonArray['no_registration_needed_for_staff'])) {
             $this->noRegistrationNeededForStaff = $jsonArray['no_registration_needed_for_staff'];
         }
-        if (isset($jsonArray['operator_id'])) {
-            $this->operatorId = $jsonArray['operator_id'];
-        }
-        if (isset($jsonArray['operator_id_type'])) {
-            $this->operatorIdType = $jsonArray['operator_id_type'];
-        }
         if (isset($jsonArray['question_list'])) {
             $this->questionList = $jsonArray['question_list'];
-        }
-        if (isset($jsonArray['userid'])) {
-            $this->userid = $jsonArray['userid'];
         }
     }
 
@@ -303,18 +296,6 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
     public function setQuestionList(array $questionList) {
         $this->questionList = $questionList;
     }
-    public function userid(string $userid): V1MeetingsMeetingIdEnrollConfigPutRequest {
-        $this->userid = $userid;
-        return $this;
-    }
-
-    public function getUserid() {
-        return $this->userid;
-    }
-
-    public function setUserid(string $userid) {
-        $this->userid = $userid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -334,8 +315,7 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         'no_registration_needed_for_staff' => 'bool',
         'operator_id' => 'string',
         'operator_id_type' => 'int',
-        'question_list' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInner[]',
-        'userid' => 'string'
+        'question_list' => '\wemeet\openapi\service\meetings\model\V1MeetingsMeetingIdEnrollConfigPutRequestQuestionListInner[]'
     ];
 
     /**
@@ -358,8 +338,7 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         'no_registration_needed_for_staff' => null,
         'operator_id' => null,
         'operator_id_type' => 'int64',
-        'question_list' => null,
-        'userid' => null
+        'question_list' => null
     ];
 
     /**
@@ -380,8 +359,7 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         'no_registration_needed_for_staff' => false,
         'operator_id' => false,
         'operator_id_type' => false,
-        'question_list' => false,
-        'userid' => false
+        'question_list' => false
     ];
 
     /**
@@ -482,8 +460,7 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         'no_registration_needed_for_staff' => 'no_registration_needed_for_staff',
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type',
-        'question_list' => 'question_list',
-        'userid' => 'userid'
+        'question_list' => 'question_list'
     ];
 
     /**
@@ -504,8 +481,7 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         'no_registration_needed_for_staff' => 'setNoRegistrationNeededForStaff',
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType',
-        'question_list' => 'setQuestionList',
-        'userid' => 'setUserid'
+        'question_list' => 'setQuestionList'
     ];
 
     /**
@@ -526,8 +502,7 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
         'no_registration_needed_for_staff' => 'getNoRegistrationNeededForStaff',
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType',
-        'question_list' => 'getQuestionList',
-        'userid' => 'getUserid'
+        'question_list' => 'getQuestionList'
     ];
 
     /**
@@ -576,7 +551,6 @@ class V1MeetingsMeetingIdEnrollConfigPutRequest implements ModelInterface, \Json
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
             'question_list' => $this->questionList,
-            'userid' => $this->userid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

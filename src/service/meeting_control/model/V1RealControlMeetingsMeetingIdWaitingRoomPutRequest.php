@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -26,7 +26,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
     protected $operateType;
     /**
      * 被操作用户对象信息列表
-    * 类型：V1RealControlMeetingsMeetingIdMutesPutRequestUser
+    * 类型：V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner
      */
     protected $users;
 
@@ -47,12 +47,6 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
     * 类型：int
      */
     protected $operatorIdType = null;
-
-    /**
-     * 操作者用户唯一身份 ID，仅支持主持人和联席主持人，且只适用于单场会议。即将废弃，推荐使用ms_open_id。
-    * 类型：string
-     */
-    protected $uuid = null;
 
     public function __construct(
         $jsonArray = []
@@ -80,9 +74,6 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
-        }
-        if (isset($jsonArray['uuid'])) {
-            $this->uuid = $jsonArray['uuid'];
         }
     }
 
@@ -158,18 +149,6 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
     public function setUsers(array $users) {
         $this->users = $users;
     }
-    public function uuid(string $uuid): V1RealControlMeetingsMeetingIdWaitingRoomPutRequest {
-        $this->uuid = $uuid;
-        return $this;
-    }
-
-    public function getUuid() {
-        return $this->uuid;
-    }
-
-    public function setUuid(string $uuid) {
-        $this->uuid = $uuid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -182,8 +161,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         'operate_type' => 'int',
         'operator_id' => 'string',
         'operator_id_type' => 'int',
-        'users' => '\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdMutesPutRequestUser[]',
-        'uuid' => 'string'
+        'users' => '\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner[]'
     ];
 
     /**
@@ -199,8 +177,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         'operate_type' => 'int64',
         'operator_id' => null,
         'operator_id_type' => 'int64',
-        'users' => null,
-        'uuid' => null
+        'users' => null
     ];
 
     /**
@@ -214,8 +191,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         'operate_type' => false,
         'operator_id' => false,
         'operator_id_type' => false,
-        'users' => false,
-        'uuid' => false
+        'users' => false
     ];
 
     /**
@@ -309,8 +285,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         'operate_type' => 'operate_type',
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type',
-        'users' => 'users',
-        'uuid' => 'uuid'
+        'users' => 'users'
     ];
 
     /**
@@ -324,8 +299,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         'operate_type' => 'setOperateType',
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType',
-        'users' => 'setUsers',
-        'uuid' => 'setUuid'
+        'users' => 'setUsers'
     ];
 
     /**
@@ -339,8 +313,7 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
         'operate_type' => 'getOperateType',
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType',
-        'users' => 'getUsers',
-        'uuid' => 'getUuid'
+        'users' => 'getUsers'
     ];
 
     /**
@@ -382,7 +355,6 @@ class V1RealControlMeetingsMeetingIdWaitingRoomPutRequest implements ModelInterf
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
             'users' => $this->users,
-            'uuid' => $this->uuid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

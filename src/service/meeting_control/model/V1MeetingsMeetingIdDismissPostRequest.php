@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -20,6 +20,16 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
      */
     protected $instanceid;
     /**
+     * 操作者ID，根据operator_id_type的值，使用不同的类型
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者ID的类型：1:userid  2:openid（预留编号，本次不添加，未来新增接口使用）3:rooms_id  4: ms_open_id
+    * 类型：
+     */
+    protected $operatorIdType;
+    /**
      * 原因代码，可为用户自定义
     * 类型：
      */
@@ -30,18 +40,6 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
     * 类型：int
      */
     protected $forceDismissMeeting = null;
-
-    /**
-     * 操作者ID，根据operator_id_type的值，使用不同的类型
-    * 类型：string
-     */
-    protected $operatorId = null;
-
-    /**
-     * 操作者ID的类型：1:userid  2:openid（预留编号，本次不添加，未来新增接口使用）3:rooms_id  4: ms_open_id
-    * 类型：int
-     */
-    protected $operatorIdType = null;
 
     /**
      * 取消原因
@@ -55,12 +53,6 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
      */
     protected $retrieveCode = null;
 
-    /**
-     * 调用方用于标示用户的唯一 ID（企业内部请使用企业唯一用户标识；OAuth2.0 鉴权用户请使用 openId）。 企业唯一用户标识说明：企业对接 SSO 时使用的员工唯一标识 ID，企业调用创建用户接口时传递的 userid 参数。
-    * 类型：string
-     */
-    protected $userid = null;
-
     public function __construct(
         $jsonArray = []
     ) {
@@ -68,6 +60,16 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
             $this->instanceid = $jsonArray['instanceid'];
         } else {
             throw new \InvalidArgumentException('Missing required parameter instanceid');
+        }
+        if (isset($jsonArray['operator_id'])) {
+            $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
+        }
+        if (isset($jsonArray['operator_id_type'])) {
+            $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
         }
         if (isset($jsonArray['reason_code'])) {
             $this->reasonCode = $jsonArray['reason_code'];
@@ -77,20 +79,11 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         if (isset($jsonArray['force_dismiss_meeting'])) {
             $this->forceDismissMeeting = $jsonArray['force_dismiss_meeting'];
         }
-        if (isset($jsonArray['operator_id'])) {
-            $this->operatorId = $jsonArray['operator_id'];
-        }
-        if (isset($jsonArray['operator_id_type'])) {
-            $this->operatorIdType = $jsonArray['operator_id_type'];
-        }
         if (isset($jsonArray['reason_detail'])) {
             $this->reasonDetail = $jsonArray['reason_detail'];
         }
         if (isset($jsonArray['retrieve_code'])) {
             $this->retrieveCode = $jsonArray['retrieve_code'];
-        }
-        if (isset($jsonArray['userid'])) {
-            $this->userid = $jsonArray['userid'];
         }
     }
 
@@ -178,18 +171,6 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
     public function setRetrieveCode(int $retrieveCode) {
         $this->retrieveCode = $retrieveCode;
     }
-    public function userid(string $userid): V1MeetingsMeetingIdDismissPostRequest {
-        $this->userid = $userid;
-        return $this;
-    }
-
-    public function getUserid() {
-        return $this->userid;
-    }
-
-    public function setUserid(string $userid) {
-        $this->userid = $userid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -203,8 +184,7 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         'operator_id_type' => 'int',
         'reason_code' => 'int',
         'reason_detail' => 'string',
-        'retrieve_code' => 'int',
-        'userid' => 'string'
+        'retrieve_code' => 'int'
     ];
 
     /**
@@ -221,8 +201,7 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         'operator_id_type' => 'int64',
         'reason_code' => 'int64',
         'reason_detail' => null,
-        'retrieve_code' => 'int64',
-        'userid' => null
+        'retrieve_code' => 'int64'
     ];
 
     /**
@@ -237,8 +216,7 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         'operator_id_type' => false,
         'reason_code' => false,
         'reason_detail' => false,
-        'retrieve_code' => false,
-        'userid' => false
+        'retrieve_code' => false
     ];
 
     /**
@@ -333,8 +311,7 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         'operator_id_type' => 'operator_id_type',
         'reason_code' => 'reason_code',
         'reason_detail' => 'reason_detail',
-        'retrieve_code' => 'retrieve_code',
-        'userid' => 'userid'
+        'retrieve_code' => 'retrieve_code'
     ];
 
     /**
@@ -349,8 +326,7 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         'operator_id_type' => 'setOperatorIdType',
         'reason_code' => 'setReasonCode',
         'reason_detail' => 'setReasonDetail',
-        'retrieve_code' => 'setRetrieveCode',
-        'userid' => 'setUserid'
+        'retrieve_code' => 'setRetrieveCode'
     ];
 
     /**
@@ -365,8 +341,7 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
         'operator_id_type' => 'getOperatorIdType',
         'reason_code' => 'getReasonCode',
         'reason_detail' => 'getReasonDetail',
-        'retrieve_code' => 'getRetrieveCode',
-        'userid' => 'getUserid'
+        'retrieve_code' => 'getRetrieveCode'
     ];
 
     /**
@@ -409,7 +384,6 @@ class V1MeetingsMeetingIdDismissPostRequest implements ModelInterface, \JsonSeri
             'reason_code' => $this->reasonCode,
             'reason_detail' => $this->reasonDetail,
             'retrieve_code' => $this->retrieveCode,
-            'userid' => $this->userid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

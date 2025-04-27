@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\layout\model;
 
@@ -34,11 +34,6 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
     * 类型：
      */
     protected $operatorIdType;
-    /**
-     * 会议创建者ID
-    * 类型：
-     */
-    protected $userid;
 
     /**
      * 布局列表中会议需要应用的布局序号，从1开始计数（首次添加时若该参数不送，则默认选中第一个布局作为会议应用的布局）
@@ -68,11 +63,6 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
             $this->operatorIdType = $jsonArray['operator_id_type'];
         } else {
             throw new \InvalidArgumentException('Missing required parameter operator_id_type');
-        }
-        if (isset($jsonArray['userid'])) {
-            $this->userid = $jsonArray['userid'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter userid');
         }
         if (isset($jsonArray['default_layout_order'])) {
             $this->defaultLayoutOrder = $jsonArray['default_layout_order'];
@@ -139,18 +129,6 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
     public function setOperatorIdType(int $operatorIdType) {
         $this->operatorIdType = $operatorIdType;
     }
-    public function userid(string $userid): V1MeetingsMeetingIdLayoutsPostRequest {
-        $this->userid = $userid;
-        return $this;
-    }
-
-    public function getUserid() {
-        return $this->userid;
-    }
-
-    public function setUserid(string $userid) {
-        $this->userid = $userid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -162,8 +140,7 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'instanceid' => 'int',
         'layout_list' => '\wemeet\openapi\service\layout\model\V1MeetingsMeetingIdLayoutsPostRequestLayoutListInner[]',
         'operator_id' => 'string',
-        'operator_id_type' => 'int',
-        'userid' => 'string'
+        'operator_id_type' => 'int'
     ];
 
     /**
@@ -178,8 +155,7 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'instanceid' => 'int64',
         'layout_list' => null,
         'operator_id' => null,
-        'operator_id_type' => 'int64',
-        'userid' => null
+        'operator_id_type' => 'int64'
     ];
 
     /**
@@ -192,8 +168,7 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'instanceid' => false,
         'layout_list' => false,
         'operator_id' => false,
-        'operator_id_type' => false,
-        'userid' => false
+        'operator_id_type' => false
     ];
 
     /**
@@ -286,8 +261,7 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'instanceid' => 'instanceid',
         'layout_list' => 'layout_list',
         'operator_id' => 'operator_id',
-        'operator_id_type' => 'operator_id_type',
-        'userid' => 'userid'
+        'operator_id_type' => 'operator_id_type'
     ];
 
     /**
@@ -300,8 +274,7 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'instanceid' => 'setInstanceid',
         'layout_list' => 'setLayoutList',
         'operator_id' => 'setOperatorId',
-        'operator_id_type' => 'setOperatorIdType',
-        'userid' => 'setUserid'
+        'operator_id_type' => 'setOperatorIdType'
     ];
 
     /**
@@ -314,8 +287,7 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
         'instanceid' => 'getInstanceid',
         'layout_list' => 'getLayoutList',
         'operator_id' => 'getOperatorId',
-        'operator_id_type' => 'getOperatorIdType',
-        'userid' => 'getUserid'
+        'operator_id_type' => 'getOperatorIdType'
     ];
 
     /**
@@ -356,7 +328,6 @@ class V1MeetingsMeetingIdLayoutsPostRequest implements ModelInterface, \JsonSeri
             'layout_list' => $this->layoutList,
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
-            'userid' => $this->userid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

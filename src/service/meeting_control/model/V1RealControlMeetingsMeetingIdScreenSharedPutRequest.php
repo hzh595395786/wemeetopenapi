@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -36,12 +36,6 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
      */
     protected $operatorIdType = null;
 
-    /**
-     * 操作者用户唯一身份 ID，仅支持主持人和联席主持人，且只适用于单场会议。即将废弃，推荐使用ms_open_id。
-    * 类型：string
-     */
-    protected $uuid = null;
-
     public function __construct(
         $jsonArray = []
     ) {
@@ -60,9 +54,6 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
-        }
-        if (isset($jsonArray['uuid'])) {
-            $this->uuid = $jsonArray['uuid'];
         }
     }
 
@@ -114,18 +105,6 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
     public function setUser(V1RealControlMeetingsMeetingIdScreenSharedPutRequestUser $user) {
         $this->user = $user;
     }
-    public function uuid(string $uuid): V1RealControlMeetingsMeetingIdScreenSharedPutRequest {
-        $this->uuid = $uuid;
-        return $this;
-    }
-
-    public function getUuid() {
-        return $this->uuid;
-    }
-
-    public function setUuid(string $uuid) {
-        $this->uuid = $uuid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -136,8 +115,7 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         'instanceid' => 'int',
         'operator_id' => 'string',
         'operator_id_type' => 'int',
-        'user' => '\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdScreenSharedPutRequestUser',
-        'uuid' => 'string'
+        'user' => '\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdScreenSharedPutRequestUser'
     ];
 
     /**
@@ -151,8 +129,7 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         'instanceid' => 'int64',
         'operator_id' => null,
         'operator_id_type' => 'int64',
-        'user' => null,
-        'uuid' => null
+        'user' => null
     ];
 
     /**
@@ -164,8 +141,7 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         'instanceid' => false,
         'operator_id' => false,
         'operator_id_type' => false,
-        'user' => false,
-        'uuid' => false
+        'user' => false
     ];
 
     /**
@@ -257,8 +233,7 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         'instanceid' => 'instanceid',
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type',
-        'user' => 'user',
-        'uuid' => 'uuid'
+        'user' => 'user'
     ];
 
     /**
@@ -270,8 +245,7 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         'instanceid' => 'setInstanceid',
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType',
-        'user' => 'setUser',
-        'uuid' => 'setUuid'
+        'user' => 'setUser'
     ];
 
     /**
@@ -283,8 +257,7 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
         'instanceid' => 'getInstanceid',
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType',
-        'user' => 'getUser',
-        'uuid' => 'getUuid'
+        'user' => 'getUser'
     ];
 
     /**
@@ -324,7 +297,6 @@ class V1RealControlMeetingsMeetingIdScreenSharedPutRequest implements ModelInter
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
             'user' => $this->user,
-            'uuid' => $this->uuid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';

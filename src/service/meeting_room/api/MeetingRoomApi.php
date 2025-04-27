@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_room\api;
 
@@ -710,6 +710,12 @@ class MeetingRoomApi
          if (is_null($request->getInstanceid())) {
             throw new InvalidArgumentException("instanceid is required and must be specified");
          }
+         if (is_null($request->getTargetRoomsId())) {
+            throw new InvalidArgumentException("target_rooms_id is required and must be specified");
+         }
+         if (is_null($request->getTargetRoomsIdType())) {
+            throw new InvalidArgumentException("target_rooms_id_type is required and must be specified");
+         }
          if ($request->getOperatorIdType() !== null) {
              $queryParams['operator_id_type'] = $request->getOperatorIdType();
          }
@@ -727,6 +733,12 @@ class MeetingRoomApi
          }
          if ($request->getPageSize() !== null) {
              $queryParams['page_size'] = $request->getPageSize();
+         }
+         if ($request->getTargetRoomsId() !== null) {
+             $queryParams['target_rooms_id'] = $request->getTargetRoomsId();
+         }
+         if ($request->getTargetRoomsIdType() !== null) {
+             $queryParams['target_rooms_id_type'] = $request->getTargetRoomsIdType();
          }
 
          $requestBody = null;
@@ -1739,6 +1751,8 @@ class ApiV1MeetingRoomsOperatorIdMeetingsGetRequest {
     protected string|null $operator_id = null;
     protected string|null $operator_id_type = null;
     protected string|null $instanceid = null;
+    protected string|null $target_rooms_id = null;
+    protected string|null $target_rooms_id_type = null;
     protected string|null $start_time = null;
     protected string|null $end_time = null;
     protected string|null $page = null;
@@ -1753,6 +1767,12 @@ class ApiV1MeetingRoomsOperatorIdMeetingsGetRequest {
     }
     public function getInstanceid(): string|null  {
         return $this->instanceid;
+    }
+    public function getTargetRoomsId(): string|null  {
+        return $this->target_rooms_id;
+    }
+    public function getTargetRoomsIdType(): string|null  {
+        return $this->target_rooms_id_type;
     }
     public function getStartTime(): string|null  {
         return $this->start_time;
@@ -1783,6 +1803,16 @@ class ApiV1MeetingRoomsOperatorIdMeetingsGetRequest {
 
     public function withInstanceid(string $instanceid): ApiV1MeetingRoomsOperatorIdMeetingsGetRequest  {
         $this->instanceid = $instanceid;
+        return $this;
+    }
+
+    public function withTargetRoomsId(string $target_rooms_id): ApiV1MeetingRoomsOperatorIdMeetingsGetRequest  {
+        $this->target_rooms_id = $target_rooms_id;
+        return $this;
+    }
+
+    public function withTargetRoomsIdType(string $target_rooms_id_type): ApiV1MeetingRoomsOperatorIdMeetingsGetRequest  {
+        $this->target_rooms_id_type = $target_rooms_id_type;
         return $this;
     }
 

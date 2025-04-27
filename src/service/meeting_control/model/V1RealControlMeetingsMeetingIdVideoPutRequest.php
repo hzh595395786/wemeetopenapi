@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -37,12 +37,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
     protected $operatorIdType = null;
 
     /**
-     * 操作者用户唯一身份 ID，仅支持主持人和联席主持人，且只适用于单场会议。即将废弃，推荐使用ms_open_id。
-    * 类型：string
-     */
-    protected $uuid = null;
-
-    /**
      * 是否开启视频： false：关闭视频（默认值）。 true：开启视频， 仅支持 MRA 设备。
     * 类型：bool
      */
@@ -66,9 +60,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
-        }
-        if (isset($jsonArray['uuid'])) {
-            $this->uuid = $jsonArray['uuid'];
         }
         if (isset($jsonArray['video'])) {
             $this->video = $jsonArray['video'];
@@ -123,18 +114,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
     public function setUser(V1RealControlMeetingsMeetingIdVideoPutRequestUser $user) {
         $this->user = $user;
     }
-    public function uuid(string $uuid): V1RealControlMeetingsMeetingIdVideoPutRequest {
-        $this->uuid = $uuid;
-        return $this;
-    }
-
-    public function getUuid() {
-        return $this->uuid;
-    }
-
-    public function setUuid(string $uuid) {
-        $this->uuid = $uuid;
-    }
     public function video(bool $video): V1RealControlMeetingsMeetingIdVideoPutRequest {
         $this->video = $video;
         return $this;
@@ -158,7 +137,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         'operator_id' => 'string',
         'operator_id_type' => 'int',
         'user' => '\wemeet\openapi\service\meeting_control\model\V1RealControlMeetingsMeetingIdVideoPutRequestUser',
-        'uuid' => 'string',
         'video' => 'bool'
     ];
 
@@ -174,7 +152,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         'operator_id' => null,
         'operator_id_type' => 'int64',
         'user' => null,
-        'uuid' => null,
         'video' => null
     ];
 
@@ -188,7 +165,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         'operator_id' => false,
         'operator_id_type' => false,
         'user' => false,
-        'uuid' => false,
         'video' => false
     ];
 
@@ -282,7 +258,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type',
         'user' => 'user',
-        'uuid' => 'uuid',
         'video' => 'video'
     ];
 
@@ -296,7 +271,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType',
         'user' => 'setUser',
-        'uuid' => 'setUuid',
         'video' => 'setVideo'
     ];
 
@@ -310,7 +284,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType',
         'user' => 'getUser',
-        'uuid' => 'getUuid',
         'video' => 'getVideo'
     ];
 
@@ -351,7 +324,6 @@ class V1RealControlMeetingsMeetingIdVideoPutRequest implements ModelInterface, \
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
             'user' => $this->user,
-            'uuid' => $this->uuid,
             'video' => $this->video,
         ];
         return array_filter($data, function($value) {

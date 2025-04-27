@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meeting_control\model;
 
@@ -24,24 +24,22 @@ class V1RealControlMeetingsMeetingIdAsrPutRequest implements ModelInterface, \Js
     * 类型：
      */
     protected $isOpen;
+    /**
+     * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
+    * 类型：
+     */
+    protected $operatorId;
+    /**
+     * 操作者 ID 的类型： 1：userid
+    * 类型：
+     */
+    protected $operatorIdType;
 
     /**
      * 是否自动打开转写侧边栏，仅在is_open 为 true 时生效，默认为 0， 0：打开实时转写页面 。1：不打开实时转写页面
     * 类型：int
      */
     protected $openAsrView = null;
-
-    /**
-     * 操作者 ID。operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。
-    * 类型：string
-     */
-    protected $operatorId = null;
-
-    /**
-     * 操作者 ID 的类型： 1：userid
-    * 类型：int
-     */
-    protected $operatorIdType = null;
 
     public function __construct(
         $jsonArray = []
@@ -56,14 +54,18 @@ class V1RealControlMeetingsMeetingIdAsrPutRequest implements ModelInterface, \Js
         } else {
             throw new \InvalidArgumentException('Missing required parameter is_open');
         }
-        if (isset($jsonArray['open_asr_view'])) {
-            $this->openAsrView = $jsonArray['open_asr_view'];
-        }
         if (isset($jsonArray['operator_id'])) {
             $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
         }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id_type');
+        }
+        if (isset($jsonArray['open_asr_view'])) {
+            $this->openAsrView = $jsonArray['open_asr_view'];
         }
     }
 

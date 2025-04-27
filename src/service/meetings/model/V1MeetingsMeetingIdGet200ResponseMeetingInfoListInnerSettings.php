@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -67,10 +67,10 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
     protected $onlyAllowEnterpriseUserJoin = null;
 
     /**
-     * 是否仅受邀成员可入会，默认值为false，true：仅受邀成员可入会，false：所有成员可入会
-    * 类型：bool
+     * 成员入会限制，1：所有成员可入会，2：仅受邀成员可入会，3：仅企业内部成员可入会 ；当only_user_join_type和only_allow_enterprise_user_join同时传的时候，以only_user_join_type为准
+    * 类型：int
      */
-    protected $onlyInviteesAllowed = null;
+    protected $onlyUserJoinType = null;
 
     /**
     * 类型：bool
@@ -115,8 +115,8 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         if (isset($jsonArray['only_allow_enterprise_user_join'])) {
             $this->onlyAllowEnterpriseUserJoin = $jsonArray['only_allow_enterprise_user_join'];
         }
-        if (isset($jsonArray['only_invitees_allowed'])) {
-            $this->onlyInviteesAllowed = $jsonArray['only_invitees_allowed'];
+        if (isset($jsonArray['only_user_join_type'])) {
+            $this->onlyUserJoinType = $jsonArray['only_user_join_type'];
         }
         if (isset($jsonArray['participant_join_auto_record'])) {
             $this->participantJoinAutoRecord = $jsonArray['participant_join_auto_record'];
@@ -246,17 +246,17 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
     public function setOnlyAllowEnterpriseUserJoin(bool $onlyAllowEnterpriseUserJoin) {
         $this->onlyAllowEnterpriseUserJoin = $onlyAllowEnterpriseUserJoin;
     }
-    public function onlyInviteesAllowed(bool $onlyInviteesAllowed): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings {
-        $this->onlyInviteesAllowed = $onlyInviteesAllowed;
+    public function onlyUserJoinType(int $onlyUserJoinType): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings {
+        $this->onlyUserJoinType = $onlyUserJoinType;
         return $this;
     }
 
-    public function getOnlyInviteesAllowed() {
-        return $this->onlyInviteesAllowed;
+    public function getOnlyUserJoinType() {
+        return $this->onlyUserJoinType;
     }
 
-    public function setOnlyInviteesAllowed(bool $onlyInviteesAllowed) {
-        $this->onlyInviteesAllowed = $onlyInviteesAllowed;
+    public function setOnlyUserJoinType(int $onlyUserJoinType) {
+        $this->onlyUserJoinType = $onlyUserJoinType;
     }
     public function participantJoinAutoRecord(bool $participantJoinAutoRecord): V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings {
         $this->participantJoinAutoRecord = $participantJoinAutoRecord;
@@ -299,7 +299,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         'mute_enable_join' => 'bool',
         'mute_enable_type_join' => 'int',
         'only_allow_enterprise_user_join' => 'bool',
-        'only_invitees_allowed' => 'bool',
+        'only_user_join_type' => 'int',
         'participant_join_auto_record' => 'bool',
         'water_mark_type' => 'int'
     ];
@@ -322,7 +322,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         'mute_enable_join' => null,
         'mute_enable_type_join' => 'int64',
         'only_allow_enterprise_user_join' => null,
-        'only_invitees_allowed' => null,
+        'only_user_join_type' => 'int64',
         'participant_join_auto_record' => null,
         'water_mark_type' => 'int64'
     ];
@@ -343,7 +343,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         'mute_enable_join' => false,
         'mute_enable_type_join' => false,
         'only_allow_enterprise_user_join' => false,
-        'only_invitees_allowed' => false,
+        'only_user_join_type' => false,
         'participant_join_auto_record' => false,
         'water_mark_type' => false
     ];
@@ -444,7 +444,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         'mute_enable_join' => 'mute_enable_join',
         'mute_enable_type_join' => 'mute_enable_type_join',
         'only_allow_enterprise_user_join' => 'only_allow_enterprise_user_join',
-        'only_invitees_allowed' => 'only_invitees_allowed',
+        'only_user_join_type' => 'only_user_join_type',
         'participant_join_auto_record' => 'participant_join_auto_record',
         'water_mark_type' => 'water_mark_type'
     ];
@@ -465,7 +465,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         'mute_enable_join' => 'setMuteEnableJoin',
         'mute_enable_type_join' => 'setMuteEnableTypeJoin',
         'only_allow_enterprise_user_join' => 'setOnlyAllowEnterpriseUserJoin',
-        'only_invitees_allowed' => 'setOnlyInviteesAllowed',
+        'only_user_join_type' => 'setOnlyUserJoinType',
         'participant_join_auto_record' => 'setParticipantJoinAutoRecord',
         'water_mark_type' => 'setWaterMarkType'
     ];
@@ -486,7 +486,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
         'mute_enable_join' => 'getMuteEnableJoin',
         'mute_enable_type_join' => 'getMuteEnableTypeJoin',
         'only_allow_enterprise_user_join' => 'getOnlyAllowEnterpriseUserJoin',
-        'only_invitees_allowed' => 'getOnlyInviteesAllowed',
+        'only_user_join_type' => 'getOnlyUserJoinType',
         'participant_join_auto_record' => 'getParticipantJoinAutoRecord',
         'water_mark_type' => 'getWaterMarkType'
     ];
@@ -534,7 +534,7 @@ class V1MeetingsMeetingIdGet200ResponseMeetingInfoListInnerSettings implements M
             'mute_enable_join' => $this->muteEnableJoin,
             'mute_enable_type_join' => $this->muteEnableTypeJoin,
             'only_allow_enterprise_user_join' => $this->onlyAllowEnterpriseUserJoin,
-            'only_invitees_allowed' => $this->onlyInviteesAllowed,
+            'only_user_join_type' => $this->onlyUserJoinType,
             'participant_join_auto_record' => $this->participantJoinAutoRecord,
             'water_mark_type' => $this->waterMarkType,
         ];

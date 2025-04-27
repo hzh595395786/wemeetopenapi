@@ -5,7 +5,7 @@
  *
  * SAAS版RESTFUL风格API
  *
- * The version of the OpenAPI document: v1.0.0
+ * The version of the OpenAPI document: v1.0.2
  */
 namespace wemeet\openapi\service\meetings\model;
 
@@ -24,12 +24,11 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
     * 类型：
      */
     protected $msOpenIdList;
-
     /**
      * 操作者 ID。会议创建者可以导入报名信息。 operator_id 必须与 operator_id_type 配合使用。根据 operator_id_type 的值，operator_id 代表不同类型。 operator_id_type=2，operator_id 必须和公共参数的 openid 一致。 operator_id 和 userid 至少填写一个，两个参数如果都传了以 operator_id 为准。 使用 OAuth 公参鉴权后不能使用 userid 为入参。
-    * 类型：string
+    * 类型：
      */
-    protected $operatorId = null;
+    protected $operatorId;
 
     /**
      * 操作者 ID 的类型： 1：userid 2：open_id 如果 operator_id 和 userid 具有值，则以 operator_id 为准。
@@ -42,12 +41,6 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
     * 类型：int
      */
     protected $sortingRules = null;
-
-    /**
-     * 会议创建者的用户 ID。为了防止现网应用报错，此参数实则仍然兼容 openid，如无 oauth 应用使用报名接口则也可做成不兼容变更。
-    * 类型：string
-     */
-    protected $userid = null;
 
     public function __construct(
         $jsonArray = []
@@ -64,15 +57,14 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         }
         if (isset($jsonArray['operator_id'])) {
             $this->operatorId = $jsonArray['operator_id'];
+        } else {
+            throw new \InvalidArgumentException('Missing required parameter operator_id');
         }
         if (isset($jsonArray['operator_id_type'])) {
             $this->operatorIdType = $jsonArray['operator_id_type'];
         }
         if (isset($jsonArray['sorting_rules'])) {
             $this->sortingRules = $jsonArray['sorting_rules'];
-        }
-        if (isset($jsonArray['userid'])) {
-            $this->userid = $jsonArray['userid'];
         }
     }
 
@@ -136,18 +128,6 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
     public function setSortingRules(int $sortingRules) {
         $this->sortingRules = $sortingRules;
     }
-    public function userid(string $userid): V1MeetingsMeetingIdEnrollIdsPostRequest {
-        $this->userid = $userid;
-        return $this;
-    }
-
-    public function getUserid() {
-        return $this->userid;
-    }
-
-    public function setUserid(string $userid) {
-        $this->userid = $userid;
-    }
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -159,8 +139,7 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         'ms_open_id_list' => 'string[]',
         'operator_id' => 'string',
         'operator_id_type' => 'int',
-        'sorting_rules' => 'int',
-        'userid' => 'string'
+        'sorting_rules' => 'int'
     ];
 
     /**
@@ -175,8 +154,7 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         'ms_open_id_list' => null,
         'operator_id' => null,
         'operator_id_type' => 'int64',
-        'sorting_rules' => 'int64',
-        'userid' => null
+        'sorting_rules' => 'int64'
     ];
 
     /**
@@ -189,8 +167,7 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         'ms_open_id_list' => false,
         'operator_id' => false,
         'operator_id_type' => false,
-        'sorting_rules' => false,
-        'userid' => false
+        'sorting_rules' => false
     ];
 
     /**
@@ -283,8 +260,7 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         'ms_open_id_list' => 'ms_open_id_list',
         'operator_id' => 'operator_id',
         'operator_id_type' => 'operator_id_type',
-        'sorting_rules' => 'sorting_rules',
-        'userid' => 'userid'
+        'sorting_rules' => 'sorting_rules'
     ];
 
     /**
@@ -297,8 +273,7 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         'ms_open_id_list' => 'setMsOpenIdList',
         'operator_id' => 'setOperatorId',
         'operator_id_type' => 'setOperatorIdType',
-        'sorting_rules' => 'setSortingRules',
-        'userid' => 'setUserid'
+        'sorting_rules' => 'setSortingRules'
     ];
 
     /**
@@ -311,8 +286,7 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
         'ms_open_id_list' => 'getMsOpenIdList',
         'operator_id' => 'getOperatorId',
         'operator_id_type' => 'getOperatorIdType',
-        'sorting_rules' => 'getSortingRules',
-        'userid' => 'getUserid'
+        'sorting_rules' => 'getSortingRules'
     ];
 
     /**
@@ -353,7 +327,6 @@ class V1MeetingsMeetingIdEnrollIdsPostRequest implements ModelInterface, \JsonSe
             'operator_id' => $this->operatorId,
             'operator_id_type' => $this->operatorIdType,
             'sorting_rules' => $this->sortingRules,
-            'userid' => $this->userid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';
