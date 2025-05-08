@@ -1,6 +1,6 @@
 {
     "name": "wemeet/openapi-test",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "api测试专用",
     "keywords": [
         "openapitools",

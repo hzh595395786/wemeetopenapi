@@ -7,23 +7,36 @@
  *
  * The version of the OpenAPI document: v1.0.4
  */
-namespace wemeet\openapi\service\layout\model;
+namespace wemeet\openapi\service\meeting_control\model;
 
 use wemeet\openapi\core\xhttp\ModelInterface;
 
 
-class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelInterface, \JsonSerializable
+class V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner implements ModelInterface, \JsonSerializable
 {
     /**
-     * 用户的终端设备类型：  9：voip、sip 设备（H.323/SIP设备） 说明：请与被操作者的设备类型保持一致，否则不生效。
+     * 用户的终端设备类型： 0：PSTN 1：PC 2：Mac 3：Android 4：iOS 5：Web 6：iPad 7：Android Pad 8：小程序 9：voip、sip 设备 10：linux 20：Rooms for Touch Windows 21：Rooms for Touch MacOS 22：Rooms for Touch Android 30：Controller for Touch Windows 32：Controller for Touch Android 33：Controller for Touch iOS 说明：请与被操作者的设备类型保持一致，否则不生效。
     * 类型：
      */
     protected $instanceid;
+
     /**
-     * 被操作者用户当前会议中的临时身份 ID，单场会议唯一。
-    * 类型：
+     * 用户ID，根据to_operator_id_type的值，使用不同的类型
+    * 类型：string
      */
-    protected $msOpenId;
+    protected $toOperatorId = null;
+
+    /**
+     * 用户ID的类型：  4: ms_open_id
+    * 类型：int
+     */
+    protected $toOperatorIdType = null;
+
+    /**
+     * 用户的唯一标识uuid
+    * 类型：string
+     */
+    protected $uuid = null;
 
     public function __construct(
         $jsonArray = []
@@ -33,14 +46,18 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
         } else {
             throw new \InvalidArgumentException('Missing required parameter instanceid');
         }
-        if (isset($jsonArray['ms_open_id'])) {
-            $this->msOpenId = $jsonArray['ms_open_id'];
-        } else {
-            throw new \InvalidArgumentException('Missing required parameter ms_open_id');
+        if (isset($jsonArray['to_operator_id'])) {
+            $this->toOperatorId = $jsonArray['to_operator_id'];
+        }
+        if (isset($jsonArray['to_operator_id_type'])) {
+            $this->toOperatorIdType = $jsonArray['to_operator_id_type'];
+        }
+        if (isset($jsonArray['uuid'])) {
+            $this->uuid = $jsonArray['uuid'];
         }
     }
 
-    public function instanceid(int $instanceid): V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner {
+    public function instanceid(int $instanceid): V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner {
         $this->instanceid = $instanceid;
         return $this;
     }
@@ -52,17 +69,41 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
     public function setInstanceid(int $instanceid) {
         $this->instanceid = $instanceid;
     }
-    public function msOpenId(string $msOpenId): V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner {
-        $this->msOpenId = $msOpenId;
+    public function toOperatorId(string $toOperatorId): V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner {
+        $this->toOperatorId = $toOperatorId;
         return $this;
     }
 
-    public function getMsOpenId() {
-        return $this->msOpenId;
+    public function getToOperatorId() {
+        return $this->toOperatorId;
     }
 
-    public function setMsOpenId(string $msOpenId) {
-        $this->msOpenId = $msOpenId;
+    public function setToOperatorId(string $toOperatorId) {
+        $this->toOperatorId = $toOperatorId;
+    }
+    public function toOperatorIdType(int $toOperatorIdType): V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner {
+        $this->toOperatorIdType = $toOperatorIdType;
+        return $this;
+    }
+
+    public function getToOperatorIdType() {
+        return $this->toOperatorIdType;
+    }
+
+    public function setToOperatorIdType(int $toOperatorIdType) {
+        $this->toOperatorIdType = $toOperatorIdType;
+    }
+    public function uuid(string $uuid): V1RealControlMeetingsMeetingIdWaitingRoomPutRequestUsersInner {
+        $this->uuid = $uuid;
+        return $this;
+    }
+
+    public function getUuid() {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid) {
+        $this->uuid = $uuid;
     }
 
     /**
@@ -72,7 +113,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
       */
     protected static $openAPITypes = [
         'instanceid' => 'int',
-        'ms_open_id' => 'string'
+        'to_operator_id' => 'string',
+        'to_operator_id_type' => 'int',
+        'uuid' => 'string'
     ];
 
     /**
@@ -84,7 +127,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
       */
     protected static $openAPIFormats = [
         'instanceid' => 'int64',
-        'ms_open_id' => null
+        'to_operator_id' => null,
+        'to_operator_id_type' => 'int64',
+        'uuid' => null
     ];
 
     /**
@@ -94,7 +139,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
       */
     protected static array $openAPINullables = [
         'instanceid' => false,
-        'ms_open_id' => false
+        'to_operator_id' => false,
+        'to_operator_id_type' => false,
+        'uuid' => false
     ];
 
     /**
@@ -184,7 +231,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
      */
     protected static $attributeMap = [
         'instanceid' => 'instanceid',
-        'ms_open_id' => 'ms_open_id'
+        'to_operator_id' => 'to_operator_id',
+        'to_operator_id_type' => 'to_operator_id_type',
+        'uuid' => 'uuid'
     ];
 
     /**
@@ -194,7 +243,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
      */
     protected static $setters = [
         'instanceid' => 'setInstanceid',
-        'ms_open_id' => 'setMsOpenId'
+        'to_operator_id' => 'setToOperatorId',
+        'to_operator_id_type' => 'setToOperatorIdType',
+        'uuid' => 'setUuid'
     ];
 
     /**
@@ -204,7 +255,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
      */
     protected static $getters = [
         'instanceid' => 'getInstanceid',
-        'ms_open_id' => 'getMsOpenId'
+        'to_operator_id' => 'getToOperatorId',
+        'to_operator_id_type' => 'getToOperatorIdType',
+        'uuid' => 'getUuid'
     ];
 
     /**
@@ -241,7 +294,9 @@ class V1MeetingsMeetingIdApplyingLayoutPutRequestUserListInner implements ModelI
     public function jsonSerialize(): mixed {
         $data = [
             'instanceid' => $this->instanceid,
-            'ms_open_id' => $this->msOpenId,
+            'to_operator_id' => $this->toOperatorId,
+            'to_operator_id_type' => $this->toOperatorIdType,
+            'uuid' => $this->uuid,
         ];
         return array_filter($data, function($value) {
             return !is_null($value) && $value !== '';
